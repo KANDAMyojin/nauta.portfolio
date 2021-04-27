@@ -6,11 +6,25 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { FC } from "react"
 
-function Seo({ description, lang, meta, title }) {
+const { Helmet } = require('react-helmet')
+
+type seoProps = {
+  description?: string,
+  lang?: string,
+  meta?: {
+    name: string,
+    content: any,
+    property?: any
+  }[],
+  title: string
+}
+const Seo: FC<seoProps> = ({ description, lang, meta, title }) => {
+  if(!description) description = ``
+  if(!lang) lang = `en`
+  if(!meta) meta = []
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -73,17 +87,6 @@ function Seo({ description, lang, meta, title }) {
   )
 }
 
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
 
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
 
 export default Seo

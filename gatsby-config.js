@@ -32,5 +32,13 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `GraphCMS`,
+        fieldName: `gcms`,
+        url: `https://api-ap-northeast-1.graphcms.com/v2/cknzcip5teii201xx6rp7hlp6/master`
+      }
+    }
   ],
 }
