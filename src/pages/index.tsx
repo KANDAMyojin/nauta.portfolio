@@ -39,6 +39,14 @@ const IndexPage: FC<{}> = () => {
               nodes {
                   name
                   technicalFields
+                  githubAccount
+                  twitterAccount
+                  icon {
+                      url
+                  }
+                  cover {
+                      url
+                  }
               }
           }
       }
@@ -99,6 +107,7 @@ const IndexPage: FC<{}> = () => {
               <div className="columns">
 
                   {members.map((member) => (
+
                     <div className="column is-4">
                       <Member member={member} />
                     </div>

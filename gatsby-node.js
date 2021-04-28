@@ -29,7 +29,6 @@ exports.createPages = async ({graphql, actions}) => {
         name: name
       }
     }
-    console.log(page)
     createPage(page)
   })
 

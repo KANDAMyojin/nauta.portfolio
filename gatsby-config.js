@@ -40,12 +40,6 @@ module.exports = {
     //     url: env.GRAPHCMS_ENDPOINT,
     //   },
     // },
-    {
-      resolve: `gatsby-plugin-theme-ui`,
-      options: {
-        preset: "@theme-ui/preset-funk"
-      }
-    },
     `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-source-graphcms',

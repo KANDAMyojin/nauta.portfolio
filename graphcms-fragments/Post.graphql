@@ -46,13 +46,6 @@ fragment Post on Post {
     }
   }
   tags
-  author {
-    ... on Author {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   seo {
     ... on Seo {
       remoteTypeName: __typename

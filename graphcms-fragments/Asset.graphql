@@ -39,13 +39,6 @@ fragment Asset on Asset {
       stage
     }
   }
-  authorAvatar {
-    ... on Author {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   seoImage {
     ... on Seo {
       remoteTypeName: __typename
@@ -55,6 +48,20 @@ fragment Asset on Asset {
   }
   imageProduct {
     ... on Product {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  iconMember {
+    ... on Member {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  coverMember {
+    ... on Member {
       remoteTypeName: __typename
       remoteId: id
       stage
