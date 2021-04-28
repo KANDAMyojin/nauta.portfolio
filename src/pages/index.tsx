@@ -65,7 +65,7 @@ const IndexPage: FC<{}> = () => {
 
         <div className="hero-body">
           <div className="container has-text-centered">
-            <div className="columns is-vcentered">
+            <div className="columns is-vcentered is-marginless">
               <div className="column is-6">
                 <p className="title is-1">
                   nauta
@@ -76,7 +76,7 @@ const IndexPage: FC<{}> = () => {
                 </p>
               </div>
               <div className="column">
-                <img src={yachtImageUrl} alt="Yacht" width="400" />
+                <img src={yachtImageUrl} alt="Yacht" width="300" />
               </div>
             </div>
 
@@ -86,8 +86,8 @@ const IndexPage: FC<{}> = () => {
 
       <section>
         <div className="container">
-          <div className="columns has-text-centered">
-            <div className="column is-offset-1 is-10">
+          <div className="columns has-text-centered is-marginless">
+            <div className="column is-10">
               <h1 className="title is-1 shippori pt-6">
                 Products
               </h1>

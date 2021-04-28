@@ -1,9 +1,31 @@
 import * as React from "react"
 import { FC } from "react"
 import { GraphCms_Member } from "../generated/graphql"
+import { graphql, useStaticQuery } from "gatsby"
 
 const Member: FC<{member: GraphCms_Member}> = ({member}) => {
-  console.log(member)
+
+  const data = useStaticQuery(graphql`
+    query {
+        github: imageSharp(resize: {originalName: {eq: "GitHub-Mark-32px.png"}}) {
+            resize {
+                originalName
+                src
+            }
+        }
+
+        twitter: imageSharp(resize: {originalName: {eq: "Twitter social icons - square - blue.png"}}) {
+            resize {
+                originalName
+                src
+            }
+        }
+    }
+  `)
+
+  const gitHubImage = data.github.resize
+  const twitterImage = data.twitter.resize
+
   return(
     <div className="card">
       <div className="card-content">
@@ -15,7 +37,21 @@ const Member: FC<{member: GraphCms_Member}> = ({member}) => {
           </div>
           <div className="media-content">
             <p className="title is-4">{member.name}</p>
-            <p className="subtitle is-6">{`@${member.githubAccount}`}</p>
+            <div className="tags has-addons">
+              <span className="tag">
+                <figure className="image is-16x16">
+                  <img src={gitHubImage.src} />
+                </figure>
+              </span>
+              <span className="tag is-gray">{`@${member.githubAccount}`}</span>
+            </div><div className="tags has-addons">
+              <span className="tag">
+                <figure className="image is-16x16">
+                  <img src={twitterImage.src} />
+                </figure>
+              </span>
+            <span className="tag is-gray">{`@${member.twitterAccount}`}</span>
+          </div>
           </div>
         </div>
 

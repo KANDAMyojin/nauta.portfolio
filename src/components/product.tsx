@@ -7,7 +7,7 @@ const Product: FC<{product: GraphCms_Product}> = ({ product }) => {
   const ProductImage: FC<{image: GraphCms_Product['image']}> = ({image}) => {
     if (!image) return null
     else return(
-      <img src={image.url} width="600"/>
+      <img src={image.url} width="500"/>
     )
   }
 
