@@ -11,6 +11,19 @@ export type Scalars = {
   Float: number;
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
+  /** A date string, such as 2007-12-03 (YYYY-MM-DD), compliant with ISO 8601 standard for representation of dates using the Gregorian calendar. */
+  GraphCMS_Date: any;
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the date-timeformat outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representationof dates and times using the Gregorian calendar. */
+  GraphCMS_DateTime: any;
+  GraphCMS_Hex: any;
+  /** Raw JSON value */
+  GraphCMS_Json: any;
+  /** The Long scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1. */
+  GraphCMS_Long: any;
+  GraphCMS_RGBAHue: any;
+  GraphCMS_RGBATransparency: any;
+  /** Slate-compatible RichText AST */
+  GraphCMS_RichTextAST: any;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: any;
 };
@@ -817,5262 +830,4544 @@ export type FloatQueryOperatorInput = {
   nin: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
-export enum GatsbyImageLayout {
-  Constrained = 'CONSTRAINED',
-  Fixed = 'FIXED',
-  FullWidth = 'FULL_WIDTH'
-}
+export type GraphCms = {
+  /** Retrieve a single asset */
+  asset: Maybe<GraphCms_Asset>;
+  /** Retrieve document version */
+  assetVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple assets */
+  assets: Array<GraphCms_Asset>;
+  /** Retrieve multiple assets using the Relay connection interface */
+  assetsConnection: GraphCms_AssetConnection;
+  /** Retrieve a single author */
+  author: Maybe<GraphCms_Author>;
+  /** Retrieve document version */
+  authorVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple authors */
+  authors: Array<GraphCms_Author>;
+  /** Retrieve multiple authors using the Relay connection interface */
+  authorsConnection: GraphCms_AuthorConnection;
+  /** Retrieve a single member */
+  member: Maybe<GraphCms_Member>;
+  /** Retrieve document version */
+  memberVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple members */
+  members: Array<GraphCms_Member>;
+  /** Retrieve multiple members using the Relay connection interface */
+  membersConnection: GraphCms_MemberConnection;
+  /** Fetches an object given its ID */
+  node: Maybe<GraphCms_Node>;
+  /** Retrieve a single page */
+  page: Maybe<GraphCms_Page>;
+  /** Retrieve document version */
+  pageVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple pages */
+  pages: Array<GraphCms_Page>;
+  /** Retrieve multiple pages using the Relay connection interface */
+  pagesConnection: GraphCms_PageConnection;
+  /** Retrieve a single post */
+  post: Maybe<GraphCms_Post>;
+  /** Retrieve document version */
+  postVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple posts */
+  posts: Array<GraphCms_Post>;
+  /** Retrieve multiple posts using the Relay connection interface */
+  postsConnection: GraphCms_PostConnection;
+  /** Retrieve a single product */
+  product: Maybe<GraphCms_Product>;
+  /** Retrieve document version */
+  productVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple products */
+  products: Array<GraphCms_Product>;
+  /** Retrieve multiple products using the Relay connection interface */
+  productsConnection: GraphCms_ProductConnection;
+  /** Retrieve a single seo */
+  seo: Maybe<GraphCms_Seo>;
+  /** Retrieve document version */
+  seoVersion: Maybe<GraphCms_DocumentVersion>;
+  /** Retrieve multiple seos */
+  seos: Array<GraphCms_Seo>;
+  /** Retrieve multiple seos using the Relay connection interface */
+  seosConnection: GraphCms_SeoConnection;
+  /** Retrieve a single user */
+  user: Maybe<GraphCms_User>;
+  /** Retrieve multiple users */
+  users: Array<GraphCms_User>;
+  /** Retrieve multiple users using the Relay connection interface */
+  usersConnection: GraphCms_UserConnection;
+};
 
-export enum GraphCmsImagePlaceholder {
-  Blurred = 'BLURRED',
-  DominantColor = 'DOMINANT_COLOR',
-  None = 'NONE',
-  TracedSvg = 'TRACED_SVG'
-}
 
-export type GraphCms_Asset = Node & {
-  authorAvatar: Array<GraphCms_Author>;
-  children: Array<Node>;
-  coverImagePost: Array<GraphCms_Post>;
-  createdAt: Scalars['JSON'];
-  createdBy: Maybe<GraphCms_User>;
-  fileName: Scalars['String'];
-  gatsbyImageData: Maybe<Scalars['JSON']>;
-  handle: Scalars['String'];
-  height: Maybe<Scalars['Float']>;
+export type GraphCmsAssetArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_AssetWhereUniqueInput;
+};
+
+
+export type GraphCmsAssetVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsAssetsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_AssetOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_AssetWhereInput>;
+};
+
+
+export type GraphCmsAssetsConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_AssetOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_AssetWhereInput>;
+};
+
+
+export type GraphCmsAuthorArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_AuthorWhereUniqueInput;
+};
+
+
+export type GraphCmsAuthorVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsAuthorsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_AuthorOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_AuthorWhereInput>;
+};
+
+
+export type GraphCmsAuthorsConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_AuthorOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_AuthorWhereInput>;
+};
+
+
+export type GraphCmsMemberArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_MemberWhereUniqueInput;
+};
+
+
+export type GraphCmsMemberVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsMembersArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_MemberOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_MemberWhereInput>;
+};
+
+
+export type GraphCmsMembersConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_MemberOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_MemberWhereInput>;
+};
+
+
+export type GraphCmsNodeArgs = {
   id: Scalars['ID'];
-  internal: Internal;
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+};
+
+
+export type GraphCmsPageArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_PageWhereUniqueInput;
+};
+
+
+export type GraphCmsPageVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsPagesArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_PageOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_PageWhereInput>;
+};
+
+
+export type GraphCmsPagesConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_PageOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_PageWhereInput>;
+};
+
+
+export type GraphCmsPostArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_PostWhereUniqueInput;
+};
+
+
+export type GraphCmsPostVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsPostsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_PostOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_PostWhereInput>;
+};
+
+
+export type GraphCmsPostsConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_PostOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_PostWhereInput>;
+};
+
+
+export type GraphCmsProductArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_ProductWhereUniqueInput;
+};
+
+
+export type GraphCmsProductVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsProductsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_ProductOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_ProductWhereInput>;
+};
+
+
+export type GraphCmsProductsConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_ProductOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_ProductWhereInput>;
+};
+
+
+export type GraphCmsSeoArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_SeoWhereUniqueInput;
+};
+
+
+export type GraphCmsSeoVersionArgs = {
+  where: GraphCms_VersionWhereInput;
+};
+
+
+export type GraphCmsSeosArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_SeoOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_SeoWhereInput>;
+};
+
+
+export type GraphCmsSeosConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_SeoOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_SeoWhereInput>;
+};
+
+
+export type GraphCmsUserArgs = {
+  locales?: Array<GraphCms_Locale>;
+  stage?: GraphCms_Stage;
+  where: GraphCms_UserWhereUniqueInput;
+};
+
+
+export type GraphCmsUsersArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_UserOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_UserWhereInput>;
+};
+
+
+export type GraphCmsUsersConnectionArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales?: Array<GraphCms_Locale>;
+  orderBy: Maybe<GraphCms_UserOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  stage?: GraphCms_Stage;
+  where: Maybe<GraphCms_UserWhereInput>;
+};
+
+export type GraphCms_Aggregate = {
+  count: Scalars['Int'];
+};
+
+/** Asset system model */
+export type GraphCms_Asset = GraphCms_Node & {
+  authorAvatar: Array<GraphCms_Author>;
+  coverImagePost: Array<GraphCms_Post>;
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<GraphCms_User>;
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Asset>;
+  /** The file name */
+  fileName: Scalars['String'];
+  /** The file handle */
+  handle: Scalars['String'];
+  /** The height of the file */
+  height: Maybe<Scalars['Float']>;
+  /** List of Asset versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  imageProduct: Array<GraphCms_Product>;
+  /** System Locale field */
   locale: GraphCms_Locale;
+  /** Get the other localizations for this document */
+  localizations: Array<GraphCms_Asset>;
+  /** The mime type of the file */
   mimeType: Maybe<Scalars['String']>;
-  parent: Maybe<Node>;
-  publishedAt: Maybe<Scalars['JSON']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
   publishedBy: Maybe<GraphCms_User>;
-  remoteId: Scalars['ID'];
-  remoteTypeName: Scalars['String'];
   seoImage: Array<GraphCms_Seo>;
+  /** The file size */
   size: Maybe<Scalars['Float']>;
+  /** System stage field */
   stage: GraphCms_Stage;
-  updatedAt: Scalars['JSON'];
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
   updatedBy: Maybe<GraphCms_User>;
+  /** Get the url for the asset with provided transformations applied. */
   url: Scalars['String'];
+  /** The file width */
   width: Maybe<Scalars['Float']>;
 };
 
 
-export type GraphCms_AssetGatsbyImageDataArgs = {
-  aspectRatio: Maybe<Scalars['Float']>;
-  backgroundColor: Maybe<Scalars['String']>;
-  breakpoints: Maybe<Array<Maybe<Scalars['Int']>>>;
+/** Asset system model */
+export type GraphCms_AssetAuthorAvatarArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales: Maybe<Array<GraphCms_Locale>>;
+  orderBy: Maybe<GraphCms_AuthorOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  where: Maybe<GraphCms_AuthorWhereInput>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetCoverImagePostArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales: Maybe<Array<GraphCms_Locale>>;
+  orderBy: Maybe<GraphCms_PostOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  where: Maybe<GraphCms_PostWhereInput>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetCreatedAtArgs = {
+  variation?: GraphCms_SystemDateTimeFieldVariation;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetImageProductArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales: Maybe<Array<GraphCms_Locale>>;
+  orderBy: Maybe<GraphCms_ProductOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  where: Maybe<GraphCms_ProductWhereInput>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetLocalizationsArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  locales?: Array<GraphCms_Locale>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetPublishedAtArgs = {
+  variation?: GraphCms_SystemDateTimeFieldVariation;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetPublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetSeoImageArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales: Maybe<Array<GraphCms_Locale>>;
+  orderBy: Maybe<GraphCms_SeoOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  where: Maybe<GraphCms_SeoWhereInput>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetUpdatedAtArgs = {
+  variation?: GraphCms_SystemDateTimeFieldVariation;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+/** Asset system model */
+export type GraphCms_AssetUrlArgs = {
+  transformation: Maybe<GraphCms_AssetTransformationInput>;
+};
+
+export type GraphCms_AssetConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_AssetWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type GraphCms_AssetConnection = {
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
+  edges: Array<GraphCms_AssetEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
+};
+
+export type GraphCms_AssetCreateInput = {
+  authorAvatar: Maybe<GraphCms_AuthorCreateManyInlineInput>;
+  coverImagePost: Maybe<GraphCms_PostCreateManyInlineInput>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  fileName: Scalars['String'];
+  handle: Scalars['String'];
+  height: Maybe<Scalars['Float']>;
+  imageProduct: Maybe<GraphCms_ProductCreateManyInlineInput>;
+  /** Inline mutations for managing document localizations excluding the default locale */
+  localizations: Maybe<GraphCms_AssetCreateLocalizationsInput>;
+  mimeType: Maybe<Scalars['String']>;
+  seoImage: Maybe<GraphCms_SeoCreateManyInlineInput>;
+  size: Maybe<Scalars['Float']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  width: Maybe<Scalars['Float']>;
+};
+
+export type GraphCms_AssetCreateLocalizationDataInput = {
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  fileName: Scalars['String'];
+  handle: Scalars['String'];
+  height: Maybe<Scalars['Float']>;
+  mimeType: Maybe<Scalars['String']>;
+  size: Maybe<Scalars['Float']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  width: Maybe<Scalars['Float']>;
+};
+
+export type GraphCms_AssetCreateLocalizationInput = {
+  /** Localization input */
+  data: GraphCms_AssetCreateLocalizationDataInput;
+  locale: GraphCms_Locale;
+};
+
+export type GraphCms_AssetCreateLocalizationsInput = {
+  /** Create localizations for the newly-created document */
+  create: Maybe<Array<GraphCms_AssetCreateLocalizationInput>>;
+};
+
+export type GraphCms_AssetCreateManyInlineInput = {
+  /** Connect multiple existing Asset documents */
+  connect: Maybe<Array<GraphCms_AssetWhereUniqueInput>>;
+  /** Create and connect multiple existing Asset documents */
+  create: Maybe<Array<GraphCms_AssetCreateInput>>;
+};
+
+export type GraphCms_AssetCreateOneInlineInput = {
+  /** Connect one existing Asset document */
+  connect: Maybe<GraphCms_AssetWhereUniqueInput>;
+  /** Create and connect one Asset document */
+  create: Maybe<GraphCms_AssetCreateInput>;
+};
+
+/** An edge in a connection. */
+export type GraphCms_AssetEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: GraphCms_Asset;
+};
+
+/** Identifies documents */
+export type GraphCms_AssetManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_AssetWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_AssetWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_AssetWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  authorAvatar_every: Maybe<GraphCms_AuthorWhereInput>;
+  authorAvatar_none: Maybe<GraphCms_AuthorWhereInput>;
+  authorAvatar_some: Maybe<GraphCms_AuthorWhereInput>;
+  coverImagePost_every: Maybe<GraphCms_PostWhereInput>;
+  coverImagePost_none: Maybe<GraphCms_PostWhereInput>;
+  coverImagePost_some: Maybe<GraphCms_PostWhereInput>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  imageProduct_every: Maybe<GraphCms_ProductWhereInput>;
+  imageProduct_none: Maybe<GraphCms_ProductWhereInput>;
+  imageProduct_some: Maybe<GraphCms_ProductWhereInput>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  seoImage_every: Maybe<GraphCms_SeoWhereInput>;
+  seoImage_none: Maybe<GraphCms_SeoWhereInput>;
+  seoImage_some: Maybe<GraphCms_SeoWhereInput>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+export enum GraphCms_AssetOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  FileNameAsc = 'fileName_ASC',
+  FileNameDesc = 'fileName_DESC',
+  HandleAsc = 'handle_ASC',
+  HandleDesc = 'handle_DESC',
+  HeightAsc = 'height_ASC',
+  HeightDesc = 'height_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  MimeTypeAsc = 'mimeType_ASC',
+  MimeTypeDesc = 'mimeType_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  SizeAsc = 'size_ASC',
+  SizeDesc = 'size_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  WidthAsc = 'width_ASC',
+  WidthDesc = 'width_DESC'
+}
+
+/** Transformations for Assets */
+export type GraphCms_AssetTransformationInput = {
+  document: Maybe<GraphCms_DocumentTransformationInput>;
+  image: Maybe<GraphCms_ImageTransformationInput>;
+  /** Pass true if you want to validate the passed transformation parameters */
+  validateOptions: Maybe<Scalars['Boolean']>;
+};
+
+export type GraphCms_AssetUpdateInput = {
+  authorAvatar: Maybe<GraphCms_AuthorUpdateManyInlineInput>;
+  coverImagePost: Maybe<GraphCms_PostUpdateManyInlineInput>;
+  fileName: Maybe<Scalars['String']>;
+  handle: Maybe<Scalars['String']>;
+  height: Maybe<Scalars['Float']>;
+  imageProduct: Maybe<GraphCms_ProductUpdateManyInlineInput>;
+  /** Manage document localizations */
+  localizations: Maybe<GraphCms_AssetUpdateLocalizationsInput>;
+  mimeType: Maybe<Scalars['String']>;
+  seoImage: Maybe<GraphCms_SeoUpdateManyInlineInput>;
+  size: Maybe<Scalars['Float']>;
+  width: Maybe<Scalars['Float']>;
+};
+
+export type GraphCms_AssetUpdateLocalizationDataInput = {
+  fileName: Maybe<Scalars['String']>;
+  handle: Maybe<Scalars['String']>;
+  height: Maybe<Scalars['Float']>;
+  mimeType: Maybe<Scalars['String']>;
+  size: Maybe<Scalars['Float']>;
+  width: Maybe<Scalars['Float']>;
+};
+
+export type GraphCms_AssetUpdateLocalizationInput = {
+  data: GraphCms_AssetUpdateLocalizationDataInput;
+  locale: GraphCms_Locale;
+};
+
+export type GraphCms_AssetUpdateLocalizationsInput = {
+  /** Localizations to create */
+  create: Maybe<Array<GraphCms_AssetCreateLocalizationInput>>;
+  /** Localizations to delete */
+  delete: Maybe<Array<GraphCms_Locale>>;
+  /** Localizations to update */
+  update: Maybe<Array<GraphCms_AssetUpdateLocalizationInput>>;
+  upsert: Maybe<Array<GraphCms_AssetUpsertLocalizationInput>>;
+};
+
+export type GraphCms_AssetUpdateManyInlineInput = {
+  /** Connect multiple existing Asset documents */
+  connect: Maybe<Array<GraphCms_AssetConnectInput>>;
+  /** Create and connect multiple Asset documents */
+  create: Maybe<Array<GraphCms_AssetCreateInput>>;
+  /** Delete multiple Asset documents */
+  delete: Maybe<Array<GraphCms_AssetWhereUniqueInput>>;
+  /** Disconnect multiple Asset documents */
+  disconnect: Maybe<Array<GraphCms_AssetWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Asset documents */
+  set: Maybe<Array<GraphCms_AssetWhereUniqueInput>>;
+  /** Update multiple Asset documents */
+  update: Maybe<Array<GraphCms_AssetUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Asset documents */
+  upsert: Maybe<Array<GraphCms_AssetUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type GraphCms_AssetUpdateManyInput = {
+  fileName: Maybe<Scalars['String']>;
+  height: Maybe<Scalars['Float']>;
+  /** Optional updates to localizations */
+  localizations: Maybe<GraphCms_AssetUpdateManyLocalizationsInput>;
+  mimeType: Maybe<Scalars['String']>;
+  size: Maybe<Scalars['Float']>;
+  width: Maybe<Scalars['Float']>;
+};
+
+export type GraphCms_AssetUpdateManyLocalizationDataInput = {
+  fileName: Maybe<Scalars['String']>;
+  height: Maybe<Scalars['Float']>;
+  mimeType: Maybe<Scalars['String']>;
+  size: Maybe<Scalars['Float']>;
+  width: Maybe<Scalars['Float']>;
+};
+
+export type GraphCms_AssetUpdateManyLocalizationInput = {
+  data: GraphCms_AssetUpdateManyLocalizationDataInput;
+  locale: GraphCms_Locale;
+};
+
+export type GraphCms_AssetUpdateManyLocalizationsInput = {
+  /** Localizations to update */
+  update: Maybe<Array<GraphCms_AssetUpdateManyLocalizationInput>>;
+};
+
+export type GraphCms_AssetUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_AssetUpdateManyInput;
+  /** Document search */
+  where: GraphCms_AssetWhereInput;
+};
+
+export type GraphCms_AssetUpdateOneInlineInput = {
+  /** Connect existing Asset document */
+  connect: Maybe<GraphCms_AssetWhereUniqueInput>;
+  /** Create and connect one Asset document */
+  create: Maybe<GraphCms_AssetCreateInput>;
+  /** Delete currently connected Asset document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Asset document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Asset document */
+  update: Maybe<GraphCms_AssetUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Asset document */
+  upsert: Maybe<GraphCms_AssetUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_AssetUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_AssetUpdateInput;
+  /** Unique document search */
+  where: GraphCms_AssetWhereUniqueInput;
+};
+
+export type GraphCms_AssetUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_AssetCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_AssetUpdateInput;
+};
+
+export type GraphCms_AssetUpsertLocalizationInput = {
+  create: GraphCms_AssetCreateLocalizationDataInput;
+  locale: GraphCms_Locale;
+  update: GraphCms_AssetUpdateLocalizationDataInput;
+};
+
+export type GraphCms_AssetUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_AssetUpsertInput;
+  /** Unique document search */
+  where: GraphCms_AssetWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_AssetWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_AssetWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_AssetWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_AssetWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  authorAvatar_every: Maybe<GraphCms_AuthorWhereInput>;
+  authorAvatar_none: Maybe<GraphCms_AuthorWhereInput>;
+  authorAvatar_some: Maybe<GraphCms_AuthorWhereInput>;
+  coverImagePost_every: Maybe<GraphCms_PostWhereInput>;
+  coverImagePost_none: Maybe<GraphCms_PostWhereInput>;
+  coverImagePost_some: Maybe<GraphCms_PostWhereInput>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  fileName: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  fileName_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  fileName_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  fileName_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  fileName_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  fileName_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  fileName_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  fileName_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  fileName_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  fileName_starts_with: Maybe<Scalars['String']>;
+  handle: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  handle_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  handle_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  handle_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  handle_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  handle_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  handle_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  handle_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  handle_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  handle_starts_with: Maybe<Scalars['String']>;
+  height: Maybe<Scalars['Float']>;
+  /** All values greater than the given value. */
+  height_gt: Maybe<Scalars['Float']>;
+  /** All values greater than or equal the given value. */
+  height_gte: Maybe<Scalars['Float']>;
+  /** All values that are contained in given list. */
+  height_in: Maybe<Array<Scalars['Float']>>;
+  /** All values less than the given value. */
+  height_lt: Maybe<Scalars['Float']>;
+  /** All values less than or equal the given value. */
+  height_lte: Maybe<Scalars['Float']>;
+  /** All values that are not equal to given value. */
+  height_not: Maybe<Scalars['Float']>;
+  /** All values that are not contained in given list. */
+  height_not_in: Maybe<Array<Scalars['Float']>>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  imageProduct_every: Maybe<GraphCms_ProductWhereInput>;
+  imageProduct_none: Maybe<GraphCms_ProductWhereInput>;
+  imageProduct_some: Maybe<GraphCms_ProductWhereInput>;
+  mimeType: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  mimeType_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  mimeType_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  mimeType_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  mimeType_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  mimeType_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  mimeType_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  mimeType_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  mimeType_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  mimeType_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  seoImage_every: Maybe<GraphCms_SeoWhereInput>;
+  seoImage_none: Maybe<GraphCms_SeoWhereInput>;
+  seoImage_some: Maybe<GraphCms_SeoWhereInput>;
+  size: Maybe<Scalars['Float']>;
+  /** All values greater than the given value. */
+  size_gt: Maybe<Scalars['Float']>;
+  /** All values greater than or equal the given value. */
+  size_gte: Maybe<Scalars['Float']>;
+  /** All values that are contained in given list. */
+  size_in: Maybe<Array<Scalars['Float']>>;
+  /** All values less than the given value. */
+  size_lt: Maybe<Scalars['Float']>;
+  /** All values less than or equal the given value. */
+  size_lte: Maybe<Scalars['Float']>;
+  /** All values that are not equal to given value. */
+  size_not: Maybe<Scalars['Float']>;
+  /** All values that are not contained in given list. */
+  size_not_in: Maybe<Array<Scalars['Float']>>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+  width: Maybe<Scalars['Float']>;
+  /** All values greater than the given value. */
+  width_gt: Maybe<Scalars['Float']>;
+  /** All values greater than or equal the given value. */
+  width_gte: Maybe<Scalars['Float']>;
+  /** All values that are contained in given list. */
+  width_in: Maybe<Array<Scalars['Float']>>;
+  /** All values less than the given value. */
+  width_lt: Maybe<Scalars['Float']>;
+  /** All values less than or equal the given value. */
+  width_lte: Maybe<Scalars['Float']>;
+  /** All values that are not equal to given value. */
+  width_not: Maybe<Scalars['Float']>;
+  /** All values that are not contained in given list. */
+  width_not_in: Maybe<Array<Scalars['Float']>>;
+};
+
+/** References Asset record uniquely */
+export type GraphCms_AssetWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+};
+
+export type GraphCms_Author = GraphCms_Node & {
+  /** Enter a short bio about yourself, or other authors. */
+  biography: Maybe<Scalars['String']>;
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<GraphCms_User>;
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Author>;
+  /** List of Author versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** Enter the display name for authors */
+  name: Scalars['String'];
+  /** Add a profile picture for authors */
+  picture: Maybe<GraphCms_Asset>;
+  /** Connect blog posts to this author */
+  posts: Array<GraphCms_Post>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
+  publishedBy: Maybe<GraphCms_User>;
+  /** System stage field */
+  stage: GraphCms_Stage;
+  /** Enter the job title of the author */
+  title: Maybe<Scalars['String']>;
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<GraphCms_User>;
+};
+
+
+export type GraphCms_AuthorCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_AuthorDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+export type GraphCms_AuthorHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+export type GraphCms_AuthorPictureArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_AuthorPostsArgs = {
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+  locales: Maybe<Array<GraphCms_Locale>>;
+  orderBy: Maybe<GraphCms_PostOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  where: Maybe<GraphCms_PostWhereInput>;
+};
+
+
+export type GraphCms_AuthorPublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_AuthorUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+export type GraphCms_AuthorConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_AuthorWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type GraphCms_AuthorConnection = {
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
+  edges: Array<GraphCms_AuthorEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
+};
+
+export type GraphCms_AuthorCreateInput = {
+  biography: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  name: Scalars['String'];
+  picture: Maybe<GraphCms_AssetCreateOneInlineInput>;
+  posts: Maybe<GraphCms_PostCreateManyInlineInput>;
+  title: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+};
+
+export type GraphCms_AuthorCreateManyInlineInput = {
+  /** Connect multiple existing Author documents */
+  connect: Maybe<Array<GraphCms_AuthorWhereUniqueInput>>;
+  /** Create and connect multiple existing Author documents */
+  create: Maybe<Array<GraphCms_AuthorCreateInput>>;
+};
+
+export type GraphCms_AuthorCreateOneInlineInput = {
+  /** Connect one existing Author document */
+  connect: Maybe<GraphCms_AuthorWhereUniqueInput>;
+  /** Create and connect one Author document */
+  create: Maybe<GraphCms_AuthorCreateInput>;
+};
+
+/** An edge in a connection. */
+export type GraphCms_AuthorEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: GraphCms_Author;
+};
+
+/** Identifies documents */
+export type GraphCms_AuthorManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_AuthorWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_AuthorWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_AuthorWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  biography: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  biography_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  biography_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  biography_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  biography_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  biography_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  biography_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  biography_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  biography_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  biography_starts_with: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  picture: Maybe<GraphCms_AssetWhereInput>;
+  posts_every: Maybe<GraphCms_PostWhereInput>;
+  posts_none: Maybe<GraphCms_PostWhereInput>;
+  posts_some: Maybe<GraphCms_PostWhereInput>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+export enum GraphCms_AuthorOrderByInput {
+  BiographyAsc = 'biography_ASC',
+  BiographyDesc = 'biography_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type GraphCms_AuthorUpdateInput = {
+  biography: Maybe<Scalars['String']>;
+  name: Maybe<Scalars['String']>;
+  picture: Maybe<GraphCms_AssetUpdateOneInlineInput>;
+  posts: Maybe<GraphCms_PostUpdateManyInlineInput>;
+  title: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_AuthorUpdateManyInlineInput = {
+  /** Connect multiple existing Author documents */
+  connect: Maybe<Array<GraphCms_AuthorConnectInput>>;
+  /** Create and connect multiple Author documents */
+  create: Maybe<Array<GraphCms_AuthorCreateInput>>;
+  /** Delete multiple Author documents */
+  delete: Maybe<Array<GraphCms_AuthorWhereUniqueInput>>;
+  /** Disconnect multiple Author documents */
+  disconnect: Maybe<Array<GraphCms_AuthorWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Author documents */
+  set: Maybe<Array<GraphCms_AuthorWhereUniqueInput>>;
+  /** Update multiple Author documents */
+  update: Maybe<Array<GraphCms_AuthorUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Author documents */
+  upsert: Maybe<Array<GraphCms_AuthorUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type GraphCms_AuthorUpdateManyInput = {
+  biography: Maybe<Scalars['String']>;
+  name: Maybe<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_AuthorUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_AuthorUpdateManyInput;
+  /** Document search */
+  where: GraphCms_AuthorWhereInput;
+};
+
+export type GraphCms_AuthorUpdateOneInlineInput = {
+  /** Connect existing Author document */
+  connect: Maybe<GraphCms_AuthorWhereUniqueInput>;
+  /** Create and connect one Author document */
+  create: Maybe<GraphCms_AuthorCreateInput>;
+  /** Delete currently connected Author document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Author document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Author document */
+  update: Maybe<GraphCms_AuthorUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Author document */
+  upsert: Maybe<GraphCms_AuthorUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_AuthorUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_AuthorUpdateInput;
+  /** Unique document search */
+  where: GraphCms_AuthorWhereUniqueInput;
+};
+
+export type GraphCms_AuthorUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_AuthorCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_AuthorUpdateInput;
+};
+
+export type GraphCms_AuthorUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_AuthorUpsertInput;
+  /** Unique document search */
+  where: GraphCms_AuthorWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_AuthorWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_AuthorWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_AuthorWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_AuthorWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  biography: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  biography_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  biography_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  biography_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  biography_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  biography_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  biography_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  biography_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  biography_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  biography_starts_with: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  picture: Maybe<GraphCms_AssetWhereInput>;
+  posts_every: Maybe<GraphCms_PostWhereInput>;
+  posts_none: Maybe<GraphCms_PostWhereInput>;
+  posts_some: Maybe<GraphCms_PostWhereInput>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+/** References Author record uniquely */
+export type GraphCms_AuthorWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+};
+
+export type GraphCms_BatchPayload = {
+  /** The number of nodes that have been affected by the Batch operation. */
+  count: Scalars['GraphCMS_Long'];
+};
+
+/** Representing a color value comprising of HEX, RGBA and css color values */
+export type GraphCms_Color = {
+  css: Scalars['String'];
+  hex: Scalars['GraphCMS_Hex'];
+  rgba: GraphCms_Rgba;
+};
+
+/** Accepts either HEX or RGBA color value. At least one of hex or rgba value should be passed. If both are passed RGBA is used. */
+export type GraphCms_ColorInput = {
+  hex: Maybe<Scalars['GraphCMS_Hex']>;
+  rgba: Maybe<GraphCms_RgbaInput>;
+};
+
+export type GraphCms_ConnectPositionInput = {
+  /** Connect document after specified document */
+  after: Maybe<Scalars['ID']>;
+  /** Connect document before specified document */
+  before: Maybe<Scalars['ID']>;
+  /** Connect document at last position */
+  end: Maybe<Scalars['Boolean']>;
+  /** Connect document at first position */
+  start: Maybe<Scalars['Boolean']>;
+};
+
+
+
+export enum GraphCms_DocumentFileTypes {
+  Doc = 'doc',
+  Docx = 'docx',
+  Html = 'html',
+  Jpg = 'jpg',
+  Odp = 'odp',
+  Ods = 'ods',
+  Odt = 'odt',
+  Pdf = 'pdf',
+  Png = 'png',
+  Ppt = 'ppt',
+  Pptx = 'pptx',
+  Svg = 'svg',
+  Txt = 'txt',
+  Webp = 'webp',
+  Xls = 'xls',
+  Xlsx = 'xlsx'
+}
+
+export type GraphCms_DocumentOutputInput = {
+  /**
+   * Transforms a document into a desired file type.
+   * See this matrix for format support:
+   *
+   * PDF:    jpg, odp, ods, odt, png, svg, txt, and webp
+   * DOC:    docx, html, jpg, odt, pdf, png, svg, txt, and webp
+   * DOCX:    doc, html, jpg, odt, pdf, png, svg, txt, and webp
+   * ODT:    doc, docx, html, jpg, pdf, png, svg, txt, and webp
+   * XLS:    jpg, pdf, ods, png, svg, xlsx, and webp
+   * XLSX:    jpg, pdf, ods, png, svg, xls, and webp
+   * ODS:    jpg, pdf, png, xls, svg, xlsx, and webp
+   * PPT:    jpg, odp, pdf, png, svg, pptx, and webp
+   * PPTX:    jpg, odp, pdf, png, svg, ppt, and webp
+   * ODP:    jpg, pdf, png, ppt, svg, pptx, and webp
+   * BMP:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * GIF:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * JPG:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * PNG:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * WEBP:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * TIFF:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * AI:        jpg, odp, ods, odt, pdf, png, svg, and webp
+   * PSD:    jpg, odp, ods, odt, pdf, png, svg, and webp
+   * SVG:    jpg, odp, ods, odt, pdf, png, and webp
+   * HTML:    jpg, odt, pdf, svg, txt, and webp
+   * TXT:    jpg, html, odt, pdf, svg, and webp
+   */
+  format: Maybe<GraphCms_DocumentFileTypes>;
+};
+
+/** Transformations for Documents */
+export type GraphCms_DocumentTransformationInput = {
+  /** Changes the output for the file. */
+  output: Maybe<GraphCms_DocumentOutputInput>;
+};
+
+export type GraphCms_DocumentVersion = {
+  createdAt: Scalars['GraphCMS_DateTime'];
+  data: Maybe<Scalars['GraphCMS_Json']>;
+  id: Scalars['ID'];
+  revision: Scalars['Int'];
+  stage: GraphCms_Stage;
+};
+
+
+export enum GraphCms_ImageFit {
+  /** Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio. */
+  Clip = 'clip',
+  /** Resizes the image to fit the specified parameters exactly by removing any parts of the image that don't fit within the boundaries. */
+  Crop = 'crop',
+  /** Resizes the image to fit within the parameters, but as opposed to 'fit:clip' will not scale the image if the image is smaller than the output size. */
+  Max = 'max',
+  /** Resizes the image to fit the specified parameters exactly by scaling the image to the desired size. The aspect ratio of the image is not respected and the image can be distorted using this method. */
+  Scale = 'scale'
+}
+
+export type GraphCms_ImageResizeInput = {
+  /** The default value for the fit parameter is fit:clip. */
+  fit: Maybe<GraphCms_ImageFit>;
+  /** The height in pixels to resize the image to. The value must be an integer from 1 to 10000. */
   height: Maybe<Scalars['Int']>;
-  layout: Maybe<GatsbyImageLayout>;
-  outputPixelDensities: Maybe<Array<Maybe<Scalars['Float']>>>;
-  placeholder: Maybe<GraphCmsImagePlaceholder>;
-  quality: Maybe<Scalars['Int']>;
-  sizes: Maybe<Scalars['String']>;
+  /** The width in pixels to resize the image to. The value must be an integer from 1 to 10000. */
   width: Maybe<Scalars['Int']>;
 };
 
-export type GraphCms_AssetConnection = {
-  distinct: Array<Scalars['String']>;
-  edges: Array<GraphCms_AssetEdge>;
-  group: Array<GraphCms_AssetGroupConnection>;
-  nodes: Array<GraphCms_Asset>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+/** Transformations for Images */
+export type GraphCms_ImageTransformationInput = {
+  /** Resizes the image */
+  resize: Maybe<GraphCms_ImageResizeInput>;
 };
 
 
-export type GraphCms_AssetConnectionDistinctArgs = {
-  field: GraphCms_AssetFieldsEnum;
-};
-
-
-export type GraphCms_AssetConnectionGroupArgs = {
-  field: GraphCms_AssetFieldsEnum;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-};
-
-export type GraphCms_AssetEdge = {
-  next: Maybe<GraphCms_Asset>;
-  node: GraphCms_Asset;
-  previous: Maybe<GraphCms_Asset>;
-};
-
-export enum GraphCms_AssetFieldsEnum {
-  AuthorAvatar = 'authorAvatar',
-  AuthorAvatarBiography = 'authorAvatar___biography',
-  AuthorAvatarChildren = 'authorAvatar___children',
-  AuthorAvatarChildrenChildren = 'authorAvatar___children___children',
-  AuthorAvatarChildrenChildrenChildren = 'authorAvatar___children___children___children',
-  AuthorAvatarChildrenChildrenId = 'authorAvatar___children___children___id',
-  AuthorAvatarChildrenId = 'authorAvatar___children___id',
-  AuthorAvatarChildrenInternalContent = 'authorAvatar___children___internal___content',
-  AuthorAvatarChildrenInternalContentDigest = 'authorAvatar___children___internal___contentDigest',
-  AuthorAvatarChildrenInternalDescription = 'authorAvatar___children___internal___description',
-  AuthorAvatarChildrenInternalFieldOwners = 'authorAvatar___children___internal___fieldOwners',
-  AuthorAvatarChildrenInternalIgnoreType = 'authorAvatar___children___internal___ignoreType',
-  AuthorAvatarChildrenInternalMediaType = 'authorAvatar___children___internal___mediaType',
-  AuthorAvatarChildrenInternalOwner = 'authorAvatar___children___internal___owner',
-  AuthorAvatarChildrenInternalType = 'authorAvatar___children___internal___type',
-  AuthorAvatarChildrenParentChildren = 'authorAvatar___children___parent___children',
-  AuthorAvatarChildrenParentId = 'authorAvatar___children___parent___id',
-  AuthorAvatarCreatedAt = 'authorAvatar___createdAt',
-  AuthorAvatarCreatedByChildren = 'authorAvatar___createdBy___children',
-  AuthorAvatarCreatedByChildrenChildren = 'authorAvatar___createdBy___children___children',
-  AuthorAvatarCreatedByChildrenId = 'authorAvatar___createdBy___children___id',
-  AuthorAvatarCreatedByCreatedAt = 'authorAvatar___createdBy___createdAt',
-  AuthorAvatarCreatedById = 'authorAvatar___createdBy___id',
-  AuthorAvatarCreatedByInternalContent = 'authorAvatar___createdBy___internal___content',
-  AuthorAvatarCreatedByInternalContentDigest = 'authorAvatar___createdBy___internal___contentDigest',
-  AuthorAvatarCreatedByInternalDescription = 'authorAvatar___createdBy___internal___description',
-  AuthorAvatarCreatedByInternalFieldOwners = 'authorAvatar___createdBy___internal___fieldOwners',
-  AuthorAvatarCreatedByInternalIgnoreType = 'authorAvatar___createdBy___internal___ignoreType',
-  AuthorAvatarCreatedByInternalMediaType = 'authorAvatar___createdBy___internal___mediaType',
-  AuthorAvatarCreatedByInternalOwner = 'authorAvatar___createdBy___internal___owner',
-  AuthorAvatarCreatedByInternalType = 'authorAvatar___createdBy___internal___type',
-  AuthorAvatarCreatedByIsActive = 'authorAvatar___createdBy___isActive',
-  AuthorAvatarCreatedByKind = 'authorAvatar___createdBy___kind',
-  AuthorAvatarCreatedByName = 'authorAvatar___createdBy___name',
-  AuthorAvatarCreatedByParentChildren = 'authorAvatar___createdBy___parent___children',
-  AuthorAvatarCreatedByParentId = 'authorAvatar___createdBy___parent___id',
-  AuthorAvatarCreatedByPicture = 'authorAvatar___createdBy___picture',
-  AuthorAvatarCreatedByPublishedAt = 'authorAvatar___createdBy___publishedAt',
-  AuthorAvatarCreatedByRemoteId = 'authorAvatar___createdBy___remoteId',
-  AuthorAvatarCreatedByRemoteTypeName = 'authorAvatar___createdBy___remoteTypeName',
-  AuthorAvatarCreatedByStage = 'authorAvatar___createdBy___stage',
-  AuthorAvatarCreatedByUpdatedAt = 'authorAvatar___createdBy___updatedAt',
-  AuthorAvatarId = 'authorAvatar___id',
-  AuthorAvatarInternalContent = 'authorAvatar___internal___content',
-  AuthorAvatarInternalContentDigest = 'authorAvatar___internal___contentDigest',
-  AuthorAvatarInternalDescription = 'authorAvatar___internal___description',
-  AuthorAvatarInternalFieldOwners = 'authorAvatar___internal___fieldOwners',
-  AuthorAvatarInternalIgnoreType = 'authorAvatar___internal___ignoreType',
-  AuthorAvatarInternalMediaType = 'authorAvatar___internal___mediaType',
-  AuthorAvatarInternalOwner = 'authorAvatar___internal___owner',
-  AuthorAvatarInternalType = 'authorAvatar___internal___type',
-  AuthorAvatarName = 'authorAvatar___name',
-  AuthorAvatarParentChildren = 'authorAvatar___parent___children',
-  AuthorAvatarParentChildrenChildren = 'authorAvatar___parent___children___children',
-  AuthorAvatarParentChildrenId = 'authorAvatar___parent___children___id',
-  AuthorAvatarParentId = 'authorAvatar___parent___id',
-  AuthorAvatarParentInternalContent = 'authorAvatar___parent___internal___content',
-  AuthorAvatarParentInternalContentDigest = 'authorAvatar___parent___internal___contentDigest',
-  AuthorAvatarParentInternalDescription = 'authorAvatar___parent___internal___description',
-  AuthorAvatarParentInternalFieldOwners = 'authorAvatar___parent___internal___fieldOwners',
-  AuthorAvatarParentInternalIgnoreType = 'authorAvatar___parent___internal___ignoreType',
-  AuthorAvatarParentInternalMediaType = 'authorAvatar___parent___internal___mediaType',
-  AuthorAvatarParentInternalOwner = 'authorAvatar___parent___internal___owner',
-  AuthorAvatarParentInternalType = 'authorAvatar___parent___internal___type',
-  AuthorAvatarParentParentChildren = 'authorAvatar___parent___parent___children',
-  AuthorAvatarParentParentId = 'authorAvatar___parent___parent___id',
-  AuthorAvatarPictureAuthorAvatar = 'authorAvatar___picture___authorAvatar',
-  AuthorAvatarPictureAuthorAvatarBiography = 'authorAvatar___picture___authorAvatar___biography',
-  AuthorAvatarPictureAuthorAvatarChildren = 'authorAvatar___picture___authorAvatar___children',
-  AuthorAvatarPictureAuthorAvatarCreatedAt = 'authorAvatar___picture___authorAvatar___createdAt',
-  AuthorAvatarPictureAuthorAvatarId = 'authorAvatar___picture___authorAvatar___id',
-  AuthorAvatarPictureAuthorAvatarName = 'authorAvatar___picture___authorAvatar___name',
-  AuthorAvatarPictureAuthorAvatarPosts = 'authorAvatar___picture___authorAvatar___posts',
-  AuthorAvatarPictureAuthorAvatarPublishedAt = 'authorAvatar___picture___authorAvatar___publishedAt',
-  AuthorAvatarPictureAuthorAvatarRemoteId = 'authorAvatar___picture___authorAvatar___remoteId',
-  AuthorAvatarPictureAuthorAvatarRemoteTypeName = 'authorAvatar___picture___authorAvatar___remoteTypeName',
-  AuthorAvatarPictureAuthorAvatarStage = 'authorAvatar___picture___authorAvatar___stage',
-  AuthorAvatarPictureAuthorAvatarTitle = 'authorAvatar___picture___authorAvatar___title',
-  AuthorAvatarPictureAuthorAvatarUpdatedAt = 'authorAvatar___picture___authorAvatar___updatedAt',
-  AuthorAvatarPictureChildren = 'authorAvatar___picture___children',
-  AuthorAvatarPictureChildrenChildren = 'authorAvatar___picture___children___children',
-  AuthorAvatarPictureChildrenId = 'authorAvatar___picture___children___id',
-  AuthorAvatarPictureCoverImagePost = 'authorAvatar___picture___coverImagePost',
-  AuthorAvatarPictureCoverImagePostChildren = 'authorAvatar___picture___coverImagePost___children',
-  AuthorAvatarPictureCoverImagePostCreatedAt = 'authorAvatar___picture___coverImagePost___createdAt',
-  AuthorAvatarPictureCoverImagePostDate = 'authorAvatar___picture___coverImagePost___date',
-  AuthorAvatarPictureCoverImagePostExcerpt = 'authorAvatar___picture___coverImagePost___excerpt',
-  AuthorAvatarPictureCoverImagePostId = 'authorAvatar___picture___coverImagePost___id',
-  AuthorAvatarPictureCoverImagePostPublishedAt = 'authorAvatar___picture___coverImagePost___publishedAt',
-  AuthorAvatarPictureCoverImagePostRemoteId = 'authorAvatar___picture___coverImagePost___remoteId',
-  AuthorAvatarPictureCoverImagePostRemoteTypeName = 'authorAvatar___picture___coverImagePost___remoteTypeName',
-  AuthorAvatarPictureCoverImagePostSlug = 'authorAvatar___picture___coverImagePost___slug',
-  AuthorAvatarPictureCoverImagePostStage = 'authorAvatar___picture___coverImagePost___stage',
-  AuthorAvatarPictureCoverImagePostTags = 'authorAvatar___picture___coverImagePost___tags',
-  AuthorAvatarPictureCoverImagePostTitle = 'authorAvatar___picture___coverImagePost___title',
-  AuthorAvatarPictureCoverImagePostUpdatedAt = 'authorAvatar___picture___coverImagePost___updatedAt',
-  AuthorAvatarPictureCreatedAt = 'authorAvatar___picture___createdAt',
-  AuthorAvatarPictureCreatedByChildren = 'authorAvatar___picture___createdBy___children',
-  AuthorAvatarPictureCreatedByCreatedAt = 'authorAvatar___picture___createdBy___createdAt',
-  AuthorAvatarPictureCreatedById = 'authorAvatar___picture___createdBy___id',
-  AuthorAvatarPictureCreatedByIsActive = 'authorAvatar___picture___createdBy___isActive',
-  AuthorAvatarPictureCreatedByKind = 'authorAvatar___picture___createdBy___kind',
-  AuthorAvatarPictureCreatedByName = 'authorAvatar___picture___createdBy___name',
-  AuthorAvatarPictureCreatedByPicture = 'authorAvatar___picture___createdBy___picture',
-  AuthorAvatarPictureCreatedByPublishedAt = 'authorAvatar___picture___createdBy___publishedAt',
-  AuthorAvatarPictureCreatedByRemoteId = 'authorAvatar___picture___createdBy___remoteId',
-  AuthorAvatarPictureCreatedByRemoteTypeName = 'authorAvatar___picture___createdBy___remoteTypeName',
-  AuthorAvatarPictureCreatedByStage = 'authorAvatar___picture___createdBy___stage',
-  AuthorAvatarPictureCreatedByUpdatedAt = 'authorAvatar___picture___createdBy___updatedAt',
-  AuthorAvatarPictureFileName = 'authorAvatar___picture___fileName',
-  AuthorAvatarPictureHandle = 'authorAvatar___picture___handle',
-  AuthorAvatarPictureHeight = 'authorAvatar___picture___height',
-  AuthorAvatarPictureId = 'authorAvatar___picture___id',
-  AuthorAvatarPictureInternalContent = 'authorAvatar___picture___internal___content',
-  AuthorAvatarPictureInternalContentDigest = 'authorAvatar___picture___internal___contentDigest',
-  AuthorAvatarPictureInternalDescription = 'authorAvatar___picture___internal___description',
-  AuthorAvatarPictureInternalFieldOwners = 'authorAvatar___picture___internal___fieldOwners',
-  AuthorAvatarPictureInternalIgnoreType = 'authorAvatar___picture___internal___ignoreType',
-  AuthorAvatarPictureInternalMediaType = 'authorAvatar___picture___internal___mediaType',
-  AuthorAvatarPictureInternalOwner = 'authorAvatar___picture___internal___owner',
-  AuthorAvatarPictureInternalType = 'authorAvatar___picture___internal___type',
-  AuthorAvatarPictureLocale = 'authorAvatar___picture___locale',
-  AuthorAvatarPictureMimeType = 'authorAvatar___picture___mimeType',
-  AuthorAvatarPictureParentChildren = 'authorAvatar___picture___parent___children',
-  AuthorAvatarPictureParentId = 'authorAvatar___picture___parent___id',
-  AuthorAvatarPicturePublishedAt = 'authorAvatar___picture___publishedAt',
-  AuthorAvatarPicturePublishedByChildren = 'authorAvatar___picture___publishedBy___children',
-  AuthorAvatarPicturePublishedByCreatedAt = 'authorAvatar___picture___publishedBy___createdAt',
-  AuthorAvatarPicturePublishedById = 'authorAvatar___picture___publishedBy___id',
-  AuthorAvatarPicturePublishedByIsActive = 'authorAvatar___picture___publishedBy___isActive',
-  AuthorAvatarPicturePublishedByKind = 'authorAvatar___picture___publishedBy___kind',
-  AuthorAvatarPicturePublishedByName = 'authorAvatar___picture___publishedBy___name',
-  AuthorAvatarPicturePublishedByPicture = 'authorAvatar___picture___publishedBy___picture',
-  AuthorAvatarPicturePublishedByPublishedAt = 'authorAvatar___picture___publishedBy___publishedAt',
-  AuthorAvatarPicturePublishedByRemoteId = 'authorAvatar___picture___publishedBy___remoteId',
-  AuthorAvatarPicturePublishedByRemoteTypeName = 'authorAvatar___picture___publishedBy___remoteTypeName',
-  AuthorAvatarPicturePublishedByStage = 'authorAvatar___picture___publishedBy___stage',
-  AuthorAvatarPicturePublishedByUpdatedAt = 'authorAvatar___picture___publishedBy___updatedAt',
-  AuthorAvatarPictureRemoteId = 'authorAvatar___picture___remoteId',
-  AuthorAvatarPictureRemoteTypeName = 'authorAvatar___picture___remoteTypeName',
-  AuthorAvatarPictureSeoImage = 'authorAvatar___picture___seoImage',
-  AuthorAvatarPictureSeoImageChildren = 'authorAvatar___picture___seoImage___children',
-  AuthorAvatarPictureSeoImageCreatedAt = 'authorAvatar___picture___seoImage___createdAt',
-  AuthorAvatarPictureSeoImageDescription = 'authorAvatar___picture___seoImage___description',
-  AuthorAvatarPictureSeoImageId = 'authorAvatar___picture___seoImage___id',
-  AuthorAvatarPictureSeoImageKeywords = 'authorAvatar___picture___seoImage___keywords',
-  AuthorAvatarPictureSeoImagePublishedAt = 'authorAvatar___picture___seoImage___publishedAt',
-  AuthorAvatarPictureSeoImageRemoteId = 'authorAvatar___picture___seoImage___remoteId',
-  AuthorAvatarPictureSeoImageRemoteTypeName = 'authorAvatar___picture___seoImage___remoteTypeName',
-  AuthorAvatarPictureSeoImageStage = 'authorAvatar___picture___seoImage___stage',
-  AuthorAvatarPictureSeoImageTitle = 'authorAvatar___picture___seoImage___title',
-  AuthorAvatarPictureSeoImageUpdatedAt = 'authorAvatar___picture___seoImage___updatedAt',
-  AuthorAvatarPictureSize = 'authorAvatar___picture___size',
-  AuthorAvatarPictureStage = 'authorAvatar___picture___stage',
-  AuthorAvatarPictureUpdatedAt = 'authorAvatar___picture___updatedAt',
-  AuthorAvatarPictureUpdatedByChildren = 'authorAvatar___picture___updatedBy___children',
-  AuthorAvatarPictureUpdatedByCreatedAt = 'authorAvatar___picture___updatedBy___createdAt',
-  AuthorAvatarPictureUpdatedById = 'authorAvatar___picture___updatedBy___id',
-  AuthorAvatarPictureUpdatedByIsActive = 'authorAvatar___picture___updatedBy___isActive',
-  AuthorAvatarPictureUpdatedByKind = 'authorAvatar___picture___updatedBy___kind',
-  AuthorAvatarPictureUpdatedByName = 'authorAvatar___picture___updatedBy___name',
-  AuthorAvatarPictureUpdatedByPicture = 'authorAvatar___picture___updatedBy___picture',
-  AuthorAvatarPictureUpdatedByPublishedAt = 'authorAvatar___picture___updatedBy___publishedAt',
-  AuthorAvatarPictureUpdatedByRemoteId = 'authorAvatar___picture___updatedBy___remoteId',
-  AuthorAvatarPictureUpdatedByRemoteTypeName = 'authorAvatar___picture___updatedBy___remoteTypeName',
-  AuthorAvatarPictureUpdatedByStage = 'authorAvatar___picture___updatedBy___stage',
-  AuthorAvatarPictureUpdatedByUpdatedAt = 'authorAvatar___picture___updatedBy___updatedAt',
-  AuthorAvatarPictureUrl = 'authorAvatar___picture___url',
-  AuthorAvatarPictureWidth = 'authorAvatar___picture___width',
-  AuthorAvatarPosts = 'authorAvatar___posts',
-  AuthorAvatarPostsAuthorBiography = 'authorAvatar___posts___author___biography',
-  AuthorAvatarPostsAuthorChildren = 'authorAvatar___posts___author___children',
-  AuthorAvatarPostsAuthorCreatedAt = 'authorAvatar___posts___author___createdAt',
-  AuthorAvatarPostsAuthorId = 'authorAvatar___posts___author___id',
-  AuthorAvatarPostsAuthorName = 'authorAvatar___posts___author___name',
-  AuthorAvatarPostsAuthorPosts = 'authorAvatar___posts___author___posts',
-  AuthorAvatarPostsAuthorPublishedAt = 'authorAvatar___posts___author___publishedAt',
-  AuthorAvatarPostsAuthorRemoteId = 'authorAvatar___posts___author___remoteId',
-  AuthorAvatarPostsAuthorRemoteTypeName = 'authorAvatar___posts___author___remoteTypeName',
-  AuthorAvatarPostsAuthorStage = 'authorAvatar___posts___author___stage',
-  AuthorAvatarPostsAuthorTitle = 'authorAvatar___posts___author___title',
-  AuthorAvatarPostsAuthorUpdatedAt = 'authorAvatar___posts___author___updatedAt',
-  AuthorAvatarPostsChildren = 'authorAvatar___posts___children',
-  AuthorAvatarPostsChildrenChildren = 'authorAvatar___posts___children___children',
-  AuthorAvatarPostsChildrenId = 'authorAvatar___posts___children___id',
-  AuthorAvatarPostsContentHtml = 'authorAvatar___posts___content___html',
-  AuthorAvatarPostsContentMarkdown = 'authorAvatar___posts___content___markdown',
-  AuthorAvatarPostsContentRaw = 'authorAvatar___posts___content___raw',
-  AuthorAvatarPostsContentRemoteTypeName = 'authorAvatar___posts___content___remoteTypeName',
-  AuthorAvatarPostsContentText = 'authorAvatar___posts___content___text',
-  AuthorAvatarPostsCoverImageAuthorAvatar = 'authorAvatar___posts___coverImage___authorAvatar',
-  AuthorAvatarPostsCoverImageChildren = 'authorAvatar___posts___coverImage___children',
-  AuthorAvatarPostsCoverImageCoverImagePost = 'authorAvatar___posts___coverImage___coverImagePost',
-  AuthorAvatarPostsCoverImageCreatedAt = 'authorAvatar___posts___coverImage___createdAt',
-  AuthorAvatarPostsCoverImageFileName = 'authorAvatar___posts___coverImage___fileName',
-  AuthorAvatarPostsCoverImageHandle = 'authorAvatar___posts___coverImage___handle',
-  AuthorAvatarPostsCoverImageHeight = 'authorAvatar___posts___coverImage___height',
-  AuthorAvatarPostsCoverImageId = 'authorAvatar___posts___coverImage___id',
-  AuthorAvatarPostsCoverImageLocale = 'authorAvatar___posts___coverImage___locale',
-  AuthorAvatarPostsCoverImageMimeType = 'authorAvatar___posts___coverImage___mimeType',
-  AuthorAvatarPostsCoverImagePublishedAt = 'authorAvatar___posts___coverImage___publishedAt',
-  AuthorAvatarPostsCoverImageRemoteId = 'authorAvatar___posts___coverImage___remoteId',
-  AuthorAvatarPostsCoverImageRemoteTypeName = 'authorAvatar___posts___coverImage___remoteTypeName',
-  AuthorAvatarPostsCoverImageSeoImage = 'authorAvatar___posts___coverImage___seoImage',
-  AuthorAvatarPostsCoverImageSize = 'authorAvatar___posts___coverImage___size',
-  AuthorAvatarPostsCoverImageStage = 'authorAvatar___posts___coverImage___stage',
-  AuthorAvatarPostsCoverImageUpdatedAt = 'authorAvatar___posts___coverImage___updatedAt',
-  AuthorAvatarPostsCoverImageUrl = 'authorAvatar___posts___coverImage___url',
-  AuthorAvatarPostsCoverImageWidth = 'authorAvatar___posts___coverImage___width',
-  AuthorAvatarPostsCreatedAt = 'authorAvatar___posts___createdAt',
-  AuthorAvatarPostsCreatedByChildren = 'authorAvatar___posts___createdBy___children',
-  AuthorAvatarPostsCreatedByCreatedAt = 'authorAvatar___posts___createdBy___createdAt',
-  AuthorAvatarPostsCreatedById = 'authorAvatar___posts___createdBy___id',
-  AuthorAvatarPostsCreatedByIsActive = 'authorAvatar___posts___createdBy___isActive',
-  AuthorAvatarPostsCreatedByKind = 'authorAvatar___posts___createdBy___kind',
-  AuthorAvatarPostsCreatedByName = 'authorAvatar___posts___createdBy___name',
-  AuthorAvatarPostsCreatedByPicture = 'authorAvatar___posts___createdBy___picture',
-  AuthorAvatarPostsCreatedByPublishedAt = 'authorAvatar___posts___createdBy___publishedAt',
-  AuthorAvatarPostsCreatedByRemoteId = 'authorAvatar___posts___createdBy___remoteId',
-  AuthorAvatarPostsCreatedByRemoteTypeName = 'authorAvatar___posts___createdBy___remoteTypeName',
-  AuthorAvatarPostsCreatedByStage = 'authorAvatar___posts___createdBy___stage',
-  AuthorAvatarPostsCreatedByUpdatedAt = 'authorAvatar___posts___createdBy___updatedAt',
-  AuthorAvatarPostsDate = 'authorAvatar___posts___date',
-  AuthorAvatarPostsExcerpt = 'authorAvatar___posts___excerpt',
-  AuthorAvatarPostsId = 'authorAvatar___posts___id',
-  AuthorAvatarPostsInternalContent = 'authorAvatar___posts___internal___content',
-  AuthorAvatarPostsInternalContentDigest = 'authorAvatar___posts___internal___contentDigest',
-  AuthorAvatarPostsInternalDescription = 'authorAvatar___posts___internal___description',
-  AuthorAvatarPostsInternalFieldOwners = 'authorAvatar___posts___internal___fieldOwners',
-  AuthorAvatarPostsInternalIgnoreType = 'authorAvatar___posts___internal___ignoreType',
-  AuthorAvatarPostsInternalMediaType = 'authorAvatar___posts___internal___mediaType',
-  AuthorAvatarPostsInternalOwner = 'authorAvatar___posts___internal___owner',
-  AuthorAvatarPostsInternalType = 'authorAvatar___posts___internal___type',
-  AuthorAvatarPostsParentChildren = 'authorAvatar___posts___parent___children',
-  AuthorAvatarPostsParentId = 'authorAvatar___posts___parent___id',
-  AuthorAvatarPostsPublishedAt = 'authorAvatar___posts___publishedAt',
-  AuthorAvatarPostsPublishedByChildren = 'authorAvatar___posts___publishedBy___children',
-  AuthorAvatarPostsPublishedByCreatedAt = 'authorAvatar___posts___publishedBy___createdAt',
-  AuthorAvatarPostsPublishedById = 'authorAvatar___posts___publishedBy___id',
-  AuthorAvatarPostsPublishedByIsActive = 'authorAvatar___posts___publishedBy___isActive',
-  AuthorAvatarPostsPublishedByKind = 'authorAvatar___posts___publishedBy___kind',
-  AuthorAvatarPostsPublishedByName = 'authorAvatar___posts___publishedBy___name',
-  AuthorAvatarPostsPublishedByPicture = 'authorAvatar___posts___publishedBy___picture',
-  AuthorAvatarPostsPublishedByPublishedAt = 'authorAvatar___posts___publishedBy___publishedAt',
-  AuthorAvatarPostsPublishedByRemoteId = 'authorAvatar___posts___publishedBy___remoteId',
-  AuthorAvatarPostsPublishedByRemoteTypeName = 'authorAvatar___posts___publishedBy___remoteTypeName',
-  AuthorAvatarPostsPublishedByStage = 'authorAvatar___posts___publishedBy___stage',
-  AuthorAvatarPostsPublishedByUpdatedAt = 'authorAvatar___posts___publishedBy___updatedAt',
-  AuthorAvatarPostsRemoteId = 'authorAvatar___posts___remoteId',
-  AuthorAvatarPostsRemoteTypeName = 'authorAvatar___posts___remoteTypeName',
-  AuthorAvatarPostsSeoChildren = 'authorAvatar___posts___seo___children',
-  AuthorAvatarPostsSeoCreatedAt = 'authorAvatar___posts___seo___createdAt',
-  AuthorAvatarPostsSeoDescription = 'authorAvatar___posts___seo___description',
-  AuthorAvatarPostsSeoId = 'authorAvatar___posts___seo___id',
-  AuthorAvatarPostsSeoKeywords = 'authorAvatar___posts___seo___keywords',
-  AuthorAvatarPostsSeoPublishedAt = 'authorAvatar___posts___seo___publishedAt',
-  AuthorAvatarPostsSeoRemoteId = 'authorAvatar___posts___seo___remoteId',
-  AuthorAvatarPostsSeoRemoteTypeName = 'authorAvatar___posts___seo___remoteTypeName',
-  AuthorAvatarPostsSeoStage = 'authorAvatar___posts___seo___stage',
-  AuthorAvatarPostsSeoTitle = 'authorAvatar___posts___seo___title',
-  AuthorAvatarPostsSeoUpdatedAt = 'authorAvatar___posts___seo___updatedAt',
-  AuthorAvatarPostsSlug = 'authorAvatar___posts___slug',
-  AuthorAvatarPostsStage = 'authorAvatar___posts___stage',
-  AuthorAvatarPostsTags = 'authorAvatar___posts___tags',
-  AuthorAvatarPostsTitle = 'authorAvatar___posts___title',
-  AuthorAvatarPostsUpdatedAt = 'authorAvatar___posts___updatedAt',
-  AuthorAvatarPostsUpdatedByChildren = 'authorAvatar___posts___updatedBy___children',
-  AuthorAvatarPostsUpdatedByCreatedAt = 'authorAvatar___posts___updatedBy___createdAt',
-  AuthorAvatarPostsUpdatedById = 'authorAvatar___posts___updatedBy___id',
-  AuthorAvatarPostsUpdatedByIsActive = 'authorAvatar___posts___updatedBy___isActive',
-  AuthorAvatarPostsUpdatedByKind = 'authorAvatar___posts___updatedBy___kind',
-  AuthorAvatarPostsUpdatedByName = 'authorAvatar___posts___updatedBy___name',
-  AuthorAvatarPostsUpdatedByPicture = 'authorAvatar___posts___updatedBy___picture',
-  AuthorAvatarPostsUpdatedByPublishedAt = 'authorAvatar___posts___updatedBy___publishedAt',
-  AuthorAvatarPostsUpdatedByRemoteId = 'authorAvatar___posts___updatedBy___remoteId',
-  AuthorAvatarPostsUpdatedByRemoteTypeName = 'authorAvatar___posts___updatedBy___remoteTypeName',
-  AuthorAvatarPostsUpdatedByStage = 'authorAvatar___posts___updatedBy___stage',
-  AuthorAvatarPostsUpdatedByUpdatedAt = 'authorAvatar___posts___updatedBy___updatedAt',
-  AuthorAvatarPublishedAt = 'authorAvatar___publishedAt',
-  AuthorAvatarPublishedByChildren = 'authorAvatar___publishedBy___children',
-  AuthorAvatarPublishedByChildrenChildren = 'authorAvatar___publishedBy___children___children',
-  AuthorAvatarPublishedByChildrenId = 'authorAvatar___publishedBy___children___id',
-  AuthorAvatarPublishedByCreatedAt = 'authorAvatar___publishedBy___createdAt',
-  AuthorAvatarPublishedById = 'authorAvatar___publishedBy___id',
-  AuthorAvatarPublishedByInternalContent = 'authorAvatar___publishedBy___internal___content',
-  AuthorAvatarPublishedByInternalContentDigest = 'authorAvatar___publishedBy___internal___contentDigest',
-  AuthorAvatarPublishedByInternalDescription = 'authorAvatar___publishedBy___internal___description',
-  AuthorAvatarPublishedByInternalFieldOwners = 'authorAvatar___publishedBy___internal___fieldOwners',
-  AuthorAvatarPublishedByInternalIgnoreType = 'authorAvatar___publishedBy___internal___ignoreType',
-  AuthorAvatarPublishedByInternalMediaType = 'authorAvatar___publishedBy___internal___mediaType',
-  AuthorAvatarPublishedByInternalOwner = 'authorAvatar___publishedBy___internal___owner',
-  AuthorAvatarPublishedByInternalType = 'authorAvatar___publishedBy___internal___type',
-  AuthorAvatarPublishedByIsActive = 'authorAvatar___publishedBy___isActive',
-  AuthorAvatarPublishedByKind = 'authorAvatar___publishedBy___kind',
-  AuthorAvatarPublishedByName = 'authorAvatar___publishedBy___name',
-  AuthorAvatarPublishedByParentChildren = 'authorAvatar___publishedBy___parent___children',
-  AuthorAvatarPublishedByParentId = 'authorAvatar___publishedBy___parent___id',
-  AuthorAvatarPublishedByPicture = 'authorAvatar___publishedBy___picture',
-  AuthorAvatarPublishedByPublishedAt = 'authorAvatar___publishedBy___publishedAt',
-  AuthorAvatarPublishedByRemoteId = 'authorAvatar___publishedBy___remoteId',
-  AuthorAvatarPublishedByRemoteTypeName = 'authorAvatar___publishedBy___remoteTypeName',
-  AuthorAvatarPublishedByStage = 'authorAvatar___publishedBy___stage',
-  AuthorAvatarPublishedByUpdatedAt = 'authorAvatar___publishedBy___updatedAt',
-  AuthorAvatarRemoteId = 'authorAvatar___remoteId',
-  AuthorAvatarRemoteTypeName = 'authorAvatar___remoteTypeName',
-  AuthorAvatarStage = 'authorAvatar___stage',
-  AuthorAvatarTitle = 'authorAvatar___title',
-  AuthorAvatarUpdatedAt = 'authorAvatar___updatedAt',
-  AuthorAvatarUpdatedByChildren = 'authorAvatar___updatedBy___children',
-  AuthorAvatarUpdatedByChildrenChildren = 'authorAvatar___updatedBy___children___children',
-  AuthorAvatarUpdatedByChildrenId = 'authorAvatar___updatedBy___children___id',
-  AuthorAvatarUpdatedByCreatedAt = 'authorAvatar___updatedBy___createdAt',
-  AuthorAvatarUpdatedById = 'authorAvatar___updatedBy___id',
-  AuthorAvatarUpdatedByInternalContent = 'authorAvatar___updatedBy___internal___content',
-  AuthorAvatarUpdatedByInternalContentDigest = 'authorAvatar___updatedBy___internal___contentDigest',
-  AuthorAvatarUpdatedByInternalDescription = 'authorAvatar___updatedBy___internal___description',
-  AuthorAvatarUpdatedByInternalFieldOwners = 'authorAvatar___updatedBy___internal___fieldOwners',
-  AuthorAvatarUpdatedByInternalIgnoreType = 'authorAvatar___updatedBy___internal___ignoreType',
-  AuthorAvatarUpdatedByInternalMediaType = 'authorAvatar___updatedBy___internal___mediaType',
-  AuthorAvatarUpdatedByInternalOwner = 'authorAvatar___updatedBy___internal___owner',
-  AuthorAvatarUpdatedByInternalType = 'authorAvatar___updatedBy___internal___type',
-  AuthorAvatarUpdatedByIsActive = 'authorAvatar___updatedBy___isActive',
-  AuthorAvatarUpdatedByKind = 'authorAvatar___updatedBy___kind',
-  AuthorAvatarUpdatedByName = 'authorAvatar___updatedBy___name',
-  AuthorAvatarUpdatedByParentChildren = 'authorAvatar___updatedBy___parent___children',
-  AuthorAvatarUpdatedByParentId = 'authorAvatar___updatedBy___parent___id',
-  AuthorAvatarUpdatedByPicture = 'authorAvatar___updatedBy___picture',
-  AuthorAvatarUpdatedByPublishedAt = 'authorAvatar___updatedBy___publishedAt',
-  AuthorAvatarUpdatedByRemoteId = 'authorAvatar___updatedBy___remoteId',
-  AuthorAvatarUpdatedByRemoteTypeName = 'authorAvatar___updatedBy___remoteTypeName',
-  AuthorAvatarUpdatedByStage = 'authorAvatar___updatedBy___stage',
-  AuthorAvatarUpdatedByUpdatedAt = 'authorAvatar___updatedBy___updatedAt',
-  Children = 'children',
-  ChildrenChildren = 'children___children',
-  ChildrenChildrenChildren = 'children___children___children',
-  ChildrenChildrenChildrenChildren = 'children___children___children___children',
-  ChildrenChildrenChildrenId = 'children___children___children___id',
-  ChildrenChildrenId = 'children___children___id',
-  ChildrenChildrenInternalContent = 'children___children___internal___content',
-  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
-  ChildrenChildrenInternalDescription = 'children___children___internal___description',
-  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
-  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
-  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
-  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
-  ChildrenChildrenInternalType = 'children___children___internal___type',
-  ChildrenChildrenParentChildren = 'children___children___parent___children',
-  ChildrenChildrenParentId = 'children___children___parent___id',
-  ChildrenId = 'children___id',
-  ChildrenInternalContent = 'children___internal___content',
-  ChildrenInternalContentDigest = 'children___internal___contentDigest',
-  ChildrenInternalDescription = 'children___internal___description',
-  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
-  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
-  ChildrenInternalMediaType = 'children___internal___mediaType',
-  ChildrenInternalOwner = 'children___internal___owner',
-  ChildrenInternalType = 'children___internal___type',
-  ChildrenParentChildren = 'children___parent___children',
-  ChildrenParentChildrenChildren = 'children___parent___children___children',
-  ChildrenParentChildrenId = 'children___parent___children___id',
-  ChildrenParentId = 'children___parent___id',
-  ChildrenParentInternalContent = 'children___parent___internal___content',
-  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
-  ChildrenParentInternalDescription = 'children___parent___internal___description',
-  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
-  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
-  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
-  ChildrenParentInternalOwner = 'children___parent___internal___owner',
-  ChildrenParentInternalType = 'children___parent___internal___type',
-  ChildrenParentParentChildren = 'children___parent___parent___children',
-  ChildrenParentParentId = 'children___parent___parent___id',
-  CoverImagePost = 'coverImagePost',
-  CoverImagePostAuthorBiography = 'coverImagePost___author___biography',
-  CoverImagePostAuthorChildren = 'coverImagePost___author___children',
-  CoverImagePostAuthorChildrenChildren = 'coverImagePost___author___children___children',
-  CoverImagePostAuthorChildrenId = 'coverImagePost___author___children___id',
-  CoverImagePostAuthorCreatedAt = 'coverImagePost___author___createdAt',
-  CoverImagePostAuthorCreatedByChildren = 'coverImagePost___author___createdBy___children',
-  CoverImagePostAuthorCreatedByCreatedAt = 'coverImagePost___author___createdBy___createdAt',
-  CoverImagePostAuthorCreatedById = 'coverImagePost___author___createdBy___id',
-  CoverImagePostAuthorCreatedByIsActive = 'coverImagePost___author___createdBy___isActive',
-  CoverImagePostAuthorCreatedByKind = 'coverImagePost___author___createdBy___kind',
-  CoverImagePostAuthorCreatedByName = 'coverImagePost___author___createdBy___name',
-  CoverImagePostAuthorCreatedByPicture = 'coverImagePost___author___createdBy___picture',
-  CoverImagePostAuthorCreatedByPublishedAt = 'coverImagePost___author___createdBy___publishedAt',
-  CoverImagePostAuthorCreatedByRemoteId = 'coverImagePost___author___createdBy___remoteId',
-  CoverImagePostAuthorCreatedByRemoteTypeName = 'coverImagePost___author___createdBy___remoteTypeName',
-  CoverImagePostAuthorCreatedByStage = 'coverImagePost___author___createdBy___stage',
-  CoverImagePostAuthorCreatedByUpdatedAt = 'coverImagePost___author___createdBy___updatedAt',
-  CoverImagePostAuthorId = 'coverImagePost___author___id',
-  CoverImagePostAuthorInternalContent = 'coverImagePost___author___internal___content',
-  CoverImagePostAuthorInternalContentDigest = 'coverImagePost___author___internal___contentDigest',
-  CoverImagePostAuthorInternalDescription = 'coverImagePost___author___internal___description',
-  CoverImagePostAuthorInternalFieldOwners = 'coverImagePost___author___internal___fieldOwners',
-  CoverImagePostAuthorInternalIgnoreType = 'coverImagePost___author___internal___ignoreType',
-  CoverImagePostAuthorInternalMediaType = 'coverImagePost___author___internal___mediaType',
-  CoverImagePostAuthorInternalOwner = 'coverImagePost___author___internal___owner',
-  CoverImagePostAuthorInternalType = 'coverImagePost___author___internal___type',
-  CoverImagePostAuthorName = 'coverImagePost___author___name',
-  CoverImagePostAuthorParentChildren = 'coverImagePost___author___parent___children',
-  CoverImagePostAuthorParentId = 'coverImagePost___author___parent___id',
-  CoverImagePostAuthorPictureAuthorAvatar = 'coverImagePost___author___picture___authorAvatar',
-  CoverImagePostAuthorPictureChildren = 'coverImagePost___author___picture___children',
-  CoverImagePostAuthorPictureCoverImagePost = 'coverImagePost___author___picture___coverImagePost',
-  CoverImagePostAuthorPictureCreatedAt = 'coverImagePost___author___picture___createdAt',
-  CoverImagePostAuthorPictureFileName = 'coverImagePost___author___picture___fileName',
-  CoverImagePostAuthorPictureHandle = 'coverImagePost___author___picture___handle',
-  CoverImagePostAuthorPictureHeight = 'coverImagePost___author___picture___height',
-  CoverImagePostAuthorPictureId = 'coverImagePost___author___picture___id',
-  CoverImagePostAuthorPictureLocale = 'coverImagePost___author___picture___locale',
-  CoverImagePostAuthorPictureMimeType = 'coverImagePost___author___picture___mimeType',
-  CoverImagePostAuthorPicturePublishedAt = 'coverImagePost___author___picture___publishedAt',
-  CoverImagePostAuthorPictureRemoteId = 'coverImagePost___author___picture___remoteId',
-  CoverImagePostAuthorPictureRemoteTypeName = 'coverImagePost___author___picture___remoteTypeName',
-  CoverImagePostAuthorPictureSeoImage = 'coverImagePost___author___picture___seoImage',
-  CoverImagePostAuthorPictureSize = 'coverImagePost___author___picture___size',
-  CoverImagePostAuthorPictureStage = 'coverImagePost___author___picture___stage',
-  CoverImagePostAuthorPictureUpdatedAt = 'coverImagePost___author___picture___updatedAt',
-  CoverImagePostAuthorPictureUrl = 'coverImagePost___author___picture___url',
-  CoverImagePostAuthorPictureWidth = 'coverImagePost___author___picture___width',
-  CoverImagePostAuthorPosts = 'coverImagePost___author___posts',
-  CoverImagePostAuthorPostsChildren = 'coverImagePost___author___posts___children',
-  CoverImagePostAuthorPostsCreatedAt = 'coverImagePost___author___posts___createdAt',
-  CoverImagePostAuthorPostsDate = 'coverImagePost___author___posts___date',
-  CoverImagePostAuthorPostsExcerpt = 'coverImagePost___author___posts___excerpt',
-  CoverImagePostAuthorPostsId = 'coverImagePost___author___posts___id',
-  CoverImagePostAuthorPostsPublishedAt = 'coverImagePost___author___posts___publishedAt',
-  CoverImagePostAuthorPostsRemoteId = 'coverImagePost___author___posts___remoteId',
-  CoverImagePostAuthorPostsRemoteTypeName = 'coverImagePost___author___posts___remoteTypeName',
-  CoverImagePostAuthorPostsSlug = 'coverImagePost___author___posts___slug',
-  CoverImagePostAuthorPostsStage = 'coverImagePost___author___posts___stage',
-  CoverImagePostAuthorPostsTags = 'coverImagePost___author___posts___tags',
-  CoverImagePostAuthorPostsTitle = 'coverImagePost___author___posts___title',
-  CoverImagePostAuthorPostsUpdatedAt = 'coverImagePost___author___posts___updatedAt',
-  CoverImagePostAuthorPublishedAt = 'coverImagePost___author___publishedAt',
-  CoverImagePostAuthorPublishedByChildren = 'coverImagePost___author___publishedBy___children',
-  CoverImagePostAuthorPublishedByCreatedAt = 'coverImagePost___author___publishedBy___createdAt',
-  CoverImagePostAuthorPublishedById = 'coverImagePost___author___publishedBy___id',
-  CoverImagePostAuthorPublishedByIsActive = 'coverImagePost___author___publishedBy___isActive',
-  CoverImagePostAuthorPublishedByKind = 'coverImagePost___author___publishedBy___kind',
-  CoverImagePostAuthorPublishedByName = 'coverImagePost___author___publishedBy___name',
-  CoverImagePostAuthorPublishedByPicture = 'coverImagePost___author___publishedBy___picture',
-  CoverImagePostAuthorPublishedByPublishedAt = 'coverImagePost___author___publishedBy___publishedAt',
-  CoverImagePostAuthorPublishedByRemoteId = 'coverImagePost___author___publishedBy___remoteId',
-  CoverImagePostAuthorPublishedByRemoteTypeName = 'coverImagePost___author___publishedBy___remoteTypeName',
-  CoverImagePostAuthorPublishedByStage = 'coverImagePost___author___publishedBy___stage',
-  CoverImagePostAuthorPublishedByUpdatedAt = 'coverImagePost___author___publishedBy___updatedAt',
-  CoverImagePostAuthorRemoteId = 'coverImagePost___author___remoteId',
-  CoverImagePostAuthorRemoteTypeName = 'coverImagePost___author___remoteTypeName',
-  CoverImagePostAuthorStage = 'coverImagePost___author___stage',
-  CoverImagePostAuthorTitle = 'coverImagePost___author___title',
-  CoverImagePostAuthorUpdatedAt = 'coverImagePost___author___updatedAt',
-  CoverImagePostAuthorUpdatedByChildren = 'coverImagePost___author___updatedBy___children',
-  CoverImagePostAuthorUpdatedByCreatedAt = 'coverImagePost___author___updatedBy___createdAt',
-  CoverImagePostAuthorUpdatedById = 'coverImagePost___author___updatedBy___id',
-  CoverImagePostAuthorUpdatedByIsActive = 'coverImagePost___author___updatedBy___isActive',
-  CoverImagePostAuthorUpdatedByKind = 'coverImagePost___author___updatedBy___kind',
-  CoverImagePostAuthorUpdatedByName = 'coverImagePost___author___updatedBy___name',
-  CoverImagePostAuthorUpdatedByPicture = 'coverImagePost___author___updatedBy___picture',
-  CoverImagePostAuthorUpdatedByPublishedAt = 'coverImagePost___author___updatedBy___publishedAt',
-  CoverImagePostAuthorUpdatedByRemoteId = 'coverImagePost___author___updatedBy___remoteId',
-  CoverImagePostAuthorUpdatedByRemoteTypeName = 'coverImagePost___author___updatedBy___remoteTypeName',
-  CoverImagePostAuthorUpdatedByStage = 'coverImagePost___author___updatedBy___stage',
-  CoverImagePostAuthorUpdatedByUpdatedAt = 'coverImagePost___author___updatedBy___updatedAt',
-  CoverImagePostChildren = 'coverImagePost___children',
-  CoverImagePostChildrenChildren = 'coverImagePost___children___children',
-  CoverImagePostChildrenChildrenChildren = 'coverImagePost___children___children___children',
-  CoverImagePostChildrenChildrenId = 'coverImagePost___children___children___id',
-  CoverImagePostChildrenId = 'coverImagePost___children___id',
-  CoverImagePostChildrenInternalContent = 'coverImagePost___children___internal___content',
-  CoverImagePostChildrenInternalContentDigest = 'coverImagePost___children___internal___contentDigest',
-  CoverImagePostChildrenInternalDescription = 'coverImagePost___children___internal___description',
-  CoverImagePostChildrenInternalFieldOwners = 'coverImagePost___children___internal___fieldOwners',
-  CoverImagePostChildrenInternalIgnoreType = 'coverImagePost___children___internal___ignoreType',
-  CoverImagePostChildrenInternalMediaType = 'coverImagePost___children___internal___mediaType',
-  CoverImagePostChildrenInternalOwner = 'coverImagePost___children___internal___owner',
-  CoverImagePostChildrenInternalType = 'coverImagePost___children___internal___type',
-  CoverImagePostChildrenParentChildren = 'coverImagePost___children___parent___children',
-  CoverImagePostChildrenParentId = 'coverImagePost___children___parent___id',
-  CoverImagePostContentHtml = 'coverImagePost___content___html',
-  CoverImagePostContentMarkdown = 'coverImagePost___content___markdown',
-  CoverImagePostContentRaw = 'coverImagePost___content___raw',
-  CoverImagePostContentRemoteTypeName = 'coverImagePost___content___remoteTypeName',
-  CoverImagePostContentText = 'coverImagePost___content___text',
-  CoverImagePostCoverImageAuthorAvatar = 'coverImagePost___coverImage___authorAvatar',
-  CoverImagePostCoverImageAuthorAvatarBiography = 'coverImagePost___coverImage___authorAvatar___biography',
-  CoverImagePostCoverImageAuthorAvatarChildren = 'coverImagePost___coverImage___authorAvatar___children',
-  CoverImagePostCoverImageAuthorAvatarCreatedAt = 'coverImagePost___coverImage___authorAvatar___createdAt',
-  CoverImagePostCoverImageAuthorAvatarId = 'coverImagePost___coverImage___authorAvatar___id',
-  CoverImagePostCoverImageAuthorAvatarName = 'coverImagePost___coverImage___authorAvatar___name',
-  CoverImagePostCoverImageAuthorAvatarPosts = 'coverImagePost___coverImage___authorAvatar___posts',
-  CoverImagePostCoverImageAuthorAvatarPublishedAt = 'coverImagePost___coverImage___authorAvatar___publishedAt',
-  CoverImagePostCoverImageAuthorAvatarRemoteId = 'coverImagePost___coverImage___authorAvatar___remoteId',
-  CoverImagePostCoverImageAuthorAvatarRemoteTypeName = 'coverImagePost___coverImage___authorAvatar___remoteTypeName',
-  CoverImagePostCoverImageAuthorAvatarStage = 'coverImagePost___coverImage___authorAvatar___stage',
-  CoverImagePostCoverImageAuthorAvatarTitle = 'coverImagePost___coverImage___authorAvatar___title',
-  CoverImagePostCoverImageAuthorAvatarUpdatedAt = 'coverImagePost___coverImage___authorAvatar___updatedAt',
-  CoverImagePostCoverImageChildren = 'coverImagePost___coverImage___children',
-  CoverImagePostCoverImageChildrenChildren = 'coverImagePost___coverImage___children___children',
-  CoverImagePostCoverImageChildrenId = 'coverImagePost___coverImage___children___id',
-  CoverImagePostCoverImageCoverImagePost = 'coverImagePost___coverImage___coverImagePost',
-  CoverImagePostCoverImageCoverImagePostChildren = 'coverImagePost___coverImage___coverImagePost___children',
-  CoverImagePostCoverImageCoverImagePostCreatedAt = 'coverImagePost___coverImage___coverImagePost___createdAt',
-  CoverImagePostCoverImageCoverImagePostDate = 'coverImagePost___coverImage___coverImagePost___date',
-  CoverImagePostCoverImageCoverImagePostExcerpt = 'coverImagePost___coverImage___coverImagePost___excerpt',
-  CoverImagePostCoverImageCoverImagePostId = 'coverImagePost___coverImage___coverImagePost___id',
-  CoverImagePostCoverImageCoverImagePostPublishedAt = 'coverImagePost___coverImage___coverImagePost___publishedAt',
-  CoverImagePostCoverImageCoverImagePostRemoteId = 'coverImagePost___coverImage___coverImagePost___remoteId',
-  CoverImagePostCoverImageCoverImagePostRemoteTypeName = 'coverImagePost___coverImage___coverImagePost___remoteTypeName',
-  CoverImagePostCoverImageCoverImagePostSlug = 'coverImagePost___coverImage___coverImagePost___slug',
-  CoverImagePostCoverImageCoverImagePostStage = 'coverImagePost___coverImage___coverImagePost___stage',
-  CoverImagePostCoverImageCoverImagePostTags = 'coverImagePost___coverImage___coverImagePost___tags',
-  CoverImagePostCoverImageCoverImagePostTitle = 'coverImagePost___coverImage___coverImagePost___title',
-  CoverImagePostCoverImageCoverImagePostUpdatedAt = 'coverImagePost___coverImage___coverImagePost___updatedAt',
-  CoverImagePostCoverImageCreatedAt = 'coverImagePost___coverImage___createdAt',
-  CoverImagePostCoverImageCreatedByChildren = 'coverImagePost___coverImage___createdBy___children',
-  CoverImagePostCoverImageCreatedByCreatedAt = 'coverImagePost___coverImage___createdBy___createdAt',
-  CoverImagePostCoverImageCreatedById = 'coverImagePost___coverImage___createdBy___id',
-  CoverImagePostCoverImageCreatedByIsActive = 'coverImagePost___coverImage___createdBy___isActive',
-  CoverImagePostCoverImageCreatedByKind = 'coverImagePost___coverImage___createdBy___kind',
-  CoverImagePostCoverImageCreatedByName = 'coverImagePost___coverImage___createdBy___name',
-  CoverImagePostCoverImageCreatedByPicture = 'coverImagePost___coverImage___createdBy___picture',
-  CoverImagePostCoverImageCreatedByPublishedAt = 'coverImagePost___coverImage___createdBy___publishedAt',
-  CoverImagePostCoverImageCreatedByRemoteId = 'coverImagePost___coverImage___createdBy___remoteId',
-  CoverImagePostCoverImageCreatedByRemoteTypeName = 'coverImagePost___coverImage___createdBy___remoteTypeName',
-  CoverImagePostCoverImageCreatedByStage = 'coverImagePost___coverImage___createdBy___stage',
-  CoverImagePostCoverImageCreatedByUpdatedAt = 'coverImagePost___coverImage___createdBy___updatedAt',
-  CoverImagePostCoverImageFileName = 'coverImagePost___coverImage___fileName',
-  CoverImagePostCoverImageHandle = 'coverImagePost___coverImage___handle',
-  CoverImagePostCoverImageHeight = 'coverImagePost___coverImage___height',
-  CoverImagePostCoverImageId = 'coverImagePost___coverImage___id',
-  CoverImagePostCoverImageInternalContent = 'coverImagePost___coverImage___internal___content',
-  CoverImagePostCoverImageInternalContentDigest = 'coverImagePost___coverImage___internal___contentDigest',
-  CoverImagePostCoverImageInternalDescription = 'coverImagePost___coverImage___internal___description',
-  CoverImagePostCoverImageInternalFieldOwners = 'coverImagePost___coverImage___internal___fieldOwners',
-  CoverImagePostCoverImageInternalIgnoreType = 'coverImagePost___coverImage___internal___ignoreType',
-  CoverImagePostCoverImageInternalMediaType = 'coverImagePost___coverImage___internal___mediaType',
-  CoverImagePostCoverImageInternalOwner = 'coverImagePost___coverImage___internal___owner',
-  CoverImagePostCoverImageInternalType = 'coverImagePost___coverImage___internal___type',
-  CoverImagePostCoverImageLocale = 'coverImagePost___coverImage___locale',
-  CoverImagePostCoverImageMimeType = 'coverImagePost___coverImage___mimeType',
-  CoverImagePostCoverImageParentChildren = 'coverImagePost___coverImage___parent___children',
-  CoverImagePostCoverImageParentId = 'coverImagePost___coverImage___parent___id',
-  CoverImagePostCoverImagePublishedAt = 'coverImagePost___coverImage___publishedAt',
-  CoverImagePostCoverImagePublishedByChildren = 'coverImagePost___coverImage___publishedBy___children',
-  CoverImagePostCoverImagePublishedByCreatedAt = 'coverImagePost___coverImage___publishedBy___createdAt',
-  CoverImagePostCoverImagePublishedById = 'coverImagePost___coverImage___publishedBy___id',
-  CoverImagePostCoverImagePublishedByIsActive = 'coverImagePost___coverImage___publishedBy___isActive',
-  CoverImagePostCoverImagePublishedByKind = 'coverImagePost___coverImage___publishedBy___kind',
-  CoverImagePostCoverImagePublishedByName = 'coverImagePost___coverImage___publishedBy___name',
-  CoverImagePostCoverImagePublishedByPicture = 'coverImagePost___coverImage___publishedBy___picture',
-  CoverImagePostCoverImagePublishedByPublishedAt = 'coverImagePost___coverImage___publishedBy___publishedAt',
-  CoverImagePostCoverImagePublishedByRemoteId = 'coverImagePost___coverImage___publishedBy___remoteId',
-  CoverImagePostCoverImagePublishedByRemoteTypeName = 'coverImagePost___coverImage___publishedBy___remoteTypeName',
-  CoverImagePostCoverImagePublishedByStage = 'coverImagePost___coverImage___publishedBy___stage',
-  CoverImagePostCoverImagePublishedByUpdatedAt = 'coverImagePost___coverImage___publishedBy___updatedAt',
-  CoverImagePostCoverImageRemoteId = 'coverImagePost___coverImage___remoteId',
-  CoverImagePostCoverImageRemoteTypeName = 'coverImagePost___coverImage___remoteTypeName',
-  CoverImagePostCoverImageSeoImage = 'coverImagePost___coverImage___seoImage',
-  CoverImagePostCoverImageSeoImageChildren = 'coverImagePost___coverImage___seoImage___children',
-  CoverImagePostCoverImageSeoImageCreatedAt = 'coverImagePost___coverImage___seoImage___createdAt',
-  CoverImagePostCoverImageSeoImageDescription = 'coverImagePost___coverImage___seoImage___description',
-  CoverImagePostCoverImageSeoImageId = 'coverImagePost___coverImage___seoImage___id',
-  CoverImagePostCoverImageSeoImageKeywords = 'coverImagePost___coverImage___seoImage___keywords',
-  CoverImagePostCoverImageSeoImagePublishedAt = 'coverImagePost___coverImage___seoImage___publishedAt',
-  CoverImagePostCoverImageSeoImageRemoteId = 'coverImagePost___coverImage___seoImage___remoteId',
-  CoverImagePostCoverImageSeoImageRemoteTypeName = 'coverImagePost___coverImage___seoImage___remoteTypeName',
-  CoverImagePostCoverImageSeoImageStage = 'coverImagePost___coverImage___seoImage___stage',
-  CoverImagePostCoverImageSeoImageTitle = 'coverImagePost___coverImage___seoImage___title',
-  CoverImagePostCoverImageSeoImageUpdatedAt = 'coverImagePost___coverImage___seoImage___updatedAt',
-  CoverImagePostCoverImageSize = 'coverImagePost___coverImage___size',
-  CoverImagePostCoverImageStage = 'coverImagePost___coverImage___stage',
-  CoverImagePostCoverImageUpdatedAt = 'coverImagePost___coverImage___updatedAt',
-  CoverImagePostCoverImageUpdatedByChildren = 'coverImagePost___coverImage___updatedBy___children',
-  CoverImagePostCoverImageUpdatedByCreatedAt = 'coverImagePost___coverImage___updatedBy___createdAt',
-  CoverImagePostCoverImageUpdatedById = 'coverImagePost___coverImage___updatedBy___id',
-  CoverImagePostCoverImageUpdatedByIsActive = 'coverImagePost___coverImage___updatedBy___isActive',
-  CoverImagePostCoverImageUpdatedByKind = 'coverImagePost___coverImage___updatedBy___kind',
-  CoverImagePostCoverImageUpdatedByName = 'coverImagePost___coverImage___updatedBy___name',
-  CoverImagePostCoverImageUpdatedByPicture = 'coverImagePost___coverImage___updatedBy___picture',
-  CoverImagePostCoverImageUpdatedByPublishedAt = 'coverImagePost___coverImage___updatedBy___publishedAt',
-  CoverImagePostCoverImageUpdatedByRemoteId = 'coverImagePost___coverImage___updatedBy___remoteId',
-  CoverImagePostCoverImageUpdatedByRemoteTypeName = 'coverImagePost___coverImage___updatedBy___remoteTypeName',
-  CoverImagePostCoverImageUpdatedByStage = 'coverImagePost___coverImage___updatedBy___stage',
-  CoverImagePostCoverImageUpdatedByUpdatedAt = 'coverImagePost___coverImage___updatedBy___updatedAt',
-  CoverImagePostCoverImageUrl = 'coverImagePost___coverImage___url',
-  CoverImagePostCoverImageWidth = 'coverImagePost___coverImage___width',
-  CoverImagePostCreatedAt = 'coverImagePost___createdAt',
-  CoverImagePostCreatedByChildren = 'coverImagePost___createdBy___children',
-  CoverImagePostCreatedByChildrenChildren = 'coverImagePost___createdBy___children___children',
-  CoverImagePostCreatedByChildrenId = 'coverImagePost___createdBy___children___id',
-  CoverImagePostCreatedByCreatedAt = 'coverImagePost___createdBy___createdAt',
-  CoverImagePostCreatedById = 'coverImagePost___createdBy___id',
-  CoverImagePostCreatedByInternalContent = 'coverImagePost___createdBy___internal___content',
-  CoverImagePostCreatedByInternalContentDigest = 'coverImagePost___createdBy___internal___contentDigest',
-  CoverImagePostCreatedByInternalDescription = 'coverImagePost___createdBy___internal___description',
-  CoverImagePostCreatedByInternalFieldOwners = 'coverImagePost___createdBy___internal___fieldOwners',
-  CoverImagePostCreatedByInternalIgnoreType = 'coverImagePost___createdBy___internal___ignoreType',
-  CoverImagePostCreatedByInternalMediaType = 'coverImagePost___createdBy___internal___mediaType',
-  CoverImagePostCreatedByInternalOwner = 'coverImagePost___createdBy___internal___owner',
-  CoverImagePostCreatedByInternalType = 'coverImagePost___createdBy___internal___type',
-  CoverImagePostCreatedByIsActive = 'coverImagePost___createdBy___isActive',
-  CoverImagePostCreatedByKind = 'coverImagePost___createdBy___kind',
-  CoverImagePostCreatedByName = 'coverImagePost___createdBy___name',
-  CoverImagePostCreatedByParentChildren = 'coverImagePost___createdBy___parent___children',
-  CoverImagePostCreatedByParentId = 'coverImagePost___createdBy___parent___id',
-  CoverImagePostCreatedByPicture = 'coverImagePost___createdBy___picture',
-  CoverImagePostCreatedByPublishedAt = 'coverImagePost___createdBy___publishedAt',
-  CoverImagePostCreatedByRemoteId = 'coverImagePost___createdBy___remoteId',
-  CoverImagePostCreatedByRemoteTypeName = 'coverImagePost___createdBy___remoteTypeName',
-  CoverImagePostCreatedByStage = 'coverImagePost___createdBy___stage',
-  CoverImagePostCreatedByUpdatedAt = 'coverImagePost___createdBy___updatedAt',
-  CoverImagePostDate = 'coverImagePost___date',
-  CoverImagePostExcerpt = 'coverImagePost___excerpt',
-  CoverImagePostId = 'coverImagePost___id',
-  CoverImagePostInternalContent = 'coverImagePost___internal___content',
-  CoverImagePostInternalContentDigest = 'coverImagePost___internal___contentDigest',
-  CoverImagePostInternalDescription = 'coverImagePost___internal___description',
-  CoverImagePostInternalFieldOwners = 'coverImagePost___internal___fieldOwners',
-  CoverImagePostInternalIgnoreType = 'coverImagePost___internal___ignoreType',
-  CoverImagePostInternalMediaType = 'coverImagePost___internal___mediaType',
-  CoverImagePostInternalOwner = 'coverImagePost___internal___owner',
-  CoverImagePostInternalType = 'coverImagePost___internal___type',
-  CoverImagePostParentChildren = 'coverImagePost___parent___children',
-  CoverImagePostParentChildrenChildren = 'coverImagePost___parent___children___children',
-  CoverImagePostParentChildrenId = 'coverImagePost___parent___children___id',
-  CoverImagePostParentId = 'coverImagePost___parent___id',
-  CoverImagePostParentInternalContent = 'coverImagePost___parent___internal___content',
-  CoverImagePostParentInternalContentDigest = 'coverImagePost___parent___internal___contentDigest',
-  CoverImagePostParentInternalDescription = 'coverImagePost___parent___internal___description',
-  CoverImagePostParentInternalFieldOwners = 'coverImagePost___parent___internal___fieldOwners',
-  CoverImagePostParentInternalIgnoreType = 'coverImagePost___parent___internal___ignoreType',
-  CoverImagePostParentInternalMediaType = 'coverImagePost___parent___internal___mediaType',
-  CoverImagePostParentInternalOwner = 'coverImagePost___parent___internal___owner',
-  CoverImagePostParentInternalType = 'coverImagePost___parent___internal___type',
-  CoverImagePostParentParentChildren = 'coverImagePost___parent___parent___children',
-  CoverImagePostParentParentId = 'coverImagePost___parent___parent___id',
-  CoverImagePostPublishedAt = 'coverImagePost___publishedAt',
-  CoverImagePostPublishedByChildren = 'coverImagePost___publishedBy___children',
-  CoverImagePostPublishedByChildrenChildren = 'coverImagePost___publishedBy___children___children',
-  CoverImagePostPublishedByChildrenId = 'coverImagePost___publishedBy___children___id',
-  CoverImagePostPublishedByCreatedAt = 'coverImagePost___publishedBy___createdAt',
-  CoverImagePostPublishedById = 'coverImagePost___publishedBy___id',
-  CoverImagePostPublishedByInternalContent = 'coverImagePost___publishedBy___internal___content',
-  CoverImagePostPublishedByInternalContentDigest = 'coverImagePost___publishedBy___internal___contentDigest',
-  CoverImagePostPublishedByInternalDescription = 'coverImagePost___publishedBy___internal___description',
-  CoverImagePostPublishedByInternalFieldOwners = 'coverImagePost___publishedBy___internal___fieldOwners',
-  CoverImagePostPublishedByInternalIgnoreType = 'coverImagePost___publishedBy___internal___ignoreType',
-  CoverImagePostPublishedByInternalMediaType = 'coverImagePost___publishedBy___internal___mediaType',
-  CoverImagePostPublishedByInternalOwner = 'coverImagePost___publishedBy___internal___owner',
-  CoverImagePostPublishedByInternalType = 'coverImagePost___publishedBy___internal___type',
-  CoverImagePostPublishedByIsActive = 'coverImagePost___publishedBy___isActive',
-  CoverImagePostPublishedByKind = 'coverImagePost___publishedBy___kind',
-  CoverImagePostPublishedByName = 'coverImagePost___publishedBy___name',
-  CoverImagePostPublishedByParentChildren = 'coverImagePost___publishedBy___parent___children',
-  CoverImagePostPublishedByParentId = 'coverImagePost___publishedBy___parent___id',
-  CoverImagePostPublishedByPicture = 'coverImagePost___publishedBy___picture',
-  CoverImagePostPublishedByPublishedAt = 'coverImagePost___publishedBy___publishedAt',
-  CoverImagePostPublishedByRemoteId = 'coverImagePost___publishedBy___remoteId',
-  CoverImagePostPublishedByRemoteTypeName = 'coverImagePost___publishedBy___remoteTypeName',
-  CoverImagePostPublishedByStage = 'coverImagePost___publishedBy___stage',
-  CoverImagePostPublishedByUpdatedAt = 'coverImagePost___publishedBy___updatedAt',
-  CoverImagePostRemoteId = 'coverImagePost___remoteId',
-  CoverImagePostRemoteTypeName = 'coverImagePost___remoteTypeName',
-  CoverImagePostSeoChildren = 'coverImagePost___seo___children',
-  CoverImagePostSeoChildrenChildren = 'coverImagePost___seo___children___children',
-  CoverImagePostSeoChildrenId = 'coverImagePost___seo___children___id',
-  CoverImagePostSeoCreatedAt = 'coverImagePost___seo___createdAt',
-  CoverImagePostSeoCreatedByChildren = 'coverImagePost___seo___createdBy___children',
-  CoverImagePostSeoCreatedByCreatedAt = 'coverImagePost___seo___createdBy___createdAt',
-  CoverImagePostSeoCreatedById = 'coverImagePost___seo___createdBy___id',
-  CoverImagePostSeoCreatedByIsActive = 'coverImagePost___seo___createdBy___isActive',
-  CoverImagePostSeoCreatedByKind = 'coverImagePost___seo___createdBy___kind',
-  CoverImagePostSeoCreatedByName = 'coverImagePost___seo___createdBy___name',
-  CoverImagePostSeoCreatedByPicture = 'coverImagePost___seo___createdBy___picture',
-  CoverImagePostSeoCreatedByPublishedAt = 'coverImagePost___seo___createdBy___publishedAt',
-  CoverImagePostSeoCreatedByRemoteId = 'coverImagePost___seo___createdBy___remoteId',
-  CoverImagePostSeoCreatedByRemoteTypeName = 'coverImagePost___seo___createdBy___remoteTypeName',
-  CoverImagePostSeoCreatedByStage = 'coverImagePost___seo___createdBy___stage',
-  CoverImagePostSeoCreatedByUpdatedAt = 'coverImagePost___seo___createdBy___updatedAt',
-  CoverImagePostSeoDescription = 'coverImagePost___seo___description',
-  CoverImagePostSeoId = 'coverImagePost___seo___id',
-  CoverImagePostSeoImageAuthorAvatar = 'coverImagePost___seo___image___authorAvatar',
-  CoverImagePostSeoImageChildren = 'coverImagePost___seo___image___children',
-  CoverImagePostSeoImageCoverImagePost = 'coverImagePost___seo___image___coverImagePost',
-  CoverImagePostSeoImageCreatedAt = 'coverImagePost___seo___image___createdAt',
-  CoverImagePostSeoImageFileName = 'coverImagePost___seo___image___fileName',
-  CoverImagePostSeoImageHandle = 'coverImagePost___seo___image___handle',
-  CoverImagePostSeoImageHeight = 'coverImagePost___seo___image___height',
-  CoverImagePostSeoImageId = 'coverImagePost___seo___image___id',
-  CoverImagePostSeoImageLocale = 'coverImagePost___seo___image___locale',
-  CoverImagePostSeoImageMimeType = 'coverImagePost___seo___image___mimeType',
-  CoverImagePostSeoImagePublishedAt = 'coverImagePost___seo___image___publishedAt',
-  CoverImagePostSeoImageRemoteId = 'coverImagePost___seo___image___remoteId',
-  CoverImagePostSeoImageRemoteTypeName = 'coverImagePost___seo___image___remoteTypeName',
-  CoverImagePostSeoImageSeoImage = 'coverImagePost___seo___image___seoImage',
-  CoverImagePostSeoImageSize = 'coverImagePost___seo___image___size',
-  CoverImagePostSeoImageStage = 'coverImagePost___seo___image___stage',
-  CoverImagePostSeoImageUpdatedAt = 'coverImagePost___seo___image___updatedAt',
-  CoverImagePostSeoImageUrl = 'coverImagePost___seo___image___url',
-  CoverImagePostSeoImageWidth = 'coverImagePost___seo___image___width',
-  CoverImagePostSeoInternalContent = 'coverImagePost___seo___internal___content',
-  CoverImagePostSeoInternalContentDigest = 'coverImagePost___seo___internal___contentDigest',
-  CoverImagePostSeoInternalDescription = 'coverImagePost___seo___internal___description',
-  CoverImagePostSeoInternalFieldOwners = 'coverImagePost___seo___internal___fieldOwners',
-  CoverImagePostSeoInternalIgnoreType = 'coverImagePost___seo___internal___ignoreType',
-  CoverImagePostSeoInternalMediaType = 'coverImagePost___seo___internal___mediaType',
-  CoverImagePostSeoInternalOwner = 'coverImagePost___seo___internal___owner',
-  CoverImagePostSeoInternalType = 'coverImagePost___seo___internal___type',
-  CoverImagePostSeoKeywords = 'coverImagePost___seo___keywords',
-  CoverImagePostSeoParentChildren = 'coverImagePost___seo___parent___children',
-  CoverImagePostSeoParentId = 'coverImagePost___seo___parent___id',
-  CoverImagePostSeoPublishedAt = 'coverImagePost___seo___publishedAt',
-  CoverImagePostSeoPublishedByChildren = 'coverImagePost___seo___publishedBy___children',
-  CoverImagePostSeoPublishedByCreatedAt = 'coverImagePost___seo___publishedBy___createdAt',
-  CoverImagePostSeoPublishedById = 'coverImagePost___seo___publishedBy___id',
-  CoverImagePostSeoPublishedByIsActive = 'coverImagePost___seo___publishedBy___isActive',
-  CoverImagePostSeoPublishedByKind = 'coverImagePost___seo___publishedBy___kind',
-  CoverImagePostSeoPublishedByName = 'coverImagePost___seo___publishedBy___name',
-  CoverImagePostSeoPublishedByPicture = 'coverImagePost___seo___publishedBy___picture',
-  CoverImagePostSeoPublishedByPublishedAt = 'coverImagePost___seo___publishedBy___publishedAt',
-  CoverImagePostSeoPublishedByRemoteId = 'coverImagePost___seo___publishedBy___remoteId',
-  CoverImagePostSeoPublishedByRemoteTypeName = 'coverImagePost___seo___publishedBy___remoteTypeName',
-  CoverImagePostSeoPublishedByStage = 'coverImagePost___seo___publishedBy___stage',
-  CoverImagePostSeoPublishedByUpdatedAt = 'coverImagePost___seo___publishedBy___updatedAt',
-  CoverImagePostSeoRemoteId = 'coverImagePost___seo___remoteId',
-  CoverImagePostSeoRemoteTypeName = 'coverImagePost___seo___remoteTypeName',
-  CoverImagePostSeoStage = 'coverImagePost___seo___stage',
-  CoverImagePostSeoTitle = 'coverImagePost___seo___title',
-  CoverImagePostSeoUpdatedAt = 'coverImagePost___seo___updatedAt',
-  CoverImagePostSeoUpdatedByChildren = 'coverImagePost___seo___updatedBy___children',
-  CoverImagePostSeoUpdatedByCreatedAt = 'coverImagePost___seo___updatedBy___createdAt',
-  CoverImagePostSeoUpdatedById = 'coverImagePost___seo___updatedBy___id',
-  CoverImagePostSeoUpdatedByIsActive = 'coverImagePost___seo___updatedBy___isActive',
-  CoverImagePostSeoUpdatedByKind = 'coverImagePost___seo___updatedBy___kind',
-  CoverImagePostSeoUpdatedByName = 'coverImagePost___seo___updatedBy___name',
-  CoverImagePostSeoUpdatedByPicture = 'coverImagePost___seo___updatedBy___picture',
-  CoverImagePostSeoUpdatedByPublishedAt = 'coverImagePost___seo___updatedBy___publishedAt',
-  CoverImagePostSeoUpdatedByRemoteId = 'coverImagePost___seo___updatedBy___remoteId',
-  CoverImagePostSeoUpdatedByRemoteTypeName = 'coverImagePost___seo___updatedBy___remoteTypeName',
-  CoverImagePostSeoUpdatedByStage = 'coverImagePost___seo___updatedBy___stage',
-  CoverImagePostSeoUpdatedByUpdatedAt = 'coverImagePost___seo___updatedBy___updatedAt',
-  CoverImagePostSlug = 'coverImagePost___slug',
-  CoverImagePostStage = 'coverImagePost___stage',
-  CoverImagePostTags = 'coverImagePost___tags',
-  CoverImagePostTitle = 'coverImagePost___title',
-  CoverImagePostUpdatedAt = 'coverImagePost___updatedAt',
-  CoverImagePostUpdatedByChildren = 'coverImagePost___updatedBy___children',
-  CoverImagePostUpdatedByChildrenChildren = 'coverImagePost___updatedBy___children___children',
-  CoverImagePostUpdatedByChildrenId = 'coverImagePost___updatedBy___children___id',
-  CoverImagePostUpdatedByCreatedAt = 'coverImagePost___updatedBy___createdAt',
-  CoverImagePostUpdatedById = 'coverImagePost___updatedBy___id',
-  CoverImagePostUpdatedByInternalContent = 'coverImagePost___updatedBy___internal___content',
-  CoverImagePostUpdatedByInternalContentDigest = 'coverImagePost___updatedBy___internal___contentDigest',
-  CoverImagePostUpdatedByInternalDescription = 'coverImagePost___updatedBy___internal___description',
-  CoverImagePostUpdatedByInternalFieldOwners = 'coverImagePost___updatedBy___internal___fieldOwners',
-  CoverImagePostUpdatedByInternalIgnoreType = 'coverImagePost___updatedBy___internal___ignoreType',
-  CoverImagePostUpdatedByInternalMediaType = 'coverImagePost___updatedBy___internal___mediaType',
-  CoverImagePostUpdatedByInternalOwner = 'coverImagePost___updatedBy___internal___owner',
-  CoverImagePostUpdatedByInternalType = 'coverImagePost___updatedBy___internal___type',
-  CoverImagePostUpdatedByIsActive = 'coverImagePost___updatedBy___isActive',
-  CoverImagePostUpdatedByKind = 'coverImagePost___updatedBy___kind',
-  CoverImagePostUpdatedByName = 'coverImagePost___updatedBy___name',
-  CoverImagePostUpdatedByParentChildren = 'coverImagePost___updatedBy___parent___children',
-  CoverImagePostUpdatedByParentId = 'coverImagePost___updatedBy___parent___id',
-  CoverImagePostUpdatedByPicture = 'coverImagePost___updatedBy___picture',
-  CoverImagePostUpdatedByPublishedAt = 'coverImagePost___updatedBy___publishedAt',
-  CoverImagePostUpdatedByRemoteId = 'coverImagePost___updatedBy___remoteId',
-  CoverImagePostUpdatedByRemoteTypeName = 'coverImagePost___updatedBy___remoteTypeName',
-  CoverImagePostUpdatedByStage = 'coverImagePost___updatedBy___stage',
-  CoverImagePostUpdatedByUpdatedAt = 'coverImagePost___updatedBy___updatedAt',
-  CreatedAt = 'createdAt',
-  CreatedByChildren = 'createdBy___children',
-  CreatedByChildrenChildren = 'createdBy___children___children',
-  CreatedByChildrenChildrenChildren = 'createdBy___children___children___children',
-  CreatedByChildrenChildrenId = 'createdBy___children___children___id',
-  CreatedByChildrenId = 'createdBy___children___id',
-  CreatedByChildrenInternalContent = 'createdBy___children___internal___content',
-  CreatedByChildrenInternalContentDigest = 'createdBy___children___internal___contentDigest',
-  CreatedByChildrenInternalDescription = 'createdBy___children___internal___description',
-  CreatedByChildrenInternalFieldOwners = 'createdBy___children___internal___fieldOwners',
-  CreatedByChildrenInternalIgnoreType = 'createdBy___children___internal___ignoreType',
-  CreatedByChildrenInternalMediaType = 'createdBy___children___internal___mediaType',
-  CreatedByChildrenInternalOwner = 'createdBy___children___internal___owner',
-  CreatedByChildrenInternalType = 'createdBy___children___internal___type',
-  CreatedByChildrenParentChildren = 'createdBy___children___parent___children',
-  CreatedByChildrenParentId = 'createdBy___children___parent___id',
-  CreatedByCreatedAt = 'createdBy___createdAt',
-  CreatedById = 'createdBy___id',
-  CreatedByInternalContent = 'createdBy___internal___content',
-  CreatedByInternalContentDigest = 'createdBy___internal___contentDigest',
-  CreatedByInternalDescription = 'createdBy___internal___description',
-  CreatedByInternalFieldOwners = 'createdBy___internal___fieldOwners',
-  CreatedByInternalIgnoreType = 'createdBy___internal___ignoreType',
-  CreatedByInternalMediaType = 'createdBy___internal___mediaType',
-  CreatedByInternalOwner = 'createdBy___internal___owner',
-  CreatedByInternalType = 'createdBy___internal___type',
-  CreatedByIsActive = 'createdBy___isActive',
-  CreatedByKind = 'createdBy___kind',
-  CreatedByName = 'createdBy___name',
-  CreatedByParentChildren = 'createdBy___parent___children',
-  CreatedByParentChildrenChildren = 'createdBy___parent___children___children',
-  CreatedByParentChildrenId = 'createdBy___parent___children___id',
-  CreatedByParentId = 'createdBy___parent___id',
-  CreatedByParentInternalContent = 'createdBy___parent___internal___content',
-  CreatedByParentInternalContentDigest = 'createdBy___parent___internal___contentDigest',
-  CreatedByParentInternalDescription = 'createdBy___parent___internal___description',
-  CreatedByParentInternalFieldOwners = 'createdBy___parent___internal___fieldOwners',
-  CreatedByParentInternalIgnoreType = 'createdBy___parent___internal___ignoreType',
-  CreatedByParentInternalMediaType = 'createdBy___parent___internal___mediaType',
-  CreatedByParentInternalOwner = 'createdBy___parent___internal___owner',
-  CreatedByParentInternalType = 'createdBy___parent___internal___type',
-  CreatedByParentParentChildren = 'createdBy___parent___parent___children',
-  CreatedByParentParentId = 'createdBy___parent___parent___id',
-  CreatedByPicture = 'createdBy___picture',
-  CreatedByPublishedAt = 'createdBy___publishedAt',
-  CreatedByRemoteId = 'createdBy___remoteId',
-  CreatedByRemoteTypeName = 'createdBy___remoteTypeName',
-  CreatedByStage = 'createdBy___stage',
-  CreatedByUpdatedAt = 'createdBy___updatedAt',
-  FileName = 'fileName',
-  Handle = 'handle',
-  Height = 'height',
-  Id = 'id',
-  InternalContent = 'internal___content',
-  InternalContentDigest = 'internal___contentDigest',
-  InternalDescription = 'internal___description',
-  InternalFieldOwners = 'internal___fieldOwners',
-  InternalIgnoreType = 'internal___ignoreType',
-  InternalMediaType = 'internal___mediaType',
-  InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  Locale = 'locale',
-  MimeType = 'mimeType',
-  ParentChildren = 'parent___children',
-  ParentChildrenChildren = 'parent___children___children',
-  ParentChildrenChildrenChildren = 'parent___children___children___children',
-  ParentChildrenChildrenId = 'parent___children___children___id',
-  ParentChildrenId = 'parent___children___id',
-  ParentChildrenInternalContent = 'parent___children___internal___content',
-  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
-  ParentChildrenInternalDescription = 'parent___children___internal___description',
-  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
-  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
-  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
-  ParentChildrenInternalOwner = 'parent___children___internal___owner',
-  ParentChildrenInternalType = 'parent___children___internal___type',
-  ParentChildrenParentChildren = 'parent___children___parent___children',
-  ParentChildrenParentId = 'parent___children___parent___id',
-  ParentId = 'parent___id',
-  ParentInternalContent = 'parent___internal___content',
-  ParentInternalContentDigest = 'parent___internal___contentDigest',
-  ParentInternalDescription = 'parent___internal___description',
-  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
-  ParentInternalIgnoreType = 'parent___internal___ignoreType',
-  ParentInternalMediaType = 'parent___internal___mediaType',
-  ParentInternalOwner = 'parent___internal___owner',
-  ParentInternalType = 'parent___internal___type',
-  ParentParentChildren = 'parent___parent___children',
-  ParentParentChildrenChildren = 'parent___parent___children___children',
-  ParentParentChildrenId = 'parent___parent___children___id',
-  ParentParentId = 'parent___parent___id',
-  ParentParentInternalContent = 'parent___parent___internal___content',
-  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
-  ParentParentInternalDescription = 'parent___parent___internal___description',
-  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
-  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
-  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
-  ParentParentInternalOwner = 'parent___parent___internal___owner',
-  ParentParentInternalType = 'parent___parent___internal___type',
-  ParentParentParentChildren = 'parent___parent___parent___children',
-  ParentParentParentId = 'parent___parent___parent___id',
-  PublishedAt = 'publishedAt',
-  PublishedByChildren = 'publishedBy___children',
-  PublishedByChildrenChildren = 'publishedBy___children___children',
-  PublishedByChildrenChildrenChildren = 'publishedBy___children___children___children',
-  PublishedByChildrenChildrenId = 'publishedBy___children___children___id',
-  PublishedByChildrenId = 'publishedBy___children___id',
-  PublishedByChildrenInternalContent = 'publishedBy___children___internal___content',
-  PublishedByChildrenInternalContentDigest = 'publishedBy___children___internal___contentDigest',
-  PublishedByChildrenInternalDescription = 'publishedBy___children___internal___description',
-  PublishedByChildrenInternalFieldOwners = 'publishedBy___children___internal___fieldOwners',
-  PublishedByChildrenInternalIgnoreType = 'publishedBy___children___internal___ignoreType',
-  PublishedByChildrenInternalMediaType = 'publishedBy___children___internal___mediaType',
-  PublishedByChildrenInternalOwner = 'publishedBy___children___internal___owner',
-  PublishedByChildrenInternalType = 'publishedBy___children___internal___type',
-  PublishedByChildrenParentChildren = 'publishedBy___children___parent___children',
-  PublishedByChildrenParentId = 'publishedBy___children___parent___id',
-  PublishedByCreatedAt = 'publishedBy___createdAt',
-  PublishedById = 'publishedBy___id',
-  PublishedByInternalContent = 'publishedBy___internal___content',
-  PublishedByInternalContentDigest = 'publishedBy___internal___contentDigest',
-  PublishedByInternalDescription = 'publishedBy___internal___description',
-  PublishedByInternalFieldOwners = 'publishedBy___internal___fieldOwners',
-  PublishedByInternalIgnoreType = 'publishedBy___internal___ignoreType',
-  PublishedByInternalMediaType = 'publishedBy___internal___mediaType',
-  PublishedByInternalOwner = 'publishedBy___internal___owner',
-  PublishedByInternalType = 'publishedBy___internal___type',
-  PublishedByIsActive = 'publishedBy___isActive',
-  PublishedByKind = 'publishedBy___kind',
-  PublishedByName = 'publishedBy___name',
-  PublishedByParentChildren = 'publishedBy___parent___children',
-  PublishedByParentChildrenChildren = 'publishedBy___parent___children___children',
-  PublishedByParentChildrenId = 'publishedBy___parent___children___id',
-  PublishedByParentId = 'publishedBy___parent___id',
-  PublishedByParentInternalContent = 'publishedBy___parent___internal___content',
-  PublishedByParentInternalContentDigest = 'publishedBy___parent___internal___contentDigest',
-  PublishedByParentInternalDescription = 'publishedBy___parent___internal___description',
-  PublishedByParentInternalFieldOwners = 'publishedBy___parent___internal___fieldOwners',
-  PublishedByParentInternalIgnoreType = 'publishedBy___parent___internal___ignoreType',
-  PublishedByParentInternalMediaType = 'publishedBy___parent___internal___mediaType',
-  PublishedByParentInternalOwner = 'publishedBy___parent___internal___owner',
-  PublishedByParentInternalType = 'publishedBy___parent___internal___type',
-  PublishedByParentParentChildren = 'publishedBy___parent___parent___children',
-  PublishedByParentParentId = 'publishedBy___parent___parent___id',
-  PublishedByPicture = 'publishedBy___picture',
-  PublishedByPublishedAt = 'publishedBy___publishedAt',
-  PublishedByRemoteId = 'publishedBy___remoteId',
-  PublishedByRemoteTypeName = 'publishedBy___remoteTypeName',
-  PublishedByStage = 'publishedBy___stage',
-  PublishedByUpdatedAt = 'publishedBy___updatedAt',
-  RemoteId = 'remoteId',
-  RemoteTypeName = 'remoteTypeName',
-  SeoImage = 'seoImage',
-  SeoImageChildren = 'seoImage___children',
-  SeoImageChildrenChildren = 'seoImage___children___children',
-  SeoImageChildrenChildrenChildren = 'seoImage___children___children___children',
-  SeoImageChildrenChildrenId = 'seoImage___children___children___id',
-  SeoImageChildrenId = 'seoImage___children___id',
-  SeoImageChildrenInternalContent = 'seoImage___children___internal___content',
-  SeoImageChildrenInternalContentDigest = 'seoImage___children___internal___contentDigest',
-  SeoImageChildrenInternalDescription = 'seoImage___children___internal___description',
-  SeoImageChildrenInternalFieldOwners = 'seoImage___children___internal___fieldOwners',
-  SeoImageChildrenInternalIgnoreType = 'seoImage___children___internal___ignoreType',
-  SeoImageChildrenInternalMediaType = 'seoImage___children___internal___mediaType',
-  SeoImageChildrenInternalOwner = 'seoImage___children___internal___owner',
-  SeoImageChildrenInternalType = 'seoImage___children___internal___type',
-  SeoImageChildrenParentChildren = 'seoImage___children___parent___children',
-  SeoImageChildrenParentId = 'seoImage___children___parent___id',
-  SeoImageCreatedAt = 'seoImage___createdAt',
-  SeoImageCreatedByChildren = 'seoImage___createdBy___children',
-  SeoImageCreatedByChildrenChildren = 'seoImage___createdBy___children___children',
-  SeoImageCreatedByChildrenId = 'seoImage___createdBy___children___id',
-  SeoImageCreatedByCreatedAt = 'seoImage___createdBy___createdAt',
-  SeoImageCreatedById = 'seoImage___createdBy___id',
-  SeoImageCreatedByInternalContent = 'seoImage___createdBy___internal___content',
-  SeoImageCreatedByInternalContentDigest = 'seoImage___createdBy___internal___contentDigest',
-  SeoImageCreatedByInternalDescription = 'seoImage___createdBy___internal___description',
-  SeoImageCreatedByInternalFieldOwners = 'seoImage___createdBy___internal___fieldOwners',
-  SeoImageCreatedByInternalIgnoreType = 'seoImage___createdBy___internal___ignoreType',
-  SeoImageCreatedByInternalMediaType = 'seoImage___createdBy___internal___mediaType',
-  SeoImageCreatedByInternalOwner = 'seoImage___createdBy___internal___owner',
-  SeoImageCreatedByInternalType = 'seoImage___createdBy___internal___type',
-  SeoImageCreatedByIsActive = 'seoImage___createdBy___isActive',
-  SeoImageCreatedByKind = 'seoImage___createdBy___kind',
-  SeoImageCreatedByName = 'seoImage___createdBy___name',
-  SeoImageCreatedByParentChildren = 'seoImage___createdBy___parent___children',
-  SeoImageCreatedByParentId = 'seoImage___createdBy___parent___id',
-  SeoImageCreatedByPicture = 'seoImage___createdBy___picture',
-  SeoImageCreatedByPublishedAt = 'seoImage___createdBy___publishedAt',
-  SeoImageCreatedByRemoteId = 'seoImage___createdBy___remoteId',
-  SeoImageCreatedByRemoteTypeName = 'seoImage___createdBy___remoteTypeName',
-  SeoImageCreatedByStage = 'seoImage___createdBy___stage',
-  SeoImageCreatedByUpdatedAt = 'seoImage___createdBy___updatedAt',
-  SeoImageDescription = 'seoImage___description',
-  SeoImageId = 'seoImage___id',
-  SeoImageImageAuthorAvatar = 'seoImage___image___authorAvatar',
-  SeoImageImageAuthorAvatarBiography = 'seoImage___image___authorAvatar___biography',
-  SeoImageImageAuthorAvatarChildren = 'seoImage___image___authorAvatar___children',
-  SeoImageImageAuthorAvatarCreatedAt = 'seoImage___image___authorAvatar___createdAt',
-  SeoImageImageAuthorAvatarId = 'seoImage___image___authorAvatar___id',
-  SeoImageImageAuthorAvatarName = 'seoImage___image___authorAvatar___name',
-  SeoImageImageAuthorAvatarPosts = 'seoImage___image___authorAvatar___posts',
-  SeoImageImageAuthorAvatarPublishedAt = 'seoImage___image___authorAvatar___publishedAt',
-  SeoImageImageAuthorAvatarRemoteId = 'seoImage___image___authorAvatar___remoteId',
-  SeoImageImageAuthorAvatarRemoteTypeName = 'seoImage___image___authorAvatar___remoteTypeName',
-  SeoImageImageAuthorAvatarStage = 'seoImage___image___authorAvatar___stage',
-  SeoImageImageAuthorAvatarTitle = 'seoImage___image___authorAvatar___title',
-  SeoImageImageAuthorAvatarUpdatedAt = 'seoImage___image___authorAvatar___updatedAt',
-  SeoImageImageChildren = 'seoImage___image___children',
-  SeoImageImageChildrenChildren = 'seoImage___image___children___children',
-  SeoImageImageChildrenId = 'seoImage___image___children___id',
-  SeoImageImageCoverImagePost = 'seoImage___image___coverImagePost',
-  SeoImageImageCoverImagePostChildren = 'seoImage___image___coverImagePost___children',
-  SeoImageImageCoverImagePostCreatedAt = 'seoImage___image___coverImagePost___createdAt',
-  SeoImageImageCoverImagePostDate = 'seoImage___image___coverImagePost___date',
-  SeoImageImageCoverImagePostExcerpt = 'seoImage___image___coverImagePost___excerpt',
-  SeoImageImageCoverImagePostId = 'seoImage___image___coverImagePost___id',
-  SeoImageImageCoverImagePostPublishedAt = 'seoImage___image___coverImagePost___publishedAt',
-  SeoImageImageCoverImagePostRemoteId = 'seoImage___image___coverImagePost___remoteId',
-  SeoImageImageCoverImagePostRemoteTypeName = 'seoImage___image___coverImagePost___remoteTypeName',
-  SeoImageImageCoverImagePostSlug = 'seoImage___image___coverImagePost___slug',
-  SeoImageImageCoverImagePostStage = 'seoImage___image___coverImagePost___stage',
-  SeoImageImageCoverImagePostTags = 'seoImage___image___coverImagePost___tags',
-  SeoImageImageCoverImagePostTitle = 'seoImage___image___coverImagePost___title',
-  SeoImageImageCoverImagePostUpdatedAt = 'seoImage___image___coverImagePost___updatedAt',
-  SeoImageImageCreatedAt = 'seoImage___image___createdAt',
-  SeoImageImageCreatedByChildren = 'seoImage___image___createdBy___children',
-  SeoImageImageCreatedByCreatedAt = 'seoImage___image___createdBy___createdAt',
-  SeoImageImageCreatedById = 'seoImage___image___createdBy___id',
-  SeoImageImageCreatedByIsActive = 'seoImage___image___createdBy___isActive',
-  SeoImageImageCreatedByKind = 'seoImage___image___createdBy___kind',
-  SeoImageImageCreatedByName = 'seoImage___image___createdBy___name',
-  SeoImageImageCreatedByPicture = 'seoImage___image___createdBy___picture',
-  SeoImageImageCreatedByPublishedAt = 'seoImage___image___createdBy___publishedAt',
-  SeoImageImageCreatedByRemoteId = 'seoImage___image___createdBy___remoteId',
-  SeoImageImageCreatedByRemoteTypeName = 'seoImage___image___createdBy___remoteTypeName',
-  SeoImageImageCreatedByStage = 'seoImage___image___createdBy___stage',
-  SeoImageImageCreatedByUpdatedAt = 'seoImage___image___createdBy___updatedAt',
-  SeoImageImageFileName = 'seoImage___image___fileName',
-  SeoImageImageHandle = 'seoImage___image___handle',
-  SeoImageImageHeight = 'seoImage___image___height',
-  SeoImageImageId = 'seoImage___image___id',
-  SeoImageImageInternalContent = 'seoImage___image___internal___content',
-  SeoImageImageInternalContentDigest = 'seoImage___image___internal___contentDigest',
-  SeoImageImageInternalDescription = 'seoImage___image___internal___description',
-  SeoImageImageInternalFieldOwners = 'seoImage___image___internal___fieldOwners',
-  SeoImageImageInternalIgnoreType = 'seoImage___image___internal___ignoreType',
-  SeoImageImageInternalMediaType = 'seoImage___image___internal___mediaType',
-  SeoImageImageInternalOwner = 'seoImage___image___internal___owner',
-  SeoImageImageInternalType = 'seoImage___image___internal___type',
-  SeoImageImageLocale = 'seoImage___image___locale',
-  SeoImageImageMimeType = 'seoImage___image___mimeType',
-  SeoImageImageParentChildren = 'seoImage___image___parent___children',
-  SeoImageImageParentId = 'seoImage___image___parent___id',
-  SeoImageImagePublishedAt = 'seoImage___image___publishedAt',
-  SeoImageImagePublishedByChildren = 'seoImage___image___publishedBy___children',
-  SeoImageImagePublishedByCreatedAt = 'seoImage___image___publishedBy___createdAt',
-  SeoImageImagePublishedById = 'seoImage___image___publishedBy___id',
-  SeoImageImagePublishedByIsActive = 'seoImage___image___publishedBy___isActive',
-  SeoImageImagePublishedByKind = 'seoImage___image___publishedBy___kind',
-  SeoImageImagePublishedByName = 'seoImage___image___publishedBy___name',
-  SeoImageImagePublishedByPicture = 'seoImage___image___publishedBy___picture',
-  SeoImageImagePublishedByPublishedAt = 'seoImage___image___publishedBy___publishedAt',
-  SeoImageImagePublishedByRemoteId = 'seoImage___image___publishedBy___remoteId',
-  SeoImageImagePublishedByRemoteTypeName = 'seoImage___image___publishedBy___remoteTypeName',
-  SeoImageImagePublishedByStage = 'seoImage___image___publishedBy___stage',
-  SeoImageImagePublishedByUpdatedAt = 'seoImage___image___publishedBy___updatedAt',
-  SeoImageImageRemoteId = 'seoImage___image___remoteId',
-  SeoImageImageRemoteTypeName = 'seoImage___image___remoteTypeName',
-  SeoImageImageSeoImage = 'seoImage___image___seoImage',
-  SeoImageImageSeoImageChildren = 'seoImage___image___seoImage___children',
-  SeoImageImageSeoImageCreatedAt = 'seoImage___image___seoImage___createdAt',
-  SeoImageImageSeoImageDescription = 'seoImage___image___seoImage___description',
-  SeoImageImageSeoImageId = 'seoImage___image___seoImage___id',
-  SeoImageImageSeoImageKeywords = 'seoImage___image___seoImage___keywords',
-  SeoImageImageSeoImagePublishedAt = 'seoImage___image___seoImage___publishedAt',
-  SeoImageImageSeoImageRemoteId = 'seoImage___image___seoImage___remoteId',
-  SeoImageImageSeoImageRemoteTypeName = 'seoImage___image___seoImage___remoteTypeName',
-  SeoImageImageSeoImageStage = 'seoImage___image___seoImage___stage',
-  SeoImageImageSeoImageTitle = 'seoImage___image___seoImage___title',
-  SeoImageImageSeoImageUpdatedAt = 'seoImage___image___seoImage___updatedAt',
-  SeoImageImageSize = 'seoImage___image___size',
-  SeoImageImageStage = 'seoImage___image___stage',
-  SeoImageImageUpdatedAt = 'seoImage___image___updatedAt',
-  SeoImageImageUpdatedByChildren = 'seoImage___image___updatedBy___children',
-  SeoImageImageUpdatedByCreatedAt = 'seoImage___image___updatedBy___createdAt',
-  SeoImageImageUpdatedById = 'seoImage___image___updatedBy___id',
-  SeoImageImageUpdatedByIsActive = 'seoImage___image___updatedBy___isActive',
-  SeoImageImageUpdatedByKind = 'seoImage___image___updatedBy___kind',
-  SeoImageImageUpdatedByName = 'seoImage___image___updatedBy___name',
-  SeoImageImageUpdatedByPicture = 'seoImage___image___updatedBy___picture',
-  SeoImageImageUpdatedByPublishedAt = 'seoImage___image___updatedBy___publishedAt',
-  SeoImageImageUpdatedByRemoteId = 'seoImage___image___updatedBy___remoteId',
-  SeoImageImageUpdatedByRemoteTypeName = 'seoImage___image___updatedBy___remoteTypeName',
-  SeoImageImageUpdatedByStage = 'seoImage___image___updatedBy___stage',
-  SeoImageImageUpdatedByUpdatedAt = 'seoImage___image___updatedBy___updatedAt',
-  SeoImageImageUrl = 'seoImage___image___url',
-  SeoImageImageWidth = 'seoImage___image___width',
-  SeoImageInternalContent = 'seoImage___internal___content',
-  SeoImageInternalContentDigest = 'seoImage___internal___contentDigest',
-  SeoImageInternalDescription = 'seoImage___internal___description',
-  SeoImageInternalFieldOwners = 'seoImage___internal___fieldOwners',
-  SeoImageInternalIgnoreType = 'seoImage___internal___ignoreType',
-  SeoImageInternalMediaType = 'seoImage___internal___mediaType',
-  SeoImageInternalOwner = 'seoImage___internal___owner',
-  SeoImageInternalType = 'seoImage___internal___type',
-  SeoImageKeywords = 'seoImage___keywords',
-  SeoImageParentChildren = 'seoImage___parent___children',
-  SeoImageParentChildrenChildren = 'seoImage___parent___children___children',
-  SeoImageParentChildrenId = 'seoImage___parent___children___id',
-  SeoImageParentId = 'seoImage___parent___id',
-  SeoImageParentInternalContent = 'seoImage___parent___internal___content',
-  SeoImageParentInternalContentDigest = 'seoImage___parent___internal___contentDigest',
-  SeoImageParentInternalDescription = 'seoImage___parent___internal___description',
-  SeoImageParentInternalFieldOwners = 'seoImage___parent___internal___fieldOwners',
-  SeoImageParentInternalIgnoreType = 'seoImage___parent___internal___ignoreType',
-  SeoImageParentInternalMediaType = 'seoImage___parent___internal___mediaType',
-  SeoImageParentInternalOwner = 'seoImage___parent___internal___owner',
-  SeoImageParentInternalType = 'seoImage___parent___internal___type',
-  SeoImageParentParentChildren = 'seoImage___parent___parent___children',
-  SeoImageParentParentId = 'seoImage___parent___parent___id',
-  SeoImagePublishedAt = 'seoImage___publishedAt',
-  SeoImagePublishedByChildren = 'seoImage___publishedBy___children',
-  SeoImagePublishedByChildrenChildren = 'seoImage___publishedBy___children___children',
-  SeoImagePublishedByChildrenId = 'seoImage___publishedBy___children___id',
-  SeoImagePublishedByCreatedAt = 'seoImage___publishedBy___createdAt',
-  SeoImagePublishedById = 'seoImage___publishedBy___id',
-  SeoImagePublishedByInternalContent = 'seoImage___publishedBy___internal___content',
-  SeoImagePublishedByInternalContentDigest = 'seoImage___publishedBy___internal___contentDigest',
-  SeoImagePublishedByInternalDescription = 'seoImage___publishedBy___internal___description',
-  SeoImagePublishedByInternalFieldOwners = 'seoImage___publishedBy___internal___fieldOwners',
-  SeoImagePublishedByInternalIgnoreType = 'seoImage___publishedBy___internal___ignoreType',
-  SeoImagePublishedByInternalMediaType = 'seoImage___publishedBy___internal___mediaType',
-  SeoImagePublishedByInternalOwner = 'seoImage___publishedBy___internal___owner',
-  SeoImagePublishedByInternalType = 'seoImage___publishedBy___internal___type',
-  SeoImagePublishedByIsActive = 'seoImage___publishedBy___isActive',
-  SeoImagePublishedByKind = 'seoImage___publishedBy___kind',
-  SeoImagePublishedByName = 'seoImage___publishedBy___name',
-  SeoImagePublishedByParentChildren = 'seoImage___publishedBy___parent___children',
-  SeoImagePublishedByParentId = 'seoImage___publishedBy___parent___id',
-  SeoImagePublishedByPicture = 'seoImage___publishedBy___picture',
-  SeoImagePublishedByPublishedAt = 'seoImage___publishedBy___publishedAt',
-  SeoImagePublishedByRemoteId = 'seoImage___publishedBy___remoteId',
-  SeoImagePublishedByRemoteTypeName = 'seoImage___publishedBy___remoteTypeName',
-  SeoImagePublishedByStage = 'seoImage___publishedBy___stage',
-  SeoImagePublishedByUpdatedAt = 'seoImage___publishedBy___updatedAt',
-  SeoImageRemoteId = 'seoImage___remoteId',
-  SeoImageRemoteTypeName = 'seoImage___remoteTypeName',
-  SeoImageStage = 'seoImage___stage',
-  SeoImageTitle = 'seoImage___title',
-  SeoImageUpdatedAt = 'seoImage___updatedAt',
-  SeoImageUpdatedByChildren = 'seoImage___updatedBy___children',
-  SeoImageUpdatedByChildrenChildren = 'seoImage___updatedBy___children___children',
-  SeoImageUpdatedByChildrenId = 'seoImage___updatedBy___children___id',
-  SeoImageUpdatedByCreatedAt = 'seoImage___updatedBy___createdAt',
-  SeoImageUpdatedById = 'seoImage___updatedBy___id',
-  SeoImageUpdatedByInternalContent = 'seoImage___updatedBy___internal___content',
-  SeoImageUpdatedByInternalContentDigest = 'seoImage___updatedBy___internal___contentDigest',
-  SeoImageUpdatedByInternalDescription = 'seoImage___updatedBy___internal___description',
-  SeoImageUpdatedByInternalFieldOwners = 'seoImage___updatedBy___internal___fieldOwners',
-  SeoImageUpdatedByInternalIgnoreType = 'seoImage___updatedBy___internal___ignoreType',
-  SeoImageUpdatedByInternalMediaType = 'seoImage___updatedBy___internal___mediaType',
-  SeoImageUpdatedByInternalOwner = 'seoImage___updatedBy___internal___owner',
-  SeoImageUpdatedByInternalType = 'seoImage___updatedBy___internal___type',
-  SeoImageUpdatedByIsActive = 'seoImage___updatedBy___isActive',
-  SeoImageUpdatedByKind = 'seoImage___updatedBy___kind',
-  SeoImageUpdatedByName = 'seoImage___updatedBy___name',
-  SeoImageUpdatedByParentChildren = 'seoImage___updatedBy___parent___children',
-  SeoImageUpdatedByParentId = 'seoImage___updatedBy___parent___id',
-  SeoImageUpdatedByPicture = 'seoImage___updatedBy___picture',
-  SeoImageUpdatedByPublishedAt = 'seoImage___updatedBy___publishedAt',
-  SeoImageUpdatedByRemoteId = 'seoImage___updatedBy___remoteId',
-  SeoImageUpdatedByRemoteTypeName = 'seoImage___updatedBy___remoteTypeName',
-  SeoImageUpdatedByStage = 'seoImage___updatedBy___stage',
-  SeoImageUpdatedByUpdatedAt = 'seoImage___updatedBy___updatedAt',
-  Size = 'size',
-  Stage = 'stage',
-  UpdatedAt = 'updatedAt',
-  UpdatedByChildren = 'updatedBy___children',
-  UpdatedByChildrenChildren = 'updatedBy___children___children',
-  UpdatedByChildrenChildrenChildren = 'updatedBy___children___children___children',
-  UpdatedByChildrenChildrenId = 'updatedBy___children___children___id',
-  UpdatedByChildrenId = 'updatedBy___children___id',
-  UpdatedByChildrenInternalContent = 'updatedBy___children___internal___content',
-  UpdatedByChildrenInternalContentDigest = 'updatedBy___children___internal___contentDigest',
-  UpdatedByChildrenInternalDescription = 'updatedBy___children___internal___description',
-  UpdatedByChildrenInternalFieldOwners = 'updatedBy___children___internal___fieldOwners',
-  UpdatedByChildrenInternalIgnoreType = 'updatedBy___children___internal___ignoreType',
-  UpdatedByChildrenInternalMediaType = 'updatedBy___children___internal___mediaType',
-  UpdatedByChildrenInternalOwner = 'updatedBy___children___internal___owner',
-  UpdatedByChildrenInternalType = 'updatedBy___children___internal___type',
-  UpdatedByChildrenParentChildren = 'updatedBy___children___parent___children',
-  UpdatedByChildrenParentId = 'updatedBy___children___parent___id',
-  UpdatedByCreatedAt = 'updatedBy___createdAt',
-  UpdatedById = 'updatedBy___id',
-  UpdatedByInternalContent = 'updatedBy___internal___content',
-  UpdatedByInternalContentDigest = 'updatedBy___internal___contentDigest',
-  UpdatedByInternalDescription = 'updatedBy___internal___description',
-  UpdatedByInternalFieldOwners = 'updatedBy___internal___fieldOwners',
-  UpdatedByInternalIgnoreType = 'updatedBy___internal___ignoreType',
-  UpdatedByInternalMediaType = 'updatedBy___internal___mediaType',
-  UpdatedByInternalOwner = 'updatedBy___internal___owner',
-  UpdatedByInternalType = 'updatedBy___internal___type',
-  UpdatedByIsActive = 'updatedBy___isActive',
-  UpdatedByKind = 'updatedBy___kind',
-  UpdatedByName = 'updatedBy___name',
-  UpdatedByParentChildren = 'updatedBy___parent___children',
-  UpdatedByParentChildrenChildren = 'updatedBy___parent___children___children',
-  UpdatedByParentChildrenId = 'updatedBy___parent___children___id',
-  UpdatedByParentId = 'updatedBy___parent___id',
-  UpdatedByParentInternalContent = 'updatedBy___parent___internal___content',
-  UpdatedByParentInternalContentDigest = 'updatedBy___parent___internal___contentDigest',
-  UpdatedByParentInternalDescription = 'updatedBy___parent___internal___description',
-  UpdatedByParentInternalFieldOwners = 'updatedBy___parent___internal___fieldOwners',
-  UpdatedByParentInternalIgnoreType = 'updatedBy___parent___internal___ignoreType',
-  UpdatedByParentInternalMediaType = 'updatedBy___parent___internal___mediaType',
-  UpdatedByParentInternalOwner = 'updatedBy___parent___internal___owner',
-  UpdatedByParentInternalType = 'updatedBy___parent___internal___type',
-  UpdatedByParentParentChildren = 'updatedBy___parent___parent___children',
-  UpdatedByParentParentId = 'updatedBy___parent___parent___id',
-  UpdatedByPicture = 'updatedBy___picture',
-  UpdatedByPublishedAt = 'updatedBy___publishedAt',
-  UpdatedByRemoteId = 'updatedBy___remoteId',
-  UpdatedByRemoteTypeName = 'updatedBy___remoteTypeName',
-  UpdatedByStage = 'updatedBy___stage',
-  UpdatedByUpdatedAt = 'updatedBy___updatedAt',
-  Url = 'url',
-  Width = 'width'
-}
-
-export type GraphCms_AssetFilterInput = {
-  authorAvatar: Maybe<GraphCms_AuthorFilterListInput>;
-  children: Maybe<NodeFilterListInput>;
-  coverImagePost: Maybe<GraphCms_PostFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  fileName: Maybe<StringQueryOperatorInput>;
-  handle: Maybe<StringQueryOperatorInput>;
-  height: Maybe<FloatQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  locale: Maybe<GraphCms_LocaleQueryOperatorInput>;
-  mimeType: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  seoImage: Maybe<GraphCms_SeoFilterListInput>;
-  size: Maybe<FloatQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-  url: Maybe<StringQueryOperatorInput>;
-  width: Maybe<FloatQueryOperatorInput>;
-};
-
-export type GraphCms_AssetGroupConnection = {
-  edges: Array<GraphCms_AssetEdge>;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-  nodes: Array<GraphCms_Asset>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type GraphCms_AssetSortInput = {
-  fields: Maybe<Array<Maybe<GraphCms_AssetFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type GraphCms_Author = Node & {
-  biography: Maybe<Scalars['String']>;
-  children: Array<Node>;
-  createdAt: Scalars['JSON'];
-  createdBy: Maybe<GraphCms_User>;
-  id: Scalars['ID'];
-  internal: Internal;
-  name: Scalars['String'];
-  parent: Maybe<Node>;
-  picture: Maybe<GraphCms_Asset>;
-  posts: Array<GraphCms_Post>;
-  publishedAt: Maybe<Scalars['JSON']>;
-  publishedBy: Maybe<GraphCms_User>;
-  remoteId: Scalars['ID'];
-  remoteTypeName: Scalars['String'];
-  stage: GraphCms_Stage;
-  title: Maybe<Scalars['String']>;
-  updatedAt: Scalars['JSON'];
-  updatedBy: Maybe<GraphCms_User>;
-};
-
-export type GraphCms_AuthorConnection = {
-  distinct: Array<Scalars['String']>;
-  edges: Array<GraphCms_AuthorEdge>;
-  group: Array<GraphCms_AuthorGroupConnection>;
-  nodes: Array<GraphCms_Author>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-
-export type GraphCms_AuthorConnectionDistinctArgs = {
-  field: GraphCms_AuthorFieldsEnum;
-};
-
-
-export type GraphCms_AuthorConnectionGroupArgs = {
-  field: GraphCms_AuthorFieldsEnum;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-};
-
-export type GraphCms_AuthorEdge = {
-  next: Maybe<GraphCms_Author>;
-  node: GraphCms_Author;
-  previous: Maybe<GraphCms_Author>;
-};
-
-export enum GraphCms_AuthorFieldsEnum {
-  Biography = 'biography',
-  Children = 'children',
-  ChildrenChildren = 'children___children',
-  ChildrenChildrenChildren = 'children___children___children',
-  ChildrenChildrenChildrenChildren = 'children___children___children___children',
-  ChildrenChildrenChildrenId = 'children___children___children___id',
-  ChildrenChildrenId = 'children___children___id',
-  ChildrenChildrenInternalContent = 'children___children___internal___content',
-  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
-  ChildrenChildrenInternalDescription = 'children___children___internal___description',
-  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
-  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
-  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
-  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
-  ChildrenChildrenInternalType = 'children___children___internal___type',
-  ChildrenChildrenParentChildren = 'children___children___parent___children',
-  ChildrenChildrenParentId = 'children___children___parent___id',
-  ChildrenId = 'children___id',
-  ChildrenInternalContent = 'children___internal___content',
-  ChildrenInternalContentDigest = 'children___internal___contentDigest',
-  ChildrenInternalDescription = 'children___internal___description',
-  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
-  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
-  ChildrenInternalMediaType = 'children___internal___mediaType',
-  ChildrenInternalOwner = 'children___internal___owner',
-  ChildrenInternalType = 'children___internal___type',
-  ChildrenParentChildren = 'children___parent___children',
-  ChildrenParentChildrenChildren = 'children___parent___children___children',
-  ChildrenParentChildrenId = 'children___parent___children___id',
-  ChildrenParentId = 'children___parent___id',
-  ChildrenParentInternalContent = 'children___parent___internal___content',
-  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
-  ChildrenParentInternalDescription = 'children___parent___internal___description',
-  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
-  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
-  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
-  ChildrenParentInternalOwner = 'children___parent___internal___owner',
-  ChildrenParentInternalType = 'children___parent___internal___type',
-  ChildrenParentParentChildren = 'children___parent___parent___children',
-  ChildrenParentParentId = 'children___parent___parent___id',
-  CreatedAt = 'createdAt',
-  CreatedByChildren = 'createdBy___children',
-  CreatedByChildrenChildren = 'createdBy___children___children',
-  CreatedByChildrenChildrenChildren = 'createdBy___children___children___children',
-  CreatedByChildrenChildrenId = 'createdBy___children___children___id',
-  CreatedByChildrenId = 'createdBy___children___id',
-  CreatedByChildrenInternalContent = 'createdBy___children___internal___content',
-  CreatedByChildrenInternalContentDigest = 'createdBy___children___internal___contentDigest',
-  CreatedByChildrenInternalDescription = 'createdBy___children___internal___description',
-  CreatedByChildrenInternalFieldOwners = 'createdBy___children___internal___fieldOwners',
-  CreatedByChildrenInternalIgnoreType = 'createdBy___children___internal___ignoreType',
-  CreatedByChildrenInternalMediaType = 'createdBy___children___internal___mediaType',
-  CreatedByChildrenInternalOwner = 'createdBy___children___internal___owner',
-  CreatedByChildrenInternalType = 'createdBy___children___internal___type',
-  CreatedByChildrenParentChildren = 'createdBy___children___parent___children',
-  CreatedByChildrenParentId = 'createdBy___children___parent___id',
-  CreatedByCreatedAt = 'createdBy___createdAt',
-  CreatedById = 'createdBy___id',
-  CreatedByInternalContent = 'createdBy___internal___content',
-  CreatedByInternalContentDigest = 'createdBy___internal___contentDigest',
-  CreatedByInternalDescription = 'createdBy___internal___description',
-  CreatedByInternalFieldOwners = 'createdBy___internal___fieldOwners',
-  CreatedByInternalIgnoreType = 'createdBy___internal___ignoreType',
-  CreatedByInternalMediaType = 'createdBy___internal___mediaType',
-  CreatedByInternalOwner = 'createdBy___internal___owner',
-  CreatedByInternalType = 'createdBy___internal___type',
-  CreatedByIsActive = 'createdBy___isActive',
-  CreatedByKind = 'createdBy___kind',
-  CreatedByName = 'createdBy___name',
-  CreatedByParentChildren = 'createdBy___parent___children',
-  CreatedByParentChildrenChildren = 'createdBy___parent___children___children',
-  CreatedByParentChildrenId = 'createdBy___parent___children___id',
-  CreatedByParentId = 'createdBy___parent___id',
-  CreatedByParentInternalContent = 'createdBy___parent___internal___content',
-  CreatedByParentInternalContentDigest = 'createdBy___parent___internal___contentDigest',
-  CreatedByParentInternalDescription = 'createdBy___parent___internal___description',
-  CreatedByParentInternalFieldOwners = 'createdBy___parent___internal___fieldOwners',
-  CreatedByParentInternalIgnoreType = 'createdBy___parent___internal___ignoreType',
-  CreatedByParentInternalMediaType = 'createdBy___parent___internal___mediaType',
-  CreatedByParentInternalOwner = 'createdBy___parent___internal___owner',
-  CreatedByParentInternalType = 'createdBy___parent___internal___type',
-  CreatedByParentParentChildren = 'createdBy___parent___parent___children',
-  CreatedByParentParentId = 'createdBy___parent___parent___id',
-  CreatedByPicture = 'createdBy___picture',
-  CreatedByPublishedAt = 'createdBy___publishedAt',
-  CreatedByRemoteId = 'createdBy___remoteId',
-  CreatedByRemoteTypeName = 'createdBy___remoteTypeName',
-  CreatedByStage = 'createdBy___stage',
-  CreatedByUpdatedAt = 'createdBy___updatedAt',
-  Id = 'id',
-  InternalContent = 'internal___content',
-  InternalContentDigest = 'internal___contentDigest',
-  InternalDescription = 'internal___description',
-  InternalFieldOwners = 'internal___fieldOwners',
-  InternalIgnoreType = 'internal___ignoreType',
-  InternalMediaType = 'internal___mediaType',
-  InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  Name = 'name',
-  ParentChildren = 'parent___children',
-  ParentChildrenChildren = 'parent___children___children',
-  ParentChildrenChildrenChildren = 'parent___children___children___children',
-  ParentChildrenChildrenId = 'parent___children___children___id',
-  ParentChildrenId = 'parent___children___id',
-  ParentChildrenInternalContent = 'parent___children___internal___content',
-  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
-  ParentChildrenInternalDescription = 'parent___children___internal___description',
-  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
-  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
-  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
-  ParentChildrenInternalOwner = 'parent___children___internal___owner',
-  ParentChildrenInternalType = 'parent___children___internal___type',
-  ParentChildrenParentChildren = 'parent___children___parent___children',
-  ParentChildrenParentId = 'parent___children___parent___id',
-  ParentId = 'parent___id',
-  ParentInternalContent = 'parent___internal___content',
-  ParentInternalContentDigest = 'parent___internal___contentDigest',
-  ParentInternalDescription = 'parent___internal___description',
-  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
-  ParentInternalIgnoreType = 'parent___internal___ignoreType',
-  ParentInternalMediaType = 'parent___internal___mediaType',
-  ParentInternalOwner = 'parent___internal___owner',
-  ParentInternalType = 'parent___internal___type',
-  ParentParentChildren = 'parent___parent___children',
-  ParentParentChildrenChildren = 'parent___parent___children___children',
-  ParentParentChildrenId = 'parent___parent___children___id',
-  ParentParentId = 'parent___parent___id',
-  ParentParentInternalContent = 'parent___parent___internal___content',
-  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
-  ParentParentInternalDescription = 'parent___parent___internal___description',
-  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
-  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
-  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
-  ParentParentInternalOwner = 'parent___parent___internal___owner',
-  ParentParentInternalType = 'parent___parent___internal___type',
-  ParentParentParentChildren = 'parent___parent___parent___children',
-  ParentParentParentId = 'parent___parent___parent___id',
-  PictureAuthorAvatar = 'picture___authorAvatar',
-  PictureAuthorAvatarBiography = 'picture___authorAvatar___biography',
-  PictureAuthorAvatarChildren = 'picture___authorAvatar___children',
-  PictureAuthorAvatarChildrenChildren = 'picture___authorAvatar___children___children',
-  PictureAuthorAvatarChildrenId = 'picture___authorAvatar___children___id',
-  PictureAuthorAvatarCreatedAt = 'picture___authorAvatar___createdAt',
-  PictureAuthorAvatarCreatedByChildren = 'picture___authorAvatar___createdBy___children',
-  PictureAuthorAvatarCreatedByCreatedAt = 'picture___authorAvatar___createdBy___createdAt',
-  PictureAuthorAvatarCreatedById = 'picture___authorAvatar___createdBy___id',
-  PictureAuthorAvatarCreatedByIsActive = 'picture___authorAvatar___createdBy___isActive',
-  PictureAuthorAvatarCreatedByKind = 'picture___authorAvatar___createdBy___kind',
-  PictureAuthorAvatarCreatedByName = 'picture___authorAvatar___createdBy___name',
-  PictureAuthorAvatarCreatedByPicture = 'picture___authorAvatar___createdBy___picture',
-  PictureAuthorAvatarCreatedByPublishedAt = 'picture___authorAvatar___createdBy___publishedAt',
-  PictureAuthorAvatarCreatedByRemoteId = 'picture___authorAvatar___createdBy___remoteId',
-  PictureAuthorAvatarCreatedByRemoteTypeName = 'picture___authorAvatar___createdBy___remoteTypeName',
-  PictureAuthorAvatarCreatedByStage = 'picture___authorAvatar___createdBy___stage',
-  PictureAuthorAvatarCreatedByUpdatedAt = 'picture___authorAvatar___createdBy___updatedAt',
-  PictureAuthorAvatarId = 'picture___authorAvatar___id',
-  PictureAuthorAvatarInternalContent = 'picture___authorAvatar___internal___content',
-  PictureAuthorAvatarInternalContentDigest = 'picture___authorAvatar___internal___contentDigest',
-  PictureAuthorAvatarInternalDescription = 'picture___authorAvatar___internal___description',
-  PictureAuthorAvatarInternalFieldOwners = 'picture___authorAvatar___internal___fieldOwners',
-  PictureAuthorAvatarInternalIgnoreType = 'picture___authorAvatar___internal___ignoreType',
-  PictureAuthorAvatarInternalMediaType = 'picture___authorAvatar___internal___mediaType',
-  PictureAuthorAvatarInternalOwner = 'picture___authorAvatar___internal___owner',
-  PictureAuthorAvatarInternalType = 'picture___authorAvatar___internal___type',
-  PictureAuthorAvatarName = 'picture___authorAvatar___name',
-  PictureAuthorAvatarParentChildren = 'picture___authorAvatar___parent___children',
-  PictureAuthorAvatarParentId = 'picture___authorAvatar___parent___id',
-  PictureAuthorAvatarPictureAuthorAvatar = 'picture___authorAvatar___picture___authorAvatar',
-  PictureAuthorAvatarPictureChildren = 'picture___authorAvatar___picture___children',
-  PictureAuthorAvatarPictureCoverImagePost = 'picture___authorAvatar___picture___coverImagePost',
-  PictureAuthorAvatarPictureCreatedAt = 'picture___authorAvatar___picture___createdAt',
-  PictureAuthorAvatarPictureFileName = 'picture___authorAvatar___picture___fileName',
-  PictureAuthorAvatarPictureHandle = 'picture___authorAvatar___picture___handle',
-  PictureAuthorAvatarPictureHeight = 'picture___authorAvatar___picture___height',
-  PictureAuthorAvatarPictureId = 'picture___authorAvatar___picture___id',
-  PictureAuthorAvatarPictureLocale = 'picture___authorAvatar___picture___locale',
-  PictureAuthorAvatarPictureMimeType = 'picture___authorAvatar___picture___mimeType',
-  PictureAuthorAvatarPicturePublishedAt = 'picture___authorAvatar___picture___publishedAt',
-  PictureAuthorAvatarPictureRemoteId = 'picture___authorAvatar___picture___remoteId',
-  PictureAuthorAvatarPictureRemoteTypeName = 'picture___authorAvatar___picture___remoteTypeName',
-  PictureAuthorAvatarPictureSeoImage = 'picture___authorAvatar___picture___seoImage',
-  PictureAuthorAvatarPictureSize = 'picture___authorAvatar___picture___size',
-  PictureAuthorAvatarPictureStage = 'picture___authorAvatar___picture___stage',
-  PictureAuthorAvatarPictureUpdatedAt = 'picture___authorAvatar___picture___updatedAt',
-  PictureAuthorAvatarPictureUrl = 'picture___authorAvatar___picture___url',
-  PictureAuthorAvatarPictureWidth = 'picture___authorAvatar___picture___width',
-  PictureAuthorAvatarPosts = 'picture___authorAvatar___posts',
-  PictureAuthorAvatarPostsChildren = 'picture___authorAvatar___posts___children',
-  PictureAuthorAvatarPostsCreatedAt = 'picture___authorAvatar___posts___createdAt',
-  PictureAuthorAvatarPostsDate = 'picture___authorAvatar___posts___date',
-  PictureAuthorAvatarPostsExcerpt = 'picture___authorAvatar___posts___excerpt',
-  PictureAuthorAvatarPostsId = 'picture___authorAvatar___posts___id',
-  PictureAuthorAvatarPostsPublishedAt = 'picture___authorAvatar___posts___publishedAt',
-  PictureAuthorAvatarPostsRemoteId = 'picture___authorAvatar___posts___remoteId',
-  PictureAuthorAvatarPostsRemoteTypeName = 'picture___authorAvatar___posts___remoteTypeName',
-  PictureAuthorAvatarPostsSlug = 'picture___authorAvatar___posts___slug',
-  PictureAuthorAvatarPostsStage = 'picture___authorAvatar___posts___stage',
-  PictureAuthorAvatarPostsTags = 'picture___authorAvatar___posts___tags',
-  PictureAuthorAvatarPostsTitle = 'picture___authorAvatar___posts___title',
-  PictureAuthorAvatarPostsUpdatedAt = 'picture___authorAvatar___posts___updatedAt',
-  PictureAuthorAvatarPublishedAt = 'picture___authorAvatar___publishedAt',
-  PictureAuthorAvatarPublishedByChildren = 'picture___authorAvatar___publishedBy___children',
-  PictureAuthorAvatarPublishedByCreatedAt = 'picture___authorAvatar___publishedBy___createdAt',
-  PictureAuthorAvatarPublishedById = 'picture___authorAvatar___publishedBy___id',
-  PictureAuthorAvatarPublishedByIsActive = 'picture___authorAvatar___publishedBy___isActive',
-  PictureAuthorAvatarPublishedByKind = 'picture___authorAvatar___publishedBy___kind',
-  PictureAuthorAvatarPublishedByName = 'picture___authorAvatar___publishedBy___name',
-  PictureAuthorAvatarPublishedByPicture = 'picture___authorAvatar___publishedBy___picture',
-  PictureAuthorAvatarPublishedByPublishedAt = 'picture___authorAvatar___publishedBy___publishedAt',
-  PictureAuthorAvatarPublishedByRemoteId = 'picture___authorAvatar___publishedBy___remoteId',
-  PictureAuthorAvatarPublishedByRemoteTypeName = 'picture___authorAvatar___publishedBy___remoteTypeName',
-  PictureAuthorAvatarPublishedByStage = 'picture___authorAvatar___publishedBy___stage',
-  PictureAuthorAvatarPublishedByUpdatedAt = 'picture___authorAvatar___publishedBy___updatedAt',
-  PictureAuthorAvatarRemoteId = 'picture___authorAvatar___remoteId',
-  PictureAuthorAvatarRemoteTypeName = 'picture___authorAvatar___remoteTypeName',
-  PictureAuthorAvatarStage = 'picture___authorAvatar___stage',
-  PictureAuthorAvatarTitle = 'picture___authorAvatar___title',
-  PictureAuthorAvatarUpdatedAt = 'picture___authorAvatar___updatedAt',
-  PictureAuthorAvatarUpdatedByChildren = 'picture___authorAvatar___updatedBy___children',
-  PictureAuthorAvatarUpdatedByCreatedAt = 'picture___authorAvatar___updatedBy___createdAt',
-  PictureAuthorAvatarUpdatedById = 'picture___authorAvatar___updatedBy___id',
-  PictureAuthorAvatarUpdatedByIsActive = 'picture___authorAvatar___updatedBy___isActive',
-  PictureAuthorAvatarUpdatedByKind = 'picture___authorAvatar___updatedBy___kind',
-  PictureAuthorAvatarUpdatedByName = 'picture___authorAvatar___updatedBy___name',
-  PictureAuthorAvatarUpdatedByPicture = 'picture___authorAvatar___updatedBy___picture',
-  PictureAuthorAvatarUpdatedByPublishedAt = 'picture___authorAvatar___updatedBy___publishedAt',
-  PictureAuthorAvatarUpdatedByRemoteId = 'picture___authorAvatar___updatedBy___remoteId',
-  PictureAuthorAvatarUpdatedByRemoteTypeName = 'picture___authorAvatar___updatedBy___remoteTypeName',
-  PictureAuthorAvatarUpdatedByStage = 'picture___authorAvatar___updatedBy___stage',
-  PictureAuthorAvatarUpdatedByUpdatedAt = 'picture___authorAvatar___updatedBy___updatedAt',
-  PictureChildren = 'picture___children',
-  PictureChildrenChildren = 'picture___children___children',
-  PictureChildrenChildrenChildren = 'picture___children___children___children',
-  PictureChildrenChildrenId = 'picture___children___children___id',
-  PictureChildrenId = 'picture___children___id',
-  PictureChildrenInternalContent = 'picture___children___internal___content',
-  PictureChildrenInternalContentDigest = 'picture___children___internal___contentDigest',
-  PictureChildrenInternalDescription = 'picture___children___internal___description',
-  PictureChildrenInternalFieldOwners = 'picture___children___internal___fieldOwners',
-  PictureChildrenInternalIgnoreType = 'picture___children___internal___ignoreType',
-  PictureChildrenInternalMediaType = 'picture___children___internal___mediaType',
-  PictureChildrenInternalOwner = 'picture___children___internal___owner',
-  PictureChildrenInternalType = 'picture___children___internal___type',
-  PictureChildrenParentChildren = 'picture___children___parent___children',
-  PictureChildrenParentId = 'picture___children___parent___id',
-  PictureCoverImagePost = 'picture___coverImagePost',
-  PictureCoverImagePostAuthorBiography = 'picture___coverImagePost___author___biography',
-  PictureCoverImagePostAuthorChildren = 'picture___coverImagePost___author___children',
-  PictureCoverImagePostAuthorCreatedAt = 'picture___coverImagePost___author___createdAt',
-  PictureCoverImagePostAuthorId = 'picture___coverImagePost___author___id',
-  PictureCoverImagePostAuthorName = 'picture___coverImagePost___author___name',
-  PictureCoverImagePostAuthorPosts = 'picture___coverImagePost___author___posts',
-  PictureCoverImagePostAuthorPublishedAt = 'picture___coverImagePost___author___publishedAt',
-  PictureCoverImagePostAuthorRemoteId = 'picture___coverImagePost___author___remoteId',
-  PictureCoverImagePostAuthorRemoteTypeName = 'picture___coverImagePost___author___remoteTypeName',
-  PictureCoverImagePostAuthorStage = 'picture___coverImagePost___author___stage',
-  PictureCoverImagePostAuthorTitle = 'picture___coverImagePost___author___title',
-  PictureCoverImagePostAuthorUpdatedAt = 'picture___coverImagePost___author___updatedAt',
-  PictureCoverImagePostChildren = 'picture___coverImagePost___children',
-  PictureCoverImagePostChildrenChildren = 'picture___coverImagePost___children___children',
-  PictureCoverImagePostChildrenId = 'picture___coverImagePost___children___id',
-  PictureCoverImagePostContentHtml = 'picture___coverImagePost___content___html',
-  PictureCoverImagePostContentMarkdown = 'picture___coverImagePost___content___markdown',
-  PictureCoverImagePostContentRaw = 'picture___coverImagePost___content___raw',
-  PictureCoverImagePostContentRemoteTypeName = 'picture___coverImagePost___content___remoteTypeName',
-  PictureCoverImagePostContentText = 'picture___coverImagePost___content___text',
-  PictureCoverImagePostCoverImageAuthorAvatar = 'picture___coverImagePost___coverImage___authorAvatar',
-  PictureCoverImagePostCoverImageChildren = 'picture___coverImagePost___coverImage___children',
-  PictureCoverImagePostCoverImageCoverImagePost = 'picture___coverImagePost___coverImage___coverImagePost',
-  PictureCoverImagePostCoverImageCreatedAt = 'picture___coverImagePost___coverImage___createdAt',
-  PictureCoverImagePostCoverImageFileName = 'picture___coverImagePost___coverImage___fileName',
-  PictureCoverImagePostCoverImageHandle = 'picture___coverImagePost___coverImage___handle',
-  PictureCoverImagePostCoverImageHeight = 'picture___coverImagePost___coverImage___height',
-  PictureCoverImagePostCoverImageId = 'picture___coverImagePost___coverImage___id',
-  PictureCoverImagePostCoverImageLocale = 'picture___coverImagePost___coverImage___locale',
-  PictureCoverImagePostCoverImageMimeType = 'picture___coverImagePost___coverImage___mimeType',
-  PictureCoverImagePostCoverImagePublishedAt = 'picture___coverImagePost___coverImage___publishedAt',
-  PictureCoverImagePostCoverImageRemoteId = 'picture___coverImagePost___coverImage___remoteId',
-  PictureCoverImagePostCoverImageRemoteTypeName = 'picture___coverImagePost___coverImage___remoteTypeName',
-  PictureCoverImagePostCoverImageSeoImage = 'picture___coverImagePost___coverImage___seoImage',
-  PictureCoverImagePostCoverImageSize = 'picture___coverImagePost___coverImage___size',
-  PictureCoverImagePostCoverImageStage = 'picture___coverImagePost___coverImage___stage',
-  PictureCoverImagePostCoverImageUpdatedAt = 'picture___coverImagePost___coverImage___updatedAt',
-  PictureCoverImagePostCoverImageUrl = 'picture___coverImagePost___coverImage___url',
-  PictureCoverImagePostCoverImageWidth = 'picture___coverImagePost___coverImage___width',
-  PictureCoverImagePostCreatedAt = 'picture___coverImagePost___createdAt',
-  PictureCoverImagePostCreatedByChildren = 'picture___coverImagePost___createdBy___children',
-  PictureCoverImagePostCreatedByCreatedAt = 'picture___coverImagePost___createdBy___createdAt',
-  PictureCoverImagePostCreatedById = 'picture___coverImagePost___createdBy___id',
-  PictureCoverImagePostCreatedByIsActive = 'picture___coverImagePost___createdBy___isActive',
-  PictureCoverImagePostCreatedByKind = 'picture___coverImagePost___createdBy___kind',
-  PictureCoverImagePostCreatedByName = 'picture___coverImagePost___createdBy___name',
-  PictureCoverImagePostCreatedByPicture = 'picture___coverImagePost___createdBy___picture',
-  PictureCoverImagePostCreatedByPublishedAt = 'picture___coverImagePost___createdBy___publishedAt',
-  PictureCoverImagePostCreatedByRemoteId = 'picture___coverImagePost___createdBy___remoteId',
-  PictureCoverImagePostCreatedByRemoteTypeName = 'picture___coverImagePost___createdBy___remoteTypeName',
-  PictureCoverImagePostCreatedByStage = 'picture___coverImagePost___createdBy___stage',
-  PictureCoverImagePostCreatedByUpdatedAt = 'picture___coverImagePost___createdBy___updatedAt',
-  PictureCoverImagePostDate = 'picture___coverImagePost___date',
-  PictureCoverImagePostExcerpt = 'picture___coverImagePost___excerpt',
-  PictureCoverImagePostId = 'picture___coverImagePost___id',
-  PictureCoverImagePostInternalContent = 'picture___coverImagePost___internal___content',
-  PictureCoverImagePostInternalContentDigest = 'picture___coverImagePost___internal___contentDigest',
-  PictureCoverImagePostInternalDescription = 'picture___coverImagePost___internal___description',
-  PictureCoverImagePostInternalFieldOwners = 'picture___coverImagePost___internal___fieldOwners',
-  PictureCoverImagePostInternalIgnoreType = 'picture___coverImagePost___internal___ignoreType',
-  PictureCoverImagePostInternalMediaType = 'picture___coverImagePost___internal___mediaType',
-  PictureCoverImagePostInternalOwner = 'picture___coverImagePost___internal___owner',
-  PictureCoverImagePostInternalType = 'picture___coverImagePost___internal___type',
-  PictureCoverImagePostParentChildren = 'picture___coverImagePost___parent___children',
-  PictureCoverImagePostParentId = 'picture___coverImagePost___parent___id',
-  PictureCoverImagePostPublishedAt = 'picture___coverImagePost___publishedAt',
-  PictureCoverImagePostPublishedByChildren = 'picture___coverImagePost___publishedBy___children',
-  PictureCoverImagePostPublishedByCreatedAt = 'picture___coverImagePost___publishedBy___createdAt',
-  PictureCoverImagePostPublishedById = 'picture___coverImagePost___publishedBy___id',
-  PictureCoverImagePostPublishedByIsActive = 'picture___coverImagePost___publishedBy___isActive',
-  PictureCoverImagePostPublishedByKind = 'picture___coverImagePost___publishedBy___kind',
-  PictureCoverImagePostPublishedByName = 'picture___coverImagePost___publishedBy___name',
-  PictureCoverImagePostPublishedByPicture = 'picture___coverImagePost___publishedBy___picture',
-  PictureCoverImagePostPublishedByPublishedAt = 'picture___coverImagePost___publishedBy___publishedAt',
-  PictureCoverImagePostPublishedByRemoteId = 'picture___coverImagePost___publishedBy___remoteId',
-  PictureCoverImagePostPublishedByRemoteTypeName = 'picture___coverImagePost___publishedBy___remoteTypeName',
-  PictureCoverImagePostPublishedByStage = 'picture___coverImagePost___publishedBy___stage',
-  PictureCoverImagePostPublishedByUpdatedAt = 'picture___coverImagePost___publishedBy___updatedAt',
-  PictureCoverImagePostRemoteId = 'picture___coverImagePost___remoteId',
-  PictureCoverImagePostRemoteTypeName = 'picture___coverImagePost___remoteTypeName',
-  PictureCoverImagePostSeoChildren = 'picture___coverImagePost___seo___children',
-  PictureCoverImagePostSeoCreatedAt = 'picture___coverImagePost___seo___createdAt',
-  PictureCoverImagePostSeoDescription = 'picture___coverImagePost___seo___description',
-  PictureCoverImagePostSeoId = 'picture___coverImagePost___seo___id',
-  PictureCoverImagePostSeoKeywords = 'picture___coverImagePost___seo___keywords',
-  PictureCoverImagePostSeoPublishedAt = 'picture___coverImagePost___seo___publishedAt',
-  PictureCoverImagePostSeoRemoteId = 'picture___coverImagePost___seo___remoteId',
-  PictureCoverImagePostSeoRemoteTypeName = 'picture___coverImagePost___seo___remoteTypeName',
-  PictureCoverImagePostSeoStage = 'picture___coverImagePost___seo___stage',
-  PictureCoverImagePostSeoTitle = 'picture___coverImagePost___seo___title',
-  PictureCoverImagePostSeoUpdatedAt = 'picture___coverImagePost___seo___updatedAt',
-  PictureCoverImagePostSlug = 'picture___coverImagePost___slug',
-  PictureCoverImagePostStage = 'picture___coverImagePost___stage',
-  PictureCoverImagePostTags = 'picture___coverImagePost___tags',
-  PictureCoverImagePostTitle = 'picture___coverImagePost___title',
-  PictureCoverImagePostUpdatedAt = 'picture___coverImagePost___updatedAt',
-  PictureCoverImagePostUpdatedByChildren = 'picture___coverImagePost___updatedBy___children',
-  PictureCoverImagePostUpdatedByCreatedAt = 'picture___coverImagePost___updatedBy___createdAt',
-  PictureCoverImagePostUpdatedById = 'picture___coverImagePost___updatedBy___id',
-  PictureCoverImagePostUpdatedByIsActive = 'picture___coverImagePost___updatedBy___isActive',
-  PictureCoverImagePostUpdatedByKind = 'picture___coverImagePost___updatedBy___kind',
-  PictureCoverImagePostUpdatedByName = 'picture___coverImagePost___updatedBy___name',
-  PictureCoverImagePostUpdatedByPicture = 'picture___coverImagePost___updatedBy___picture',
-  PictureCoverImagePostUpdatedByPublishedAt = 'picture___coverImagePost___updatedBy___publishedAt',
-  PictureCoverImagePostUpdatedByRemoteId = 'picture___coverImagePost___updatedBy___remoteId',
-  PictureCoverImagePostUpdatedByRemoteTypeName = 'picture___coverImagePost___updatedBy___remoteTypeName',
-  PictureCoverImagePostUpdatedByStage = 'picture___coverImagePost___updatedBy___stage',
-  PictureCoverImagePostUpdatedByUpdatedAt = 'picture___coverImagePost___updatedBy___updatedAt',
-  PictureCreatedAt = 'picture___createdAt',
-  PictureCreatedByChildren = 'picture___createdBy___children',
-  PictureCreatedByChildrenChildren = 'picture___createdBy___children___children',
-  PictureCreatedByChildrenId = 'picture___createdBy___children___id',
-  PictureCreatedByCreatedAt = 'picture___createdBy___createdAt',
-  PictureCreatedById = 'picture___createdBy___id',
-  PictureCreatedByInternalContent = 'picture___createdBy___internal___content',
-  PictureCreatedByInternalContentDigest = 'picture___createdBy___internal___contentDigest',
-  PictureCreatedByInternalDescription = 'picture___createdBy___internal___description',
-  PictureCreatedByInternalFieldOwners = 'picture___createdBy___internal___fieldOwners',
-  PictureCreatedByInternalIgnoreType = 'picture___createdBy___internal___ignoreType',
-  PictureCreatedByInternalMediaType = 'picture___createdBy___internal___mediaType',
-  PictureCreatedByInternalOwner = 'picture___createdBy___internal___owner',
-  PictureCreatedByInternalType = 'picture___createdBy___internal___type',
-  PictureCreatedByIsActive = 'picture___createdBy___isActive',
-  PictureCreatedByKind = 'picture___createdBy___kind',
-  PictureCreatedByName = 'picture___createdBy___name',
-  PictureCreatedByParentChildren = 'picture___createdBy___parent___children',
-  PictureCreatedByParentId = 'picture___createdBy___parent___id',
-  PictureCreatedByPicture = 'picture___createdBy___picture',
-  PictureCreatedByPublishedAt = 'picture___createdBy___publishedAt',
-  PictureCreatedByRemoteId = 'picture___createdBy___remoteId',
-  PictureCreatedByRemoteTypeName = 'picture___createdBy___remoteTypeName',
-  PictureCreatedByStage = 'picture___createdBy___stage',
-  PictureCreatedByUpdatedAt = 'picture___createdBy___updatedAt',
-  PictureFileName = 'picture___fileName',
-  PictureHandle = 'picture___handle',
-  PictureHeight = 'picture___height',
-  PictureId = 'picture___id',
-  PictureInternalContent = 'picture___internal___content',
-  PictureInternalContentDigest = 'picture___internal___contentDigest',
-  PictureInternalDescription = 'picture___internal___description',
-  PictureInternalFieldOwners = 'picture___internal___fieldOwners',
-  PictureInternalIgnoreType = 'picture___internal___ignoreType',
-  PictureInternalMediaType = 'picture___internal___mediaType',
-  PictureInternalOwner = 'picture___internal___owner',
-  PictureInternalType = 'picture___internal___type',
-  PictureLocale = 'picture___locale',
-  PictureMimeType = 'picture___mimeType',
-  PictureParentChildren = 'picture___parent___children',
-  PictureParentChildrenChildren = 'picture___parent___children___children',
-  PictureParentChildrenId = 'picture___parent___children___id',
-  PictureParentId = 'picture___parent___id',
-  PictureParentInternalContent = 'picture___parent___internal___content',
-  PictureParentInternalContentDigest = 'picture___parent___internal___contentDigest',
-  PictureParentInternalDescription = 'picture___parent___internal___description',
-  PictureParentInternalFieldOwners = 'picture___parent___internal___fieldOwners',
-  PictureParentInternalIgnoreType = 'picture___parent___internal___ignoreType',
-  PictureParentInternalMediaType = 'picture___parent___internal___mediaType',
-  PictureParentInternalOwner = 'picture___parent___internal___owner',
-  PictureParentInternalType = 'picture___parent___internal___type',
-  PictureParentParentChildren = 'picture___parent___parent___children',
-  PictureParentParentId = 'picture___parent___parent___id',
-  PicturePublishedAt = 'picture___publishedAt',
-  PicturePublishedByChildren = 'picture___publishedBy___children',
-  PicturePublishedByChildrenChildren = 'picture___publishedBy___children___children',
-  PicturePublishedByChildrenId = 'picture___publishedBy___children___id',
-  PicturePublishedByCreatedAt = 'picture___publishedBy___createdAt',
-  PicturePublishedById = 'picture___publishedBy___id',
-  PicturePublishedByInternalContent = 'picture___publishedBy___internal___content',
-  PicturePublishedByInternalContentDigest = 'picture___publishedBy___internal___contentDigest',
-  PicturePublishedByInternalDescription = 'picture___publishedBy___internal___description',
-  PicturePublishedByInternalFieldOwners = 'picture___publishedBy___internal___fieldOwners',
-  PicturePublishedByInternalIgnoreType = 'picture___publishedBy___internal___ignoreType',
-  PicturePublishedByInternalMediaType = 'picture___publishedBy___internal___mediaType',
-  PicturePublishedByInternalOwner = 'picture___publishedBy___internal___owner',
-  PicturePublishedByInternalType = 'picture___publishedBy___internal___type',
-  PicturePublishedByIsActive = 'picture___publishedBy___isActive',
-  PicturePublishedByKind = 'picture___publishedBy___kind',
-  PicturePublishedByName = 'picture___publishedBy___name',
-  PicturePublishedByParentChildren = 'picture___publishedBy___parent___children',
-  PicturePublishedByParentId = 'picture___publishedBy___parent___id',
-  PicturePublishedByPicture = 'picture___publishedBy___picture',
-  PicturePublishedByPublishedAt = 'picture___publishedBy___publishedAt',
-  PicturePublishedByRemoteId = 'picture___publishedBy___remoteId',
-  PicturePublishedByRemoteTypeName = 'picture___publishedBy___remoteTypeName',
-  PicturePublishedByStage = 'picture___publishedBy___stage',
-  PicturePublishedByUpdatedAt = 'picture___publishedBy___updatedAt',
-  PictureRemoteId = 'picture___remoteId',
-  PictureRemoteTypeName = 'picture___remoteTypeName',
-  PictureSeoImage = 'picture___seoImage',
-  PictureSeoImageChildren = 'picture___seoImage___children',
-  PictureSeoImageChildrenChildren = 'picture___seoImage___children___children',
-  PictureSeoImageChildrenId = 'picture___seoImage___children___id',
-  PictureSeoImageCreatedAt = 'picture___seoImage___createdAt',
-  PictureSeoImageCreatedByChildren = 'picture___seoImage___createdBy___children',
-  PictureSeoImageCreatedByCreatedAt = 'picture___seoImage___createdBy___createdAt',
-  PictureSeoImageCreatedById = 'picture___seoImage___createdBy___id',
-  PictureSeoImageCreatedByIsActive = 'picture___seoImage___createdBy___isActive',
-  PictureSeoImageCreatedByKind = 'picture___seoImage___createdBy___kind',
-  PictureSeoImageCreatedByName = 'picture___seoImage___createdBy___name',
-  PictureSeoImageCreatedByPicture = 'picture___seoImage___createdBy___picture',
-  PictureSeoImageCreatedByPublishedAt = 'picture___seoImage___createdBy___publishedAt',
-  PictureSeoImageCreatedByRemoteId = 'picture___seoImage___createdBy___remoteId',
-  PictureSeoImageCreatedByRemoteTypeName = 'picture___seoImage___createdBy___remoteTypeName',
-  PictureSeoImageCreatedByStage = 'picture___seoImage___createdBy___stage',
-  PictureSeoImageCreatedByUpdatedAt = 'picture___seoImage___createdBy___updatedAt',
-  PictureSeoImageDescription = 'picture___seoImage___description',
-  PictureSeoImageId = 'picture___seoImage___id',
-  PictureSeoImageImageAuthorAvatar = 'picture___seoImage___image___authorAvatar',
-  PictureSeoImageImageChildren = 'picture___seoImage___image___children',
-  PictureSeoImageImageCoverImagePost = 'picture___seoImage___image___coverImagePost',
-  PictureSeoImageImageCreatedAt = 'picture___seoImage___image___createdAt',
-  PictureSeoImageImageFileName = 'picture___seoImage___image___fileName',
-  PictureSeoImageImageHandle = 'picture___seoImage___image___handle',
-  PictureSeoImageImageHeight = 'picture___seoImage___image___height',
-  PictureSeoImageImageId = 'picture___seoImage___image___id',
-  PictureSeoImageImageLocale = 'picture___seoImage___image___locale',
-  PictureSeoImageImageMimeType = 'picture___seoImage___image___mimeType',
-  PictureSeoImageImagePublishedAt = 'picture___seoImage___image___publishedAt',
-  PictureSeoImageImageRemoteId = 'picture___seoImage___image___remoteId',
-  PictureSeoImageImageRemoteTypeName = 'picture___seoImage___image___remoteTypeName',
-  PictureSeoImageImageSeoImage = 'picture___seoImage___image___seoImage',
-  PictureSeoImageImageSize = 'picture___seoImage___image___size',
-  PictureSeoImageImageStage = 'picture___seoImage___image___stage',
-  PictureSeoImageImageUpdatedAt = 'picture___seoImage___image___updatedAt',
-  PictureSeoImageImageUrl = 'picture___seoImage___image___url',
-  PictureSeoImageImageWidth = 'picture___seoImage___image___width',
-  PictureSeoImageInternalContent = 'picture___seoImage___internal___content',
-  PictureSeoImageInternalContentDigest = 'picture___seoImage___internal___contentDigest',
-  PictureSeoImageInternalDescription = 'picture___seoImage___internal___description',
-  PictureSeoImageInternalFieldOwners = 'picture___seoImage___internal___fieldOwners',
-  PictureSeoImageInternalIgnoreType = 'picture___seoImage___internal___ignoreType',
-  PictureSeoImageInternalMediaType = 'picture___seoImage___internal___mediaType',
-  PictureSeoImageInternalOwner = 'picture___seoImage___internal___owner',
-  PictureSeoImageInternalType = 'picture___seoImage___internal___type',
-  PictureSeoImageKeywords = 'picture___seoImage___keywords',
-  PictureSeoImageParentChildren = 'picture___seoImage___parent___children',
-  PictureSeoImageParentId = 'picture___seoImage___parent___id',
-  PictureSeoImagePublishedAt = 'picture___seoImage___publishedAt',
-  PictureSeoImagePublishedByChildren = 'picture___seoImage___publishedBy___children',
-  PictureSeoImagePublishedByCreatedAt = 'picture___seoImage___publishedBy___createdAt',
-  PictureSeoImagePublishedById = 'picture___seoImage___publishedBy___id',
-  PictureSeoImagePublishedByIsActive = 'picture___seoImage___publishedBy___isActive',
-  PictureSeoImagePublishedByKind = 'picture___seoImage___publishedBy___kind',
-  PictureSeoImagePublishedByName = 'picture___seoImage___publishedBy___name',
-  PictureSeoImagePublishedByPicture = 'picture___seoImage___publishedBy___picture',
-  PictureSeoImagePublishedByPublishedAt = 'picture___seoImage___publishedBy___publishedAt',
-  PictureSeoImagePublishedByRemoteId = 'picture___seoImage___publishedBy___remoteId',
-  PictureSeoImagePublishedByRemoteTypeName = 'picture___seoImage___publishedBy___remoteTypeName',
-  PictureSeoImagePublishedByStage = 'picture___seoImage___publishedBy___stage',
-  PictureSeoImagePublishedByUpdatedAt = 'picture___seoImage___publishedBy___updatedAt',
-  PictureSeoImageRemoteId = 'picture___seoImage___remoteId',
-  PictureSeoImageRemoteTypeName = 'picture___seoImage___remoteTypeName',
-  PictureSeoImageStage = 'picture___seoImage___stage',
-  PictureSeoImageTitle = 'picture___seoImage___title',
-  PictureSeoImageUpdatedAt = 'picture___seoImage___updatedAt',
-  PictureSeoImageUpdatedByChildren = 'picture___seoImage___updatedBy___children',
-  PictureSeoImageUpdatedByCreatedAt = 'picture___seoImage___updatedBy___createdAt',
-  PictureSeoImageUpdatedById = 'picture___seoImage___updatedBy___id',
-  PictureSeoImageUpdatedByIsActive = 'picture___seoImage___updatedBy___isActive',
-  PictureSeoImageUpdatedByKind = 'picture___seoImage___updatedBy___kind',
-  PictureSeoImageUpdatedByName = 'picture___seoImage___updatedBy___name',
-  PictureSeoImageUpdatedByPicture = 'picture___seoImage___updatedBy___picture',
-  PictureSeoImageUpdatedByPublishedAt = 'picture___seoImage___updatedBy___publishedAt',
-  PictureSeoImageUpdatedByRemoteId = 'picture___seoImage___updatedBy___remoteId',
-  PictureSeoImageUpdatedByRemoteTypeName = 'picture___seoImage___updatedBy___remoteTypeName',
-  PictureSeoImageUpdatedByStage = 'picture___seoImage___updatedBy___stage',
-  PictureSeoImageUpdatedByUpdatedAt = 'picture___seoImage___updatedBy___updatedAt',
-  PictureSize = 'picture___size',
-  PictureStage = 'picture___stage',
-  PictureUpdatedAt = 'picture___updatedAt',
-  PictureUpdatedByChildren = 'picture___updatedBy___children',
-  PictureUpdatedByChildrenChildren = 'picture___updatedBy___children___children',
-  PictureUpdatedByChildrenId = 'picture___updatedBy___children___id',
-  PictureUpdatedByCreatedAt = 'picture___updatedBy___createdAt',
-  PictureUpdatedById = 'picture___updatedBy___id',
-  PictureUpdatedByInternalContent = 'picture___updatedBy___internal___content',
-  PictureUpdatedByInternalContentDigest = 'picture___updatedBy___internal___contentDigest',
-  PictureUpdatedByInternalDescription = 'picture___updatedBy___internal___description',
-  PictureUpdatedByInternalFieldOwners = 'picture___updatedBy___internal___fieldOwners',
-  PictureUpdatedByInternalIgnoreType = 'picture___updatedBy___internal___ignoreType',
-  PictureUpdatedByInternalMediaType = 'picture___updatedBy___internal___mediaType',
-  PictureUpdatedByInternalOwner = 'picture___updatedBy___internal___owner',
-  PictureUpdatedByInternalType = 'picture___updatedBy___internal___type',
-  PictureUpdatedByIsActive = 'picture___updatedBy___isActive',
-  PictureUpdatedByKind = 'picture___updatedBy___kind',
-  PictureUpdatedByName = 'picture___updatedBy___name',
-  PictureUpdatedByParentChildren = 'picture___updatedBy___parent___children',
-  PictureUpdatedByParentId = 'picture___updatedBy___parent___id',
-  PictureUpdatedByPicture = 'picture___updatedBy___picture',
-  PictureUpdatedByPublishedAt = 'picture___updatedBy___publishedAt',
-  PictureUpdatedByRemoteId = 'picture___updatedBy___remoteId',
-  PictureUpdatedByRemoteTypeName = 'picture___updatedBy___remoteTypeName',
-  PictureUpdatedByStage = 'picture___updatedBy___stage',
-  PictureUpdatedByUpdatedAt = 'picture___updatedBy___updatedAt',
-  PictureUrl = 'picture___url',
-  PictureWidth = 'picture___width',
-  Posts = 'posts',
-  PostsAuthorBiography = 'posts___author___biography',
-  PostsAuthorChildren = 'posts___author___children',
-  PostsAuthorChildrenChildren = 'posts___author___children___children',
-  PostsAuthorChildrenId = 'posts___author___children___id',
-  PostsAuthorCreatedAt = 'posts___author___createdAt',
-  PostsAuthorCreatedByChildren = 'posts___author___createdBy___children',
-  PostsAuthorCreatedByCreatedAt = 'posts___author___createdBy___createdAt',
-  PostsAuthorCreatedById = 'posts___author___createdBy___id',
-  PostsAuthorCreatedByIsActive = 'posts___author___createdBy___isActive',
-  PostsAuthorCreatedByKind = 'posts___author___createdBy___kind',
-  PostsAuthorCreatedByName = 'posts___author___createdBy___name',
-  PostsAuthorCreatedByPicture = 'posts___author___createdBy___picture',
-  PostsAuthorCreatedByPublishedAt = 'posts___author___createdBy___publishedAt',
-  PostsAuthorCreatedByRemoteId = 'posts___author___createdBy___remoteId',
-  PostsAuthorCreatedByRemoteTypeName = 'posts___author___createdBy___remoteTypeName',
-  PostsAuthorCreatedByStage = 'posts___author___createdBy___stage',
-  PostsAuthorCreatedByUpdatedAt = 'posts___author___createdBy___updatedAt',
-  PostsAuthorId = 'posts___author___id',
-  PostsAuthorInternalContent = 'posts___author___internal___content',
-  PostsAuthorInternalContentDigest = 'posts___author___internal___contentDigest',
-  PostsAuthorInternalDescription = 'posts___author___internal___description',
-  PostsAuthorInternalFieldOwners = 'posts___author___internal___fieldOwners',
-  PostsAuthorInternalIgnoreType = 'posts___author___internal___ignoreType',
-  PostsAuthorInternalMediaType = 'posts___author___internal___mediaType',
-  PostsAuthorInternalOwner = 'posts___author___internal___owner',
-  PostsAuthorInternalType = 'posts___author___internal___type',
-  PostsAuthorName = 'posts___author___name',
-  PostsAuthorParentChildren = 'posts___author___parent___children',
-  PostsAuthorParentId = 'posts___author___parent___id',
-  PostsAuthorPictureAuthorAvatar = 'posts___author___picture___authorAvatar',
-  PostsAuthorPictureChildren = 'posts___author___picture___children',
-  PostsAuthorPictureCoverImagePost = 'posts___author___picture___coverImagePost',
-  PostsAuthorPictureCreatedAt = 'posts___author___picture___createdAt',
-  PostsAuthorPictureFileName = 'posts___author___picture___fileName',
-  PostsAuthorPictureHandle = 'posts___author___picture___handle',
-  PostsAuthorPictureHeight = 'posts___author___picture___height',
-  PostsAuthorPictureId = 'posts___author___picture___id',
-  PostsAuthorPictureLocale = 'posts___author___picture___locale',
-  PostsAuthorPictureMimeType = 'posts___author___picture___mimeType',
-  PostsAuthorPicturePublishedAt = 'posts___author___picture___publishedAt',
-  PostsAuthorPictureRemoteId = 'posts___author___picture___remoteId',
-  PostsAuthorPictureRemoteTypeName = 'posts___author___picture___remoteTypeName',
-  PostsAuthorPictureSeoImage = 'posts___author___picture___seoImage',
-  PostsAuthorPictureSize = 'posts___author___picture___size',
-  PostsAuthorPictureStage = 'posts___author___picture___stage',
-  PostsAuthorPictureUpdatedAt = 'posts___author___picture___updatedAt',
-  PostsAuthorPictureUrl = 'posts___author___picture___url',
-  PostsAuthorPictureWidth = 'posts___author___picture___width',
-  PostsAuthorPosts = 'posts___author___posts',
-  PostsAuthorPostsChildren = 'posts___author___posts___children',
-  PostsAuthorPostsCreatedAt = 'posts___author___posts___createdAt',
-  PostsAuthorPostsDate = 'posts___author___posts___date',
-  PostsAuthorPostsExcerpt = 'posts___author___posts___excerpt',
-  PostsAuthorPostsId = 'posts___author___posts___id',
-  PostsAuthorPostsPublishedAt = 'posts___author___posts___publishedAt',
-  PostsAuthorPostsRemoteId = 'posts___author___posts___remoteId',
-  PostsAuthorPostsRemoteTypeName = 'posts___author___posts___remoteTypeName',
-  PostsAuthorPostsSlug = 'posts___author___posts___slug',
-  PostsAuthorPostsStage = 'posts___author___posts___stage',
-  PostsAuthorPostsTags = 'posts___author___posts___tags',
-  PostsAuthorPostsTitle = 'posts___author___posts___title',
-  PostsAuthorPostsUpdatedAt = 'posts___author___posts___updatedAt',
-  PostsAuthorPublishedAt = 'posts___author___publishedAt',
-  PostsAuthorPublishedByChildren = 'posts___author___publishedBy___children',
-  PostsAuthorPublishedByCreatedAt = 'posts___author___publishedBy___createdAt',
-  PostsAuthorPublishedById = 'posts___author___publishedBy___id',
-  PostsAuthorPublishedByIsActive = 'posts___author___publishedBy___isActive',
-  PostsAuthorPublishedByKind = 'posts___author___publishedBy___kind',
-  PostsAuthorPublishedByName = 'posts___author___publishedBy___name',
-  PostsAuthorPublishedByPicture = 'posts___author___publishedBy___picture',
-  PostsAuthorPublishedByPublishedAt = 'posts___author___publishedBy___publishedAt',
-  PostsAuthorPublishedByRemoteId = 'posts___author___publishedBy___remoteId',
-  PostsAuthorPublishedByRemoteTypeName = 'posts___author___publishedBy___remoteTypeName',
-  PostsAuthorPublishedByStage = 'posts___author___publishedBy___stage',
-  PostsAuthorPublishedByUpdatedAt = 'posts___author___publishedBy___updatedAt',
-  PostsAuthorRemoteId = 'posts___author___remoteId',
-  PostsAuthorRemoteTypeName = 'posts___author___remoteTypeName',
-  PostsAuthorStage = 'posts___author___stage',
-  PostsAuthorTitle = 'posts___author___title',
-  PostsAuthorUpdatedAt = 'posts___author___updatedAt',
-  PostsAuthorUpdatedByChildren = 'posts___author___updatedBy___children',
-  PostsAuthorUpdatedByCreatedAt = 'posts___author___updatedBy___createdAt',
-  PostsAuthorUpdatedById = 'posts___author___updatedBy___id',
-  PostsAuthorUpdatedByIsActive = 'posts___author___updatedBy___isActive',
-  PostsAuthorUpdatedByKind = 'posts___author___updatedBy___kind',
-  PostsAuthorUpdatedByName = 'posts___author___updatedBy___name',
-  PostsAuthorUpdatedByPicture = 'posts___author___updatedBy___picture',
-  PostsAuthorUpdatedByPublishedAt = 'posts___author___updatedBy___publishedAt',
-  PostsAuthorUpdatedByRemoteId = 'posts___author___updatedBy___remoteId',
-  PostsAuthorUpdatedByRemoteTypeName = 'posts___author___updatedBy___remoteTypeName',
-  PostsAuthorUpdatedByStage = 'posts___author___updatedBy___stage',
-  PostsAuthorUpdatedByUpdatedAt = 'posts___author___updatedBy___updatedAt',
-  PostsChildren = 'posts___children',
-  PostsChildrenChildren = 'posts___children___children',
-  PostsChildrenChildrenChildren = 'posts___children___children___children',
-  PostsChildrenChildrenId = 'posts___children___children___id',
-  PostsChildrenId = 'posts___children___id',
-  PostsChildrenInternalContent = 'posts___children___internal___content',
-  PostsChildrenInternalContentDigest = 'posts___children___internal___contentDigest',
-  PostsChildrenInternalDescription = 'posts___children___internal___description',
-  PostsChildrenInternalFieldOwners = 'posts___children___internal___fieldOwners',
-  PostsChildrenInternalIgnoreType = 'posts___children___internal___ignoreType',
-  PostsChildrenInternalMediaType = 'posts___children___internal___mediaType',
-  PostsChildrenInternalOwner = 'posts___children___internal___owner',
-  PostsChildrenInternalType = 'posts___children___internal___type',
-  PostsChildrenParentChildren = 'posts___children___parent___children',
-  PostsChildrenParentId = 'posts___children___parent___id',
-  PostsContentHtml = 'posts___content___html',
-  PostsContentMarkdown = 'posts___content___markdown',
-  PostsContentRaw = 'posts___content___raw',
-  PostsContentRemoteTypeName = 'posts___content___remoteTypeName',
-  PostsContentText = 'posts___content___text',
-  PostsCoverImageAuthorAvatar = 'posts___coverImage___authorAvatar',
-  PostsCoverImageAuthorAvatarBiography = 'posts___coverImage___authorAvatar___biography',
-  PostsCoverImageAuthorAvatarChildren = 'posts___coverImage___authorAvatar___children',
-  PostsCoverImageAuthorAvatarCreatedAt = 'posts___coverImage___authorAvatar___createdAt',
-  PostsCoverImageAuthorAvatarId = 'posts___coverImage___authorAvatar___id',
-  PostsCoverImageAuthorAvatarName = 'posts___coverImage___authorAvatar___name',
-  PostsCoverImageAuthorAvatarPosts = 'posts___coverImage___authorAvatar___posts',
-  PostsCoverImageAuthorAvatarPublishedAt = 'posts___coverImage___authorAvatar___publishedAt',
-  PostsCoverImageAuthorAvatarRemoteId = 'posts___coverImage___authorAvatar___remoteId',
-  PostsCoverImageAuthorAvatarRemoteTypeName = 'posts___coverImage___authorAvatar___remoteTypeName',
-  PostsCoverImageAuthorAvatarStage = 'posts___coverImage___authorAvatar___stage',
-  PostsCoverImageAuthorAvatarTitle = 'posts___coverImage___authorAvatar___title',
-  PostsCoverImageAuthorAvatarUpdatedAt = 'posts___coverImage___authorAvatar___updatedAt',
-  PostsCoverImageChildren = 'posts___coverImage___children',
-  PostsCoverImageChildrenChildren = 'posts___coverImage___children___children',
-  PostsCoverImageChildrenId = 'posts___coverImage___children___id',
-  PostsCoverImageCoverImagePost = 'posts___coverImage___coverImagePost',
-  PostsCoverImageCoverImagePostChildren = 'posts___coverImage___coverImagePost___children',
-  PostsCoverImageCoverImagePostCreatedAt = 'posts___coverImage___coverImagePost___createdAt',
-  PostsCoverImageCoverImagePostDate = 'posts___coverImage___coverImagePost___date',
-  PostsCoverImageCoverImagePostExcerpt = 'posts___coverImage___coverImagePost___excerpt',
-  PostsCoverImageCoverImagePostId = 'posts___coverImage___coverImagePost___id',
-  PostsCoverImageCoverImagePostPublishedAt = 'posts___coverImage___coverImagePost___publishedAt',
-  PostsCoverImageCoverImagePostRemoteId = 'posts___coverImage___coverImagePost___remoteId',
-  PostsCoverImageCoverImagePostRemoteTypeName = 'posts___coverImage___coverImagePost___remoteTypeName',
-  PostsCoverImageCoverImagePostSlug = 'posts___coverImage___coverImagePost___slug',
-  PostsCoverImageCoverImagePostStage = 'posts___coverImage___coverImagePost___stage',
-  PostsCoverImageCoverImagePostTags = 'posts___coverImage___coverImagePost___tags',
-  PostsCoverImageCoverImagePostTitle = 'posts___coverImage___coverImagePost___title',
-  PostsCoverImageCoverImagePostUpdatedAt = 'posts___coverImage___coverImagePost___updatedAt',
-  PostsCoverImageCreatedAt = 'posts___coverImage___createdAt',
-  PostsCoverImageCreatedByChildren = 'posts___coverImage___createdBy___children',
-  PostsCoverImageCreatedByCreatedAt = 'posts___coverImage___createdBy___createdAt',
-  PostsCoverImageCreatedById = 'posts___coverImage___createdBy___id',
-  PostsCoverImageCreatedByIsActive = 'posts___coverImage___createdBy___isActive',
-  PostsCoverImageCreatedByKind = 'posts___coverImage___createdBy___kind',
-  PostsCoverImageCreatedByName = 'posts___coverImage___createdBy___name',
-  PostsCoverImageCreatedByPicture = 'posts___coverImage___createdBy___picture',
-  PostsCoverImageCreatedByPublishedAt = 'posts___coverImage___createdBy___publishedAt',
-  PostsCoverImageCreatedByRemoteId = 'posts___coverImage___createdBy___remoteId',
-  PostsCoverImageCreatedByRemoteTypeName = 'posts___coverImage___createdBy___remoteTypeName',
-  PostsCoverImageCreatedByStage = 'posts___coverImage___createdBy___stage',
-  PostsCoverImageCreatedByUpdatedAt = 'posts___coverImage___createdBy___updatedAt',
-  PostsCoverImageFileName = 'posts___coverImage___fileName',
-  PostsCoverImageHandle = 'posts___coverImage___handle',
-  PostsCoverImageHeight = 'posts___coverImage___height',
-  PostsCoverImageId = 'posts___coverImage___id',
-  PostsCoverImageInternalContent = 'posts___coverImage___internal___content',
-  PostsCoverImageInternalContentDigest = 'posts___coverImage___internal___contentDigest',
-  PostsCoverImageInternalDescription = 'posts___coverImage___internal___description',
-  PostsCoverImageInternalFieldOwners = 'posts___coverImage___internal___fieldOwners',
-  PostsCoverImageInternalIgnoreType = 'posts___coverImage___internal___ignoreType',
-  PostsCoverImageInternalMediaType = 'posts___coverImage___internal___mediaType',
-  PostsCoverImageInternalOwner = 'posts___coverImage___internal___owner',
-  PostsCoverImageInternalType = 'posts___coverImage___internal___type',
-  PostsCoverImageLocale = 'posts___coverImage___locale',
-  PostsCoverImageMimeType = 'posts___coverImage___mimeType',
-  PostsCoverImageParentChildren = 'posts___coverImage___parent___children',
-  PostsCoverImageParentId = 'posts___coverImage___parent___id',
-  PostsCoverImagePublishedAt = 'posts___coverImage___publishedAt',
-  PostsCoverImagePublishedByChildren = 'posts___coverImage___publishedBy___children',
-  PostsCoverImagePublishedByCreatedAt = 'posts___coverImage___publishedBy___createdAt',
-  PostsCoverImagePublishedById = 'posts___coverImage___publishedBy___id',
-  PostsCoverImagePublishedByIsActive = 'posts___coverImage___publishedBy___isActive',
-  PostsCoverImagePublishedByKind = 'posts___coverImage___publishedBy___kind',
-  PostsCoverImagePublishedByName = 'posts___coverImage___publishedBy___name',
-  PostsCoverImagePublishedByPicture = 'posts___coverImage___publishedBy___picture',
-  PostsCoverImagePublishedByPublishedAt = 'posts___coverImage___publishedBy___publishedAt',
-  PostsCoverImagePublishedByRemoteId = 'posts___coverImage___publishedBy___remoteId',
-  PostsCoverImagePublishedByRemoteTypeName = 'posts___coverImage___publishedBy___remoteTypeName',
-  PostsCoverImagePublishedByStage = 'posts___coverImage___publishedBy___stage',
-  PostsCoverImagePublishedByUpdatedAt = 'posts___coverImage___publishedBy___updatedAt',
-  PostsCoverImageRemoteId = 'posts___coverImage___remoteId',
-  PostsCoverImageRemoteTypeName = 'posts___coverImage___remoteTypeName',
-  PostsCoverImageSeoImage = 'posts___coverImage___seoImage',
-  PostsCoverImageSeoImageChildren = 'posts___coverImage___seoImage___children',
-  PostsCoverImageSeoImageCreatedAt = 'posts___coverImage___seoImage___createdAt',
-  PostsCoverImageSeoImageDescription = 'posts___coverImage___seoImage___description',
-  PostsCoverImageSeoImageId = 'posts___coverImage___seoImage___id',
-  PostsCoverImageSeoImageKeywords = 'posts___coverImage___seoImage___keywords',
-  PostsCoverImageSeoImagePublishedAt = 'posts___coverImage___seoImage___publishedAt',
-  PostsCoverImageSeoImageRemoteId = 'posts___coverImage___seoImage___remoteId',
-  PostsCoverImageSeoImageRemoteTypeName = 'posts___coverImage___seoImage___remoteTypeName',
-  PostsCoverImageSeoImageStage = 'posts___coverImage___seoImage___stage',
-  PostsCoverImageSeoImageTitle = 'posts___coverImage___seoImage___title',
-  PostsCoverImageSeoImageUpdatedAt = 'posts___coverImage___seoImage___updatedAt',
-  PostsCoverImageSize = 'posts___coverImage___size',
-  PostsCoverImageStage = 'posts___coverImage___stage',
-  PostsCoverImageUpdatedAt = 'posts___coverImage___updatedAt',
-  PostsCoverImageUpdatedByChildren = 'posts___coverImage___updatedBy___children',
-  PostsCoverImageUpdatedByCreatedAt = 'posts___coverImage___updatedBy___createdAt',
-  PostsCoverImageUpdatedById = 'posts___coverImage___updatedBy___id',
-  PostsCoverImageUpdatedByIsActive = 'posts___coverImage___updatedBy___isActive',
-  PostsCoverImageUpdatedByKind = 'posts___coverImage___updatedBy___kind',
-  PostsCoverImageUpdatedByName = 'posts___coverImage___updatedBy___name',
-  PostsCoverImageUpdatedByPicture = 'posts___coverImage___updatedBy___picture',
-  PostsCoverImageUpdatedByPublishedAt = 'posts___coverImage___updatedBy___publishedAt',
-  PostsCoverImageUpdatedByRemoteId = 'posts___coverImage___updatedBy___remoteId',
-  PostsCoverImageUpdatedByRemoteTypeName = 'posts___coverImage___updatedBy___remoteTypeName',
-  PostsCoverImageUpdatedByStage = 'posts___coverImage___updatedBy___stage',
-  PostsCoverImageUpdatedByUpdatedAt = 'posts___coverImage___updatedBy___updatedAt',
-  PostsCoverImageUrl = 'posts___coverImage___url',
-  PostsCoverImageWidth = 'posts___coverImage___width',
-  PostsCreatedAt = 'posts___createdAt',
-  PostsCreatedByChildren = 'posts___createdBy___children',
-  PostsCreatedByChildrenChildren = 'posts___createdBy___children___children',
-  PostsCreatedByChildrenId = 'posts___createdBy___children___id',
-  PostsCreatedByCreatedAt = 'posts___createdBy___createdAt',
-  PostsCreatedById = 'posts___createdBy___id',
-  PostsCreatedByInternalContent = 'posts___createdBy___internal___content',
-  PostsCreatedByInternalContentDigest = 'posts___createdBy___internal___contentDigest',
-  PostsCreatedByInternalDescription = 'posts___createdBy___internal___description',
-  PostsCreatedByInternalFieldOwners = 'posts___createdBy___internal___fieldOwners',
-  PostsCreatedByInternalIgnoreType = 'posts___createdBy___internal___ignoreType',
-  PostsCreatedByInternalMediaType = 'posts___createdBy___internal___mediaType',
-  PostsCreatedByInternalOwner = 'posts___createdBy___internal___owner',
-  PostsCreatedByInternalType = 'posts___createdBy___internal___type',
-  PostsCreatedByIsActive = 'posts___createdBy___isActive',
-  PostsCreatedByKind = 'posts___createdBy___kind',
-  PostsCreatedByName = 'posts___createdBy___name',
-  PostsCreatedByParentChildren = 'posts___createdBy___parent___children',
-  PostsCreatedByParentId = 'posts___createdBy___parent___id',
-  PostsCreatedByPicture = 'posts___createdBy___picture',
-  PostsCreatedByPublishedAt = 'posts___createdBy___publishedAt',
-  PostsCreatedByRemoteId = 'posts___createdBy___remoteId',
-  PostsCreatedByRemoteTypeName = 'posts___createdBy___remoteTypeName',
-  PostsCreatedByStage = 'posts___createdBy___stage',
-  PostsCreatedByUpdatedAt = 'posts___createdBy___updatedAt',
-  PostsDate = 'posts___date',
-  PostsExcerpt = 'posts___excerpt',
-  PostsId = 'posts___id',
-  PostsInternalContent = 'posts___internal___content',
-  PostsInternalContentDigest = 'posts___internal___contentDigest',
-  PostsInternalDescription = 'posts___internal___description',
-  PostsInternalFieldOwners = 'posts___internal___fieldOwners',
-  PostsInternalIgnoreType = 'posts___internal___ignoreType',
-  PostsInternalMediaType = 'posts___internal___mediaType',
-  PostsInternalOwner = 'posts___internal___owner',
-  PostsInternalType = 'posts___internal___type',
-  PostsParentChildren = 'posts___parent___children',
-  PostsParentChildrenChildren = 'posts___parent___children___children',
-  PostsParentChildrenId = 'posts___parent___children___id',
-  PostsParentId = 'posts___parent___id',
-  PostsParentInternalContent = 'posts___parent___internal___content',
-  PostsParentInternalContentDigest = 'posts___parent___internal___contentDigest',
-  PostsParentInternalDescription = 'posts___parent___internal___description',
-  PostsParentInternalFieldOwners = 'posts___parent___internal___fieldOwners',
-  PostsParentInternalIgnoreType = 'posts___parent___internal___ignoreType',
-  PostsParentInternalMediaType = 'posts___parent___internal___mediaType',
-  PostsParentInternalOwner = 'posts___parent___internal___owner',
-  PostsParentInternalType = 'posts___parent___internal___type',
-  PostsParentParentChildren = 'posts___parent___parent___children',
-  PostsParentParentId = 'posts___parent___parent___id',
-  PostsPublishedAt = 'posts___publishedAt',
-  PostsPublishedByChildren = 'posts___publishedBy___children',
-  PostsPublishedByChildrenChildren = 'posts___publishedBy___children___children',
-  PostsPublishedByChildrenId = 'posts___publishedBy___children___id',
-  PostsPublishedByCreatedAt = 'posts___publishedBy___createdAt',
-  PostsPublishedById = 'posts___publishedBy___id',
-  PostsPublishedByInternalContent = 'posts___publishedBy___internal___content',
-  PostsPublishedByInternalContentDigest = 'posts___publishedBy___internal___contentDigest',
-  PostsPublishedByInternalDescription = 'posts___publishedBy___internal___description',
-  PostsPublishedByInternalFieldOwners = 'posts___publishedBy___internal___fieldOwners',
-  PostsPublishedByInternalIgnoreType = 'posts___publishedBy___internal___ignoreType',
-  PostsPublishedByInternalMediaType = 'posts___publishedBy___internal___mediaType',
-  PostsPublishedByInternalOwner = 'posts___publishedBy___internal___owner',
-  PostsPublishedByInternalType = 'posts___publishedBy___internal___type',
-  PostsPublishedByIsActive = 'posts___publishedBy___isActive',
-  PostsPublishedByKind = 'posts___publishedBy___kind',
-  PostsPublishedByName = 'posts___publishedBy___name',
-  PostsPublishedByParentChildren = 'posts___publishedBy___parent___children',
-  PostsPublishedByParentId = 'posts___publishedBy___parent___id',
-  PostsPublishedByPicture = 'posts___publishedBy___picture',
-  PostsPublishedByPublishedAt = 'posts___publishedBy___publishedAt',
-  PostsPublishedByRemoteId = 'posts___publishedBy___remoteId',
-  PostsPublishedByRemoteTypeName = 'posts___publishedBy___remoteTypeName',
-  PostsPublishedByStage = 'posts___publishedBy___stage',
-  PostsPublishedByUpdatedAt = 'posts___publishedBy___updatedAt',
-  PostsRemoteId = 'posts___remoteId',
-  PostsRemoteTypeName = 'posts___remoteTypeName',
-  PostsSeoChildren = 'posts___seo___children',
-  PostsSeoChildrenChildren = 'posts___seo___children___children',
-  PostsSeoChildrenId = 'posts___seo___children___id',
-  PostsSeoCreatedAt = 'posts___seo___createdAt',
-  PostsSeoCreatedByChildren = 'posts___seo___createdBy___children',
-  PostsSeoCreatedByCreatedAt = 'posts___seo___createdBy___createdAt',
-  PostsSeoCreatedById = 'posts___seo___createdBy___id',
-  PostsSeoCreatedByIsActive = 'posts___seo___createdBy___isActive',
-  PostsSeoCreatedByKind = 'posts___seo___createdBy___kind',
-  PostsSeoCreatedByName = 'posts___seo___createdBy___name',
-  PostsSeoCreatedByPicture = 'posts___seo___createdBy___picture',
-  PostsSeoCreatedByPublishedAt = 'posts___seo___createdBy___publishedAt',
-  PostsSeoCreatedByRemoteId = 'posts___seo___createdBy___remoteId',
-  PostsSeoCreatedByRemoteTypeName = 'posts___seo___createdBy___remoteTypeName',
-  PostsSeoCreatedByStage = 'posts___seo___createdBy___stage',
-  PostsSeoCreatedByUpdatedAt = 'posts___seo___createdBy___updatedAt',
-  PostsSeoDescription = 'posts___seo___description',
-  PostsSeoId = 'posts___seo___id',
-  PostsSeoImageAuthorAvatar = 'posts___seo___image___authorAvatar',
-  PostsSeoImageChildren = 'posts___seo___image___children',
-  PostsSeoImageCoverImagePost = 'posts___seo___image___coverImagePost',
-  PostsSeoImageCreatedAt = 'posts___seo___image___createdAt',
-  PostsSeoImageFileName = 'posts___seo___image___fileName',
-  PostsSeoImageHandle = 'posts___seo___image___handle',
-  PostsSeoImageHeight = 'posts___seo___image___height',
-  PostsSeoImageId = 'posts___seo___image___id',
-  PostsSeoImageLocale = 'posts___seo___image___locale',
-  PostsSeoImageMimeType = 'posts___seo___image___mimeType',
-  PostsSeoImagePublishedAt = 'posts___seo___image___publishedAt',
-  PostsSeoImageRemoteId = 'posts___seo___image___remoteId',
-  PostsSeoImageRemoteTypeName = 'posts___seo___image___remoteTypeName',
-  PostsSeoImageSeoImage = 'posts___seo___image___seoImage',
-  PostsSeoImageSize = 'posts___seo___image___size',
-  PostsSeoImageStage = 'posts___seo___image___stage',
-  PostsSeoImageUpdatedAt = 'posts___seo___image___updatedAt',
-  PostsSeoImageUrl = 'posts___seo___image___url',
-  PostsSeoImageWidth = 'posts___seo___image___width',
-  PostsSeoInternalContent = 'posts___seo___internal___content',
-  PostsSeoInternalContentDigest = 'posts___seo___internal___contentDigest',
-  PostsSeoInternalDescription = 'posts___seo___internal___description',
-  PostsSeoInternalFieldOwners = 'posts___seo___internal___fieldOwners',
-  PostsSeoInternalIgnoreType = 'posts___seo___internal___ignoreType',
-  PostsSeoInternalMediaType = 'posts___seo___internal___mediaType',
-  PostsSeoInternalOwner = 'posts___seo___internal___owner',
-  PostsSeoInternalType = 'posts___seo___internal___type',
-  PostsSeoKeywords = 'posts___seo___keywords',
-  PostsSeoParentChildren = 'posts___seo___parent___children',
-  PostsSeoParentId = 'posts___seo___parent___id',
-  PostsSeoPublishedAt = 'posts___seo___publishedAt',
-  PostsSeoPublishedByChildren = 'posts___seo___publishedBy___children',
-  PostsSeoPublishedByCreatedAt = 'posts___seo___publishedBy___createdAt',
-  PostsSeoPublishedById = 'posts___seo___publishedBy___id',
-  PostsSeoPublishedByIsActive = 'posts___seo___publishedBy___isActive',
-  PostsSeoPublishedByKind = 'posts___seo___publishedBy___kind',
-  PostsSeoPublishedByName = 'posts___seo___publishedBy___name',
-  PostsSeoPublishedByPicture = 'posts___seo___publishedBy___picture',
-  PostsSeoPublishedByPublishedAt = 'posts___seo___publishedBy___publishedAt',
-  PostsSeoPublishedByRemoteId = 'posts___seo___publishedBy___remoteId',
-  PostsSeoPublishedByRemoteTypeName = 'posts___seo___publishedBy___remoteTypeName',
-  PostsSeoPublishedByStage = 'posts___seo___publishedBy___stage',
-  PostsSeoPublishedByUpdatedAt = 'posts___seo___publishedBy___updatedAt',
-  PostsSeoRemoteId = 'posts___seo___remoteId',
-  PostsSeoRemoteTypeName = 'posts___seo___remoteTypeName',
-  PostsSeoStage = 'posts___seo___stage',
-  PostsSeoTitle = 'posts___seo___title',
-  PostsSeoUpdatedAt = 'posts___seo___updatedAt',
-  PostsSeoUpdatedByChildren = 'posts___seo___updatedBy___children',
-  PostsSeoUpdatedByCreatedAt = 'posts___seo___updatedBy___createdAt',
-  PostsSeoUpdatedById = 'posts___seo___updatedBy___id',
-  PostsSeoUpdatedByIsActive = 'posts___seo___updatedBy___isActive',
-  PostsSeoUpdatedByKind = 'posts___seo___updatedBy___kind',
-  PostsSeoUpdatedByName = 'posts___seo___updatedBy___name',
-  PostsSeoUpdatedByPicture = 'posts___seo___updatedBy___picture',
-  PostsSeoUpdatedByPublishedAt = 'posts___seo___updatedBy___publishedAt',
-  PostsSeoUpdatedByRemoteId = 'posts___seo___updatedBy___remoteId',
-  PostsSeoUpdatedByRemoteTypeName = 'posts___seo___updatedBy___remoteTypeName',
-  PostsSeoUpdatedByStage = 'posts___seo___updatedBy___stage',
-  PostsSeoUpdatedByUpdatedAt = 'posts___seo___updatedBy___updatedAt',
-  PostsSlug = 'posts___slug',
-  PostsStage = 'posts___stage',
-  PostsTags = 'posts___tags',
-  PostsTitle = 'posts___title',
-  PostsUpdatedAt = 'posts___updatedAt',
-  PostsUpdatedByChildren = 'posts___updatedBy___children',
-  PostsUpdatedByChildrenChildren = 'posts___updatedBy___children___children',
-  PostsUpdatedByChildrenId = 'posts___updatedBy___children___id',
-  PostsUpdatedByCreatedAt = 'posts___updatedBy___createdAt',
-  PostsUpdatedById = 'posts___updatedBy___id',
-  PostsUpdatedByInternalContent = 'posts___updatedBy___internal___content',
-  PostsUpdatedByInternalContentDigest = 'posts___updatedBy___internal___contentDigest',
-  PostsUpdatedByInternalDescription = 'posts___updatedBy___internal___description',
-  PostsUpdatedByInternalFieldOwners = 'posts___updatedBy___internal___fieldOwners',
-  PostsUpdatedByInternalIgnoreType = 'posts___updatedBy___internal___ignoreType',
-  PostsUpdatedByInternalMediaType = 'posts___updatedBy___internal___mediaType',
-  PostsUpdatedByInternalOwner = 'posts___updatedBy___internal___owner',
-  PostsUpdatedByInternalType = 'posts___updatedBy___internal___type',
-  PostsUpdatedByIsActive = 'posts___updatedBy___isActive',
-  PostsUpdatedByKind = 'posts___updatedBy___kind',
-  PostsUpdatedByName = 'posts___updatedBy___name',
-  PostsUpdatedByParentChildren = 'posts___updatedBy___parent___children',
-  PostsUpdatedByParentId = 'posts___updatedBy___parent___id',
-  PostsUpdatedByPicture = 'posts___updatedBy___picture',
-  PostsUpdatedByPublishedAt = 'posts___updatedBy___publishedAt',
-  PostsUpdatedByRemoteId = 'posts___updatedBy___remoteId',
-  PostsUpdatedByRemoteTypeName = 'posts___updatedBy___remoteTypeName',
-  PostsUpdatedByStage = 'posts___updatedBy___stage',
-  PostsUpdatedByUpdatedAt = 'posts___updatedBy___updatedAt',
-  PublishedAt = 'publishedAt',
-  PublishedByChildren = 'publishedBy___children',
-  PublishedByChildrenChildren = 'publishedBy___children___children',
-  PublishedByChildrenChildrenChildren = 'publishedBy___children___children___children',
-  PublishedByChildrenChildrenId = 'publishedBy___children___children___id',
-  PublishedByChildrenId = 'publishedBy___children___id',
-  PublishedByChildrenInternalContent = 'publishedBy___children___internal___content',
-  PublishedByChildrenInternalContentDigest = 'publishedBy___children___internal___contentDigest',
-  PublishedByChildrenInternalDescription = 'publishedBy___children___internal___description',
-  PublishedByChildrenInternalFieldOwners = 'publishedBy___children___internal___fieldOwners',
-  PublishedByChildrenInternalIgnoreType = 'publishedBy___children___internal___ignoreType',
-  PublishedByChildrenInternalMediaType = 'publishedBy___children___internal___mediaType',
-  PublishedByChildrenInternalOwner = 'publishedBy___children___internal___owner',
-  PublishedByChildrenInternalType = 'publishedBy___children___internal___type',
-  PublishedByChildrenParentChildren = 'publishedBy___children___parent___children',
-  PublishedByChildrenParentId = 'publishedBy___children___parent___id',
-  PublishedByCreatedAt = 'publishedBy___createdAt',
-  PublishedById = 'publishedBy___id',
-  PublishedByInternalContent = 'publishedBy___internal___content',
-  PublishedByInternalContentDigest = 'publishedBy___internal___contentDigest',
-  PublishedByInternalDescription = 'publishedBy___internal___description',
-  PublishedByInternalFieldOwners = 'publishedBy___internal___fieldOwners',
-  PublishedByInternalIgnoreType = 'publishedBy___internal___ignoreType',
-  PublishedByInternalMediaType = 'publishedBy___internal___mediaType',
-  PublishedByInternalOwner = 'publishedBy___internal___owner',
-  PublishedByInternalType = 'publishedBy___internal___type',
-  PublishedByIsActive = 'publishedBy___isActive',
-  PublishedByKind = 'publishedBy___kind',
-  PublishedByName = 'publishedBy___name',
-  PublishedByParentChildren = 'publishedBy___parent___children',
-  PublishedByParentChildrenChildren = 'publishedBy___parent___children___children',
-  PublishedByParentChildrenId = 'publishedBy___parent___children___id',
-  PublishedByParentId = 'publishedBy___parent___id',
-  PublishedByParentInternalContent = 'publishedBy___parent___internal___content',
-  PublishedByParentInternalContentDigest = 'publishedBy___parent___internal___contentDigest',
-  PublishedByParentInternalDescription = 'publishedBy___parent___internal___description',
-  PublishedByParentInternalFieldOwners = 'publishedBy___parent___internal___fieldOwners',
-  PublishedByParentInternalIgnoreType = 'publishedBy___parent___internal___ignoreType',
-  PublishedByParentInternalMediaType = 'publishedBy___parent___internal___mediaType',
-  PublishedByParentInternalOwner = 'publishedBy___parent___internal___owner',
-  PublishedByParentInternalType = 'publishedBy___parent___internal___type',
-  PublishedByParentParentChildren = 'publishedBy___parent___parent___children',
-  PublishedByParentParentId = 'publishedBy___parent___parent___id',
-  PublishedByPicture = 'publishedBy___picture',
-  PublishedByPublishedAt = 'publishedBy___publishedAt',
-  PublishedByRemoteId = 'publishedBy___remoteId',
-  PublishedByRemoteTypeName = 'publishedBy___remoteTypeName',
-  PublishedByStage = 'publishedBy___stage',
-  PublishedByUpdatedAt = 'publishedBy___updatedAt',
-  RemoteId = 'remoteId',
-  RemoteTypeName = 'remoteTypeName',
-  Stage = 'stage',
-  Title = 'title',
-  UpdatedAt = 'updatedAt',
-  UpdatedByChildren = 'updatedBy___children',
-  UpdatedByChildrenChildren = 'updatedBy___children___children',
-  UpdatedByChildrenChildrenChildren = 'updatedBy___children___children___children',
-  UpdatedByChildrenChildrenId = 'updatedBy___children___children___id',
-  UpdatedByChildrenId = 'updatedBy___children___id',
-  UpdatedByChildrenInternalContent = 'updatedBy___children___internal___content',
-  UpdatedByChildrenInternalContentDigest = 'updatedBy___children___internal___contentDigest',
-  UpdatedByChildrenInternalDescription = 'updatedBy___children___internal___description',
-  UpdatedByChildrenInternalFieldOwners = 'updatedBy___children___internal___fieldOwners',
-  UpdatedByChildrenInternalIgnoreType = 'updatedBy___children___internal___ignoreType',
-  UpdatedByChildrenInternalMediaType = 'updatedBy___children___internal___mediaType',
-  UpdatedByChildrenInternalOwner = 'updatedBy___children___internal___owner',
-  UpdatedByChildrenInternalType = 'updatedBy___children___internal___type',
-  UpdatedByChildrenParentChildren = 'updatedBy___children___parent___children',
-  UpdatedByChildrenParentId = 'updatedBy___children___parent___id',
-  UpdatedByCreatedAt = 'updatedBy___createdAt',
-  UpdatedById = 'updatedBy___id',
-  UpdatedByInternalContent = 'updatedBy___internal___content',
-  UpdatedByInternalContentDigest = 'updatedBy___internal___contentDigest',
-  UpdatedByInternalDescription = 'updatedBy___internal___description',
-  UpdatedByInternalFieldOwners = 'updatedBy___internal___fieldOwners',
-  UpdatedByInternalIgnoreType = 'updatedBy___internal___ignoreType',
-  UpdatedByInternalMediaType = 'updatedBy___internal___mediaType',
-  UpdatedByInternalOwner = 'updatedBy___internal___owner',
-  UpdatedByInternalType = 'updatedBy___internal___type',
-  UpdatedByIsActive = 'updatedBy___isActive',
-  UpdatedByKind = 'updatedBy___kind',
-  UpdatedByName = 'updatedBy___name',
-  UpdatedByParentChildren = 'updatedBy___parent___children',
-  UpdatedByParentChildrenChildren = 'updatedBy___parent___children___children',
-  UpdatedByParentChildrenId = 'updatedBy___parent___children___id',
-  UpdatedByParentId = 'updatedBy___parent___id',
-  UpdatedByParentInternalContent = 'updatedBy___parent___internal___content',
-  UpdatedByParentInternalContentDigest = 'updatedBy___parent___internal___contentDigest',
-  UpdatedByParentInternalDescription = 'updatedBy___parent___internal___description',
-  UpdatedByParentInternalFieldOwners = 'updatedBy___parent___internal___fieldOwners',
-  UpdatedByParentInternalIgnoreType = 'updatedBy___parent___internal___ignoreType',
-  UpdatedByParentInternalMediaType = 'updatedBy___parent___internal___mediaType',
-  UpdatedByParentInternalOwner = 'updatedBy___parent___internal___owner',
-  UpdatedByParentInternalType = 'updatedBy___parent___internal___type',
-  UpdatedByParentParentChildren = 'updatedBy___parent___parent___children',
-  UpdatedByParentParentId = 'updatedBy___parent___parent___id',
-  UpdatedByPicture = 'updatedBy___picture',
-  UpdatedByPublishedAt = 'updatedBy___publishedAt',
-  UpdatedByRemoteId = 'updatedBy___remoteId',
-  UpdatedByRemoteTypeName = 'updatedBy___remoteTypeName',
-  UpdatedByStage = 'updatedBy___stage',
-  UpdatedByUpdatedAt = 'updatedBy___updatedAt'
-}
-
-export type GraphCms_AuthorFilterInput = {
-  biography: Maybe<StringQueryOperatorInput>;
-  children: Maybe<NodeFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  picture: Maybe<GraphCms_AssetFilterInput>;
-  posts: Maybe<GraphCms_PostFilterListInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-};
-
-export type GraphCms_AuthorFilterListInput = {
-  elemMatch: Maybe<GraphCms_AuthorFilterInput>;
-};
-
-export type GraphCms_AuthorGroupConnection = {
-  edges: Array<GraphCms_AuthorEdge>;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-  nodes: Array<GraphCms_Author>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-export type GraphCms_AuthorSortInput = {
-  fields: Maybe<Array<Maybe<GraphCms_AuthorFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
+/** Locale system enumeration */
 export enum GraphCms_Locale {
+  /** System locale */
   En = 'en'
 }
 
-export type GraphCms_LocaleQueryOperatorInput = {
-  eq: Maybe<GraphCms_Locale>;
-  in: Maybe<Array<Maybe<GraphCms_Locale>>>;
-  ne: Maybe<GraphCms_Locale>;
-  nin: Maybe<Array<Maybe<GraphCms_Locale>>>;
+/** Representing a geolocation point with latitude and longitude */
+export type GraphCms_Location = {
+  distance: Scalars['Float'];
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
 };
 
-export type GraphCms_Page = Node & {
-  children: Array<Node>;
-  content: GraphCms_RichText;
-  createdAt: Scalars['JSON'];
+
+/** Representing a geolocation point with latitude and longitude */
+export type GraphCms_LocationDistanceArgs = {
+  from: GraphCms_LocationInput;
+};
+
+/** Input for a geolocation point with latitude and longitude */
+export type GraphCms_LocationInput = {
+  latitude: Scalars['Float'];
+  longitude: Scalars['Float'];
+};
+
+
+export type GraphCms_Member = GraphCms_Node & {
+  birthday: Maybe<Scalars['GraphCMS_Date']>;
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
   createdBy: Maybe<GraphCms_User>;
+  description: Maybe<Scalars['String']>;
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Member>;
+  githubAccount: Maybe<Scalars['String']>;
+  /** List of Member versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
   id: Scalars['ID'];
-  internal: Internal;
-  parent: Maybe<Node>;
-  publishedAt: Maybe<Scalars['JSON']>;
+  name: Scalars['String'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
   publishedBy: Maybe<GraphCms_User>;
-  remoteId: Scalars['ID'];
-  remoteTypeName: Scalars['String'];
-  seo: Maybe<GraphCms_Seo>;
-  slug: Scalars['String'];
+  /** System stage field */
   stage: GraphCms_Stage;
+  technicalFields: Maybe<Scalars['String']>;
+  twitterAccount: Maybe<Scalars['String']>;
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<GraphCms_User>;
+};
+
+
+export type GraphCms_MemberCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_MemberDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+export type GraphCms_MemberHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+export type GraphCms_MemberPublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_MemberUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+export type GraphCms_MemberConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_MemberWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type GraphCms_MemberConnection = {
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
+  edges: Array<GraphCms_MemberEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
+};
+
+export type GraphCms_MemberCreateInput = {
+  birthday: Maybe<Scalars['GraphCMS_Date']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  description: Maybe<Scalars['String']>;
+  githubAccount: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  technicalFields: Maybe<Scalars['String']>;
+  twitterAccount: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+};
+
+export type GraphCms_MemberCreateManyInlineInput = {
+  /** Connect multiple existing Member documents */
+  connect: Maybe<Array<GraphCms_MemberWhereUniqueInput>>;
+  /** Create and connect multiple existing Member documents */
+  create: Maybe<Array<GraphCms_MemberCreateInput>>;
+};
+
+export type GraphCms_MemberCreateOneInlineInput = {
+  /** Connect one existing Member document */
+  connect: Maybe<GraphCms_MemberWhereUniqueInput>;
+  /** Create and connect one Member document */
+  create: Maybe<GraphCms_MemberCreateInput>;
+};
+
+/** An edge in a connection. */
+export type GraphCms_MemberEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: GraphCms_Member;
+};
+
+/** Identifies documents */
+export type GraphCms_MemberManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_MemberWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_MemberWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_MemberWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  birthday: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than the given value. */
+  birthday_gt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than or equal the given value. */
+  birthday_gte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are contained in given list. */
+  birthday_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  /** All values less than the given value. */
+  birthday_lt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values less than or equal the given value. */
+  birthday_lte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not equal to given value. */
+  birthday_not: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not contained in given list. */
+  birthday_not_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  description: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with: Maybe<Scalars['String']>;
+  githubAccount: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  githubAccount_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  githubAccount_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  githubAccount_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  githubAccount_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  githubAccount_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  githubAccount_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  githubAccount_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  githubAccount_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  githubAccount_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  technicalFields: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  technicalFields_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  technicalFields_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  technicalFields_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  technicalFields_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  technicalFields_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  technicalFields_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  technicalFields_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  technicalFields_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  technicalFields_starts_with: Maybe<Scalars['String']>;
+  twitterAccount: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  twitterAccount_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  twitterAccount_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  twitterAccount_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  twitterAccount_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  twitterAccount_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  twitterAccount_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  twitterAccount_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  twitterAccount_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  twitterAccount_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+export enum GraphCms_MemberOrderByInput {
+  BirthdayAsc = 'birthday_ASC',
+  BirthdayDesc = 'birthday_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  GithubAccountAsc = 'githubAccount_ASC',
+  GithubAccountDesc = 'githubAccount_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TechnicalFieldsAsc = 'technicalFields_ASC',
+  TechnicalFieldsDesc = 'technicalFields_DESC',
+  TwitterAccountAsc = 'twitterAccount_ASC',
+  TwitterAccountDesc = 'twitterAccount_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type GraphCms_MemberUpdateInput = {
+  birthday: Maybe<Scalars['GraphCMS_Date']>;
+  description: Maybe<Scalars['String']>;
+  githubAccount: Maybe<Scalars['String']>;
+  name: Maybe<Scalars['String']>;
+  technicalFields: Maybe<Scalars['String']>;
+  twitterAccount: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_MemberUpdateManyInlineInput = {
+  /** Connect multiple existing Member documents */
+  connect: Maybe<Array<GraphCms_MemberConnectInput>>;
+  /** Create and connect multiple Member documents */
+  create: Maybe<Array<GraphCms_MemberCreateInput>>;
+  /** Delete multiple Member documents */
+  delete: Maybe<Array<GraphCms_MemberWhereUniqueInput>>;
+  /** Disconnect multiple Member documents */
+  disconnect: Maybe<Array<GraphCms_MemberWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Member documents */
+  set: Maybe<Array<GraphCms_MemberWhereUniqueInput>>;
+  /** Update multiple Member documents */
+  update: Maybe<Array<GraphCms_MemberUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Member documents */
+  upsert: Maybe<Array<GraphCms_MemberUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type GraphCms_MemberUpdateManyInput = {
+  birthday: Maybe<Scalars['GraphCMS_Date']>;
+  description: Maybe<Scalars['String']>;
+  githubAccount: Maybe<Scalars['String']>;
+  technicalFields: Maybe<Scalars['String']>;
+  twitterAccount: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_MemberUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_MemberUpdateManyInput;
+  /** Document search */
+  where: GraphCms_MemberWhereInput;
+};
+
+export type GraphCms_MemberUpdateOneInlineInput = {
+  /** Connect existing Member document */
+  connect: Maybe<GraphCms_MemberWhereUniqueInput>;
+  /** Create and connect one Member document */
+  create: Maybe<GraphCms_MemberCreateInput>;
+  /** Delete currently connected Member document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Member document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Member document */
+  update: Maybe<GraphCms_MemberUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Member document */
+  upsert: Maybe<GraphCms_MemberUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_MemberUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_MemberUpdateInput;
+  /** Unique document search */
+  where: GraphCms_MemberWhereUniqueInput;
+};
+
+export type GraphCms_MemberUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_MemberCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_MemberUpdateInput;
+};
+
+export type GraphCms_MemberUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_MemberUpsertInput;
+  /** Unique document search */
+  where: GraphCms_MemberWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_MemberWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_MemberWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_MemberWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_MemberWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  birthday: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than the given value. */
+  birthday_gt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than or equal the given value. */
+  birthday_gte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are contained in given list. */
+  birthday_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  /** All values less than the given value. */
+  birthday_lt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values less than or equal the given value. */
+  birthday_lte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not equal to given value. */
+  birthday_not: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not contained in given list. */
+  birthday_not_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  description: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with: Maybe<Scalars['String']>;
+  githubAccount: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  githubAccount_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  githubAccount_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  githubAccount_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  githubAccount_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  githubAccount_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  githubAccount_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  githubAccount_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  githubAccount_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  githubAccount_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  technicalFields: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  technicalFields_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  technicalFields_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  technicalFields_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  technicalFields_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  technicalFields_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  technicalFields_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  technicalFields_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  technicalFields_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  technicalFields_starts_with: Maybe<Scalars['String']>;
+  twitterAccount: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  twitterAccount_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  twitterAccount_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  twitterAccount_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  twitterAccount_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  twitterAccount_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  twitterAccount_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  twitterAccount_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  twitterAccount_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  twitterAccount_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+/** References Member record uniquely */
+export type GraphCms_MemberWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['String']>;
+};
+
+/** An object with an ID */
+export type GraphCms_Node = {
+  /** The id of the object. */
+  id: Scalars['ID'];
+  /** The Stage of an object */
+  stage: GraphCms_Stage;
+};
+
+export type GraphCms_Page = GraphCms_Node & {
+  /** Enter the content for this page. The content uses the rich-text editor, giving you a better visual representation. */
+  content: GraphCms_RichText;
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<GraphCms_User>;
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Page>;
+  /** List of Page versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
+  publishedBy: Maybe<GraphCms_User>;
+  /** Relate an SEO model to this page */
+  seo: Maybe<GraphCms_Seo>;
+  /** Enter the slug for this page, such as about, blog, or contact */
+  slug: Scalars['String'];
+  /** System stage field */
+  stage: GraphCms_Stage;
+  /** Enter a short description to be used as a subtitle */
+  subtitle: Maybe<Scalars['String']>;
+  /** What is the title of your page? */
+  title: Scalars['String'];
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<GraphCms_User>;
+};
+
+
+export type GraphCms_PageCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PageDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+export type GraphCms_PageHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+export type GraphCms_PagePublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PageSeoArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PageUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+export type GraphCms_PageConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_PageWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type GraphCms_PageConnection = {
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
+  edges: Array<GraphCms_PageEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
+};
+
+export type GraphCms_PageCreateInput = {
+  content: Scalars['GraphCMS_RichTextAST'];
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  seo: Maybe<GraphCms_SeoCreateOneInlineInput>;
+  slug: Scalars['String'];
   subtitle: Maybe<Scalars['String']>;
   title: Scalars['String'];
-  updatedAt: Scalars['JSON'];
-  updatedBy: Maybe<GraphCms_User>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
 };
 
-export type GraphCms_PageConnection = {
-  distinct: Array<Scalars['String']>;
-  edges: Array<GraphCms_PageEdge>;
-  group: Array<GraphCms_PageGroupConnection>;
-  nodes: Array<GraphCms_Page>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+export type GraphCms_PageCreateManyInlineInput = {
+  /** Connect multiple existing Page documents */
+  connect: Maybe<Array<GraphCms_PageWhereUniqueInput>>;
+  /** Create and connect multiple existing Page documents */
+  create: Maybe<Array<GraphCms_PageCreateInput>>;
 };
 
-
-export type GraphCms_PageConnectionDistinctArgs = {
-  field: GraphCms_PageFieldsEnum;
+export type GraphCms_PageCreateOneInlineInput = {
+  /** Connect one existing Page document */
+  connect: Maybe<GraphCms_PageWhereUniqueInput>;
+  /** Create and connect one Page document */
+  create: Maybe<GraphCms_PageCreateInput>;
 };
 
-
-export type GraphCms_PageConnectionGroupArgs = {
-  field: GraphCms_PageFieldsEnum;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-};
-
+/** An edge in a connection. */
 export type GraphCms_PageEdge = {
-  next: Maybe<GraphCms_Page>;
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
   node: GraphCms_Page;
-  previous: Maybe<GraphCms_Page>;
 };
 
-export enum GraphCms_PageFieldsEnum {
-  Children = 'children',
-  ChildrenChildren = 'children___children',
-  ChildrenChildrenChildren = 'children___children___children',
-  ChildrenChildrenChildrenChildren = 'children___children___children___children',
-  ChildrenChildrenChildrenId = 'children___children___children___id',
-  ChildrenChildrenId = 'children___children___id',
-  ChildrenChildrenInternalContent = 'children___children___internal___content',
-  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
-  ChildrenChildrenInternalDescription = 'children___children___internal___description',
-  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
-  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
-  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
-  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
-  ChildrenChildrenInternalType = 'children___children___internal___type',
-  ChildrenChildrenParentChildren = 'children___children___parent___children',
-  ChildrenChildrenParentId = 'children___children___parent___id',
-  ChildrenId = 'children___id',
-  ChildrenInternalContent = 'children___internal___content',
-  ChildrenInternalContentDigest = 'children___internal___contentDigest',
-  ChildrenInternalDescription = 'children___internal___description',
-  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
-  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
-  ChildrenInternalMediaType = 'children___internal___mediaType',
-  ChildrenInternalOwner = 'children___internal___owner',
-  ChildrenInternalType = 'children___internal___type',
-  ChildrenParentChildren = 'children___parent___children',
-  ChildrenParentChildrenChildren = 'children___parent___children___children',
-  ChildrenParentChildrenId = 'children___parent___children___id',
-  ChildrenParentId = 'children___parent___id',
-  ChildrenParentInternalContent = 'children___parent___internal___content',
-  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
-  ChildrenParentInternalDescription = 'children___parent___internal___description',
-  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
-  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
-  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
-  ChildrenParentInternalOwner = 'children___parent___internal___owner',
-  ChildrenParentInternalType = 'children___parent___internal___type',
-  ChildrenParentParentChildren = 'children___parent___parent___children',
-  ChildrenParentParentId = 'children___parent___parent___id',
-  ContentHtml = 'content___html',
-  ContentMarkdown = 'content___markdown',
-  ContentRaw = 'content___raw',
-  ContentRemoteTypeName = 'content___remoteTypeName',
-  ContentText = 'content___text',
-  CreatedAt = 'createdAt',
-  CreatedByChildren = 'createdBy___children',
-  CreatedByChildrenChildren = 'createdBy___children___children',
-  CreatedByChildrenChildrenChildren = 'createdBy___children___children___children',
-  CreatedByChildrenChildrenId = 'createdBy___children___children___id',
-  CreatedByChildrenId = 'createdBy___children___id',
-  CreatedByChildrenInternalContent = 'createdBy___children___internal___content',
-  CreatedByChildrenInternalContentDigest = 'createdBy___children___internal___contentDigest',
-  CreatedByChildrenInternalDescription = 'createdBy___children___internal___description',
-  CreatedByChildrenInternalFieldOwners = 'createdBy___children___internal___fieldOwners',
-  CreatedByChildrenInternalIgnoreType = 'createdBy___children___internal___ignoreType',
-  CreatedByChildrenInternalMediaType = 'createdBy___children___internal___mediaType',
-  CreatedByChildrenInternalOwner = 'createdBy___children___internal___owner',
-  CreatedByChildrenInternalType = 'createdBy___children___internal___type',
-  CreatedByChildrenParentChildren = 'createdBy___children___parent___children',
-  CreatedByChildrenParentId = 'createdBy___children___parent___id',
-  CreatedByCreatedAt = 'createdBy___createdAt',
-  CreatedById = 'createdBy___id',
-  CreatedByInternalContent = 'createdBy___internal___content',
-  CreatedByInternalContentDigest = 'createdBy___internal___contentDigest',
-  CreatedByInternalDescription = 'createdBy___internal___description',
-  CreatedByInternalFieldOwners = 'createdBy___internal___fieldOwners',
-  CreatedByInternalIgnoreType = 'createdBy___internal___ignoreType',
-  CreatedByInternalMediaType = 'createdBy___internal___mediaType',
-  CreatedByInternalOwner = 'createdBy___internal___owner',
-  CreatedByInternalType = 'createdBy___internal___type',
-  CreatedByIsActive = 'createdBy___isActive',
-  CreatedByKind = 'createdBy___kind',
-  CreatedByName = 'createdBy___name',
-  CreatedByParentChildren = 'createdBy___parent___children',
-  CreatedByParentChildrenChildren = 'createdBy___parent___children___children',
-  CreatedByParentChildrenId = 'createdBy___parent___children___id',
-  CreatedByParentId = 'createdBy___parent___id',
-  CreatedByParentInternalContent = 'createdBy___parent___internal___content',
-  CreatedByParentInternalContentDigest = 'createdBy___parent___internal___contentDigest',
-  CreatedByParentInternalDescription = 'createdBy___parent___internal___description',
-  CreatedByParentInternalFieldOwners = 'createdBy___parent___internal___fieldOwners',
-  CreatedByParentInternalIgnoreType = 'createdBy___parent___internal___ignoreType',
-  CreatedByParentInternalMediaType = 'createdBy___parent___internal___mediaType',
-  CreatedByParentInternalOwner = 'createdBy___parent___internal___owner',
-  CreatedByParentInternalType = 'createdBy___parent___internal___type',
-  CreatedByParentParentChildren = 'createdBy___parent___parent___children',
-  CreatedByParentParentId = 'createdBy___parent___parent___id',
-  CreatedByPicture = 'createdBy___picture',
-  CreatedByPublishedAt = 'createdBy___publishedAt',
-  CreatedByRemoteId = 'createdBy___remoteId',
-  CreatedByRemoteTypeName = 'createdBy___remoteTypeName',
-  CreatedByStage = 'createdBy___stage',
-  CreatedByUpdatedAt = 'createdBy___updatedAt',
-  Id = 'id',
-  InternalContent = 'internal___content',
-  InternalContentDigest = 'internal___contentDigest',
-  InternalDescription = 'internal___description',
-  InternalFieldOwners = 'internal___fieldOwners',
-  InternalIgnoreType = 'internal___ignoreType',
-  InternalMediaType = 'internal___mediaType',
-  InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  ParentChildren = 'parent___children',
-  ParentChildrenChildren = 'parent___children___children',
-  ParentChildrenChildrenChildren = 'parent___children___children___children',
-  ParentChildrenChildrenId = 'parent___children___children___id',
-  ParentChildrenId = 'parent___children___id',
-  ParentChildrenInternalContent = 'parent___children___internal___content',
-  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
-  ParentChildrenInternalDescription = 'parent___children___internal___description',
-  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
-  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
-  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
-  ParentChildrenInternalOwner = 'parent___children___internal___owner',
-  ParentChildrenInternalType = 'parent___children___internal___type',
-  ParentChildrenParentChildren = 'parent___children___parent___children',
-  ParentChildrenParentId = 'parent___children___parent___id',
-  ParentId = 'parent___id',
-  ParentInternalContent = 'parent___internal___content',
-  ParentInternalContentDigest = 'parent___internal___contentDigest',
-  ParentInternalDescription = 'parent___internal___description',
-  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
-  ParentInternalIgnoreType = 'parent___internal___ignoreType',
-  ParentInternalMediaType = 'parent___internal___mediaType',
-  ParentInternalOwner = 'parent___internal___owner',
-  ParentInternalType = 'parent___internal___type',
-  ParentParentChildren = 'parent___parent___children',
-  ParentParentChildrenChildren = 'parent___parent___children___children',
-  ParentParentChildrenId = 'parent___parent___children___id',
-  ParentParentId = 'parent___parent___id',
-  ParentParentInternalContent = 'parent___parent___internal___content',
-  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
-  ParentParentInternalDescription = 'parent___parent___internal___description',
-  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
-  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
-  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
-  ParentParentInternalOwner = 'parent___parent___internal___owner',
-  ParentParentInternalType = 'parent___parent___internal___type',
-  ParentParentParentChildren = 'parent___parent___parent___children',
-  ParentParentParentId = 'parent___parent___parent___id',
-  PublishedAt = 'publishedAt',
-  PublishedByChildren = 'publishedBy___children',
-  PublishedByChildrenChildren = 'publishedBy___children___children',
-  PublishedByChildrenChildrenChildren = 'publishedBy___children___children___children',
-  PublishedByChildrenChildrenId = 'publishedBy___children___children___id',
-  PublishedByChildrenId = 'publishedBy___children___id',
-  PublishedByChildrenInternalContent = 'publishedBy___children___internal___content',
-  PublishedByChildrenInternalContentDigest = 'publishedBy___children___internal___contentDigest',
-  PublishedByChildrenInternalDescription = 'publishedBy___children___internal___description',
-  PublishedByChildrenInternalFieldOwners = 'publishedBy___children___internal___fieldOwners',
-  PublishedByChildrenInternalIgnoreType = 'publishedBy___children___internal___ignoreType',
-  PublishedByChildrenInternalMediaType = 'publishedBy___children___internal___mediaType',
-  PublishedByChildrenInternalOwner = 'publishedBy___children___internal___owner',
-  PublishedByChildrenInternalType = 'publishedBy___children___internal___type',
-  PublishedByChildrenParentChildren = 'publishedBy___children___parent___children',
-  PublishedByChildrenParentId = 'publishedBy___children___parent___id',
-  PublishedByCreatedAt = 'publishedBy___createdAt',
-  PublishedById = 'publishedBy___id',
-  PublishedByInternalContent = 'publishedBy___internal___content',
-  PublishedByInternalContentDigest = 'publishedBy___internal___contentDigest',
-  PublishedByInternalDescription = 'publishedBy___internal___description',
-  PublishedByInternalFieldOwners = 'publishedBy___internal___fieldOwners',
-  PublishedByInternalIgnoreType = 'publishedBy___internal___ignoreType',
-  PublishedByInternalMediaType = 'publishedBy___internal___mediaType',
-  PublishedByInternalOwner = 'publishedBy___internal___owner',
-  PublishedByInternalType = 'publishedBy___internal___type',
-  PublishedByIsActive = 'publishedBy___isActive',
-  PublishedByKind = 'publishedBy___kind',
-  PublishedByName = 'publishedBy___name',
-  PublishedByParentChildren = 'publishedBy___parent___children',
-  PublishedByParentChildrenChildren = 'publishedBy___parent___children___children',
-  PublishedByParentChildrenId = 'publishedBy___parent___children___id',
-  PublishedByParentId = 'publishedBy___parent___id',
-  PublishedByParentInternalContent = 'publishedBy___parent___internal___content',
-  PublishedByParentInternalContentDigest = 'publishedBy___parent___internal___contentDigest',
-  PublishedByParentInternalDescription = 'publishedBy___parent___internal___description',
-  PublishedByParentInternalFieldOwners = 'publishedBy___parent___internal___fieldOwners',
-  PublishedByParentInternalIgnoreType = 'publishedBy___parent___internal___ignoreType',
-  PublishedByParentInternalMediaType = 'publishedBy___parent___internal___mediaType',
-  PublishedByParentInternalOwner = 'publishedBy___parent___internal___owner',
-  PublishedByParentInternalType = 'publishedBy___parent___internal___type',
-  PublishedByParentParentChildren = 'publishedBy___parent___parent___children',
-  PublishedByParentParentId = 'publishedBy___parent___parent___id',
-  PublishedByPicture = 'publishedBy___picture',
-  PublishedByPublishedAt = 'publishedBy___publishedAt',
-  PublishedByRemoteId = 'publishedBy___remoteId',
-  PublishedByRemoteTypeName = 'publishedBy___remoteTypeName',
-  PublishedByStage = 'publishedBy___stage',
-  PublishedByUpdatedAt = 'publishedBy___updatedAt',
-  RemoteId = 'remoteId',
-  RemoteTypeName = 'remoteTypeName',
-  SeoChildren = 'seo___children',
-  SeoChildrenChildren = 'seo___children___children',
-  SeoChildrenChildrenChildren = 'seo___children___children___children',
-  SeoChildrenChildrenId = 'seo___children___children___id',
-  SeoChildrenId = 'seo___children___id',
-  SeoChildrenInternalContent = 'seo___children___internal___content',
-  SeoChildrenInternalContentDigest = 'seo___children___internal___contentDigest',
-  SeoChildrenInternalDescription = 'seo___children___internal___description',
-  SeoChildrenInternalFieldOwners = 'seo___children___internal___fieldOwners',
-  SeoChildrenInternalIgnoreType = 'seo___children___internal___ignoreType',
-  SeoChildrenInternalMediaType = 'seo___children___internal___mediaType',
-  SeoChildrenInternalOwner = 'seo___children___internal___owner',
-  SeoChildrenInternalType = 'seo___children___internal___type',
-  SeoChildrenParentChildren = 'seo___children___parent___children',
-  SeoChildrenParentId = 'seo___children___parent___id',
-  SeoCreatedAt = 'seo___createdAt',
-  SeoCreatedByChildren = 'seo___createdBy___children',
-  SeoCreatedByChildrenChildren = 'seo___createdBy___children___children',
-  SeoCreatedByChildrenId = 'seo___createdBy___children___id',
-  SeoCreatedByCreatedAt = 'seo___createdBy___createdAt',
-  SeoCreatedById = 'seo___createdBy___id',
-  SeoCreatedByInternalContent = 'seo___createdBy___internal___content',
-  SeoCreatedByInternalContentDigest = 'seo___createdBy___internal___contentDigest',
-  SeoCreatedByInternalDescription = 'seo___createdBy___internal___description',
-  SeoCreatedByInternalFieldOwners = 'seo___createdBy___internal___fieldOwners',
-  SeoCreatedByInternalIgnoreType = 'seo___createdBy___internal___ignoreType',
-  SeoCreatedByInternalMediaType = 'seo___createdBy___internal___mediaType',
-  SeoCreatedByInternalOwner = 'seo___createdBy___internal___owner',
-  SeoCreatedByInternalType = 'seo___createdBy___internal___type',
-  SeoCreatedByIsActive = 'seo___createdBy___isActive',
-  SeoCreatedByKind = 'seo___createdBy___kind',
-  SeoCreatedByName = 'seo___createdBy___name',
-  SeoCreatedByParentChildren = 'seo___createdBy___parent___children',
-  SeoCreatedByParentId = 'seo___createdBy___parent___id',
-  SeoCreatedByPicture = 'seo___createdBy___picture',
-  SeoCreatedByPublishedAt = 'seo___createdBy___publishedAt',
-  SeoCreatedByRemoteId = 'seo___createdBy___remoteId',
-  SeoCreatedByRemoteTypeName = 'seo___createdBy___remoteTypeName',
-  SeoCreatedByStage = 'seo___createdBy___stage',
-  SeoCreatedByUpdatedAt = 'seo___createdBy___updatedAt',
-  SeoDescription = 'seo___description',
-  SeoId = 'seo___id',
-  SeoImageAuthorAvatar = 'seo___image___authorAvatar',
-  SeoImageAuthorAvatarBiography = 'seo___image___authorAvatar___biography',
-  SeoImageAuthorAvatarChildren = 'seo___image___authorAvatar___children',
-  SeoImageAuthorAvatarCreatedAt = 'seo___image___authorAvatar___createdAt',
-  SeoImageAuthorAvatarId = 'seo___image___authorAvatar___id',
-  SeoImageAuthorAvatarName = 'seo___image___authorAvatar___name',
-  SeoImageAuthorAvatarPosts = 'seo___image___authorAvatar___posts',
-  SeoImageAuthorAvatarPublishedAt = 'seo___image___authorAvatar___publishedAt',
-  SeoImageAuthorAvatarRemoteId = 'seo___image___authorAvatar___remoteId',
-  SeoImageAuthorAvatarRemoteTypeName = 'seo___image___authorAvatar___remoteTypeName',
-  SeoImageAuthorAvatarStage = 'seo___image___authorAvatar___stage',
-  SeoImageAuthorAvatarTitle = 'seo___image___authorAvatar___title',
-  SeoImageAuthorAvatarUpdatedAt = 'seo___image___authorAvatar___updatedAt',
-  SeoImageChildren = 'seo___image___children',
-  SeoImageChildrenChildren = 'seo___image___children___children',
-  SeoImageChildrenId = 'seo___image___children___id',
-  SeoImageCoverImagePost = 'seo___image___coverImagePost',
-  SeoImageCoverImagePostChildren = 'seo___image___coverImagePost___children',
-  SeoImageCoverImagePostCreatedAt = 'seo___image___coverImagePost___createdAt',
-  SeoImageCoverImagePostDate = 'seo___image___coverImagePost___date',
-  SeoImageCoverImagePostExcerpt = 'seo___image___coverImagePost___excerpt',
-  SeoImageCoverImagePostId = 'seo___image___coverImagePost___id',
-  SeoImageCoverImagePostPublishedAt = 'seo___image___coverImagePost___publishedAt',
-  SeoImageCoverImagePostRemoteId = 'seo___image___coverImagePost___remoteId',
-  SeoImageCoverImagePostRemoteTypeName = 'seo___image___coverImagePost___remoteTypeName',
-  SeoImageCoverImagePostSlug = 'seo___image___coverImagePost___slug',
-  SeoImageCoverImagePostStage = 'seo___image___coverImagePost___stage',
-  SeoImageCoverImagePostTags = 'seo___image___coverImagePost___tags',
-  SeoImageCoverImagePostTitle = 'seo___image___coverImagePost___title',
-  SeoImageCoverImagePostUpdatedAt = 'seo___image___coverImagePost___updatedAt',
-  SeoImageCreatedAt = 'seo___image___createdAt',
-  SeoImageCreatedByChildren = 'seo___image___createdBy___children',
-  SeoImageCreatedByCreatedAt = 'seo___image___createdBy___createdAt',
-  SeoImageCreatedById = 'seo___image___createdBy___id',
-  SeoImageCreatedByIsActive = 'seo___image___createdBy___isActive',
-  SeoImageCreatedByKind = 'seo___image___createdBy___kind',
-  SeoImageCreatedByName = 'seo___image___createdBy___name',
-  SeoImageCreatedByPicture = 'seo___image___createdBy___picture',
-  SeoImageCreatedByPublishedAt = 'seo___image___createdBy___publishedAt',
-  SeoImageCreatedByRemoteId = 'seo___image___createdBy___remoteId',
-  SeoImageCreatedByRemoteTypeName = 'seo___image___createdBy___remoteTypeName',
-  SeoImageCreatedByStage = 'seo___image___createdBy___stage',
-  SeoImageCreatedByUpdatedAt = 'seo___image___createdBy___updatedAt',
-  SeoImageFileName = 'seo___image___fileName',
-  SeoImageHandle = 'seo___image___handle',
-  SeoImageHeight = 'seo___image___height',
-  SeoImageId = 'seo___image___id',
-  SeoImageInternalContent = 'seo___image___internal___content',
-  SeoImageInternalContentDigest = 'seo___image___internal___contentDigest',
-  SeoImageInternalDescription = 'seo___image___internal___description',
-  SeoImageInternalFieldOwners = 'seo___image___internal___fieldOwners',
-  SeoImageInternalIgnoreType = 'seo___image___internal___ignoreType',
-  SeoImageInternalMediaType = 'seo___image___internal___mediaType',
-  SeoImageInternalOwner = 'seo___image___internal___owner',
-  SeoImageInternalType = 'seo___image___internal___type',
-  SeoImageLocale = 'seo___image___locale',
-  SeoImageMimeType = 'seo___image___mimeType',
-  SeoImageParentChildren = 'seo___image___parent___children',
-  SeoImageParentId = 'seo___image___parent___id',
-  SeoImagePublishedAt = 'seo___image___publishedAt',
-  SeoImagePublishedByChildren = 'seo___image___publishedBy___children',
-  SeoImagePublishedByCreatedAt = 'seo___image___publishedBy___createdAt',
-  SeoImagePublishedById = 'seo___image___publishedBy___id',
-  SeoImagePublishedByIsActive = 'seo___image___publishedBy___isActive',
-  SeoImagePublishedByKind = 'seo___image___publishedBy___kind',
-  SeoImagePublishedByName = 'seo___image___publishedBy___name',
-  SeoImagePublishedByPicture = 'seo___image___publishedBy___picture',
-  SeoImagePublishedByPublishedAt = 'seo___image___publishedBy___publishedAt',
-  SeoImagePublishedByRemoteId = 'seo___image___publishedBy___remoteId',
-  SeoImagePublishedByRemoteTypeName = 'seo___image___publishedBy___remoteTypeName',
-  SeoImagePublishedByStage = 'seo___image___publishedBy___stage',
-  SeoImagePublishedByUpdatedAt = 'seo___image___publishedBy___updatedAt',
-  SeoImageRemoteId = 'seo___image___remoteId',
-  SeoImageRemoteTypeName = 'seo___image___remoteTypeName',
-  SeoImageSeoImage = 'seo___image___seoImage',
-  SeoImageSeoImageChildren = 'seo___image___seoImage___children',
-  SeoImageSeoImageCreatedAt = 'seo___image___seoImage___createdAt',
-  SeoImageSeoImageDescription = 'seo___image___seoImage___description',
-  SeoImageSeoImageId = 'seo___image___seoImage___id',
-  SeoImageSeoImageKeywords = 'seo___image___seoImage___keywords',
-  SeoImageSeoImagePublishedAt = 'seo___image___seoImage___publishedAt',
-  SeoImageSeoImageRemoteId = 'seo___image___seoImage___remoteId',
-  SeoImageSeoImageRemoteTypeName = 'seo___image___seoImage___remoteTypeName',
-  SeoImageSeoImageStage = 'seo___image___seoImage___stage',
-  SeoImageSeoImageTitle = 'seo___image___seoImage___title',
-  SeoImageSeoImageUpdatedAt = 'seo___image___seoImage___updatedAt',
-  SeoImageSize = 'seo___image___size',
-  SeoImageStage = 'seo___image___stage',
-  SeoImageUpdatedAt = 'seo___image___updatedAt',
-  SeoImageUpdatedByChildren = 'seo___image___updatedBy___children',
-  SeoImageUpdatedByCreatedAt = 'seo___image___updatedBy___createdAt',
-  SeoImageUpdatedById = 'seo___image___updatedBy___id',
-  SeoImageUpdatedByIsActive = 'seo___image___updatedBy___isActive',
-  SeoImageUpdatedByKind = 'seo___image___updatedBy___kind',
-  SeoImageUpdatedByName = 'seo___image___updatedBy___name',
-  SeoImageUpdatedByPicture = 'seo___image___updatedBy___picture',
-  SeoImageUpdatedByPublishedAt = 'seo___image___updatedBy___publishedAt',
-  SeoImageUpdatedByRemoteId = 'seo___image___updatedBy___remoteId',
-  SeoImageUpdatedByRemoteTypeName = 'seo___image___updatedBy___remoteTypeName',
-  SeoImageUpdatedByStage = 'seo___image___updatedBy___stage',
-  SeoImageUpdatedByUpdatedAt = 'seo___image___updatedBy___updatedAt',
-  SeoImageUrl = 'seo___image___url',
-  SeoImageWidth = 'seo___image___width',
-  SeoInternalContent = 'seo___internal___content',
-  SeoInternalContentDigest = 'seo___internal___contentDigest',
-  SeoInternalDescription = 'seo___internal___description',
-  SeoInternalFieldOwners = 'seo___internal___fieldOwners',
-  SeoInternalIgnoreType = 'seo___internal___ignoreType',
-  SeoInternalMediaType = 'seo___internal___mediaType',
-  SeoInternalOwner = 'seo___internal___owner',
-  SeoInternalType = 'seo___internal___type',
-  SeoKeywords = 'seo___keywords',
-  SeoParentChildren = 'seo___parent___children',
-  SeoParentChildrenChildren = 'seo___parent___children___children',
-  SeoParentChildrenId = 'seo___parent___children___id',
-  SeoParentId = 'seo___parent___id',
-  SeoParentInternalContent = 'seo___parent___internal___content',
-  SeoParentInternalContentDigest = 'seo___parent___internal___contentDigest',
-  SeoParentInternalDescription = 'seo___parent___internal___description',
-  SeoParentInternalFieldOwners = 'seo___parent___internal___fieldOwners',
-  SeoParentInternalIgnoreType = 'seo___parent___internal___ignoreType',
-  SeoParentInternalMediaType = 'seo___parent___internal___mediaType',
-  SeoParentInternalOwner = 'seo___parent___internal___owner',
-  SeoParentInternalType = 'seo___parent___internal___type',
-  SeoParentParentChildren = 'seo___parent___parent___children',
-  SeoParentParentId = 'seo___parent___parent___id',
-  SeoPublishedAt = 'seo___publishedAt',
-  SeoPublishedByChildren = 'seo___publishedBy___children',
-  SeoPublishedByChildrenChildren = 'seo___publishedBy___children___children',
-  SeoPublishedByChildrenId = 'seo___publishedBy___children___id',
-  SeoPublishedByCreatedAt = 'seo___publishedBy___createdAt',
-  SeoPublishedById = 'seo___publishedBy___id',
-  SeoPublishedByInternalContent = 'seo___publishedBy___internal___content',
-  SeoPublishedByInternalContentDigest = 'seo___publishedBy___internal___contentDigest',
-  SeoPublishedByInternalDescription = 'seo___publishedBy___internal___description',
-  SeoPublishedByInternalFieldOwners = 'seo___publishedBy___internal___fieldOwners',
-  SeoPublishedByInternalIgnoreType = 'seo___publishedBy___internal___ignoreType',
-  SeoPublishedByInternalMediaType = 'seo___publishedBy___internal___mediaType',
-  SeoPublishedByInternalOwner = 'seo___publishedBy___internal___owner',
-  SeoPublishedByInternalType = 'seo___publishedBy___internal___type',
-  SeoPublishedByIsActive = 'seo___publishedBy___isActive',
-  SeoPublishedByKind = 'seo___publishedBy___kind',
-  SeoPublishedByName = 'seo___publishedBy___name',
-  SeoPublishedByParentChildren = 'seo___publishedBy___parent___children',
-  SeoPublishedByParentId = 'seo___publishedBy___parent___id',
-  SeoPublishedByPicture = 'seo___publishedBy___picture',
-  SeoPublishedByPublishedAt = 'seo___publishedBy___publishedAt',
-  SeoPublishedByRemoteId = 'seo___publishedBy___remoteId',
-  SeoPublishedByRemoteTypeName = 'seo___publishedBy___remoteTypeName',
-  SeoPublishedByStage = 'seo___publishedBy___stage',
-  SeoPublishedByUpdatedAt = 'seo___publishedBy___updatedAt',
-  SeoRemoteId = 'seo___remoteId',
-  SeoRemoteTypeName = 'seo___remoteTypeName',
-  SeoStage = 'seo___stage',
-  SeoTitle = 'seo___title',
-  SeoUpdatedAt = 'seo___updatedAt',
-  SeoUpdatedByChildren = 'seo___updatedBy___children',
-  SeoUpdatedByChildrenChildren = 'seo___updatedBy___children___children',
-  SeoUpdatedByChildrenId = 'seo___updatedBy___children___id',
-  SeoUpdatedByCreatedAt = 'seo___updatedBy___createdAt',
-  SeoUpdatedById = 'seo___updatedBy___id',
-  SeoUpdatedByInternalContent = 'seo___updatedBy___internal___content',
-  SeoUpdatedByInternalContentDigest = 'seo___updatedBy___internal___contentDigest',
-  SeoUpdatedByInternalDescription = 'seo___updatedBy___internal___description',
-  SeoUpdatedByInternalFieldOwners = 'seo___updatedBy___internal___fieldOwners',
-  SeoUpdatedByInternalIgnoreType = 'seo___updatedBy___internal___ignoreType',
-  SeoUpdatedByInternalMediaType = 'seo___updatedBy___internal___mediaType',
-  SeoUpdatedByInternalOwner = 'seo___updatedBy___internal___owner',
-  SeoUpdatedByInternalType = 'seo___updatedBy___internal___type',
-  SeoUpdatedByIsActive = 'seo___updatedBy___isActive',
-  SeoUpdatedByKind = 'seo___updatedBy___kind',
-  SeoUpdatedByName = 'seo___updatedBy___name',
-  SeoUpdatedByParentChildren = 'seo___updatedBy___parent___children',
-  SeoUpdatedByParentId = 'seo___updatedBy___parent___id',
-  SeoUpdatedByPicture = 'seo___updatedBy___picture',
-  SeoUpdatedByPublishedAt = 'seo___updatedBy___publishedAt',
-  SeoUpdatedByRemoteId = 'seo___updatedBy___remoteId',
-  SeoUpdatedByRemoteTypeName = 'seo___updatedBy___remoteTypeName',
-  SeoUpdatedByStage = 'seo___updatedBy___stage',
-  SeoUpdatedByUpdatedAt = 'seo___updatedBy___updatedAt',
-  Slug = 'slug',
-  Stage = 'stage',
-  Subtitle = 'subtitle',
-  Title = 'title',
-  UpdatedAt = 'updatedAt',
-  UpdatedByChildren = 'updatedBy___children',
-  UpdatedByChildrenChildren = 'updatedBy___children___children',
-  UpdatedByChildrenChildrenChildren = 'updatedBy___children___children___children',
-  UpdatedByChildrenChildrenId = 'updatedBy___children___children___id',
-  UpdatedByChildrenId = 'updatedBy___children___id',
-  UpdatedByChildrenInternalContent = 'updatedBy___children___internal___content',
-  UpdatedByChildrenInternalContentDigest = 'updatedBy___children___internal___contentDigest',
-  UpdatedByChildrenInternalDescription = 'updatedBy___children___internal___description',
-  UpdatedByChildrenInternalFieldOwners = 'updatedBy___children___internal___fieldOwners',
-  UpdatedByChildrenInternalIgnoreType = 'updatedBy___children___internal___ignoreType',
-  UpdatedByChildrenInternalMediaType = 'updatedBy___children___internal___mediaType',
-  UpdatedByChildrenInternalOwner = 'updatedBy___children___internal___owner',
-  UpdatedByChildrenInternalType = 'updatedBy___children___internal___type',
-  UpdatedByChildrenParentChildren = 'updatedBy___children___parent___children',
-  UpdatedByChildrenParentId = 'updatedBy___children___parent___id',
-  UpdatedByCreatedAt = 'updatedBy___createdAt',
-  UpdatedById = 'updatedBy___id',
-  UpdatedByInternalContent = 'updatedBy___internal___content',
-  UpdatedByInternalContentDigest = 'updatedBy___internal___contentDigest',
-  UpdatedByInternalDescription = 'updatedBy___internal___description',
-  UpdatedByInternalFieldOwners = 'updatedBy___internal___fieldOwners',
-  UpdatedByInternalIgnoreType = 'updatedBy___internal___ignoreType',
-  UpdatedByInternalMediaType = 'updatedBy___internal___mediaType',
-  UpdatedByInternalOwner = 'updatedBy___internal___owner',
-  UpdatedByInternalType = 'updatedBy___internal___type',
-  UpdatedByIsActive = 'updatedBy___isActive',
-  UpdatedByKind = 'updatedBy___kind',
-  UpdatedByName = 'updatedBy___name',
-  UpdatedByParentChildren = 'updatedBy___parent___children',
-  UpdatedByParentChildrenChildren = 'updatedBy___parent___children___children',
-  UpdatedByParentChildrenId = 'updatedBy___parent___children___id',
-  UpdatedByParentId = 'updatedBy___parent___id',
-  UpdatedByParentInternalContent = 'updatedBy___parent___internal___content',
-  UpdatedByParentInternalContentDigest = 'updatedBy___parent___internal___contentDigest',
-  UpdatedByParentInternalDescription = 'updatedBy___parent___internal___description',
-  UpdatedByParentInternalFieldOwners = 'updatedBy___parent___internal___fieldOwners',
-  UpdatedByParentInternalIgnoreType = 'updatedBy___parent___internal___ignoreType',
-  UpdatedByParentInternalMediaType = 'updatedBy___parent___internal___mediaType',
-  UpdatedByParentInternalOwner = 'updatedBy___parent___internal___owner',
-  UpdatedByParentInternalType = 'updatedBy___parent___internal___type',
-  UpdatedByParentParentChildren = 'updatedBy___parent___parent___children',
-  UpdatedByParentParentId = 'updatedBy___parent___parent___id',
-  UpdatedByPicture = 'updatedBy___picture',
-  UpdatedByPublishedAt = 'updatedBy___publishedAt',
-  UpdatedByRemoteId = 'updatedBy___remoteId',
-  UpdatedByRemoteTypeName = 'updatedBy___remoteTypeName',
-  UpdatedByStage = 'updatedBy___stage',
-  UpdatedByUpdatedAt = 'updatedBy___updatedAt'
+/** Information about pagination in a connection. */
+export type GraphCms_PageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Number of items in the current page. */
+  pageSize: Maybe<Scalars['Int']>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor: Maybe<Scalars['String']>;
+};
+
+/** Identifies documents */
+export type GraphCms_PageManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_PageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_PageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_PageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  seo: Maybe<GraphCms_SeoWhereInput>;
+  slug: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with: Maybe<Scalars['String']>;
+  subtitle: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  subtitle_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  subtitle_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  subtitle_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  subtitle_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  subtitle_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  subtitle_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  subtitle_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  subtitle_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  subtitle_starts_with: Maybe<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+export enum GraphCms_PageOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SubtitleAsc = 'subtitle_ASC',
+  SubtitleDesc = 'subtitle_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export type GraphCms_PageFilterInput = {
-  children: Maybe<NodeFilterListInput>;
-  content: Maybe<GraphCms_RichTextFilterInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  seo: Maybe<GraphCms_SeoFilterInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  subtitle: Maybe<StringQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
+export type GraphCms_PageUpdateInput = {
+  content: Maybe<Scalars['GraphCMS_RichTextAST']>;
+  seo: Maybe<GraphCms_SeoUpdateOneInlineInput>;
+  slug: Maybe<Scalars['String']>;
+  subtitle: Maybe<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
 };
 
-export type GraphCms_PageGroupConnection = {
-  edges: Array<GraphCms_PageEdge>;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-  nodes: Array<GraphCms_Page>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+export type GraphCms_PageUpdateManyInlineInput = {
+  /** Connect multiple existing Page documents */
+  connect: Maybe<Array<GraphCms_PageConnectInput>>;
+  /** Create and connect multiple Page documents */
+  create: Maybe<Array<GraphCms_PageCreateInput>>;
+  /** Delete multiple Page documents */
+  delete: Maybe<Array<GraphCms_PageWhereUniqueInput>>;
+  /** Disconnect multiple Page documents */
+  disconnect: Maybe<Array<GraphCms_PageWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Page documents */
+  set: Maybe<Array<GraphCms_PageWhereUniqueInput>>;
+  /** Update multiple Page documents */
+  update: Maybe<Array<GraphCms_PageUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Page documents */
+  upsert: Maybe<Array<GraphCms_PageUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type GraphCms_PageSortInput = {
-  fields: Maybe<Array<Maybe<GraphCms_PageFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+export type GraphCms_PageUpdateManyInput = {
+  content: Maybe<Scalars['GraphCMS_RichTextAST']>;
+  subtitle: Maybe<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
 };
 
-export type GraphCms_Post = Node & {
+export type GraphCms_PageUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_PageUpdateManyInput;
+  /** Document search */
+  where: GraphCms_PageWhereInput;
+};
+
+export type GraphCms_PageUpdateOneInlineInput = {
+  /** Connect existing Page document */
+  connect: Maybe<GraphCms_PageWhereUniqueInput>;
+  /** Create and connect one Page document */
+  create: Maybe<GraphCms_PageCreateInput>;
+  /** Delete currently connected Page document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Page document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Page document */
+  update: Maybe<GraphCms_PageUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Page document */
+  upsert: Maybe<GraphCms_PageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_PageUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_PageUpdateInput;
+  /** Unique document search */
+  where: GraphCms_PageWhereUniqueInput;
+};
+
+export type GraphCms_PageUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_PageCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_PageUpdateInput;
+};
+
+export type GraphCms_PageUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_PageUpsertInput;
+  /** Unique document search */
+  where: GraphCms_PageWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_PageWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_PageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_PageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_PageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  seo: Maybe<GraphCms_SeoWhereInput>;
+  slug: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with: Maybe<Scalars['String']>;
+  subtitle: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  subtitle_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  subtitle_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  subtitle_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  subtitle_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  subtitle_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  subtitle_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  subtitle_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  subtitle_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  subtitle_starts_with: Maybe<Scalars['String']>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+/** References Page record uniquely */
+export type GraphCms_PageWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+  slug: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_Post = GraphCms_Node & {
+  /** Who should be credited with writing this post? */
   author: Maybe<GraphCms_Author>;
-  children: Array<Node>;
+  /** Write your blog post! */
   content: GraphCms_RichText;
+  /** Upload or select a cover image to set as your Featured Image */
   coverImage: Maybe<GraphCms_Asset>;
-  createdAt: Scalars['JSON'];
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
   createdBy: Maybe<GraphCms_User>;
-  date: Scalars['JSON'];
+  /** What is the published date you would like to show for this post? */
+  date: Scalars['GraphCMS_Date'];
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Post>;
+  /** Add a short excerpt to summarize this post */
   excerpt: Maybe<Scalars['String']>;
+  /** List of Post versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
   id: Scalars['ID'];
-  internal: Internal;
-  parent: Maybe<Node>;
-  publishedAt: Maybe<Scalars['JSON']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
   publishedBy: Maybe<GraphCms_User>;
-  remoteId: Scalars['ID'];
-  remoteTypeName: Scalars['String'];
+  /** Attach an SEO model to this post */
   seo: Maybe<GraphCms_Seo>;
+  /** Select a slug for this blog post, such as post-1, post-2, etc. */
   slug: Scalars['String'];
+  /** System stage field */
   stage: GraphCms_Stage;
+  /** Add any relevant tags to this blog post */
   tags: Array<Scalars['String']>;
+  /** Name your blog post! */
   title: Scalars['String'];
-  updatedAt: Scalars['JSON'];
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
   updatedBy: Maybe<GraphCms_User>;
 };
 
+
+export type GraphCms_PostAuthorArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PostCoverImageArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PostCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PostDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+export type GraphCms_PostHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+export type GraphCms_PostPublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PostSeoArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_PostUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+export type GraphCms_PostConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_PostWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
 export type GraphCms_PostConnection = {
-  distinct: Array<Scalars['String']>;
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
   edges: Array<GraphCms_PostEdge>;
-  group: Array<GraphCms_PostGroupConnection>;
-  nodes: Array<GraphCms_Post>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
 };
 
-
-export type GraphCms_PostConnectionDistinctArgs = {
-  field: GraphCms_PostFieldsEnum;
+export type GraphCms_PostCreateInput = {
+  author: Maybe<GraphCms_AuthorCreateOneInlineInput>;
+  content: Scalars['GraphCMS_RichTextAST'];
+  coverImage: Maybe<GraphCms_AssetCreateOneInlineInput>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  date: Scalars['GraphCMS_Date'];
+  excerpt: Maybe<Scalars['String']>;
+  seo: Maybe<GraphCms_SeoCreateOneInlineInput>;
+  slug: Scalars['String'];
+  tags: Maybe<Array<Scalars['String']>>;
+  title: Scalars['String'];
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
 };
 
-
-export type GraphCms_PostConnectionGroupArgs = {
-  field: GraphCms_PostFieldsEnum;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
+export type GraphCms_PostCreateManyInlineInput = {
+  /** Connect multiple existing Post documents */
+  connect: Maybe<Array<GraphCms_PostWhereUniqueInput>>;
+  /** Create and connect multiple existing Post documents */
+  create: Maybe<Array<GraphCms_PostCreateInput>>;
 };
 
+export type GraphCms_PostCreateOneInlineInput = {
+  /** Connect one existing Post document */
+  connect: Maybe<GraphCms_PostWhereUniqueInput>;
+  /** Create and connect one Post document */
+  create: Maybe<GraphCms_PostCreateInput>;
+};
+
+/** An edge in a connection. */
 export type GraphCms_PostEdge = {
-  next: Maybe<GraphCms_Post>;
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
   node: GraphCms_Post;
-  previous: Maybe<GraphCms_Post>;
 };
 
-export enum GraphCms_PostFieldsEnum {
-  AuthorBiography = 'author___biography',
-  AuthorChildren = 'author___children',
-  AuthorChildrenChildren = 'author___children___children',
-  AuthorChildrenChildrenChildren = 'author___children___children___children',
-  AuthorChildrenChildrenId = 'author___children___children___id',
-  AuthorChildrenId = 'author___children___id',
-  AuthorChildrenInternalContent = 'author___children___internal___content',
-  AuthorChildrenInternalContentDigest = 'author___children___internal___contentDigest',
-  AuthorChildrenInternalDescription = 'author___children___internal___description',
-  AuthorChildrenInternalFieldOwners = 'author___children___internal___fieldOwners',
-  AuthorChildrenInternalIgnoreType = 'author___children___internal___ignoreType',
-  AuthorChildrenInternalMediaType = 'author___children___internal___mediaType',
-  AuthorChildrenInternalOwner = 'author___children___internal___owner',
-  AuthorChildrenInternalType = 'author___children___internal___type',
-  AuthorChildrenParentChildren = 'author___children___parent___children',
-  AuthorChildrenParentId = 'author___children___parent___id',
-  AuthorCreatedAt = 'author___createdAt',
-  AuthorCreatedByChildren = 'author___createdBy___children',
-  AuthorCreatedByChildrenChildren = 'author___createdBy___children___children',
-  AuthorCreatedByChildrenId = 'author___createdBy___children___id',
-  AuthorCreatedByCreatedAt = 'author___createdBy___createdAt',
-  AuthorCreatedById = 'author___createdBy___id',
-  AuthorCreatedByInternalContent = 'author___createdBy___internal___content',
-  AuthorCreatedByInternalContentDigest = 'author___createdBy___internal___contentDigest',
-  AuthorCreatedByInternalDescription = 'author___createdBy___internal___description',
-  AuthorCreatedByInternalFieldOwners = 'author___createdBy___internal___fieldOwners',
-  AuthorCreatedByInternalIgnoreType = 'author___createdBy___internal___ignoreType',
-  AuthorCreatedByInternalMediaType = 'author___createdBy___internal___mediaType',
-  AuthorCreatedByInternalOwner = 'author___createdBy___internal___owner',
-  AuthorCreatedByInternalType = 'author___createdBy___internal___type',
-  AuthorCreatedByIsActive = 'author___createdBy___isActive',
-  AuthorCreatedByKind = 'author___createdBy___kind',
-  AuthorCreatedByName = 'author___createdBy___name',
-  AuthorCreatedByParentChildren = 'author___createdBy___parent___children',
-  AuthorCreatedByParentId = 'author___createdBy___parent___id',
-  AuthorCreatedByPicture = 'author___createdBy___picture',
-  AuthorCreatedByPublishedAt = 'author___createdBy___publishedAt',
-  AuthorCreatedByRemoteId = 'author___createdBy___remoteId',
-  AuthorCreatedByRemoteTypeName = 'author___createdBy___remoteTypeName',
-  AuthorCreatedByStage = 'author___createdBy___stage',
-  AuthorCreatedByUpdatedAt = 'author___createdBy___updatedAt',
-  AuthorId = 'author___id',
-  AuthorInternalContent = 'author___internal___content',
-  AuthorInternalContentDigest = 'author___internal___contentDigest',
-  AuthorInternalDescription = 'author___internal___description',
-  AuthorInternalFieldOwners = 'author___internal___fieldOwners',
-  AuthorInternalIgnoreType = 'author___internal___ignoreType',
-  AuthorInternalMediaType = 'author___internal___mediaType',
-  AuthorInternalOwner = 'author___internal___owner',
-  AuthorInternalType = 'author___internal___type',
-  AuthorName = 'author___name',
-  AuthorParentChildren = 'author___parent___children',
-  AuthorParentChildrenChildren = 'author___parent___children___children',
-  AuthorParentChildrenId = 'author___parent___children___id',
-  AuthorParentId = 'author___parent___id',
-  AuthorParentInternalContent = 'author___parent___internal___content',
-  AuthorParentInternalContentDigest = 'author___parent___internal___contentDigest',
-  AuthorParentInternalDescription = 'author___parent___internal___description',
-  AuthorParentInternalFieldOwners = 'author___parent___internal___fieldOwners',
-  AuthorParentInternalIgnoreType = 'author___parent___internal___ignoreType',
-  AuthorParentInternalMediaType = 'author___parent___internal___mediaType',
-  AuthorParentInternalOwner = 'author___parent___internal___owner',
-  AuthorParentInternalType = 'author___parent___internal___type',
-  AuthorParentParentChildren = 'author___parent___parent___children',
-  AuthorParentParentId = 'author___parent___parent___id',
-  AuthorPictureAuthorAvatar = 'author___picture___authorAvatar',
-  AuthorPictureAuthorAvatarBiography = 'author___picture___authorAvatar___biography',
-  AuthorPictureAuthorAvatarChildren = 'author___picture___authorAvatar___children',
-  AuthorPictureAuthorAvatarCreatedAt = 'author___picture___authorAvatar___createdAt',
-  AuthorPictureAuthorAvatarId = 'author___picture___authorAvatar___id',
-  AuthorPictureAuthorAvatarName = 'author___picture___authorAvatar___name',
-  AuthorPictureAuthorAvatarPosts = 'author___picture___authorAvatar___posts',
-  AuthorPictureAuthorAvatarPublishedAt = 'author___picture___authorAvatar___publishedAt',
-  AuthorPictureAuthorAvatarRemoteId = 'author___picture___authorAvatar___remoteId',
-  AuthorPictureAuthorAvatarRemoteTypeName = 'author___picture___authorAvatar___remoteTypeName',
-  AuthorPictureAuthorAvatarStage = 'author___picture___authorAvatar___stage',
-  AuthorPictureAuthorAvatarTitle = 'author___picture___authorAvatar___title',
-  AuthorPictureAuthorAvatarUpdatedAt = 'author___picture___authorAvatar___updatedAt',
-  AuthorPictureChildren = 'author___picture___children',
-  AuthorPictureChildrenChildren = 'author___picture___children___children',
-  AuthorPictureChildrenId = 'author___picture___children___id',
-  AuthorPictureCoverImagePost = 'author___picture___coverImagePost',
-  AuthorPictureCoverImagePostChildren = 'author___picture___coverImagePost___children',
-  AuthorPictureCoverImagePostCreatedAt = 'author___picture___coverImagePost___createdAt',
-  AuthorPictureCoverImagePostDate = 'author___picture___coverImagePost___date',
-  AuthorPictureCoverImagePostExcerpt = 'author___picture___coverImagePost___excerpt',
-  AuthorPictureCoverImagePostId = 'author___picture___coverImagePost___id',
-  AuthorPictureCoverImagePostPublishedAt = 'author___picture___coverImagePost___publishedAt',
-  AuthorPictureCoverImagePostRemoteId = 'author___picture___coverImagePost___remoteId',
-  AuthorPictureCoverImagePostRemoteTypeName = 'author___picture___coverImagePost___remoteTypeName',
-  AuthorPictureCoverImagePostSlug = 'author___picture___coverImagePost___slug',
-  AuthorPictureCoverImagePostStage = 'author___picture___coverImagePost___stage',
-  AuthorPictureCoverImagePostTags = 'author___picture___coverImagePost___tags',
-  AuthorPictureCoverImagePostTitle = 'author___picture___coverImagePost___title',
-  AuthorPictureCoverImagePostUpdatedAt = 'author___picture___coverImagePost___updatedAt',
-  AuthorPictureCreatedAt = 'author___picture___createdAt',
-  AuthorPictureCreatedByChildren = 'author___picture___createdBy___children',
-  AuthorPictureCreatedByCreatedAt = 'author___picture___createdBy___createdAt',
-  AuthorPictureCreatedById = 'author___picture___createdBy___id',
-  AuthorPictureCreatedByIsActive = 'author___picture___createdBy___isActive',
-  AuthorPictureCreatedByKind = 'author___picture___createdBy___kind',
-  AuthorPictureCreatedByName = 'author___picture___createdBy___name',
-  AuthorPictureCreatedByPicture = 'author___picture___createdBy___picture',
-  AuthorPictureCreatedByPublishedAt = 'author___picture___createdBy___publishedAt',
-  AuthorPictureCreatedByRemoteId = 'author___picture___createdBy___remoteId',
-  AuthorPictureCreatedByRemoteTypeName = 'author___picture___createdBy___remoteTypeName',
-  AuthorPictureCreatedByStage = 'author___picture___createdBy___stage',
-  AuthorPictureCreatedByUpdatedAt = 'author___picture___createdBy___updatedAt',
-  AuthorPictureFileName = 'author___picture___fileName',
-  AuthorPictureHandle = 'author___picture___handle',
-  AuthorPictureHeight = 'author___picture___height',
-  AuthorPictureId = 'author___picture___id',
-  AuthorPictureInternalContent = 'author___picture___internal___content',
-  AuthorPictureInternalContentDigest = 'author___picture___internal___contentDigest',
-  AuthorPictureInternalDescription = 'author___picture___internal___description',
-  AuthorPictureInternalFieldOwners = 'author___picture___internal___fieldOwners',
-  AuthorPictureInternalIgnoreType = 'author___picture___internal___ignoreType',
-  AuthorPictureInternalMediaType = 'author___picture___internal___mediaType',
-  AuthorPictureInternalOwner = 'author___picture___internal___owner',
-  AuthorPictureInternalType = 'author___picture___internal___type',
-  AuthorPictureLocale = 'author___picture___locale',
-  AuthorPictureMimeType = 'author___picture___mimeType',
-  AuthorPictureParentChildren = 'author___picture___parent___children',
-  AuthorPictureParentId = 'author___picture___parent___id',
-  AuthorPicturePublishedAt = 'author___picture___publishedAt',
-  AuthorPicturePublishedByChildren = 'author___picture___publishedBy___children',
-  AuthorPicturePublishedByCreatedAt = 'author___picture___publishedBy___createdAt',
-  AuthorPicturePublishedById = 'author___picture___publishedBy___id',
-  AuthorPicturePublishedByIsActive = 'author___picture___publishedBy___isActive',
-  AuthorPicturePublishedByKind = 'author___picture___publishedBy___kind',
-  AuthorPicturePublishedByName = 'author___picture___publishedBy___name',
-  AuthorPicturePublishedByPicture = 'author___picture___publishedBy___picture',
-  AuthorPicturePublishedByPublishedAt = 'author___picture___publishedBy___publishedAt',
-  AuthorPicturePublishedByRemoteId = 'author___picture___publishedBy___remoteId',
-  AuthorPicturePublishedByRemoteTypeName = 'author___picture___publishedBy___remoteTypeName',
-  AuthorPicturePublishedByStage = 'author___picture___publishedBy___stage',
-  AuthorPicturePublishedByUpdatedAt = 'author___picture___publishedBy___updatedAt',
-  AuthorPictureRemoteId = 'author___picture___remoteId',
-  AuthorPictureRemoteTypeName = 'author___picture___remoteTypeName',
-  AuthorPictureSeoImage = 'author___picture___seoImage',
-  AuthorPictureSeoImageChildren = 'author___picture___seoImage___children',
-  AuthorPictureSeoImageCreatedAt = 'author___picture___seoImage___createdAt',
-  AuthorPictureSeoImageDescription = 'author___picture___seoImage___description',
-  AuthorPictureSeoImageId = 'author___picture___seoImage___id',
-  AuthorPictureSeoImageKeywords = 'author___picture___seoImage___keywords',
-  AuthorPictureSeoImagePublishedAt = 'author___picture___seoImage___publishedAt',
-  AuthorPictureSeoImageRemoteId = 'author___picture___seoImage___remoteId',
-  AuthorPictureSeoImageRemoteTypeName = 'author___picture___seoImage___remoteTypeName',
-  AuthorPictureSeoImageStage = 'author___picture___seoImage___stage',
-  AuthorPictureSeoImageTitle = 'author___picture___seoImage___title',
-  AuthorPictureSeoImageUpdatedAt = 'author___picture___seoImage___updatedAt',
-  AuthorPictureSize = 'author___picture___size',
-  AuthorPictureStage = 'author___picture___stage',
-  AuthorPictureUpdatedAt = 'author___picture___updatedAt',
-  AuthorPictureUpdatedByChildren = 'author___picture___updatedBy___children',
-  AuthorPictureUpdatedByCreatedAt = 'author___picture___updatedBy___createdAt',
-  AuthorPictureUpdatedById = 'author___picture___updatedBy___id',
-  AuthorPictureUpdatedByIsActive = 'author___picture___updatedBy___isActive',
-  AuthorPictureUpdatedByKind = 'author___picture___updatedBy___kind',
-  AuthorPictureUpdatedByName = 'author___picture___updatedBy___name',
-  AuthorPictureUpdatedByPicture = 'author___picture___updatedBy___picture',
-  AuthorPictureUpdatedByPublishedAt = 'author___picture___updatedBy___publishedAt',
-  AuthorPictureUpdatedByRemoteId = 'author___picture___updatedBy___remoteId',
-  AuthorPictureUpdatedByRemoteTypeName = 'author___picture___updatedBy___remoteTypeName',
-  AuthorPictureUpdatedByStage = 'author___picture___updatedBy___stage',
-  AuthorPictureUpdatedByUpdatedAt = 'author___picture___updatedBy___updatedAt',
-  AuthorPictureUrl = 'author___picture___url',
-  AuthorPictureWidth = 'author___picture___width',
-  AuthorPosts = 'author___posts',
-  AuthorPostsAuthorBiography = 'author___posts___author___biography',
-  AuthorPostsAuthorChildren = 'author___posts___author___children',
-  AuthorPostsAuthorCreatedAt = 'author___posts___author___createdAt',
-  AuthorPostsAuthorId = 'author___posts___author___id',
-  AuthorPostsAuthorName = 'author___posts___author___name',
-  AuthorPostsAuthorPosts = 'author___posts___author___posts',
-  AuthorPostsAuthorPublishedAt = 'author___posts___author___publishedAt',
-  AuthorPostsAuthorRemoteId = 'author___posts___author___remoteId',
-  AuthorPostsAuthorRemoteTypeName = 'author___posts___author___remoteTypeName',
-  AuthorPostsAuthorStage = 'author___posts___author___stage',
-  AuthorPostsAuthorTitle = 'author___posts___author___title',
-  AuthorPostsAuthorUpdatedAt = 'author___posts___author___updatedAt',
-  AuthorPostsChildren = 'author___posts___children',
-  AuthorPostsChildrenChildren = 'author___posts___children___children',
-  AuthorPostsChildrenId = 'author___posts___children___id',
-  AuthorPostsContentHtml = 'author___posts___content___html',
-  AuthorPostsContentMarkdown = 'author___posts___content___markdown',
-  AuthorPostsContentRaw = 'author___posts___content___raw',
-  AuthorPostsContentRemoteTypeName = 'author___posts___content___remoteTypeName',
-  AuthorPostsContentText = 'author___posts___content___text',
-  AuthorPostsCoverImageAuthorAvatar = 'author___posts___coverImage___authorAvatar',
-  AuthorPostsCoverImageChildren = 'author___posts___coverImage___children',
-  AuthorPostsCoverImageCoverImagePost = 'author___posts___coverImage___coverImagePost',
-  AuthorPostsCoverImageCreatedAt = 'author___posts___coverImage___createdAt',
-  AuthorPostsCoverImageFileName = 'author___posts___coverImage___fileName',
-  AuthorPostsCoverImageHandle = 'author___posts___coverImage___handle',
-  AuthorPostsCoverImageHeight = 'author___posts___coverImage___height',
-  AuthorPostsCoverImageId = 'author___posts___coverImage___id',
-  AuthorPostsCoverImageLocale = 'author___posts___coverImage___locale',
-  AuthorPostsCoverImageMimeType = 'author___posts___coverImage___mimeType',
-  AuthorPostsCoverImagePublishedAt = 'author___posts___coverImage___publishedAt',
-  AuthorPostsCoverImageRemoteId = 'author___posts___coverImage___remoteId',
-  AuthorPostsCoverImageRemoteTypeName = 'author___posts___coverImage___remoteTypeName',
-  AuthorPostsCoverImageSeoImage = 'author___posts___coverImage___seoImage',
-  AuthorPostsCoverImageSize = 'author___posts___coverImage___size',
-  AuthorPostsCoverImageStage = 'author___posts___coverImage___stage',
-  AuthorPostsCoverImageUpdatedAt = 'author___posts___coverImage___updatedAt',
-  AuthorPostsCoverImageUrl = 'author___posts___coverImage___url',
-  AuthorPostsCoverImageWidth = 'author___posts___coverImage___width',
-  AuthorPostsCreatedAt = 'author___posts___createdAt',
-  AuthorPostsCreatedByChildren = 'author___posts___createdBy___children',
-  AuthorPostsCreatedByCreatedAt = 'author___posts___createdBy___createdAt',
-  AuthorPostsCreatedById = 'author___posts___createdBy___id',
-  AuthorPostsCreatedByIsActive = 'author___posts___createdBy___isActive',
-  AuthorPostsCreatedByKind = 'author___posts___createdBy___kind',
-  AuthorPostsCreatedByName = 'author___posts___createdBy___name',
-  AuthorPostsCreatedByPicture = 'author___posts___createdBy___picture',
-  AuthorPostsCreatedByPublishedAt = 'author___posts___createdBy___publishedAt',
-  AuthorPostsCreatedByRemoteId = 'author___posts___createdBy___remoteId',
-  AuthorPostsCreatedByRemoteTypeName = 'author___posts___createdBy___remoteTypeName',
-  AuthorPostsCreatedByStage = 'author___posts___createdBy___stage',
-  AuthorPostsCreatedByUpdatedAt = 'author___posts___createdBy___updatedAt',
-  AuthorPostsDate = 'author___posts___date',
-  AuthorPostsExcerpt = 'author___posts___excerpt',
-  AuthorPostsId = 'author___posts___id',
-  AuthorPostsInternalContent = 'author___posts___internal___content',
-  AuthorPostsInternalContentDigest = 'author___posts___internal___contentDigest',
-  AuthorPostsInternalDescription = 'author___posts___internal___description',
-  AuthorPostsInternalFieldOwners = 'author___posts___internal___fieldOwners',
-  AuthorPostsInternalIgnoreType = 'author___posts___internal___ignoreType',
-  AuthorPostsInternalMediaType = 'author___posts___internal___mediaType',
-  AuthorPostsInternalOwner = 'author___posts___internal___owner',
-  AuthorPostsInternalType = 'author___posts___internal___type',
-  AuthorPostsParentChildren = 'author___posts___parent___children',
-  AuthorPostsParentId = 'author___posts___parent___id',
-  AuthorPostsPublishedAt = 'author___posts___publishedAt',
-  AuthorPostsPublishedByChildren = 'author___posts___publishedBy___children',
-  AuthorPostsPublishedByCreatedAt = 'author___posts___publishedBy___createdAt',
-  AuthorPostsPublishedById = 'author___posts___publishedBy___id',
-  AuthorPostsPublishedByIsActive = 'author___posts___publishedBy___isActive',
-  AuthorPostsPublishedByKind = 'author___posts___publishedBy___kind',
-  AuthorPostsPublishedByName = 'author___posts___publishedBy___name',
-  AuthorPostsPublishedByPicture = 'author___posts___publishedBy___picture',
-  AuthorPostsPublishedByPublishedAt = 'author___posts___publishedBy___publishedAt',
-  AuthorPostsPublishedByRemoteId = 'author___posts___publishedBy___remoteId',
-  AuthorPostsPublishedByRemoteTypeName = 'author___posts___publishedBy___remoteTypeName',
-  AuthorPostsPublishedByStage = 'author___posts___publishedBy___stage',
-  AuthorPostsPublishedByUpdatedAt = 'author___posts___publishedBy___updatedAt',
-  AuthorPostsRemoteId = 'author___posts___remoteId',
-  AuthorPostsRemoteTypeName = 'author___posts___remoteTypeName',
-  AuthorPostsSeoChildren = 'author___posts___seo___children',
-  AuthorPostsSeoCreatedAt = 'author___posts___seo___createdAt',
-  AuthorPostsSeoDescription = 'author___posts___seo___description',
-  AuthorPostsSeoId = 'author___posts___seo___id',
-  AuthorPostsSeoKeywords = 'author___posts___seo___keywords',
-  AuthorPostsSeoPublishedAt = 'author___posts___seo___publishedAt',
-  AuthorPostsSeoRemoteId = 'author___posts___seo___remoteId',
-  AuthorPostsSeoRemoteTypeName = 'author___posts___seo___remoteTypeName',
-  AuthorPostsSeoStage = 'author___posts___seo___stage',
-  AuthorPostsSeoTitle = 'author___posts___seo___title',
-  AuthorPostsSeoUpdatedAt = 'author___posts___seo___updatedAt',
-  AuthorPostsSlug = 'author___posts___slug',
-  AuthorPostsStage = 'author___posts___stage',
-  AuthorPostsTags = 'author___posts___tags',
-  AuthorPostsTitle = 'author___posts___title',
-  AuthorPostsUpdatedAt = 'author___posts___updatedAt',
-  AuthorPostsUpdatedByChildren = 'author___posts___updatedBy___children',
-  AuthorPostsUpdatedByCreatedAt = 'author___posts___updatedBy___createdAt',
-  AuthorPostsUpdatedById = 'author___posts___updatedBy___id',
-  AuthorPostsUpdatedByIsActive = 'author___posts___updatedBy___isActive',
-  AuthorPostsUpdatedByKind = 'author___posts___updatedBy___kind',
-  AuthorPostsUpdatedByName = 'author___posts___updatedBy___name',
-  AuthorPostsUpdatedByPicture = 'author___posts___updatedBy___picture',
-  AuthorPostsUpdatedByPublishedAt = 'author___posts___updatedBy___publishedAt',
-  AuthorPostsUpdatedByRemoteId = 'author___posts___updatedBy___remoteId',
-  AuthorPostsUpdatedByRemoteTypeName = 'author___posts___updatedBy___remoteTypeName',
-  AuthorPostsUpdatedByStage = 'author___posts___updatedBy___stage',
-  AuthorPostsUpdatedByUpdatedAt = 'author___posts___updatedBy___updatedAt',
-  AuthorPublishedAt = 'author___publishedAt',
-  AuthorPublishedByChildren = 'author___publishedBy___children',
-  AuthorPublishedByChildrenChildren = 'author___publishedBy___children___children',
-  AuthorPublishedByChildrenId = 'author___publishedBy___children___id',
-  AuthorPublishedByCreatedAt = 'author___publishedBy___createdAt',
-  AuthorPublishedById = 'author___publishedBy___id',
-  AuthorPublishedByInternalContent = 'author___publishedBy___internal___content',
-  AuthorPublishedByInternalContentDigest = 'author___publishedBy___internal___contentDigest',
-  AuthorPublishedByInternalDescription = 'author___publishedBy___internal___description',
-  AuthorPublishedByInternalFieldOwners = 'author___publishedBy___internal___fieldOwners',
-  AuthorPublishedByInternalIgnoreType = 'author___publishedBy___internal___ignoreType',
-  AuthorPublishedByInternalMediaType = 'author___publishedBy___internal___mediaType',
-  AuthorPublishedByInternalOwner = 'author___publishedBy___internal___owner',
-  AuthorPublishedByInternalType = 'author___publishedBy___internal___type',
-  AuthorPublishedByIsActive = 'author___publishedBy___isActive',
-  AuthorPublishedByKind = 'author___publishedBy___kind',
-  AuthorPublishedByName = 'author___publishedBy___name',
-  AuthorPublishedByParentChildren = 'author___publishedBy___parent___children',
-  AuthorPublishedByParentId = 'author___publishedBy___parent___id',
-  AuthorPublishedByPicture = 'author___publishedBy___picture',
-  AuthorPublishedByPublishedAt = 'author___publishedBy___publishedAt',
-  AuthorPublishedByRemoteId = 'author___publishedBy___remoteId',
-  AuthorPublishedByRemoteTypeName = 'author___publishedBy___remoteTypeName',
-  AuthorPublishedByStage = 'author___publishedBy___stage',
-  AuthorPublishedByUpdatedAt = 'author___publishedBy___updatedAt',
-  AuthorRemoteId = 'author___remoteId',
-  AuthorRemoteTypeName = 'author___remoteTypeName',
-  AuthorStage = 'author___stage',
-  AuthorTitle = 'author___title',
-  AuthorUpdatedAt = 'author___updatedAt',
-  AuthorUpdatedByChildren = 'author___updatedBy___children',
-  AuthorUpdatedByChildrenChildren = 'author___updatedBy___children___children',
-  AuthorUpdatedByChildrenId = 'author___updatedBy___children___id',
-  AuthorUpdatedByCreatedAt = 'author___updatedBy___createdAt',
-  AuthorUpdatedById = 'author___updatedBy___id',
-  AuthorUpdatedByInternalContent = 'author___updatedBy___internal___content',
-  AuthorUpdatedByInternalContentDigest = 'author___updatedBy___internal___contentDigest',
-  AuthorUpdatedByInternalDescription = 'author___updatedBy___internal___description',
-  AuthorUpdatedByInternalFieldOwners = 'author___updatedBy___internal___fieldOwners',
-  AuthorUpdatedByInternalIgnoreType = 'author___updatedBy___internal___ignoreType',
-  AuthorUpdatedByInternalMediaType = 'author___updatedBy___internal___mediaType',
-  AuthorUpdatedByInternalOwner = 'author___updatedBy___internal___owner',
-  AuthorUpdatedByInternalType = 'author___updatedBy___internal___type',
-  AuthorUpdatedByIsActive = 'author___updatedBy___isActive',
-  AuthorUpdatedByKind = 'author___updatedBy___kind',
-  AuthorUpdatedByName = 'author___updatedBy___name',
-  AuthorUpdatedByParentChildren = 'author___updatedBy___parent___children',
-  AuthorUpdatedByParentId = 'author___updatedBy___parent___id',
-  AuthorUpdatedByPicture = 'author___updatedBy___picture',
-  AuthorUpdatedByPublishedAt = 'author___updatedBy___publishedAt',
-  AuthorUpdatedByRemoteId = 'author___updatedBy___remoteId',
-  AuthorUpdatedByRemoteTypeName = 'author___updatedBy___remoteTypeName',
-  AuthorUpdatedByStage = 'author___updatedBy___stage',
-  AuthorUpdatedByUpdatedAt = 'author___updatedBy___updatedAt',
-  Children = 'children',
-  ChildrenChildren = 'children___children',
-  ChildrenChildrenChildren = 'children___children___children',
-  ChildrenChildrenChildrenChildren = 'children___children___children___children',
-  ChildrenChildrenChildrenId = 'children___children___children___id',
-  ChildrenChildrenId = 'children___children___id',
-  ChildrenChildrenInternalContent = 'children___children___internal___content',
-  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
-  ChildrenChildrenInternalDescription = 'children___children___internal___description',
-  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
-  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
-  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
-  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
-  ChildrenChildrenInternalType = 'children___children___internal___type',
-  ChildrenChildrenParentChildren = 'children___children___parent___children',
-  ChildrenChildrenParentId = 'children___children___parent___id',
-  ChildrenId = 'children___id',
-  ChildrenInternalContent = 'children___internal___content',
-  ChildrenInternalContentDigest = 'children___internal___contentDigest',
-  ChildrenInternalDescription = 'children___internal___description',
-  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
-  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
-  ChildrenInternalMediaType = 'children___internal___mediaType',
-  ChildrenInternalOwner = 'children___internal___owner',
-  ChildrenInternalType = 'children___internal___type',
-  ChildrenParentChildren = 'children___parent___children',
-  ChildrenParentChildrenChildren = 'children___parent___children___children',
-  ChildrenParentChildrenId = 'children___parent___children___id',
-  ChildrenParentId = 'children___parent___id',
-  ChildrenParentInternalContent = 'children___parent___internal___content',
-  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
-  ChildrenParentInternalDescription = 'children___parent___internal___description',
-  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
-  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
-  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
-  ChildrenParentInternalOwner = 'children___parent___internal___owner',
-  ChildrenParentInternalType = 'children___parent___internal___type',
-  ChildrenParentParentChildren = 'children___parent___parent___children',
-  ChildrenParentParentId = 'children___parent___parent___id',
-  ContentHtml = 'content___html',
-  ContentMarkdown = 'content___markdown',
-  ContentRaw = 'content___raw',
-  ContentRemoteTypeName = 'content___remoteTypeName',
-  ContentText = 'content___text',
-  CoverImageAuthorAvatar = 'coverImage___authorAvatar',
-  CoverImageAuthorAvatarBiography = 'coverImage___authorAvatar___biography',
-  CoverImageAuthorAvatarChildren = 'coverImage___authorAvatar___children',
-  CoverImageAuthorAvatarChildrenChildren = 'coverImage___authorAvatar___children___children',
-  CoverImageAuthorAvatarChildrenId = 'coverImage___authorAvatar___children___id',
-  CoverImageAuthorAvatarCreatedAt = 'coverImage___authorAvatar___createdAt',
-  CoverImageAuthorAvatarCreatedByChildren = 'coverImage___authorAvatar___createdBy___children',
-  CoverImageAuthorAvatarCreatedByCreatedAt = 'coverImage___authorAvatar___createdBy___createdAt',
-  CoverImageAuthorAvatarCreatedById = 'coverImage___authorAvatar___createdBy___id',
-  CoverImageAuthorAvatarCreatedByIsActive = 'coverImage___authorAvatar___createdBy___isActive',
-  CoverImageAuthorAvatarCreatedByKind = 'coverImage___authorAvatar___createdBy___kind',
-  CoverImageAuthorAvatarCreatedByName = 'coverImage___authorAvatar___createdBy___name',
-  CoverImageAuthorAvatarCreatedByPicture = 'coverImage___authorAvatar___createdBy___picture',
-  CoverImageAuthorAvatarCreatedByPublishedAt = 'coverImage___authorAvatar___createdBy___publishedAt',
-  CoverImageAuthorAvatarCreatedByRemoteId = 'coverImage___authorAvatar___createdBy___remoteId',
-  CoverImageAuthorAvatarCreatedByRemoteTypeName = 'coverImage___authorAvatar___createdBy___remoteTypeName',
-  CoverImageAuthorAvatarCreatedByStage = 'coverImage___authorAvatar___createdBy___stage',
-  CoverImageAuthorAvatarCreatedByUpdatedAt = 'coverImage___authorAvatar___createdBy___updatedAt',
-  CoverImageAuthorAvatarId = 'coverImage___authorAvatar___id',
-  CoverImageAuthorAvatarInternalContent = 'coverImage___authorAvatar___internal___content',
-  CoverImageAuthorAvatarInternalContentDigest = 'coverImage___authorAvatar___internal___contentDigest',
-  CoverImageAuthorAvatarInternalDescription = 'coverImage___authorAvatar___internal___description',
-  CoverImageAuthorAvatarInternalFieldOwners = 'coverImage___authorAvatar___internal___fieldOwners',
-  CoverImageAuthorAvatarInternalIgnoreType = 'coverImage___authorAvatar___internal___ignoreType',
-  CoverImageAuthorAvatarInternalMediaType = 'coverImage___authorAvatar___internal___mediaType',
-  CoverImageAuthorAvatarInternalOwner = 'coverImage___authorAvatar___internal___owner',
-  CoverImageAuthorAvatarInternalType = 'coverImage___authorAvatar___internal___type',
-  CoverImageAuthorAvatarName = 'coverImage___authorAvatar___name',
-  CoverImageAuthorAvatarParentChildren = 'coverImage___authorAvatar___parent___children',
-  CoverImageAuthorAvatarParentId = 'coverImage___authorAvatar___parent___id',
-  CoverImageAuthorAvatarPictureAuthorAvatar = 'coverImage___authorAvatar___picture___authorAvatar',
-  CoverImageAuthorAvatarPictureChildren = 'coverImage___authorAvatar___picture___children',
-  CoverImageAuthorAvatarPictureCoverImagePost = 'coverImage___authorAvatar___picture___coverImagePost',
-  CoverImageAuthorAvatarPictureCreatedAt = 'coverImage___authorAvatar___picture___createdAt',
-  CoverImageAuthorAvatarPictureFileName = 'coverImage___authorAvatar___picture___fileName',
-  CoverImageAuthorAvatarPictureHandle = 'coverImage___authorAvatar___picture___handle',
-  CoverImageAuthorAvatarPictureHeight = 'coverImage___authorAvatar___picture___height',
-  CoverImageAuthorAvatarPictureId = 'coverImage___authorAvatar___picture___id',
-  CoverImageAuthorAvatarPictureLocale = 'coverImage___authorAvatar___picture___locale',
-  CoverImageAuthorAvatarPictureMimeType = 'coverImage___authorAvatar___picture___mimeType',
-  CoverImageAuthorAvatarPicturePublishedAt = 'coverImage___authorAvatar___picture___publishedAt',
-  CoverImageAuthorAvatarPictureRemoteId = 'coverImage___authorAvatar___picture___remoteId',
-  CoverImageAuthorAvatarPictureRemoteTypeName = 'coverImage___authorAvatar___picture___remoteTypeName',
-  CoverImageAuthorAvatarPictureSeoImage = 'coverImage___authorAvatar___picture___seoImage',
-  CoverImageAuthorAvatarPictureSize = 'coverImage___authorAvatar___picture___size',
-  CoverImageAuthorAvatarPictureStage = 'coverImage___authorAvatar___picture___stage',
-  CoverImageAuthorAvatarPictureUpdatedAt = 'coverImage___authorAvatar___picture___updatedAt',
-  CoverImageAuthorAvatarPictureUrl = 'coverImage___authorAvatar___picture___url',
-  CoverImageAuthorAvatarPictureWidth = 'coverImage___authorAvatar___picture___width',
-  CoverImageAuthorAvatarPosts = 'coverImage___authorAvatar___posts',
-  CoverImageAuthorAvatarPostsChildren = 'coverImage___authorAvatar___posts___children',
-  CoverImageAuthorAvatarPostsCreatedAt = 'coverImage___authorAvatar___posts___createdAt',
-  CoverImageAuthorAvatarPostsDate = 'coverImage___authorAvatar___posts___date',
-  CoverImageAuthorAvatarPostsExcerpt = 'coverImage___authorAvatar___posts___excerpt',
-  CoverImageAuthorAvatarPostsId = 'coverImage___authorAvatar___posts___id',
-  CoverImageAuthorAvatarPostsPublishedAt = 'coverImage___authorAvatar___posts___publishedAt',
-  CoverImageAuthorAvatarPostsRemoteId = 'coverImage___authorAvatar___posts___remoteId',
-  CoverImageAuthorAvatarPostsRemoteTypeName = 'coverImage___authorAvatar___posts___remoteTypeName',
-  CoverImageAuthorAvatarPostsSlug = 'coverImage___authorAvatar___posts___slug',
-  CoverImageAuthorAvatarPostsStage = 'coverImage___authorAvatar___posts___stage',
-  CoverImageAuthorAvatarPostsTags = 'coverImage___authorAvatar___posts___tags',
-  CoverImageAuthorAvatarPostsTitle = 'coverImage___authorAvatar___posts___title',
-  CoverImageAuthorAvatarPostsUpdatedAt = 'coverImage___authorAvatar___posts___updatedAt',
-  CoverImageAuthorAvatarPublishedAt = 'coverImage___authorAvatar___publishedAt',
-  CoverImageAuthorAvatarPublishedByChildren = 'coverImage___authorAvatar___publishedBy___children',
-  CoverImageAuthorAvatarPublishedByCreatedAt = 'coverImage___authorAvatar___publishedBy___createdAt',
-  CoverImageAuthorAvatarPublishedById = 'coverImage___authorAvatar___publishedBy___id',
-  CoverImageAuthorAvatarPublishedByIsActive = 'coverImage___authorAvatar___publishedBy___isActive',
-  CoverImageAuthorAvatarPublishedByKind = 'coverImage___authorAvatar___publishedBy___kind',
-  CoverImageAuthorAvatarPublishedByName = 'coverImage___authorAvatar___publishedBy___name',
-  CoverImageAuthorAvatarPublishedByPicture = 'coverImage___authorAvatar___publishedBy___picture',
-  CoverImageAuthorAvatarPublishedByPublishedAt = 'coverImage___authorAvatar___publishedBy___publishedAt',
-  CoverImageAuthorAvatarPublishedByRemoteId = 'coverImage___authorAvatar___publishedBy___remoteId',
-  CoverImageAuthorAvatarPublishedByRemoteTypeName = 'coverImage___authorAvatar___publishedBy___remoteTypeName',
-  CoverImageAuthorAvatarPublishedByStage = 'coverImage___authorAvatar___publishedBy___stage',
-  CoverImageAuthorAvatarPublishedByUpdatedAt = 'coverImage___authorAvatar___publishedBy___updatedAt',
-  CoverImageAuthorAvatarRemoteId = 'coverImage___authorAvatar___remoteId',
-  CoverImageAuthorAvatarRemoteTypeName = 'coverImage___authorAvatar___remoteTypeName',
-  CoverImageAuthorAvatarStage = 'coverImage___authorAvatar___stage',
-  CoverImageAuthorAvatarTitle = 'coverImage___authorAvatar___title',
-  CoverImageAuthorAvatarUpdatedAt = 'coverImage___authorAvatar___updatedAt',
-  CoverImageAuthorAvatarUpdatedByChildren = 'coverImage___authorAvatar___updatedBy___children',
-  CoverImageAuthorAvatarUpdatedByCreatedAt = 'coverImage___authorAvatar___updatedBy___createdAt',
-  CoverImageAuthorAvatarUpdatedById = 'coverImage___authorAvatar___updatedBy___id',
-  CoverImageAuthorAvatarUpdatedByIsActive = 'coverImage___authorAvatar___updatedBy___isActive',
-  CoverImageAuthorAvatarUpdatedByKind = 'coverImage___authorAvatar___updatedBy___kind',
-  CoverImageAuthorAvatarUpdatedByName = 'coverImage___authorAvatar___updatedBy___name',
-  CoverImageAuthorAvatarUpdatedByPicture = 'coverImage___authorAvatar___updatedBy___picture',
-  CoverImageAuthorAvatarUpdatedByPublishedAt = 'coverImage___authorAvatar___updatedBy___publishedAt',
-  CoverImageAuthorAvatarUpdatedByRemoteId = 'coverImage___authorAvatar___updatedBy___remoteId',
-  CoverImageAuthorAvatarUpdatedByRemoteTypeName = 'coverImage___authorAvatar___updatedBy___remoteTypeName',
-  CoverImageAuthorAvatarUpdatedByStage = 'coverImage___authorAvatar___updatedBy___stage',
-  CoverImageAuthorAvatarUpdatedByUpdatedAt = 'coverImage___authorAvatar___updatedBy___updatedAt',
-  CoverImageChildren = 'coverImage___children',
-  CoverImageChildrenChildren = 'coverImage___children___children',
-  CoverImageChildrenChildrenChildren = 'coverImage___children___children___children',
-  CoverImageChildrenChildrenId = 'coverImage___children___children___id',
-  CoverImageChildrenId = 'coverImage___children___id',
-  CoverImageChildrenInternalContent = 'coverImage___children___internal___content',
-  CoverImageChildrenInternalContentDigest = 'coverImage___children___internal___contentDigest',
-  CoverImageChildrenInternalDescription = 'coverImage___children___internal___description',
-  CoverImageChildrenInternalFieldOwners = 'coverImage___children___internal___fieldOwners',
-  CoverImageChildrenInternalIgnoreType = 'coverImage___children___internal___ignoreType',
-  CoverImageChildrenInternalMediaType = 'coverImage___children___internal___mediaType',
-  CoverImageChildrenInternalOwner = 'coverImage___children___internal___owner',
-  CoverImageChildrenInternalType = 'coverImage___children___internal___type',
-  CoverImageChildrenParentChildren = 'coverImage___children___parent___children',
-  CoverImageChildrenParentId = 'coverImage___children___parent___id',
-  CoverImageCoverImagePost = 'coverImage___coverImagePost',
-  CoverImageCoverImagePostAuthorBiography = 'coverImage___coverImagePost___author___biography',
-  CoverImageCoverImagePostAuthorChildren = 'coverImage___coverImagePost___author___children',
-  CoverImageCoverImagePostAuthorCreatedAt = 'coverImage___coverImagePost___author___createdAt',
-  CoverImageCoverImagePostAuthorId = 'coverImage___coverImagePost___author___id',
-  CoverImageCoverImagePostAuthorName = 'coverImage___coverImagePost___author___name',
-  CoverImageCoverImagePostAuthorPosts = 'coverImage___coverImagePost___author___posts',
-  CoverImageCoverImagePostAuthorPublishedAt = 'coverImage___coverImagePost___author___publishedAt',
-  CoverImageCoverImagePostAuthorRemoteId = 'coverImage___coverImagePost___author___remoteId',
-  CoverImageCoverImagePostAuthorRemoteTypeName = 'coverImage___coverImagePost___author___remoteTypeName',
-  CoverImageCoverImagePostAuthorStage = 'coverImage___coverImagePost___author___stage',
-  CoverImageCoverImagePostAuthorTitle = 'coverImage___coverImagePost___author___title',
-  CoverImageCoverImagePostAuthorUpdatedAt = 'coverImage___coverImagePost___author___updatedAt',
-  CoverImageCoverImagePostChildren = 'coverImage___coverImagePost___children',
-  CoverImageCoverImagePostChildrenChildren = 'coverImage___coverImagePost___children___children',
-  CoverImageCoverImagePostChildrenId = 'coverImage___coverImagePost___children___id',
-  CoverImageCoverImagePostContentHtml = 'coverImage___coverImagePost___content___html',
-  CoverImageCoverImagePostContentMarkdown = 'coverImage___coverImagePost___content___markdown',
-  CoverImageCoverImagePostContentRaw = 'coverImage___coverImagePost___content___raw',
-  CoverImageCoverImagePostContentRemoteTypeName = 'coverImage___coverImagePost___content___remoteTypeName',
-  CoverImageCoverImagePostContentText = 'coverImage___coverImagePost___content___text',
-  CoverImageCoverImagePostCoverImageAuthorAvatar = 'coverImage___coverImagePost___coverImage___authorAvatar',
-  CoverImageCoverImagePostCoverImageChildren = 'coverImage___coverImagePost___coverImage___children',
-  CoverImageCoverImagePostCoverImageCoverImagePost = 'coverImage___coverImagePost___coverImage___coverImagePost',
-  CoverImageCoverImagePostCoverImageCreatedAt = 'coverImage___coverImagePost___coverImage___createdAt',
-  CoverImageCoverImagePostCoverImageFileName = 'coverImage___coverImagePost___coverImage___fileName',
-  CoverImageCoverImagePostCoverImageHandle = 'coverImage___coverImagePost___coverImage___handle',
-  CoverImageCoverImagePostCoverImageHeight = 'coverImage___coverImagePost___coverImage___height',
-  CoverImageCoverImagePostCoverImageId = 'coverImage___coverImagePost___coverImage___id',
-  CoverImageCoverImagePostCoverImageLocale = 'coverImage___coverImagePost___coverImage___locale',
-  CoverImageCoverImagePostCoverImageMimeType = 'coverImage___coverImagePost___coverImage___mimeType',
-  CoverImageCoverImagePostCoverImagePublishedAt = 'coverImage___coverImagePost___coverImage___publishedAt',
-  CoverImageCoverImagePostCoverImageRemoteId = 'coverImage___coverImagePost___coverImage___remoteId',
-  CoverImageCoverImagePostCoverImageRemoteTypeName = 'coverImage___coverImagePost___coverImage___remoteTypeName',
-  CoverImageCoverImagePostCoverImageSeoImage = 'coverImage___coverImagePost___coverImage___seoImage',
-  CoverImageCoverImagePostCoverImageSize = 'coverImage___coverImagePost___coverImage___size',
-  CoverImageCoverImagePostCoverImageStage = 'coverImage___coverImagePost___coverImage___stage',
-  CoverImageCoverImagePostCoverImageUpdatedAt = 'coverImage___coverImagePost___coverImage___updatedAt',
-  CoverImageCoverImagePostCoverImageUrl = 'coverImage___coverImagePost___coverImage___url',
-  CoverImageCoverImagePostCoverImageWidth = 'coverImage___coverImagePost___coverImage___width',
-  CoverImageCoverImagePostCreatedAt = 'coverImage___coverImagePost___createdAt',
-  CoverImageCoverImagePostCreatedByChildren = 'coverImage___coverImagePost___createdBy___children',
-  CoverImageCoverImagePostCreatedByCreatedAt = 'coverImage___coverImagePost___createdBy___createdAt',
-  CoverImageCoverImagePostCreatedById = 'coverImage___coverImagePost___createdBy___id',
-  CoverImageCoverImagePostCreatedByIsActive = 'coverImage___coverImagePost___createdBy___isActive',
-  CoverImageCoverImagePostCreatedByKind = 'coverImage___coverImagePost___createdBy___kind',
-  CoverImageCoverImagePostCreatedByName = 'coverImage___coverImagePost___createdBy___name',
-  CoverImageCoverImagePostCreatedByPicture = 'coverImage___coverImagePost___createdBy___picture',
-  CoverImageCoverImagePostCreatedByPublishedAt = 'coverImage___coverImagePost___createdBy___publishedAt',
-  CoverImageCoverImagePostCreatedByRemoteId = 'coverImage___coverImagePost___createdBy___remoteId',
-  CoverImageCoverImagePostCreatedByRemoteTypeName = 'coverImage___coverImagePost___createdBy___remoteTypeName',
-  CoverImageCoverImagePostCreatedByStage = 'coverImage___coverImagePost___createdBy___stage',
-  CoverImageCoverImagePostCreatedByUpdatedAt = 'coverImage___coverImagePost___createdBy___updatedAt',
-  CoverImageCoverImagePostDate = 'coverImage___coverImagePost___date',
-  CoverImageCoverImagePostExcerpt = 'coverImage___coverImagePost___excerpt',
-  CoverImageCoverImagePostId = 'coverImage___coverImagePost___id',
-  CoverImageCoverImagePostInternalContent = 'coverImage___coverImagePost___internal___content',
-  CoverImageCoverImagePostInternalContentDigest = 'coverImage___coverImagePost___internal___contentDigest',
-  CoverImageCoverImagePostInternalDescription = 'coverImage___coverImagePost___internal___description',
-  CoverImageCoverImagePostInternalFieldOwners = 'coverImage___coverImagePost___internal___fieldOwners',
-  CoverImageCoverImagePostInternalIgnoreType = 'coverImage___coverImagePost___internal___ignoreType',
-  CoverImageCoverImagePostInternalMediaType = 'coverImage___coverImagePost___internal___mediaType',
-  CoverImageCoverImagePostInternalOwner = 'coverImage___coverImagePost___internal___owner',
-  CoverImageCoverImagePostInternalType = 'coverImage___coverImagePost___internal___type',
-  CoverImageCoverImagePostParentChildren = 'coverImage___coverImagePost___parent___children',
-  CoverImageCoverImagePostParentId = 'coverImage___coverImagePost___parent___id',
-  CoverImageCoverImagePostPublishedAt = 'coverImage___coverImagePost___publishedAt',
-  CoverImageCoverImagePostPublishedByChildren = 'coverImage___coverImagePost___publishedBy___children',
-  CoverImageCoverImagePostPublishedByCreatedAt = 'coverImage___coverImagePost___publishedBy___createdAt',
-  CoverImageCoverImagePostPublishedById = 'coverImage___coverImagePost___publishedBy___id',
-  CoverImageCoverImagePostPublishedByIsActive = 'coverImage___coverImagePost___publishedBy___isActive',
-  CoverImageCoverImagePostPublishedByKind = 'coverImage___coverImagePost___publishedBy___kind',
-  CoverImageCoverImagePostPublishedByName = 'coverImage___coverImagePost___publishedBy___name',
-  CoverImageCoverImagePostPublishedByPicture = 'coverImage___coverImagePost___publishedBy___picture',
-  CoverImageCoverImagePostPublishedByPublishedAt = 'coverImage___coverImagePost___publishedBy___publishedAt',
-  CoverImageCoverImagePostPublishedByRemoteId = 'coverImage___coverImagePost___publishedBy___remoteId',
-  CoverImageCoverImagePostPublishedByRemoteTypeName = 'coverImage___coverImagePost___publishedBy___remoteTypeName',
-  CoverImageCoverImagePostPublishedByStage = 'coverImage___coverImagePost___publishedBy___stage',
-  CoverImageCoverImagePostPublishedByUpdatedAt = 'coverImage___coverImagePost___publishedBy___updatedAt',
-  CoverImageCoverImagePostRemoteId = 'coverImage___coverImagePost___remoteId',
-  CoverImageCoverImagePostRemoteTypeName = 'coverImage___coverImagePost___remoteTypeName',
-  CoverImageCoverImagePostSeoChildren = 'coverImage___coverImagePost___seo___children',
-  CoverImageCoverImagePostSeoCreatedAt = 'coverImage___coverImagePost___seo___createdAt',
-  CoverImageCoverImagePostSeoDescription = 'coverImage___coverImagePost___seo___description',
-  CoverImageCoverImagePostSeoId = 'coverImage___coverImagePost___seo___id',
-  CoverImageCoverImagePostSeoKeywords = 'coverImage___coverImagePost___seo___keywords',
-  CoverImageCoverImagePostSeoPublishedAt = 'coverImage___coverImagePost___seo___publishedAt',
-  CoverImageCoverImagePostSeoRemoteId = 'coverImage___coverImagePost___seo___remoteId',
-  CoverImageCoverImagePostSeoRemoteTypeName = 'coverImage___coverImagePost___seo___remoteTypeName',
-  CoverImageCoverImagePostSeoStage = 'coverImage___coverImagePost___seo___stage',
-  CoverImageCoverImagePostSeoTitle = 'coverImage___coverImagePost___seo___title',
-  CoverImageCoverImagePostSeoUpdatedAt = 'coverImage___coverImagePost___seo___updatedAt',
-  CoverImageCoverImagePostSlug = 'coverImage___coverImagePost___slug',
-  CoverImageCoverImagePostStage = 'coverImage___coverImagePost___stage',
-  CoverImageCoverImagePostTags = 'coverImage___coverImagePost___tags',
-  CoverImageCoverImagePostTitle = 'coverImage___coverImagePost___title',
-  CoverImageCoverImagePostUpdatedAt = 'coverImage___coverImagePost___updatedAt',
-  CoverImageCoverImagePostUpdatedByChildren = 'coverImage___coverImagePost___updatedBy___children',
-  CoverImageCoverImagePostUpdatedByCreatedAt = 'coverImage___coverImagePost___updatedBy___createdAt',
-  CoverImageCoverImagePostUpdatedById = 'coverImage___coverImagePost___updatedBy___id',
-  CoverImageCoverImagePostUpdatedByIsActive = 'coverImage___coverImagePost___updatedBy___isActive',
-  CoverImageCoverImagePostUpdatedByKind = 'coverImage___coverImagePost___updatedBy___kind',
-  CoverImageCoverImagePostUpdatedByName = 'coverImage___coverImagePost___updatedBy___name',
-  CoverImageCoverImagePostUpdatedByPicture = 'coverImage___coverImagePost___updatedBy___picture',
-  CoverImageCoverImagePostUpdatedByPublishedAt = 'coverImage___coverImagePost___updatedBy___publishedAt',
-  CoverImageCoverImagePostUpdatedByRemoteId = 'coverImage___coverImagePost___updatedBy___remoteId',
-  CoverImageCoverImagePostUpdatedByRemoteTypeName = 'coverImage___coverImagePost___updatedBy___remoteTypeName',
-  CoverImageCoverImagePostUpdatedByStage = 'coverImage___coverImagePost___updatedBy___stage',
-  CoverImageCoverImagePostUpdatedByUpdatedAt = 'coverImage___coverImagePost___updatedBy___updatedAt',
-  CoverImageCreatedAt = 'coverImage___createdAt',
-  CoverImageCreatedByChildren = 'coverImage___createdBy___children',
-  CoverImageCreatedByChildrenChildren = 'coverImage___createdBy___children___children',
-  CoverImageCreatedByChildrenId = 'coverImage___createdBy___children___id',
-  CoverImageCreatedByCreatedAt = 'coverImage___createdBy___createdAt',
-  CoverImageCreatedById = 'coverImage___createdBy___id',
-  CoverImageCreatedByInternalContent = 'coverImage___createdBy___internal___content',
-  CoverImageCreatedByInternalContentDigest = 'coverImage___createdBy___internal___contentDigest',
-  CoverImageCreatedByInternalDescription = 'coverImage___createdBy___internal___description',
-  CoverImageCreatedByInternalFieldOwners = 'coverImage___createdBy___internal___fieldOwners',
-  CoverImageCreatedByInternalIgnoreType = 'coverImage___createdBy___internal___ignoreType',
-  CoverImageCreatedByInternalMediaType = 'coverImage___createdBy___internal___mediaType',
-  CoverImageCreatedByInternalOwner = 'coverImage___createdBy___internal___owner',
-  CoverImageCreatedByInternalType = 'coverImage___createdBy___internal___type',
-  CoverImageCreatedByIsActive = 'coverImage___createdBy___isActive',
-  CoverImageCreatedByKind = 'coverImage___createdBy___kind',
-  CoverImageCreatedByName = 'coverImage___createdBy___name',
-  CoverImageCreatedByParentChildren = 'coverImage___createdBy___parent___children',
-  CoverImageCreatedByParentId = 'coverImage___createdBy___parent___id',
-  CoverImageCreatedByPicture = 'coverImage___createdBy___picture',
-  CoverImageCreatedByPublishedAt = 'coverImage___createdBy___publishedAt',
-  CoverImageCreatedByRemoteId = 'coverImage___createdBy___remoteId',
-  CoverImageCreatedByRemoteTypeName = 'coverImage___createdBy___remoteTypeName',
-  CoverImageCreatedByStage = 'coverImage___createdBy___stage',
-  CoverImageCreatedByUpdatedAt = 'coverImage___createdBy___updatedAt',
-  CoverImageFileName = 'coverImage___fileName',
-  CoverImageHandle = 'coverImage___handle',
-  CoverImageHeight = 'coverImage___height',
-  CoverImageId = 'coverImage___id',
-  CoverImageInternalContent = 'coverImage___internal___content',
-  CoverImageInternalContentDigest = 'coverImage___internal___contentDigest',
-  CoverImageInternalDescription = 'coverImage___internal___description',
-  CoverImageInternalFieldOwners = 'coverImage___internal___fieldOwners',
-  CoverImageInternalIgnoreType = 'coverImage___internal___ignoreType',
-  CoverImageInternalMediaType = 'coverImage___internal___mediaType',
-  CoverImageInternalOwner = 'coverImage___internal___owner',
-  CoverImageInternalType = 'coverImage___internal___type',
-  CoverImageLocale = 'coverImage___locale',
-  CoverImageMimeType = 'coverImage___mimeType',
-  CoverImageParentChildren = 'coverImage___parent___children',
-  CoverImageParentChildrenChildren = 'coverImage___parent___children___children',
-  CoverImageParentChildrenId = 'coverImage___parent___children___id',
-  CoverImageParentId = 'coverImage___parent___id',
-  CoverImageParentInternalContent = 'coverImage___parent___internal___content',
-  CoverImageParentInternalContentDigest = 'coverImage___parent___internal___contentDigest',
-  CoverImageParentInternalDescription = 'coverImage___parent___internal___description',
-  CoverImageParentInternalFieldOwners = 'coverImage___parent___internal___fieldOwners',
-  CoverImageParentInternalIgnoreType = 'coverImage___parent___internal___ignoreType',
-  CoverImageParentInternalMediaType = 'coverImage___parent___internal___mediaType',
-  CoverImageParentInternalOwner = 'coverImage___parent___internal___owner',
-  CoverImageParentInternalType = 'coverImage___parent___internal___type',
-  CoverImageParentParentChildren = 'coverImage___parent___parent___children',
-  CoverImageParentParentId = 'coverImage___parent___parent___id',
-  CoverImagePublishedAt = 'coverImage___publishedAt',
-  CoverImagePublishedByChildren = 'coverImage___publishedBy___children',
-  CoverImagePublishedByChildrenChildren = 'coverImage___publishedBy___children___children',
-  CoverImagePublishedByChildrenId = 'coverImage___publishedBy___children___id',
-  CoverImagePublishedByCreatedAt = 'coverImage___publishedBy___createdAt',
-  CoverImagePublishedById = 'coverImage___publishedBy___id',
-  CoverImagePublishedByInternalContent = 'coverImage___publishedBy___internal___content',
-  CoverImagePublishedByInternalContentDigest = 'coverImage___publishedBy___internal___contentDigest',
-  CoverImagePublishedByInternalDescription = 'coverImage___publishedBy___internal___description',
-  CoverImagePublishedByInternalFieldOwners = 'coverImage___publishedBy___internal___fieldOwners',
-  CoverImagePublishedByInternalIgnoreType = 'coverImage___publishedBy___internal___ignoreType',
-  CoverImagePublishedByInternalMediaType = 'coverImage___publishedBy___internal___mediaType',
-  CoverImagePublishedByInternalOwner = 'coverImage___publishedBy___internal___owner',
-  CoverImagePublishedByInternalType = 'coverImage___publishedBy___internal___type',
-  CoverImagePublishedByIsActive = 'coverImage___publishedBy___isActive',
-  CoverImagePublishedByKind = 'coverImage___publishedBy___kind',
-  CoverImagePublishedByName = 'coverImage___publishedBy___name',
-  CoverImagePublishedByParentChildren = 'coverImage___publishedBy___parent___children',
-  CoverImagePublishedByParentId = 'coverImage___publishedBy___parent___id',
-  CoverImagePublishedByPicture = 'coverImage___publishedBy___picture',
-  CoverImagePublishedByPublishedAt = 'coverImage___publishedBy___publishedAt',
-  CoverImagePublishedByRemoteId = 'coverImage___publishedBy___remoteId',
-  CoverImagePublishedByRemoteTypeName = 'coverImage___publishedBy___remoteTypeName',
-  CoverImagePublishedByStage = 'coverImage___publishedBy___stage',
-  CoverImagePublishedByUpdatedAt = 'coverImage___publishedBy___updatedAt',
-  CoverImageRemoteId = 'coverImage___remoteId',
-  CoverImageRemoteTypeName = 'coverImage___remoteTypeName',
-  CoverImageSeoImage = 'coverImage___seoImage',
-  CoverImageSeoImageChildren = 'coverImage___seoImage___children',
-  CoverImageSeoImageChildrenChildren = 'coverImage___seoImage___children___children',
-  CoverImageSeoImageChildrenId = 'coverImage___seoImage___children___id',
-  CoverImageSeoImageCreatedAt = 'coverImage___seoImage___createdAt',
-  CoverImageSeoImageCreatedByChildren = 'coverImage___seoImage___createdBy___children',
-  CoverImageSeoImageCreatedByCreatedAt = 'coverImage___seoImage___createdBy___createdAt',
-  CoverImageSeoImageCreatedById = 'coverImage___seoImage___createdBy___id',
-  CoverImageSeoImageCreatedByIsActive = 'coverImage___seoImage___createdBy___isActive',
-  CoverImageSeoImageCreatedByKind = 'coverImage___seoImage___createdBy___kind',
-  CoverImageSeoImageCreatedByName = 'coverImage___seoImage___createdBy___name',
-  CoverImageSeoImageCreatedByPicture = 'coverImage___seoImage___createdBy___picture',
-  CoverImageSeoImageCreatedByPublishedAt = 'coverImage___seoImage___createdBy___publishedAt',
-  CoverImageSeoImageCreatedByRemoteId = 'coverImage___seoImage___createdBy___remoteId',
-  CoverImageSeoImageCreatedByRemoteTypeName = 'coverImage___seoImage___createdBy___remoteTypeName',
-  CoverImageSeoImageCreatedByStage = 'coverImage___seoImage___createdBy___stage',
-  CoverImageSeoImageCreatedByUpdatedAt = 'coverImage___seoImage___createdBy___updatedAt',
-  CoverImageSeoImageDescription = 'coverImage___seoImage___description',
-  CoverImageSeoImageId = 'coverImage___seoImage___id',
-  CoverImageSeoImageImageAuthorAvatar = 'coverImage___seoImage___image___authorAvatar',
-  CoverImageSeoImageImageChildren = 'coverImage___seoImage___image___children',
-  CoverImageSeoImageImageCoverImagePost = 'coverImage___seoImage___image___coverImagePost',
-  CoverImageSeoImageImageCreatedAt = 'coverImage___seoImage___image___createdAt',
-  CoverImageSeoImageImageFileName = 'coverImage___seoImage___image___fileName',
-  CoverImageSeoImageImageHandle = 'coverImage___seoImage___image___handle',
-  CoverImageSeoImageImageHeight = 'coverImage___seoImage___image___height',
-  CoverImageSeoImageImageId = 'coverImage___seoImage___image___id',
-  CoverImageSeoImageImageLocale = 'coverImage___seoImage___image___locale',
-  CoverImageSeoImageImageMimeType = 'coverImage___seoImage___image___mimeType',
-  CoverImageSeoImageImagePublishedAt = 'coverImage___seoImage___image___publishedAt',
-  CoverImageSeoImageImageRemoteId = 'coverImage___seoImage___image___remoteId',
-  CoverImageSeoImageImageRemoteTypeName = 'coverImage___seoImage___image___remoteTypeName',
-  CoverImageSeoImageImageSeoImage = 'coverImage___seoImage___image___seoImage',
-  CoverImageSeoImageImageSize = 'coverImage___seoImage___image___size',
-  CoverImageSeoImageImageStage = 'coverImage___seoImage___image___stage',
-  CoverImageSeoImageImageUpdatedAt = 'coverImage___seoImage___image___updatedAt',
-  CoverImageSeoImageImageUrl = 'coverImage___seoImage___image___url',
-  CoverImageSeoImageImageWidth = 'coverImage___seoImage___image___width',
-  CoverImageSeoImageInternalContent = 'coverImage___seoImage___internal___content',
-  CoverImageSeoImageInternalContentDigest = 'coverImage___seoImage___internal___contentDigest',
-  CoverImageSeoImageInternalDescription = 'coverImage___seoImage___internal___description',
-  CoverImageSeoImageInternalFieldOwners = 'coverImage___seoImage___internal___fieldOwners',
-  CoverImageSeoImageInternalIgnoreType = 'coverImage___seoImage___internal___ignoreType',
-  CoverImageSeoImageInternalMediaType = 'coverImage___seoImage___internal___mediaType',
-  CoverImageSeoImageInternalOwner = 'coverImage___seoImage___internal___owner',
-  CoverImageSeoImageInternalType = 'coverImage___seoImage___internal___type',
-  CoverImageSeoImageKeywords = 'coverImage___seoImage___keywords',
-  CoverImageSeoImageParentChildren = 'coverImage___seoImage___parent___children',
-  CoverImageSeoImageParentId = 'coverImage___seoImage___parent___id',
-  CoverImageSeoImagePublishedAt = 'coverImage___seoImage___publishedAt',
-  CoverImageSeoImagePublishedByChildren = 'coverImage___seoImage___publishedBy___children',
-  CoverImageSeoImagePublishedByCreatedAt = 'coverImage___seoImage___publishedBy___createdAt',
-  CoverImageSeoImagePublishedById = 'coverImage___seoImage___publishedBy___id',
-  CoverImageSeoImagePublishedByIsActive = 'coverImage___seoImage___publishedBy___isActive',
-  CoverImageSeoImagePublishedByKind = 'coverImage___seoImage___publishedBy___kind',
-  CoverImageSeoImagePublishedByName = 'coverImage___seoImage___publishedBy___name',
-  CoverImageSeoImagePublishedByPicture = 'coverImage___seoImage___publishedBy___picture',
-  CoverImageSeoImagePublishedByPublishedAt = 'coverImage___seoImage___publishedBy___publishedAt',
-  CoverImageSeoImagePublishedByRemoteId = 'coverImage___seoImage___publishedBy___remoteId',
-  CoverImageSeoImagePublishedByRemoteTypeName = 'coverImage___seoImage___publishedBy___remoteTypeName',
-  CoverImageSeoImagePublishedByStage = 'coverImage___seoImage___publishedBy___stage',
-  CoverImageSeoImagePublishedByUpdatedAt = 'coverImage___seoImage___publishedBy___updatedAt',
-  CoverImageSeoImageRemoteId = 'coverImage___seoImage___remoteId',
-  CoverImageSeoImageRemoteTypeName = 'coverImage___seoImage___remoteTypeName',
-  CoverImageSeoImageStage = 'coverImage___seoImage___stage',
-  CoverImageSeoImageTitle = 'coverImage___seoImage___title',
-  CoverImageSeoImageUpdatedAt = 'coverImage___seoImage___updatedAt',
-  CoverImageSeoImageUpdatedByChildren = 'coverImage___seoImage___updatedBy___children',
-  CoverImageSeoImageUpdatedByCreatedAt = 'coverImage___seoImage___updatedBy___createdAt',
-  CoverImageSeoImageUpdatedById = 'coverImage___seoImage___updatedBy___id',
-  CoverImageSeoImageUpdatedByIsActive = 'coverImage___seoImage___updatedBy___isActive',
-  CoverImageSeoImageUpdatedByKind = 'coverImage___seoImage___updatedBy___kind',
-  CoverImageSeoImageUpdatedByName = 'coverImage___seoImage___updatedBy___name',
-  CoverImageSeoImageUpdatedByPicture = 'coverImage___seoImage___updatedBy___picture',
-  CoverImageSeoImageUpdatedByPublishedAt = 'coverImage___seoImage___updatedBy___publishedAt',
-  CoverImageSeoImageUpdatedByRemoteId = 'coverImage___seoImage___updatedBy___remoteId',
-  CoverImageSeoImageUpdatedByRemoteTypeName = 'coverImage___seoImage___updatedBy___remoteTypeName',
-  CoverImageSeoImageUpdatedByStage = 'coverImage___seoImage___updatedBy___stage',
-  CoverImageSeoImageUpdatedByUpdatedAt = 'coverImage___seoImage___updatedBy___updatedAt',
-  CoverImageSize = 'coverImage___size',
-  CoverImageStage = 'coverImage___stage',
-  CoverImageUpdatedAt = 'coverImage___updatedAt',
-  CoverImageUpdatedByChildren = 'coverImage___updatedBy___children',
-  CoverImageUpdatedByChildrenChildren = 'coverImage___updatedBy___children___children',
-  CoverImageUpdatedByChildrenId = 'coverImage___updatedBy___children___id',
-  CoverImageUpdatedByCreatedAt = 'coverImage___updatedBy___createdAt',
-  CoverImageUpdatedById = 'coverImage___updatedBy___id',
-  CoverImageUpdatedByInternalContent = 'coverImage___updatedBy___internal___content',
-  CoverImageUpdatedByInternalContentDigest = 'coverImage___updatedBy___internal___contentDigest',
-  CoverImageUpdatedByInternalDescription = 'coverImage___updatedBy___internal___description',
-  CoverImageUpdatedByInternalFieldOwners = 'coverImage___updatedBy___internal___fieldOwners',
-  CoverImageUpdatedByInternalIgnoreType = 'coverImage___updatedBy___internal___ignoreType',
-  CoverImageUpdatedByInternalMediaType = 'coverImage___updatedBy___internal___mediaType',
-  CoverImageUpdatedByInternalOwner = 'coverImage___updatedBy___internal___owner',
-  CoverImageUpdatedByInternalType = 'coverImage___updatedBy___internal___type',
-  CoverImageUpdatedByIsActive = 'coverImage___updatedBy___isActive',
-  CoverImageUpdatedByKind = 'coverImage___updatedBy___kind',
-  CoverImageUpdatedByName = 'coverImage___updatedBy___name',
-  CoverImageUpdatedByParentChildren = 'coverImage___updatedBy___parent___children',
-  CoverImageUpdatedByParentId = 'coverImage___updatedBy___parent___id',
-  CoverImageUpdatedByPicture = 'coverImage___updatedBy___picture',
-  CoverImageUpdatedByPublishedAt = 'coverImage___updatedBy___publishedAt',
-  CoverImageUpdatedByRemoteId = 'coverImage___updatedBy___remoteId',
-  CoverImageUpdatedByRemoteTypeName = 'coverImage___updatedBy___remoteTypeName',
-  CoverImageUpdatedByStage = 'coverImage___updatedBy___stage',
-  CoverImageUpdatedByUpdatedAt = 'coverImage___updatedBy___updatedAt',
-  CoverImageUrl = 'coverImage___url',
-  CoverImageWidth = 'coverImage___width',
-  CreatedAt = 'createdAt',
-  CreatedByChildren = 'createdBy___children',
-  CreatedByChildrenChildren = 'createdBy___children___children',
-  CreatedByChildrenChildrenChildren = 'createdBy___children___children___children',
-  CreatedByChildrenChildrenId = 'createdBy___children___children___id',
-  CreatedByChildrenId = 'createdBy___children___id',
-  CreatedByChildrenInternalContent = 'createdBy___children___internal___content',
-  CreatedByChildrenInternalContentDigest = 'createdBy___children___internal___contentDigest',
-  CreatedByChildrenInternalDescription = 'createdBy___children___internal___description',
-  CreatedByChildrenInternalFieldOwners = 'createdBy___children___internal___fieldOwners',
-  CreatedByChildrenInternalIgnoreType = 'createdBy___children___internal___ignoreType',
-  CreatedByChildrenInternalMediaType = 'createdBy___children___internal___mediaType',
-  CreatedByChildrenInternalOwner = 'createdBy___children___internal___owner',
-  CreatedByChildrenInternalType = 'createdBy___children___internal___type',
-  CreatedByChildrenParentChildren = 'createdBy___children___parent___children',
-  CreatedByChildrenParentId = 'createdBy___children___parent___id',
-  CreatedByCreatedAt = 'createdBy___createdAt',
-  CreatedById = 'createdBy___id',
-  CreatedByInternalContent = 'createdBy___internal___content',
-  CreatedByInternalContentDigest = 'createdBy___internal___contentDigest',
-  CreatedByInternalDescription = 'createdBy___internal___description',
-  CreatedByInternalFieldOwners = 'createdBy___internal___fieldOwners',
-  CreatedByInternalIgnoreType = 'createdBy___internal___ignoreType',
-  CreatedByInternalMediaType = 'createdBy___internal___mediaType',
-  CreatedByInternalOwner = 'createdBy___internal___owner',
-  CreatedByInternalType = 'createdBy___internal___type',
-  CreatedByIsActive = 'createdBy___isActive',
-  CreatedByKind = 'createdBy___kind',
-  CreatedByName = 'createdBy___name',
-  CreatedByParentChildren = 'createdBy___parent___children',
-  CreatedByParentChildrenChildren = 'createdBy___parent___children___children',
-  CreatedByParentChildrenId = 'createdBy___parent___children___id',
-  CreatedByParentId = 'createdBy___parent___id',
-  CreatedByParentInternalContent = 'createdBy___parent___internal___content',
-  CreatedByParentInternalContentDigest = 'createdBy___parent___internal___contentDigest',
-  CreatedByParentInternalDescription = 'createdBy___parent___internal___description',
-  CreatedByParentInternalFieldOwners = 'createdBy___parent___internal___fieldOwners',
-  CreatedByParentInternalIgnoreType = 'createdBy___parent___internal___ignoreType',
-  CreatedByParentInternalMediaType = 'createdBy___parent___internal___mediaType',
-  CreatedByParentInternalOwner = 'createdBy___parent___internal___owner',
-  CreatedByParentInternalType = 'createdBy___parent___internal___type',
-  CreatedByParentParentChildren = 'createdBy___parent___parent___children',
-  CreatedByParentParentId = 'createdBy___parent___parent___id',
-  CreatedByPicture = 'createdBy___picture',
-  CreatedByPublishedAt = 'createdBy___publishedAt',
-  CreatedByRemoteId = 'createdBy___remoteId',
-  CreatedByRemoteTypeName = 'createdBy___remoteTypeName',
-  CreatedByStage = 'createdBy___stage',
-  CreatedByUpdatedAt = 'createdBy___updatedAt',
-  Date = 'date',
-  Excerpt = 'excerpt',
-  Id = 'id',
-  InternalContent = 'internal___content',
-  InternalContentDigest = 'internal___contentDigest',
-  InternalDescription = 'internal___description',
-  InternalFieldOwners = 'internal___fieldOwners',
-  InternalIgnoreType = 'internal___ignoreType',
-  InternalMediaType = 'internal___mediaType',
-  InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  ParentChildren = 'parent___children',
-  ParentChildrenChildren = 'parent___children___children',
-  ParentChildrenChildrenChildren = 'parent___children___children___children',
-  ParentChildrenChildrenId = 'parent___children___children___id',
-  ParentChildrenId = 'parent___children___id',
-  ParentChildrenInternalContent = 'parent___children___internal___content',
-  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
-  ParentChildrenInternalDescription = 'parent___children___internal___description',
-  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
-  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
-  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
-  ParentChildrenInternalOwner = 'parent___children___internal___owner',
-  ParentChildrenInternalType = 'parent___children___internal___type',
-  ParentChildrenParentChildren = 'parent___children___parent___children',
-  ParentChildrenParentId = 'parent___children___parent___id',
-  ParentId = 'parent___id',
-  ParentInternalContent = 'parent___internal___content',
-  ParentInternalContentDigest = 'parent___internal___contentDigest',
-  ParentInternalDescription = 'parent___internal___description',
-  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
-  ParentInternalIgnoreType = 'parent___internal___ignoreType',
-  ParentInternalMediaType = 'parent___internal___mediaType',
-  ParentInternalOwner = 'parent___internal___owner',
-  ParentInternalType = 'parent___internal___type',
-  ParentParentChildren = 'parent___parent___children',
-  ParentParentChildrenChildren = 'parent___parent___children___children',
-  ParentParentChildrenId = 'parent___parent___children___id',
-  ParentParentId = 'parent___parent___id',
-  ParentParentInternalContent = 'parent___parent___internal___content',
-  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
-  ParentParentInternalDescription = 'parent___parent___internal___description',
-  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
-  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
-  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
-  ParentParentInternalOwner = 'parent___parent___internal___owner',
-  ParentParentInternalType = 'parent___parent___internal___type',
-  ParentParentParentChildren = 'parent___parent___parent___children',
-  ParentParentParentId = 'parent___parent___parent___id',
-  PublishedAt = 'publishedAt',
-  PublishedByChildren = 'publishedBy___children',
-  PublishedByChildrenChildren = 'publishedBy___children___children',
-  PublishedByChildrenChildrenChildren = 'publishedBy___children___children___children',
-  PublishedByChildrenChildrenId = 'publishedBy___children___children___id',
-  PublishedByChildrenId = 'publishedBy___children___id',
-  PublishedByChildrenInternalContent = 'publishedBy___children___internal___content',
-  PublishedByChildrenInternalContentDigest = 'publishedBy___children___internal___contentDigest',
-  PublishedByChildrenInternalDescription = 'publishedBy___children___internal___description',
-  PublishedByChildrenInternalFieldOwners = 'publishedBy___children___internal___fieldOwners',
-  PublishedByChildrenInternalIgnoreType = 'publishedBy___children___internal___ignoreType',
-  PublishedByChildrenInternalMediaType = 'publishedBy___children___internal___mediaType',
-  PublishedByChildrenInternalOwner = 'publishedBy___children___internal___owner',
-  PublishedByChildrenInternalType = 'publishedBy___children___internal___type',
-  PublishedByChildrenParentChildren = 'publishedBy___children___parent___children',
-  PublishedByChildrenParentId = 'publishedBy___children___parent___id',
-  PublishedByCreatedAt = 'publishedBy___createdAt',
-  PublishedById = 'publishedBy___id',
-  PublishedByInternalContent = 'publishedBy___internal___content',
-  PublishedByInternalContentDigest = 'publishedBy___internal___contentDigest',
-  PublishedByInternalDescription = 'publishedBy___internal___description',
-  PublishedByInternalFieldOwners = 'publishedBy___internal___fieldOwners',
-  PublishedByInternalIgnoreType = 'publishedBy___internal___ignoreType',
-  PublishedByInternalMediaType = 'publishedBy___internal___mediaType',
-  PublishedByInternalOwner = 'publishedBy___internal___owner',
-  PublishedByInternalType = 'publishedBy___internal___type',
-  PublishedByIsActive = 'publishedBy___isActive',
-  PublishedByKind = 'publishedBy___kind',
-  PublishedByName = 'publishedBy___name',
-  PublishedByParentChildren = 'publishedBy___parent___children',
-  PublishedByParentChildrenChildren = 'publishedBy___parent___children___children',
-  PublishedByParentChildrenId = 'publishedBy___parent___children___id',
-  PublishedByParentId = 'publishedBy___parent___id',
-  PublishedByParentInternalContent = 'publishedBy___parent___internal___content',
-  PublishedByParentInternalContentDigest = 'publishedBy___parent___internal___contentDigest',
-  PublishedByParentInternalDescription = 'publishedBy___parent___internal___description',
-  PublishedByParentInternalFieldOwners = 'publishedBy___parent___internal___fieldOwners',
-  PublishedByParentInternalIgnoreType = 'publishedBy___parent___internal___ignoreType',
-  PublishedByParentInternalMediaType = 'publishedBy___parent___internal___mediaType',
-  PublishedByParentInternalOwner = 'publishedBy___parent___internal___owner',
-  PublishedByParentInternalType = 'publishedBy___parent___internal___type',
-  PublishedByParentParentChildren = 'publishedBy___parent___parent___children',
-  PublishedByParentParentId = 'publishedBy___parent___parent___id',
-  PublishedByPicture = 'publishedBy___picture',
-  PublishedByPublishedAt = 'publishedBy___publishedAt',
-  PublishedByRemoteId = 'publishedBy___remoteId',
-  PublishedByRemoteTypeName = 'publishedBy___remoteTypeName',
-  PublishedByStage = 'publishedBy___stage',
-  PublishedByUpdatedAt = 'publishedBy___updatedAt',
-  RemoteId = 'remoteId',
-  RemoteTypeName = 'remoteTypeName',
-  SeoChildren = 'seo___children',
-  SeoChildrenChildren = 'seo___children___children',
-  SeoChildrenChildrenChildren = 'seo___children___children___children',
-  SeoChildrenChildrenId = 'seo___children___children___id',
-  SeoChildrenId = 'seo___children___id',
-  SeoChildrenInternalContent = 'seo___children___internal___content',
-  SeoChildrenInternalContentDigest = 'seo___children___internal___contentDigest',
-  SeoChildrenInternalDescription = 'seo___children___internal___description',
-  SeoChildrenInternalFieldOwners = 'seo___children___internal___fieldOwners',
-  SeoChildrenInternalIgnoreType = 'seo___children___internal___ignoreType',
-  SeoChildrenInternalMediaType = 'seo___children___internal___mediaType',
-  SeoChildrenInternalOwner = 'seo___children___internal___owner',
-  SeoChildrenInternalType = 'seo___children___internal___type',
-  SeoChildrenParentChildren = 'seo___children___parent___children',
-  SeoChildrenParentId = 'seo___children___parent___id',
-  SeoCreatedAt = 'seo___createdAt',
-  SeoCreatedByChildren = 'seo___createdBy___children',
-  SeoCreatedByChildrenChildren = 'seo___createdBy___children___children',
-  SeoCreatedByChildrenId = 'seo___createdBy___children___id',
-  SeoCreatedByCreatedAt = 'seo___createdBy___createdAt',
-  SeoCreatedById = 'seo___createdBy___id',
-  SeoCreatedByInternalContent = 'seo___createdBy___internal___content',
-  SeoCreatedByInternalContentDigest = 'seo___createdBy___internal___contentDigest',
-  SeoCreatedByInternalDescription = 'seo___createdBy___internal___description',
-  SeoCreatedByInternalFieldOwners = 'seo___createdBy___internal___fieldOwners',
-  SeoCreatedByInternalIgnoreType = 'seo___createdBy___internal___ignoreType',
-  SeoCreatedByInternalMediaType = 'seo___createdBy___internal___mediaType',
-  SeoCreatedByInternalOwner = 'seo___createdBy___internal___owner',
-  SeoCreatedByInternalType = 'seo___createdBy___internal___type',
-  SeoCreatedByIsActive = 'seo___createdBy___isActive',
-  SeoCreatedByKind = 'seo___createdBy___kind',
-  SeoCreatedByName = 'seo___createdBy___name',
-  SeoCreatedByParentChildren = 'seo___createdBy___parent___children',
-  SeoCreatedByParentId = 'seo___createdBy___parent___id',
-  SeoCreatedByPicture = 'seo___createdBy___picture',
-  SeoCreatedByPublishedAt = 'seo___createdBy___publishedAt',
-  SeoCreatedByRemoteId = 'seo___createdBy___remoteId',
-  SeoCreatedByRemoteTypeName = 'seo___createdBy___remoteTypeName',
-  SeoCreatedByStage = 'seo___createdBy___stage',
-  SeoCreatedByUpdatedAt = 'seo___createdBy___updatedAt',
-  SeoDescription = 'seo___description',
-  SeoId = 'seo___id',
-  SeoImageAuthorAvatar = 'seo___image___authorAvatar',
-  SeoImageAuthorAvatarBiography = 'seo___image___authorAvatar___biography',
-  SeoImageAuthorAvatarChildren = 'seo___image___authorAvatar___children',
-  SeoImageAuthorAvatarCreatedAt = 'seo___image___authorAvatar___createdAt',
-  SeoImageAuthorAvatarId = 'seo___image___authorAvatar___id',
-  SeoImageAuthorAvatarName = 'seo___image___authorAvatar___name',
-  SeoImageAuthorAvatarPosts = 'seo___image___authorAvatar___posts',
-  SeoImageAuthorAvatarPublishedAt = 'seo___image___authorAvatar___publishedAt',
-  SeoImageAuthorAvatarRemoteId = 'seo___image___authorAvatar___remoteId',
-  SeoImageAuthorAvatarRemoteTypeName = 'seo___image___authorAvatar___remoteTypeName',
-  SeoImageAuthorAvatarStage = 'seo___image___authorAvatar___stage',
-  SeoImageAuthorAvatarTitle = 'seo___image___authorAvatar___title',
-  SeoImageAuthorAvatarUpdatedAt = 'seo___image___authorAvatar___updatedAt',
-  SeoImageChildren = 'seo___image___children',
-  SeoImageChildrenChildren = 'seo___image___children___children',
-  SeoImageChildrenId = 'seo___image___children___id',
-  SeoImageCoverImagePost = 'seo___image___coverImagePost',
-  SeoImageCoverImagePostChildren = 'seo___image___coverImagePost___children',
-  SeoImageCoverImagePostCreatedAt = 'seo___image___coverImagePost___createdAt',
-  SeoImageCoverImagePostDate = 'seo___image___coverImagePost___date',
-  SeoImageCoverImagePostExcerpt = 'seo___image___coverImagePost___excerpt',
-  SeoImageCoverImagePostId = 'seo___image___coverImagePost___id',
-  SeoImageCoverImagePostPublishedAt = 'seo___image___coverImagePost___publishedAt',
-  SeoImageCoverImagePostRemoteId = 'seo___image___coverImagePost___remoteId',
-  SeoImageCoverImagePostRemoteTypeName = 'seo___image___coverImagePost___remoteTypeName',
-  SeoImageCoverImagePostSlug = 'seo___image___coverImagePost___slug',
-  SeoImageCoverImagePostStage = 'seo___image___coverImagePost___stage',
-  SeoImageCoverImagePostTags = 'seo___image___coverImagePost___tags',
-  SeoImageCoverImagePostTitle = 'seo___image___coverImagePost___title',
-  SeoImageCoverImagePostUpdatedAt = 'seo___image___coverImagePost___updatedAt',
-  SeoImageCreatedAt = 'seo___image___createdAt',
-  SeoImageCreatedByChildren = 'seo___image___createdBy___children',
-  SeoImageCreatedByCreatedAt = 'seo___image___createdBy___createdAt',
-  SeoImageCreatedById = 'seo___image___createdBy___id',
-  SeoImageCreatedByIsActive = 'seo___image___createdBy___isActive',
-  SeoImageCreatedByKind = 'seo___image___createdBy___kind',
-  SeoImageCreatedByName = 'seo___image___createdBy___name',
-  SeoImageCreatedByPicture = 'seo___image___createdBy___picture',
-  SeoImageCreatedByPublishedAt = 'seo___image___createdBy___publishedAt',
-  SeoImageCreatedByRemoteId = 'seo___image___createdBy___remoteId',
-  SeoImageCreatedByRemoteTypeName = 'seo___image___createdBy___remoteTypeName',
-  SeoImageCreatedByStage = 'seo___image___createdBy___stage',
-  SeoImageCreatedByUpdatedAt = 'seo___image___createdBy___updatedAt',
-  SeoImageFileName = 'seo___image___fileName',
-  SeoImageHandle = 'seo___image___handle',
-  SeoImageHeight = 'seo___image___height',
-  SeoImageId = 'seo___image___id',
-  SeoImageInternalContent = 'seo___image___internal___content',
-  SeoImageInternalContentDigest = 'seo___image___internal___contentDigest',
-  SeoImageInternalDescription = 'seo___image___internal___description',
-  SeoImageInternalFieldOwners = 'seo___image___internal___fieldOwners',
-  SeoImageInternalIgnoreType = 'seo___image___internal___ignoreType',
-  SeoImageInternalMediaType = 'seo___image___internal___mediaType',
-  SeoImageInternalOwner = 'seo___image___internal___owner',
-  SeoImageInternalType = 'seo___image___internal___type',
-  SeoImageLocale = 'seo___image___locale',
-  SeoImageMimeType = 'seo___image___mimeType',
-  SeoImageParentChildren = 'seo___image___parent___children',
-  SeoImageParentId = 'seo___image___parent___id',
-  SeoImagePublishedAt = 'seo___image___publishedAt',
-  SeoImagePublishedByChildren = 'seo___image___publishedBy___children',
-  SeoImagePublishedByCreatedAt = 'seo___image___publishedBy___createdAt',
-  SeoImagePublishedById = 'seo___image___publishedBy___id',
-  SeoImagePublishedByIsActive = 'seo___image___publishedBy___isActive',
-  SeoImagePublishedByKind = 'seo___image___publishedBy___kind',
-  SeoImagePublishedByName = 'seo___image___publishedBy___name',
-  SeoImagePublishedByPicture = 'seo___image___publishedBy___picture',
-  SeoImagePublishedByPublishedAt = 'seo___image___publishedBy___publishedAt',
-  SeoImagePublishedByRemoteId = 'seo___image___publishedBy___remoteId',
-  SeoImagePublishedByRemoteTypeName = 'seo___image___publishedBy___remoteTypeName',
-  SeoImagePublishedByStage = 'seo___image___publishedBy___stage',
-  SeoImagePublishedByUpdatedAt = 'seo___image___publishedBy___updatedAt',
-  SeoImageRemoteId = 'seo___image___remoteId',
-  SeoImageRemoteTypeName = 'seo___image___remoteTypeName',
-  SeoImageSeoImage = 'seo___image___seoImage',
-  SeoImageSeoImageChildren = 'seo___image___seoImage___children',
-  SeoImageSeoImageCreatedAt = 'seo___image___seoImage___createdAt',
-  SeoImageSeoImageDescription = 'seo___image___seoImage___description',
-  SeoImageSeoImageId = 'seo___image___seoImage___id',
-  SeoImageSeoImageKeywords = 'seo___image___seoImage___keywords',
-  SeoImageSeoImagePublishedAt = 'seo___image___seoImage___publishedAt',
-  SeoImageSeoImageRemoteId = 'seo___image___seoImage___remoteId',
-  SeoImageSeoImageRemoteTypeName = 'seo___image___seoImage___remoteTypeName',
-  SeoImageSeoImageStage = 'seo___image___seoImage___stage',
-  SeoImageSeoImageTitle = 'seo___image___seoImage___title',
-  SeoImageSeoImageUpdatedAt = 'seo___image___seoImage___updatedAt',
-  SeoImageSize = 'seo___image___size',
-  SeoImageStage = 'seo___image___stage',
-  SeoImageUpdatedAt = 'seo___image___updatedAt',
-  SeoImageUpdatedByChildren = 'seo___image___updatedBy___children',
-  SeoImageUpdatedByCreatedAt = 'seo___image___updatedBy___createdAt',
-  SeoImageUpdatedById = 'seo___image___updatedBy___id',
-  SeoImageUpdatedByIsActive = 'seo___image___updatedBy___isActive',
-  SeoImageUpdatedByKind = 'seo___image___updatedBy___kind',
-  SeoImageUpdatedByName = 'seo___image___updatedBy___name',
-  SeoImageUpdatedByPicture = 'seo___image___updatedBy___picture',
-  SeoImageUpdatedByPublishedAt = 'seo___image___updatedBy___publishedAt',
-  SeoImageUpdatedByRemoteId = 'seo___image___updatedBy___remoteId',
-  SeoImageUpdatedByRemoteTypeName = 'seo___image___updatedBy___remoteTypeName',
-  SeoImageUpdatedByStage = 'seo___image___updatedBy___stage',
-  SeoImageUpdatedByUpdatedAt = 'seo___image___updatedBy___updatedAt',
-  SeoImageUrl = 'seo___image___url',
-  SeoImageWidth = 'seo___image___width',
-  SeoInternalContent = 'seo___internal___content',
-  SeoInternalContentDigest = 'seo___internal___contentDigest',
-  SeoInternalDescription = 'seo___internal___description',
-  SeoInternalFieldOwners = 'seo___internal___fieldOwners',
-  SeoInternalIgnoreType = 'seo___internal___ignoreType',
-  SeoInternalMediaType = 'seo___internal___mediaType',
-  SeoInternalOwner = 'seo___internal___owner',
-  SeoInternalType = 'seo___internal___type',
-  SeoKeywords = 'seo___keywords',
-  SeoParentChildren = 'seo___parent___children',
-  SeoParentChildrenChildren = 'seo___parent___children___children',
-  SeoParentChildrenId = 'seo___parent___children___id',
-  SeoParentId = 'seo___parent___id',
-  SeoParentInternalContent = 'seo___parent___internal___content',
-  SeoParentInternalContentDigest = 'seo___parent___internal___contentDigest',
-  SeoParentInternalDescription = 'seo___parent___internal___description',
-  SeoParentInternalFieldOwners = 'seo___parent___internal___fieldOwners',
-  SeoParentInternalIgnoreType = 'seo___parent___internal___ignoreType',
-  SeoParentInternalMediaType = 'seo___parent___internal___mediaType',
-  SeoParentInternalOwner = 'seo___parent___internal___owner',
-  SeoParentInternalType = 'seo___parent___internal___type',
-  SeoParentParentChildren = 'seo___parent___parent___children',
-  SeoParentParentId = 'seo___parent___parent___id',
-  SeoPublishedAt = 'seo___publishedAt',
-  SeoPublishedByChildren = 'seo___publishedBy___children',
-  SeoPublishedByChildrenChildren = 'seo___publishedBy___children___children',
-  SeoPublishedByChildrenId = 'seo___publishedBy___children___id',
-  SeoPublishedByCreatedAt = 'seo___publishedBy___createdAt',
-  SeoPublishedById = 'seo___publishedBy___id',
-  SeoPublishedByInternalContent = 'seo___publishedBy___internal___content',
-  SeoPublishedByInternalContentDigest = 'seo___publishedBy___internal___contentDigest',
-  SeoPublishedByInternalDescription = 'seo___publishedBy___internal___description',
-  SeoPublishedByInternalFieldOwners = 'seo___publishedBy___internal___fieldOwners',
-  SeoPublishedByInternalIgnoreType = 'seo___publishedBy___internal___ignoreType',
-  SeoPublishedByInternalMediaType = 'seo___publishedBy___internal___mediaType',
-  SeoPublishedByInternalOwner = 'seo___publishedBy___internal___owner',
-  SeoPublishedByInternalType = 'seo___publishedBy___internal___type',
-  SeoPublishedByIsActive = 'seo___publishedBy___isActive',
-  SeoPublishedByKind = 'seo___publishedBy___kind',
-  SeoPublishedByName = 'seo___publishedBy___name',
-  SeoPublishedByParentChildren = 'seo___publishedBy___parent___children',
-  SeoPublishedByParentId = 'seo___publishedBy___parent___id',
-  SeoPublishedByPicture = 'seo___publishedBy___picture',
-  SeoPublishedByPublishedAt = 'seo___publishedBy___publishedAt',
-  SeoPublishedByRemoteId = 'seo___publishedBy___remoteId',
-  SeoPublishedByRemoteTypeName = 'seo___publishedBy___remoteTypeName',
-  SeoPublishedByStage = 'seo___publishedBy___stage',
-  SeoPublishedByUpdatedAt = 'seo___publishedBy___updatedAt',
-  SeoRemoteId = 'seo___remoteId',
-  SeoRemoteTypeName = 'seo___remoteTypeName',
-  SeoStage = 'seo___stage',
-  SeoTitle = 'seo___title',
-  SeoUpdatedAt = 'seo___updatedAt',
-  SeoUpdatedByChildren = 'seo___updatedBy___children',
-  SeoUpdatedByChildrenChildren = 'seo___updatedBy___children___children',
-  SeoUpdatedByChildrenId = 'seo___updatedBy___children___id',
-  SeoUpdatedByCreatedAt = 'seo___updatedBy___createdAt',
-  SeoUpdatedById = 'seo___updatedBy___id',
-  SeoUpdatedByInternalContent = 'seo___updatedBy___internal___content',
-  SeoUpdatedByInternalContentDigest = 'seo___updatedBy___internal___contentDigest',
-  SeoUpdatedByInternalDescription = 'seo___updatedBy___internal___description',
-  SeoUpdatedByInternalFieldOwners = 'seo___updatedBy___internal___fieldOwners',
-  SeoUpdatedByInternalIgnoreType = 'seo___updatedBy___internal___ignoreType',
-  SeoUpdatedByInternalMediaType = 'seo___updatedBy___internal___mediaType',
-  SeoUpdatedByInternalOwner = 'seo___updatedBy___internal___owner',
-  SeoUpdatedByInternalType = 'seo___updatedBy___internal___type',
-  SeoUpdatedByIsActive = 'seo___updatedBy___isActive',
-  SeoUpdatedByKind = 'seo___updatedBy___kind',
-  SeoUpdatedByName = 'seo___updatedBy___name',
-  SeoUpdatedByParentChildren = 'seo___updatedBy___parent___children',
-  SeoUpdatedByParentId = 'seo___updatedBy___parent___id',
-  SeoUpdatedByPicture = 'seo___updatedBy___picture',
-  SeoUpdatedByPublishedAt = 'seo___updatedBy___publishedAt',
-  SeoUpdatedByRemoteId = 'seo___updatedBy___remoteId',
-  SeoUpdatedByRemoteTypeName = 'seo___updatedBy___remoteTypeName',
-  SeoUpdatedByStage = 'seo___updatedBy___stage',
-  SeoUpdatedByUpdatedAt = 'seo___updatedBy___updatedAt',
-  Slug = 'slug',
-  Stage = 'stage',
-  Tags = 'tags',
-  Title = 'title',
-  UpdatedAt = 'updatedAt',
-  UpdatedByChildren = 'updatedBy___children',
-  UpdatedByChildrenChildren = 'updatedBy___children___children',
-  UpdatedByChildrenChildrenChildren = 'updatedBy___children___children___children',
-  UpdatedByChildrenChildrenId = 'updatedBy___children___children___id',
-  UpdatedByChildrenId = 'updatedBy___children___id',
-  UpdatedByChildrenInternalContent = 'updatedBy___children___internal___content',
-  UpdatedByChildrenInternalContentDigest = 'updatedBy___children___internal___contentDigest',
-  UpdatedByChildrenInternalDescription = 'updatedBy___children___internal___description',
-  UpdatedByChildrenInternalFieldOwners = 'updatedBy___children___internal___fieldOwners',
-  UpdatedByChildrenInternalIgnoreType = 'updatedBy___children___internal___ignoreType',
-  UpdatedByChildrenInternalMediaType = 'updatedBy___children___internal___mediaType',
-  UpdatedByChildrenInternalOwner = 'updatedBy___children___internal___owner',
-  UpdatedByChildrenInternalType = 'updatedBy___children___internal___type',
-  UpdatedByChildrenParentChildren = 'updatedBy___children___parent___children',
-  UpdatedByChildrenParentId = 'updatedBy___children___parent___id',
-  UpdatedByCreatedAt = 'updatedBy___createdAt',
-  UpdatedById = 'updatedBy___id',
-  UpdatedByInternalContent = 'updatedBy___internal___content',
-  UpdatedByInternalContentDigest = 'updatedBy___internal___contentDigest',
-  UpdatedByInternalDescription = 'updatedBy___internal___description',
-  UpdatedByInternalFieldOwners = 'updatedBy___internal___fieldOwners',
-  UpdatedByInternalIgnoreType = 'updatedBy___internal___ignoreType',
-  UpdatedByInternalMediaType = 'updatedBy___internal___mediaType',
-  UpdatedByInternalOwner = 'updatedBy___internal___owner',
-  UpdatedByInternalType = 'updatedBy___internal___type',
-  UpdatedByIsActive = 'updatedBy___isActive',
-  UpdatedByKind = 'updatedBy___kind',
-  UpdatedByName = 'updatedBy___name',
-  UpdatedByParentChildren = 'updatedBy___parent___children',
-  UpdatedByParentChildrenChildren = 'updatedBy___parent___children___children',
-  UpdatedByParentChildrenId = 'updatedBy___parent___children___id',
-  UpdatedByParentId = 'updatedBy___parent___id',
-  UpdatedByParentInternalContent = 'updatedBy___parent___internal___content',
-  UpdatedByParentInternalContentDigest = 'updatedBy___parent___internal___contentDigest',
-  UpdatedByParentInternalDescription = 'updatedBy___parent___internal___description',
-  UpdatedByParentInternalFieldOwners = 'updatedBy___parent___internal___fieldOwners',
-  UpdatedByParentInternalIgnoreType = 'updatedBy___parent___internal___ignoreType',
-  UpdatedByParentInternalMediaType = 'updatedBy___parent___internal___mediaType',
-  UpdatedByParentInternalOwner = 'updatedBy___parent___internal___owner',
-  UpdatedByParentInternalType = 'updatedBy___parent___internal___type',
-  UpdatedByParentParentChildren = 'updatedBy___parent___parent___children',
-  UpdatedByParentParentId = 'updatedBy___parent___parent___id',
-  UpdatedByPicture = 'updatedBy___picture',
-  UpdatedByPublishedAt = 'updatedBy___publishedAt',
-  UpdatedByRemoteId = 'updatedBy___remoteId',
-  UpdatedByRemoteTypeName = 'updatedBy___remoteTypeName',
-  UpdatedByStage = 'updatedBy___stage',
-  UpdatedByUpdatedAt = 'updatedBy___updatedAt'
+/** Identifies documents */
+export type GraphCms_PostManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_PostWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_PostWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_PostWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  author: Maybe<GraphCms_AuthorWhereInput>;
+  coverImage: Maybe<GraphCms_AssetWhereInput>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  date: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than the given value. */
+  date_gt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than or equal the given value. */
+  date_gte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are contained in given list. */
+  date_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  /** All values less than the given value. */
+  date_lt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values less than or equal the given value. */
+  date_lte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not equal to given value. */
+  date_not: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not contained in given list. */
+  date_not_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  excerpt: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  excerpt_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  excerpt_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  excerpt_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  excerpt_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  excerpt_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  excerpt_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  excerpt_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  excerpt_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  excerpt_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  seo: Maybe<GraphCms_SeoWhereInput>;
+  slug: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with: Maybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  tags: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  tags_contains_all: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  tags_contains_none: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  tags_contains_some: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  tags_not: Maybe<Array<Scalars['String']>>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+export enum GraphCms_PostOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DateAsc = 'date_ASC',
+  DateDesc = 'date_DESC',
+  ExcerptAsc = 'excerpt_ASC',
+  ExcerptDesc = 'excerpt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  TagsAsc = 'tags_ASC',
+  TagsDesc = 'tags_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
 }
 
-export type GraphCms_PostFilterInput = {
-  author: Maybe<GraphCms_AuthorFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  content: Maybe<GraphCms_RichTextFilterInput>;
-  coverImage: Maybe<GraphCms_AssetFilterInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  date: Maybe<JsonQueryOperatorInput>;
-  excerpt: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  seo: Maybe<GraphCms_SeoFilterInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  tags: Maybe<StringQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
+export type GraphCms_PostUpdateInput = {
+  author: Maybe<GraphCms_AuthorUpdateOneInlineInput>;
+  content: Maybe<Scalars['GraphCMS_RichTextAST']>;
+  coverImage: Maybe<GraphCms_AssetUpdateOneInlineInput>;
+  date: Maybe<Scalars['GraphCMS_Date']>;
+  excerpt: Maybe<Scalars['String']>;
+  seo: Maybe<GraphCms_SeoUpdateOneInlineInput>;
+  slug: Maybe<Scalars['String']>;
+  tags: Maybe<Array<Scalars['String']>>;
+  title: Maybe<Scalars['String']>;
 };
 
-export type GraphCms_PostFilterListInput = {
-  elemMatch: Maybe<GraphCms_PostFilterInput>;
+export type GraphCms_PostUpdateManyInlineInput = {
+  /** Connect multiple existing Post documents */
+  connect: Maybe<Array<GraphCms_PostConnectInput>>;
+  /** Create and connect multiple Post documents */
+  create: Maybe<Array<GraphCms_PostCreateInput>>;
+  /** Delete multiple Post documents */
+  delete: Maybe<Array<GraphCms_PostWhereUniqueInput>>;
+  /** Disconnect multiple Post documents */
+  disconnect: Maybe<Array<GraphCms_PostWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Post documents */
+  set: Maybe<Array<GraphCms_PostWhereUniqueInput>>;
+  /** Update multiple Post documents */
+  update: Maybe<Array<GraphCms_PostUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Post documents */
+  upsert: Maybe<Array<GraphCms_PostUpsertWithNestedWhereUniqueInput>>;
 };
 
-export type GraphCms_PostGroupConnection = {
-  edges: Array<GraphCms_PostEdge>;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-  nodes: Array<GraphCms_Post>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+export type GraphCms_PostUpdateManyInput = {
+  content: Maybe<Scalars['GraphCMS_RichTextAST']>;
+  date: Maybe<Scalars['GraphCMS_Date']>;
+  excerpt: Maybe<Scalars['String']>;
+  tags: Maybe<Array<Scalars['String']>>;
+  title: Maybe<Scalars['String']>;
 };
 
-export type GraphCms_PostSortInput = {
-  fields: Maybe<Array<Maybe<GraphCms_PostFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+export type GraphCms_PostUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_PostUpdateManyInput;
+  /** Document search */
+  where: GraphCms_PostWhereInput;
 };
 
+export type GraphCms_PostUpdateOneInlineInput = {
+  /** Connect existing Post document */
+  connect: Maybe<GraphCms_PostWhereUniqueInput>;
+  /** Create and connect one Post document */
+  create: Maybe<GraphCms_PostCreateInput>;
+  /** Delete currently connected Post document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Post document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Post document */
+  update: Maybe<GraphCms_PostUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Post document */
+  upsert: Maybe<GraphCms_PostUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_PostUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_PostUpdateInput;
+  /** Unique document search */
+  where: GraphCms_PostWhereUniqueInput;
+};
+
+export type GraphCms_PostUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_PostCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_PostUpdateInput;
+};
+
+export type GraphCms_PostUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_PostUpsertInput;
+  /** Unique document search */
+  where: GraphCms_PostWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_PostWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_PostWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_PostWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_PostWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  author: Maybe<GraphCms_AuthorWhereInput>;
+  coverImage: Maybe<GraphCms_AssetWhereInput>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  date: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than the given value. */
+  date_gt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values greater than or equal the given value. */
+  date_gte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are contained in given list. */
+  date_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  /** All values less than the given value. */
+  date_lt: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values less than or equal the given value. */
+  date_lte: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not equal to given value. */
+  date_not: Maybe<Scalars['GraphCMS_Date']>;
+  /** All values that are not contained in given list. */
+  date_not_in: Maybe<Array<Scalars['GraphCMS_Date']>>;
+  excerpt: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  excerpt_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  excerpt_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  excerpt_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  excerpt_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  excerpt_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  excerpt_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  excerpt_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  excerpt_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  excerpt_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  seo: Maybe<GraphCms_SeoWhereInput>;
+  slug: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with: Maybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  tags: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  tags_contains_all: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  tags_contains_none: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  tags_contains_some: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  tags_not: Maybe<Array<Scalars['String']>>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+/** References Post record uniquely */
+export type GraphCms_PostWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+  slug: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_Product = GraphCms_Node & {
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
+  createdBy: Maybe<GraphCms_User>;
+  description: Maybe<Scalars['String']>;
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Product>;
+  /** List of Product versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  image: Maybe<GraphCms_Asset>;
+  name: Scalars['String'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
+  publishedBy: Maybe<GraphCms_User>;
+  /** System stage field */
+  stage: GraphCms_Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
+  updatedBy: Maybe<GraphCms_User>;
+  url: Maybe<Scalars['String']>;
+};
+
+
+export type GraphCms_ProductCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_ProductDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+export type GraphCms_ProductHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+export type GraphCms_ProductImageArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_ProductPublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_ProductUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+export type GraphCms_ProductConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_ProductWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type GraphCms_ProductConnection = {
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
+  edges: Array<GraphCms_ProductEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
+};
+
+export type GraphCms_ProductCreateInput = {
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  description: Maybe<Scalars['String']>;
+  image: Maybe<GraphCms_AssetCreateOneInlineInput>;
+  name: Scalars['String'];
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  url: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_ProductCreateManyInlineInput = {
+  /** Connect multiple existing Product documents */
+  connect: Maybe<Array<GraphCms_ProductWhereUniqueInput>>;
+  /** Create and connect multiple existing Product documents */
+  create: Maybe<Array<GraphCms_ProductCreateInput>>;
+};
+
+export type GraphCms_ProductCreateOneInlineInput = {
+  /** Connect one existing Product document */
+  connect: Maybe<GraphCms_ProductWhereUniqueInput>;
+  /** Create and connect one Product document */
+  create: Maybe<GraphCms_ProductCreateInput>;
+};
+
+/** An edge in a connection. */
+export type GraphCms_ProductEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: GraphCms_Product;
+};
+
+/** Identifies documents */
+export type GraphCms_ProductManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_ProductWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_ProductWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_ProductWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  description: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  image: Maybe<GraphCms_AssetWhereInput>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+  url: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  url_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  url_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  url_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  url_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  url_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  url_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  url_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  url_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  url_starts_with: Maybe<Scalars['String']>;
+};
+
+export enum GraphCms_ProductOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
+}
+
+export type GraphCms_ProductUpdateInput = {
+  description: Maybe<Scalars['String']>;
+  image: Maybe<GraphCms_AssetUpdateOneInlineInput>;
+  name: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_ProductUpdateManyInlineInput = {
+  /** Connect multiple existing Product documents */
+  connect: Maybe<Array<GraphCms_ProductConnectInput>>;
+  /** Create and connect multiple Product documents */
+  create: Maybe<Array<GraphCms_ProductCreateInput>>;
+  /** Delete multiple Product documents */
+  delete: Maybe<Array<GraphCms_ProductWhereUniqueInput>>;
+  /** Disconnect multiple Product documents */
+  disconnect: Maybe<Array<GraphCms_ProductWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Product documents */
+  set: Maybe<Array<GraphCms_ProductWhereUniqueInput>>;
+  /** Update multiple Product documents */
+  update: Maybe<Array<GraphCms_ProductUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Product documents */
+  upsert: Maybe<Array<GraphCms_ProductUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type GraphCms_ProductUpdateManyInput = {
+  description: Maybe<Scalars['String']>;
+  name: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_ProductUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_ProductUpdateManyInput;
+  /** Document search */
+  where: GraphCms_ProductWhereInput;
+};
+
+export type GraphCms_ProductUpdateOneInlineInput = {
+  /** Connect existing Product document */
+  connect: Maybe<GraphCms_ProductWhereUniqueInput>;
+  /** Create and connect one Product document */
+  create: Maybe<GraphCms_ProductCreateInput>;
+  /** Delete currently connected Product document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Product document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Product document */
+  update: Maybe<GraphCms_ProductUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Product document */
+  upsert: Maybe<GraphCms_ProductUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_ProductUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_ProductUpdateInput;
+  /** Unique document search */
+  where: GraphCms_ProductWhereUniqueInput;
+};
+
+export type GraphCms_ProductUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_ProductCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_ProductUpdateInput;
+};
+
+export type GraphCms_ProductUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_ProductUpsertInput;
+  /** Unique document search */
+  where: GraphCms_ProductWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_ProductWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_ProductWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_ProductWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_ProductWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  description: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  image: Maybe<GraphCms_AssetWhereInput>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+  url: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  url_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  url_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  url_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  url_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  url_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  url_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  url_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  url_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  url_starts_with: Maybe<Scalars['String']>;
+};
+
+/** References Product record uniquely */
+export type GraphCms_ProductWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+};
+
+export type GraphCms_PublishLocaleInput = {
+  /** Locales to publish */
+  locale: GraphCms_Locale;
+  /** Stages to publish selected locales to */
+  stages: Array<GraphCms_Stage>;
+};
+
+/** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
+export type GraphCms_Rgba = {
+  a: Scalars['GraphCMS_RGBATransparency'];
+  b: Scalars['GraphCMS_RGBAHue'];
+  g: Scalars['GraphCMS_RGBAHue'];
+  r: Scalars['GraphCMS_RGBAHue'];
+};
+
+
+/** Input type representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
+export type GraphCms_RgbaInput = {
+  a: Scalars['GraphCMS_RGBATransparency'];
+  b: Scalars['GraphCMS_RGBAHue'];
+  g: Scalars['GraphCMS_RGBAHue'];
+  r: Scalars['GraphCMS_RGBAHue'];
+};
+
+
+/** Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values */
 export type GraphCms_RichText = {
+  /** Returns HTMl representation */
   html: Scalars['String'];
+  /** Returns Markdown representation */
   markdown: Scalars['String'];
-  raw: Scalars['JSON'];
-  remoteTypeName: Scalars['String'];
+  /** Returns AST representation */
+  raw: Scalars['GraphCMS_RichTextAST'];
+  /** Returns plain-text contents of RichText */
   text: Scalars['String'];
 };
 
-export type GraphCms_RichTextFilterInput = {
-  html: Maybe<StringQueryOperatorInput>;
-  markdown: Maybe<StringQueryOperatorInput>;
-  raw: Maybe<JsonQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  text: Maybe<StringQueryOperatorInput>;
-};
 
-export type GraphCms_Seo = Node & {
-  children: Array<Node>;
-  createdAt: Scalars['JSON'];
+export type GraphCms_Seo = GraphCms_Node & {
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** User that created this document */
   createdBy: Maybe<GraphCms_User>;
+  /** Create a custom meta description */
   description: Maybe<Scalars['String']>;
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_Seo>;
+  /** List of Seo versions */
+  history: Array<GraphCms_Version>;
+  /** The unique identifier */
   id: Scalars['ID'];
+  /** Select a custom OG image (the most common size is usually 1280x720) */
   image: Maybe<GraphCms_Asset>;
-  internal: Internal;
+  /** Select your focus keywords */
   keywords: Array<Scalars['String']>;
-  parent: Maybe<Node>;
-  publishedAt: Maybe<Scalars['JSON']>;
+  /** What pages and blog posts would this SEO apply to? */
+  parent: Maybe<GraphCms_SeoParent>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** User that last published this document */
   publishedBy: Maybe<GraphCms_User>;
-  remoteId: Scalars['ID'];
-  remoteParent: Maybe<GraphCms_SeoParent>;
-  remoteTypeName: Scalars['String'];
+  /** System stage field */
   stage: GraphCms_Stage;
+  /** Create a custom meta title */
   title: Maybe<Scalars['String']>;
-  updatedAt: Scalars['JSON'];
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+  /** User that last updated this document */
   updatedBy: Maybe<GraphCms_User>;
 };
 
+
+export type GraphCms_SeoCreatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_SeoDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+
+export type GraphCms_SeoHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride: Maybe<GraphCms_Stage>;
+};
+
+
+export type GraphCms_SeoImageArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_SeoParentArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_SeoPublishedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+
+export type GraphCms_SeoUpdatedByArgs = {
+  locales: Maybe<Array<GraphCms_Locale>>;
+};
+
+export type GraphCms_SeoConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position: Maybe<GraphCms_ConnectPositionInput>;
+  /** Document to connect */
+  where: GraphCms_SeoWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
 export type GraphCms_SeoConnection = {
-  distinct: Array<Scalars['String']>;
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
   edges: Array<GraphCms_SeoEdge>;
-  group: Array<GraphCms_SeoGroupConnection>;
-  nodes: Array<GraphCms_Seo>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
 };
 
-
-export type GraphCms_SeoConnectionDistinctArgs = {
-  field: GraphCms_SeoFieldsEnum;
+export type GraphCms_SeoCreateInput = {
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  description: Maybe<Scalars['String']>;
+  image: Maybe<GraphCms_AssetCreateOneInlineInput>;
+  keywords: Maybe<Array<Scalars['String']>>;
+  parent: Maybe<GraphCms_SeoParentCreateOneInlineInput>;
+  title: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
 };
 
-
-export type GraphCms_SeoConnectionGroupArgs = {
-  field: GraphCms_SeoFieldsEnum;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
+export type GraphCms_SeoCreateManyInlineInput = {
+  /** Connect multiple existing Seo documents */
+  connect: Maybe<Array<GraphCms_SeoWhereUniqueInput>>;
+  /** Create and connect multiple existing Seo documents */
+  create: Maybe<Array<GraphCms_SeoCreateInput>>;
 };
 
+export type GraphCms_SeoCreateOneInlineInput = {
+  /** Connect one existing Seo document */
+  connect: Maybe<GraphCms_SeoWhereUniqueInput>;
+  /** Create and connect one Seo document */
+  create: Maybe<GraphCms_SeoCreateInput>;
+};
+
+/** An edge in a connection. */
 export type GraphCms_SeoEdge = {
-  next: Maybe<GraphCms_Seo>;
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
   node: GraphCms_Seo;
-  previous: Maybe<GraphCms_Seo>;
 };
 
-export enum GraphCms_SeoFieldsEnum {
-  Children = 'children',
-  ChildrenChildren = 'children___children',
-  ChildrenChildrenChildren = 'children___children___children',
-  ChildrenChildrenChildrenChildren = 'children___children___children___children',
-  ChildrenChildrenChildrenId = 'children___children___children___id',
-  ChildrenChildrenId = 'children___children___id',
-  ChildrenChildrenInternalContent = 'children___children___internal___content',
-  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
-  ChildrenChildrenInternalDescription = 'children___children___internal___description',
-  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
-  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
-  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
-  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
-  ChildrenChildrenInternalType = 'children___children___internal___type',
-  ChildrenChildrenParentChildren = 'children___children___parent___children',
-  ChildrenChildrenParentId = 'children___children___parent___id',
-  ChildrenId = 'children___id',
-  ChildrenInternalContent = 'children___internal___content',
-  ChildrenInternalContentDigest = 'children___internal___contentDigest',
-  ChildrenInternalDescription = 'children___internal___description',
-  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
-  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
-  ChildrenInternalMediaType = 'children___internal___mediaType',
-  ChildrenInternalOwner = 'children___internal___owner',
-  ChildrenInternalType = 'children___internal___type',
-  ChildrenParentChildren = 'children___parent___children',
-  ChildrenParentChildrenChildren = 'children___parent___children___children',
-  ChildrenParentChildrenId = 'children___parent___children___id',
-  ChildrenParentId = 'children___parent___id',
-  ChildrenParentInternalContent = 'children___parent___internal___content',
-  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
-  ChildrenParentInternalDescription = 'children___parent___internal___description',
-  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
-  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
-  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
-  ChildrenParentInternalOwner = 'children___parent___internal___owner',
-  ChildrenParentInternalType = 'children___parent___internal___type',
-  ChildrenParentParentChildren = 'children___parent___parent___children',
-  ChildrenParentParentId = 'children___parent___parent___id',
-  CreatedAt = 'createdAt',
-  CreatedByChildren = 'createdBy___children',
-  CreatedByChildrenChildren = 'createdBy___children___children',
-  CreatedByChildrenChildrenChildren = 'createdBy___children___children___children',
-  CreatedByChildrenChildrenId = 'createdBy___children___children___id',
-  CreatedByChildrenId = 'createdBy___children___id',
-  CreatedByChildrenInternalContent = 'createdBy___children___internal___content',
-  CreatedByChildrenInternalContentDigest = 'createdBy___children___internal___contentDigest',
-  CreatedByChildrenInternalDescription = 'createdBy___children___internal___description',
-  CreatedByChildrenInternalFieldOwners = 'createdBy___children___internal___fieldOwners',
-  CreatedByChildrenInternalIgnoreType = 'createdBy___children___internal___ignoreType',
-  CreatedByChildrenInternalMediaType = 'createdBy___children___internal___mediaType',
-  CreatedByChildrenInternalOwner = 'createdBy___children___internal___owner',
-  CreatedByChildrenInternalType = 'createdBy___children___internal___type',
-  CreatedByChildrenParentChildren = 'createdBy___children___parent___children',
-  CreatedByChildrenParentId = 'createdBy___children___parent___id',
-  CreatedByCreatedAt = 'createdBy___createdAt',
-  CreatedById = 'createdBy___id',
-  CreatedByInternalContent = 'createdBy___internal___content',
-  CreatedByInternalContentDigest = 'createdBy___internal___contentDigest',
-  CreatedByInternalDescription = 'createdBy___internal___description',
-  CreatedByInternalFieldOwners = 'createdBy___internal___fieldOwners',
-  CreatedByInternalIgnoreType = 'createdBy___internal___ignoreType',
-  CreatedByInternalMediaType = 'createdBy___internal___mediaType',
-  CreatedByInternalOwner = 'createdBy___internal___owner',
-  CreatedByInternalType = 'createdBy___internal___type',
-  CreatedByIsActive = 'createdBy___isActive',
-  CreatedByKind = 'createdBy___kind',
-  CreatedByName = 'createdBy___name',
-  CreatedByParentChildren = 'createdBy___parent___children',
-  CreatedByParentChildrenChildren = 'createdBy___parent___children___children',
-  CreatedByParentChildrenId = 'createdBy___parent___children___id',
-  CreatedByParentId = 'createdBy___parent___id',
-  CreatedByParentInternalContent = 'createdBy___parent___internal___content',
-  CreatedByParentInternalContentDigest = 'createdBy___parent___internal___contentDigest',
-  CreatedByParentInternalDescription = 'createdBy___parent___internal___description',
-  CreatedByParentInternalFieldOwners = 'createdBy___parent___internal___fieldOwners',
-  CreatedByParentInternalIgnoreType = 'createdBy___parent___internal___ignoreType',
-  CreatedByParentInternalMediaType = 'createdBy___parent___internal___mediaType',
-  CreatedByParentInternalOwner = 'createdBy___parent___internal___owner',
-  CreatedByParentInternalType = 'createdBy___parent___internal___type',
-  CreatedByParentParentChildren = 'createdBy___parent___parent___children',
-  CreatedByParentParentId = 'createdBy___parent___parent___id',
-  CreatedByPicture = 'createdBy___picture',
-  CreatedByPublishedAt = 'createdBy___publishedAt',
-  CreatedByRemoteId = 'createdBy___remoteId',
-  CreatedByRemoteTypeName = 'createdBy___remoteTypeName',
-  CreatedByStage = 'createdBy___stage',
-  CreatedByUpdatedAt = 'createdBy___updatedAt',
-  Description = 'description',
-  Id = 'id',
-  ImageAuthorAvatar = 'image___authorAvatar',
-  ImageAuthorAvatarBiography = 'image___authorAvatar___biography',
-  ImageAuthorAvatarChildren = 'image___authorAvatar___children',
-  ImageAuthorAvatarChildrenChildren = 'image___authorAvatar___children___children',
-  ImageAuthorAvatarChildrenId = 'image___authorAvatar___children___id',
-  ImageAuthorAvatarCreatedAt = 'image___authorAvatar___createdAt',
-  ImageAuthorAvatarCreatedByChildren = 'image___authorAvatar___createdBy___children',
-  ImageAuthorAvatarCreatedByCreatedAt = 'image___authorAvatar___createdBy___createdAt',
-  ImageAuthorAvatarCreatedById = 'image___authorAvatar___createdBy___id',
-  ImageAuthorAvatarCreatedByIsActive = 'image___authorAvatar___createdBy___isActive',
-  ImageAuthorAvatarCreatedByKind = 'image___authorAvatar___createdBy___kind',
-  ImageAuthorAvatarCreatedByName = 'image___authorAvatar___createdBy___name',
-  ImageAuthorAvatarCreatedByPicture = 'image___authorAvatar___createdBy___picture',
-  ImageAuthorAvatarCreatedByPublishedAt = 'image___authorAvatar___createdBy___publishedAt',
-  ImageAuthorAvatarCreatedByRemoteId = 'image___authorAvatar___createdBy___remoteId',
-  ImageAuthorAvatarCreatedByRemoteTypeName = 'image___authorAvatar___createdBy___remoteTypeName',
-  ImageAuthorAvatarCreatedByStage = 'image___authorAvatar___createdBy___stage',
-  ImageAuthorAvatarCreatedByUpdatedAt = 'image___authorAvatar___createdBy___updatedAt',
-  ImageAuthorAvatarId = 'image___authorAvatar___id',
-  ImageAuthorAvatarInternalContent = 'image___authorAvatar___internal___content',
-  ImageAuthorAvatarInternalContentDigest = 'image___authorAvatar___internal___contentDigest',
-  ImageAuthorAvatarInternalDescription = 'image___authorAvatar___internal___description',
-  ImageAuthorAvatarInternalFieldOwners = 'image___authorAvatar___internal___fieldOwners',
-  ImageAuthorAvatarInternalIgnoreType = 'image___authorAvatar___internal___ignoreType',
-  ImageAuthorAvatarInternalMediaType = 'image___authorAvatar___internal___mediaType',
-  ImageAuthorAvatarInternalOwner = 'image___authorAvatar___internal___owner',
-  ImageAuthorAvatarInternalType = 'image___authorAvatar___internal___type',
-  ImageAuthorAvatarName = 'image___authorAvatar___name',
-  ImageAuthorAvatarParentChildren = 'image___authorAvatar___parent___children',
-  ImageAuthorAvatarParentId = 'image___authorAvatar___parent___id',
-  ImageAuthorAvatarPictureAuthorAvatar = 'image___authorAvatar___picture___authorAvatar',
-  ImageAuthorAvatarPictureChildren = 'image___authorAvatar___picture___children',
-  ImageAuthorAvatarPictureCoverImagePost = 'image___authorAvatar___picture___coverImagePost',
-  ImageAuthorAvatarPictureCreatedAt = 'image___authorAvatar___picture___createdAt',
-  ImageAuthorAvatarPictureFileName = 'image___authorAvatar___picture___fileName',
-  ImageAuthorAvatarPictureHandle = 'image___authorAvatar___picture___handle',
-  ImageAuthorAvatarPictureHeight = 'image___authorAvatar___picture___height',
-  ImageAuthorAvatarPictureId = 'image___authorAvatar___picture___id',
-  ImageAuthorAvatarPictureLocale = 'image___authorAvatar___picture___locale',
-  ImageAuthorAvatarPictureMimeType = 'image___authorAvatar___picture___mimeType',
-  ImageAuthorAvatarPicturePublishedAt = 'image___authorAvatar___picture___publishedAt',
-  ImageAuthorAvatarPictureRemoteId = 'image___authorAvatar___picture___remoteId',
-  ImageAuthorAvatarPictureRemoteTypeName = 'image___authorAvatar___picture___remoteTypeName',
-  ImageAuthorAvatarPictureSeoImage = 'image___authorAvatar___picture___seoImage',
-  ImageAuthorAvatarPictureSize = 'image___authorAvatar___picture___size',
-  ImageAuthorAvatarPictureStage = 'image___authorAvatar___picture___stage',
-  ImageAuthorAvatarPictureUpdatedAt = 'image___authorAvatar___picture___updatedAt',
-  ImageAuthorAvatarPictureUrl = 'image___authorAvatar___picture___url',
-  ImageAuthorAvatarPictureWidth = 'image___authorAvatar___picture___width',
-  ImageAuthorAvatarPosts = 'image___authorAvatar___posts',
-  ImageAuthorAvatarPostsChildren = 'image___authorAvatar___posts___children',
-  ImageAuthorAvatarPostsCreatedAt = 'image___authorAvatar___posts___createdAt',
-  ImageAuthorAvatarPostsDate = 'image___authorAvatar___posts___date',
-  ImageAuthorAvatarPostsExcerpt = 'image___authorAvatar___posts___excerpt',
-  ImageAuthorAvatarPostsId = 'image___authorAvatar___posts___id',
-  ImageAuthorAvatarPostsPublishedAt = 'image___authorAvatar___posts___publishedAt',
-  ImageAuthorAvatarPostsRemoteId = 'image___authorAvatar___posts___remoteId',
-  ImageAuthorAvatarPostsRemoteTypeName = 'image___authorAvatar___posts___remoteTypeName',
-  ImageAuthorAvatarPostsSlug = 'image___authorAvatar___posts___slug',
-  ImageAuthorAvatarPostsStage = 'image___authorAvatar___posts___stage',
-  ImageAuthorAvatarPostsTags = 'image___authorAvatar___posts___tags',
-  ImageAuthorAvatarPostsTitle = 'image___authorAvatar___posts___title',
-  ImageAuthorAvatarPostsUpdatedAt = 'image___authorAvatar___posts___updatedAt',
-  ImageAuthorAvatarPublishedAt = 'image___authorAvatar___publishedAt',
-  ImageAuthorAvatarPublishedByChildren = 'image___authorAvatar___publishedBy___children',
-  ImageAuthorAvatarPublishedByCreatedAt = 'image___authorAvatar___publishedBy___createdAt',
-  ImageAuthorAvatarPublishedById = 'image___authorAvatar___publishedBy___id',
-  ImageAuthorAvatarPublishedByIsActive = 'image___authorAvatar___publishedBy___isActive',
-  ImageAuthorAvatarPublishedByKind = 'image___authorAvatar___publishedBy___kind',
-  ImageAuthorAvatarPublishedByName = 'image___authorAvatar___publishedBy___name',
-  ImageAuthorAvatarPublishedByPicture = 'image___authorAvatar___publishedBy___picture',
-  ImageAuthorAvatarPublishedByPublishedAt = 'image___authorAvatar___publishedBy___publishedAt',
-  ImageAuthorAvatarPublishedByRemoteId = 'image___authorAvatar___publishedBy___remoteId',
-  ImageAuthorAvatarPublishedByRemoteTypeName = 'image___authorAvatar___publishedBy___remoteTypeName',
-  ImageAuthorAvatarPublishedByStage = 'image___authorAvatar___publishedBy___stage',
-  ImageAuthorAvatarPublishedByUpdatedAt = 'image___authorAvatar___publishedBy___updatedAt',
-  ImageAuthorAvatarRemoteId = 'image___authorAvatar___remoteId',
-  ImageAuthorAvatarRemoteTypeName = 'image___authorAvatar___remoteTypeName',
-  ImageAuthorAvatarStage = 'image___authorAvatar___stage',
-  ImageAuthorAvatarTitle = 'image___authorAvatar___title',
-  ImageAuthorAvatarUpdatedAt = 'image___authorAvatar___updatedAt',
-  ImageAuthorAvatarUpdatedByChildren = 'image___authorAvatar___updatedBy___children',
-  ImageAuthorAvatarUpdatedByCreatedAt = 'image___authorAvatar___updatedBy___createdAt',
-  ImageAuthorAvatarUpdatedById = 'image___authorAvatar___updatedBy___id',
-  ImageAuthorAvatarUpdatedByIsActive = 'image___authorAvatar___updatedBy___isActive',
-  ImageAuthorAvatarUpdatedByKind = 'image___authorAvatar___updatedBy___kind',
-  ImageAuthorAvatarUpdatedByName = 'image___authorAvatar___updatedBy___name',
-  ImageAuthorAvatarUpdatedByPicture = 'image___authorAvatar___updatedBy___picture',
-  ImageAuthorAvatarUpdatedByPublishedAt = 'image___authorAvatar___updatedBy___publishedAt',
-  ImageAuthorAvatarUpdatedByRemoteId = 'image___authorAvatar___updatedBy___remoteId',
-  ImageAuthorAvatarUpdatedByRemoteTypeName = 'image___authorAvatar___updatedBy___remoteTypeName',
-  ImageAuthorAvatarUpdatedByStage = 'image___authorAvatar___updatedBy___stage',
-  ImageAuthorAvatarUpdatedByUpdatedAt = 'image___authorAvatar___updatedBy___updatedAt',
-  ImageChildren = 'image___children',
-  ImageChildrenChildren = 'image___children___children',
-  ImageChildrenChildrenChildren = 'image___children___children___children',
-  ImageChildrenChildrenId = 'image___children___children___id',
-  ImageChildrenId = 'image___children___id',
-  ImageChildrenInternalContent = 'image___children___internal___content',
-  ImageChildrenInternalContentDigest = 'image___children___internal___contentDigest',
-  ImageChildrenInternalDescription = 'image___children___internal___description',
-  ImageChildrenInternalFieldOwners = 'image___children___internal___fieldOwners',
-  ImageChildrenInternalIgnoreType = 'image___children___internal___ignoreType',
-  ImageChildrenInternalMediaType = 'image___children___internal___mediaType',
-  ImageChildrenInternalOwner = 'image___children___internal___owner',
-  ImageChildrenInternalType = 'image___children___internal___type',
-  ImageChildrenParentChildren = 'image___children___parent___children',
-  ImageChildrenParentId = 'image___children___parent___id',
-  ImageCoverImagePost = 'image___coverImagePost',
-  ImageCoverImagePostAuthorBiography = 'image___coverImagePost___author___biography',
-  ImageCoverImagePostAuthorChildren = 'image___coverImagePost___author___children',
-  ImageCoverImagePostAuthorCreatedAt = 'image___coverImagePost___author___createdAt',
-  ImageCoverImagePostAuthorId = 'image___coverImagePost___author___id',
-  ImageCoverImagePostAuthorName = 'image___coverImagePost___author___name',
-  ImageCoverImagePostAuthorPosts = 'image___coverImagePost___author___posts',
-  ImageCoverImagePostAuthorPublishedAt = 'image___coverImagePost___author___publishedAt',
-  ImageCoverImagePostAuthorRemoteId = 'image___coverImagePost___author___remoteId',
-  ImageCoverImagePostAuthorRemoteTypeName = 'image___coverImagePost___author___remoteTypeName',
-  ImageCoverImagePostAuthorStage = 'image___coverImagePost___author___stage',
-  ImageCoverImagePostAuthorTitle = 'image___coverImagePost___author___title',
-  ImageCoverImagePostAuthorUpdatedAt = 'image___coverImagePost___author___updatedAt',
-  ImageCoverImagePostChildren = 'image___coverImagePost___children',
-  ImageCoverImagePostChildrenChildren = 'image___coverImagePost___children___children',
-  ImageCoverImagePostChildrenId = 'image___coverImagePost___children___id',
-  ImageCoverImagePostContentHtml = 'image___coverImagePost___content___html',
-  ImageCoverImagePostContentMarkdown = 'image___coverImagePost___content___markdown',
-  ImageCoverImagePostContentRaw = 'image___coverImagePost___content___raw',
-  ImageCoverImagePostContentRemoteTypeName = 'image___coverImagePost___content___remoteTypeName',
-  ImageCoverImagePostContentText = 'image___coverImagePost___content___text',
-  ImageCoverImagePostCoverImageAuthorAvatar = 'image___coverImagePost___coverImage___authorAvatar',
-  ImageCoverImagePostCoverImageChildren = 'image___coverImagePost___coverImage___children',
-  ImageCoverImagePostCoverImageCoverImagePost = 'image___coverImagePost___coverImage___coverImagePost',
-  ImageCoverImagePostCoverImageCreatedAt = 'image___coverImagePost___coverImage___createdAt',
-  ImageCoverImagePostCoverImageFileName = 'image___coverImagePost___coverImage___fileName',
-  ImageCoverImagePostCoverImageHandle = 'image___coverImagePost___coverImage___handle',
-  ImageCoverImagePostCoverImageHeight = 'image___coverImagePost___coverImage___height',
-  ImageCoverImagePostCoverImageId = 'image___coverImagePost___coverImage___id',
-  ImageCoverImagePostCoverImageLocale = 'image___coverImagePost___coverImage___locale',
-  ImageCoverImagePostCoverImageMimeType = 'image___coverImagePost___coverImage___mimeType',
-  ImageCoverImagePostCoverImagePublishedAt = 'image___coverImagePost___coverImage___publishedAt',
-  ImageCoverImagePostCoverImageRemoteId = 'image___coverImagePost___coverImage___remoteId',
-  ImageCoverImagePostCoverImageRemoteTypeName = 'image___coverImagePost___coverImage___remoteTypeName',
-  ImageCoverImagePostCoverImageSeoImage = 'image___coverImagePost___coverImage___seoImage',
-  ImageCoverImagePostCoverImageSize = 'image___coverImagePost___coverImage___size',
-  ImageCoverImagePostCoverImageStage = 'image___coverImagePost___coverImage___stage',
-  ImageCoverImagePostCoverImageUpdatedAt = 'image___coverImagePost___coverImage___updatedAt',
-  ImageCoverImagePostCoverImageUrl = 'image___coverImagePost___coverImage___url',
-  ImageCoverImagePostCoverImageWidth = 'image___coverImagePost___coverImage___width',
-  ImageCoverImagePostCreatedAt = 'image___coverImagePost___createdAt',
-  ImageCoverImagePostCreatedByChildren = 'image___coverImagePost___createdBy___children',
-  ImageCoverImagePostCreatedByCreatedAt = 'image___coverImagePost___createdBy___createdAt',
-  ImageCoverImagePostCreatedById = 'image___coverImagePost___createdBy___id',
-  ImageCoverImagePostCreatedByIsActive = 'image___coverImagePost___createdBy___isActive',
-  ImageCoverImagePostCreatedByKind = 'image___coverImagePost___createdBy___kind',
-  ImageCoverImagePostCreatedByName = 'image___coverImagePost___createdBy___name',
-  ImageCoverImagePostCreatedByPicture = 'image___coverImagePost___createdBy___picture',
-  ImageCoverImagePostCreatedByPublishedAt = 'image___coverImagePost___createdBy___publishedAt',
-  ImageCoverImagePostCreatedByRemoteId = 'image___coverImagePost___createdBy___remoteId',
-  ImageCoverImagePostCreatedByRemoteTypeName = 'image___coverImagePost___createdBy___remoteTypeName',
-  ImageCoverImagePostCreatedByStage = 'image___coverImagePost___createdBy___stage',
-  ImageCoverImagePostCreatedByUpdatedAt = 'image___coverImagePost___createdBy___updatedAt',
-  ImageCoverImagePostDate = 'image___coverImagePost___date',
-  ImageCoverImagePostExcerpt = 'image___coverImagePost___excerpt',
-  ImageCoverImagePostId = 'image___coverImagePost___id',
-  ImageCoverImagePostInternalContent = 'image___coverImagePost___internal___content',
-  ImageCoverImagePostInternalContentDigest = 'image___coverImagePost___internal___contentDigest',
-  ImageCoverImagePostInternalDescription = 'image___coverImagePost___internal___description',
-  ImageCoverImagePostInternalFieldOwners = 'image___coverImagePost___internal___fieldOwners',
-  ImageCoverImagePostInternalIgnoreType = 'image___coverImagePost___internal___ignoreType',
-  ImageCoverImagePostInternalMediaType = 'image___coverImagePost___internal___mediaType',
-  ImageCoverImagePostInternalOwner = 'image___coverImagePost___internal___owner',
-  ImageCoverImagePostInternalType = 'image___coverImagePost___internal___type',
-  ImageCoverImagePostParentChildren = 'image___coverImagePost___parent___children',
-  ImageCoverImagePostParentId = 'image___coverImagePost___parent___id',
-  ImageCoverImagePostPublishedAt = 'image___coverImagePost___publishedAt',
-  ImageCoverImagePostPublishedByChildren = 'image___coverImagePost___publishedBy___children',
-  ImageCoverImagePostPublishedByCreatedAt = 'image___coverImagePost___publishedBy___createdAt',
-  ImageCoverImagePostPublishedById = 'image___coverImagePost___publishedBy___id',
-  ImageCoverImagePostPublishedByIsActive = 'image___coverImagePost___publishedBy___isActive',
-  ImageCoverImagePostPublishedByKind = 'image___coverImagePost___publishedBy___kind',
-  ImageCoverImagePostPublishedByName = 'image___coverImagePost___publishedBy___name',
-  ImageCoverImagePostPublishedByPicture = 'image___coverImagePost___publishedBy___picture',
-  ImageCoverImagePostPublishedByPublishedAt = 'image___coverImagePost___publishedBy___publishedAt',
-  ImageCoverImagePostPublishedByRemoteId = 'image___coverImagePost___publishedBy___remoteId',
-  ImageCoverImagePostPublishedByRemoteTypeName = 'image___coverImagePost___publishedBy___remoteTypeName',
-  ImageCoverImagePostPublishedByStage = 'image___coverImagePost___publishedBy___stage',
-  ImageCoverImagePostPublishedByUpdatedAt = 'image___coverImagePost___publishedBy___updatedAt',
-  ImageCoverImagePostRemoteId = 'image___coverImagePost___remoteId',
-  ImageCoverImagePostRemoteTypeName = 'image___coverImagePost___remoteTypeName',
-  ImageCoverImagePostSeoChildren = 'image___coverImagePost___seo___children',
-  ImageCoverImagePostSeoCreatedAt = 'image___coverImagePost___seo___createdAt',
-  ImageCoverImagePostSeoDescription = 'image___coverImagePost___seo___description',
-  ImageCoverImagePostSeoId = 'image___coverImagePost___seo___id',
-  ImageCoverImagePostSeoKeywords = 'image___coverImagePost___seo___keywords',
-  ImageCoverImagePostSeoPublishedAt = 'image___coverImagePost___seo___publishedAt',
-  ImageCoverImagePostSeoRemoteId = 'image___coverImagePost___seo___remoteId',
-  ImageCoverImagePostSeoRemoteTypeName = 'image___coverImagePost___seo___remoteTypeName',
-  ImageCoverImagePostSeoStage = 'image___coverImagePost___seo___stage',
-  ImageCoverImagePostSeoTitle = 'image___coverImagePost___seo___title',
-  ImageCoverImagePostSeoUpdatedAt = 'image___coverImagePost___seo___updatedAt',
-  ImageCoverImagePostSlug = 'image___coverImagePost___slug',
-  ImageCoverImagePostStage = 'image___coverImagePost___stage',
-  ImageCoverImagePostTags = 'image___coverImagePost___tags',
-  ImageCoverImagePostTitle = 'image___coverImagePost___title',
-  ImageCoverImagePostUpdatedAt = 'image___coverImagePost___updatedAt',
-  ImageCoverImagePostUpdatedByChildren = 'image___coverImagePost___updatedBy___children',
-  ImageCoverImagePostUpdatedByCreatedAt = 'image___coverImagePost___updatedBy___createdAt',
-  ImageCoverImagePostUpdatedById = 'image___coverImagePost___updatedBy___id',
-  ImageCoverImagePostUpdatedByIsActive = 'image___coverImagePost___updatedBy___isActive',
-  ImageCoverImagePostUpdatedByKind = 'image___coverImagePost___updatedBy___kind',
-  ImageCoverImagePostUpdatedByName = 'image___coverImagePost___updatedBy___name',
-  ImageCoverImagePostUpdatedByPicture = 'image___coverImagePost___updatedBy___picture',
-  ImageCoverImagePostUpdatedByPublishedAt = 'image___coverImagePost___updatedBy___publishedAt',
-  ImageCoverImagePostUpdatedByRemoteId = 'image___coverImagePost___updatedBy___remoteId',
-  ImageCoverImagePostUpdatedByRemoteTypeName = 'image___coverImagePost___updatedBy___remoteTypeName',
-  ImageCoverImagePostUpdatedByStage = 'image___coverImagePost___updatedBy___stage',
-  ImageCoverImagePostUpdatedByUpdatedAt = 'image___coverImagePost___updatedBy___updatedAt',
-  ImageCreatedAt = 'image___createdAt',
-  ImageCreatedByChildren = 'image___createdBy___children',
-  ImageCreatedByChildrenChildren = 'image___createdBy___children___children',
-  ImageCreatedByChildrenId = 'image___createdBy___children___id',
-  ImageCreatedByCreatedAt = 'image___createdBy___createdAt',
-  ImageCreatedById = 'image___createdBy___id',
-  ImageCreatedByInternalContent = 'image___createdBy___internal___content',
-  ImageCreatedByInternalContentDigest = 'image___createdBy___internal___contentDigest',
-  ImageCreatedByInternalDescription = 'image___createdBy___internal___description',
-  ImageCreatedByInternalFieldOwners = 'image___createdBy___internal___fieldOwners',
-  ImageCreatedByInternalIgnoreType = 'image___createdBy___internal___ignoreType',
-  ImageCreatedByInternalMediaType = 'image___createdBy___internal___mediaType',
-  ImageCreatedByInternalOwner = 'image___createdBy___internal___owner',
-  ImageCreatedByInternalType = 'image___createdBy___internal___type',
-  ImageCreatedByIsActive = 'image___createdBy___isActive',
-  ImageCreatedByKind = 'image___createdBy___kind',
-  ImageCreatedByName = 'image___createdBy___name',
-  ImageCreatedByParentChildren = 'image___createdBy___parent___children',
-  ImageCreatedByParentId = 'image___createdBy___parent___id',
-  ImageCreatedByPicture = 'image___createdBy___picture',
-  ImageCreatedByPublishedAt = 'image___createdBy___publishedAt',
-  ImageCreatedByRemoteId = 'image___createdBy___remoteId',
-  ImageCreatedByRemoteTypeName = 'image___createdBy___remoteTypeName',
-  ImageCreatedByStage = 'image___createdBy___stage',
-  ImageCreatedByUpdatedAt = 'image___createdBy___updatedAt',
-  ImageFileName = 'image___fileName',
-  ImageHandle = 'image___handle',
-  ImageHeight = 'image___height',
-  ImageId = 'image___id',
-  ImageInternalContent = 'image___internal___content',
-  ImageInternalContentDigest = 'image___internal___contentDigest',
-  ImageInternalDescription = 'image___internal___description',
-  ImageInternalFieldOwners = 'image___internal___fieldOwners',
-  ImageInternalIgnoreType = 'image___internal___ignoreType',
-  ImageInternalMediaType = 'image___internal___mediaType',
-  ImageInternalOwner = 'image___internal___owner',
-  ImageInternalType = 'image___internal___type',
-  ImageLocale = 'image___locale',
-  ImageMimeType = 'image___mimeType',
-  ImageParentChildren = 'image___parent___children',
-  ImageParentChildrenChildren = 'image___parent___children___children',
-  ImageParentChildrenId = 'image___parent___children___id',
-  ImageParentId = 'image___parent___id',
-  ImageParentInternalContent = 'image___parent___internal___content',
-  ImageParentInternalContentDigest = 'image___parent___internal___contentDigest',
-  ImageParentInternalDescription = 'image___parent___internal___description',
-  ImageParentInternalFieldOwners = 'image___parent___internal___fieldOwners',
-  ImageParentInternalIgnoreType = 'image___parent___internal___ignoreType',
-  ImageParentInternalMediaType = 'image___parent___internal___mediaType',
-  ImageParentInternalOwner = 'image___parent___internal___owner',
-  ImageParentInternalType = 'image___parent___internal___type',
-  ImageParentParentChildren = 'image___parent___parent___children',
-  ImageParentParentId = 'image___parent___parent___id',
-  ImagePublishedAt = 'image___publishedAt',
-  ImagePublishedByChildren = 'image___publishedBy___children',
-  ImagePublishedByChildrenChildren = 'image___publishedBy___children___children',
-  ImagePublishedByChildrenId = 'image___publishedBy___children___id',
-  ImagePublishedByCreatedAt = 'image___publishedBy___createdAt',
-  ImagePublishedById = 'image___publishedBy___id',
-  ImagePublishedByInternalContent = 'image___publishedBy___internal___content',
-  ImagePublishedByInternalContentDigest = 'image___publishedBy___internal___contentDigest',
-  ImagePublishedByInternalDescription = 'image___publishedBy___internal___description',
-  ImagePublishedByInternalFieldOwners = 'image___publishedBy___internal___fieldOwners',
-  ImagePublishedByInternalIgnoreType = 'image___publishedBy___internal___ignoreType',
-  ImagePublishedByInternalMediaType = 'image___publishedBy___internal___mediaType',
-  ImagePublishedByInternalOwner = 'image___publishedBy___internal___owner',
-  ImagePublishedByInternalType = 'image___publishedBy___internal___type',
-  ImagePublishedByIsActive = 'image___publishedBy___isActive',
-  ImagePublishedByKind = 'image___publishedBy___kind',
-  ImagePublishedByName = 'image___publishedBy___name',
-  ImagePublishedByParentChildren = 'image___publishedBy___parent___children',
-  ImagePublishedByParentId = 'image___publishedBy___parent___id',
-  ImagePublishedByPicture = 'image___publishedBy___picture',
-  ImagePublishedByPublishedAt = 'image___publishedBy___publishedAt',
-  ImagePublishedByRemoteId = 'image___publishedBy___remoteId',
-  ImagePublishedByRemoteTypeName = 'image___publishedBy___remoteTypeName',
-  ImagePublishedByStage = 'image___publishedBy___stage',
-  ImagePublishedByUpdatedAt = 'image___publishedBy___updatedAt',
-  ImageRemoteId = 'image___remoteId',
-  ImageRemoteTypeName = 'image___remoteTypeName',
-  ImageSeoImage = 'image___seoImage',
-  ImageSeoImageChildren = 'image___seoImage___children',
-  ImageSeoImageChildrenChildren = 'image___seoImage___children___children',
-  ImageSeoImageChildrenId = 'image___seoImage___children___id',
-  ImageSeoImageCreatedAt = 'image___seoImage___createdAt',
-  ImageSeoImageCreatedByChildren = 'image___seoImage___createdBy___children',
-  ImageSeoImageCreatedByCreatedAt = 'image___seoImage___createdBy___createdAt',
-  ImageSeoImageCreatedById = 'image___seoImage___createdBy___id',
-  ImageSeoImageCreatedByIsActive = 'image___seoImage___createdBy___isActive',
-  ImageSeoImageCreatedByKind = 'image___seoImage___createdBy___kind',
-  ImageSeoImageCreatedByName = 'image___seoImage___createdBy___name',
-  ImageSeoImageCreatedByPicture = 'image___seoImage___createdBy___picture',
-  ImageSeoImageCreatedByPublishedAt = 'image___seoImage___createdBy___publishedAt',
-  ImageSeoImageCreatedByRemoteId = 'image___seoImage___createdBy___remoteId',
-  ImageSeoImageCreatedByRemoteTypeName = 'image___seoImage___createdBy___remoteTypeName',
-  ImageSeoImageCreatedByStage = 'image___seoImage___createdBy___stage',
-  ImageSeoImageCreatedByUpdatedAt = 'image___seoImage___createdBy___updatedAt',
-  ImageSeoImageDescription = 'image___seoImage___description',
-  ImageSeoImageId = 'image___seoImage___id',
-  ImageSeoImageImageAuthorAvatar = 'image___seoImage___image___authorAvatar',
-  ImageSeoImageImageChildren = 'image___seoImage___image___children',
-  ImageSeoImageImageCoverImagePost = 'image___seoImage___image___coverImagePost',
-  ImageSeoImageImageCreatedAt = 'image___seoImage___image___createdAt',
-  ImageSeoImageImageFileName = 'image___seoImage___image___fileName',
-  ImageSeoImageImageHandle = 'image___seoImage___image___handle',
-  ImageSeoImageImageHeight = 'image___seoImage___image___height',
-  ImageSeoImageImageId = 'image___seoImage___image___id',
-  ImageSeoImageImageLocale = 'image___seoImage___image___locale',
-  ImageSeoImageImageMimeType = 'image___seoImage___image___mimeType',
-  ImageSeoImageImagePublishedAt = 'image___seoImage___image___publishedAt',
-  ImageSeoImageImageRemoteId = 'image___seoImage___image___remoteId',
-  ImageSeoImageImageRemoteTypeName = 'image___seoImage___image___remoteTypeName',
-  ImageSeoImageImageSeoImage = 'image___seoImage___image___seoImage',
-  ImageSeoImageImageSize = 'image___seoImage___image___size',
-  ImageSeoImageImageStage = 'image___seoImage___image___stage',
-  ImageSeoImageImageUpdatedAt = 'image___seoImage___image___updatedAt',
-  ImageSeoImageImageUrl = 'image___seoImage___image___url',
-  ImageSeoImageImageWidth = 'image___seoImage___image___width',
-  ImageSeoImageInternalContent = 'image___seoImage___internal___content',
-  ImageSeoImageInternalContentDigest = 'image___seoImage___internal___contentDigest',
-  ImageSeoImageInternalDescription = 'image___seoImage___internal___description',
-  ImageSeoImageInternalFieldOwners = 'image___seoImage___internal___fieldOwners',
-  ImageSeoImageInternalIgnoreType = 'image___seoImage___internal___ignoreType',
-  ImageSeoImageInternalMediaType = 'image___seoImage___internal___mediaType',
-  ImageSeoImageInternalOwner = 'image___seoImage___internal___owner',
-  ImageSeoImageInternalType = 'image___seoImage___internal___type',
-  ImageSeoImageKeywords = 'image___seoImage___keywords',
-  ImageSeoImageParentChildren = 'image___seoImage___parent___children',
-  ImageSeoImageParentId = 'image___seoImage___parent___id',
-  ImageSeoImagePublishedAt = 'image___seoImage___publishedAt',
-  ImageSeoImagePublishedByChildren = 'image___seoImage___publishedBy___children',
-  ImageSeoImagePublishedByCreatedAt = 'image___seoImage___publishedBy___createdAt',
-  ImageSeoImagePublishedById = 'image___seoImage___publishedBy___id',
-  ImageSeoImagePublishedByIsActive = 'image___seoImage___publishedBy___isActive',
-  ImageSeoImagePublishedByKind = 'image___seoImage___publishedBy___kind',
-  ImageSeoImagePublishedByName = 'image___seoImage___publishedBy___name',
-  ImageSeoImagePublishedByPicture = 'image___seoImage___publishedBy___picture',
-  ImageSeoImagePublishedByPublishedAt = 'image___seoImage___publishedBy___publishedAt',
-  ImageSeoImagePublishedByRemoteId = 'image___seoImage___publishedBy___remoteId',
-  ImageSeoImagePublishedByRemoteTypeName = 'image___seoImage___publishedBy___remoteTypeName',
-  ImageSeoImagePublishedByStage = 'image___seoImage___publishedBy___stage',
-  ImageSeoImagePublishedByUpdatedAt = 'image___seoImage___publishedBy___updatedAt',
-  ImageSeoImageRemoteId = 'image___seoImage___remoteId',
-  ImageSeoImageRemoteTypeName = 'image___seoImage___remoteTypeName',
-  ImageSeoImageStage = 'image___seoImage___stage',
-  ImageSeoImageTitle = 'image___seoImage___title',
-  ImageSeoImageUpdatedAt = 'image___seoImage___updatedAt',
-  ImageSeoImageUpdatedByChildren = 'image___seoImage___updatedBy___children',
-  ImageSeoImageUpdatedByCreatedAt = 'image___seoImage___updatedBy___createdAt',
-  ImageSeoImageUpdatedById = 'image___seoImage___updatedBy___id',
-  ImageSeoImageUpdatedByIsActive = 'image___seoImage___updatedBy___isActive',
-  ImageSeoImageUpdatedByKind = 'image___seoImage___updatedBy___kind',
-  ImageSeoImageUpdatedByName = 'image___seoImage___updatedBy___name',
-  ImageSeoImageUpdatedByPicture = 'image___seoImage___updatedBy___picture',
-  ImageSeoImageUpdatedByPublishedAt = 'image___seoImage___updatedBy___publishedAt',
-  ImageSeoImageUpdatedByRemoteId = 'image___seoImage___updatedBy___remoteId',
-  ImageSeoImageUpdatedByRemoteTypeName = 'image___seoImage___updatedBy___remoteTypeName',
-  ImageSeoImageUpdatedByStage = 'image___seoImage___updatedBy___stage',
-  ImageSeoImageUpdatedByUpdatedAt = 'image___seoImage___updatedBy___updatedAt',
-  ImageSize = 'image___size',
-  ImageStage = 'image___stage',
-  ImageUpdatedAt = 'image___updatedAt',
-  ImageUpdatedByChildren = 'image___updatedBy___children',
-  ImageUpdatedByChildrenChildren = 'image___updatedBy___children___children',
-  ImageUpdatedByChildrenId = 'image___updatedBy___children___id',
-  ImageUpdatedByCreatedAt = 'image___updatedBy___createdAt',
-  ImageUpdatedById = 'image___updatedBy___id',
-  ImageUpdatedByInternalContent = 'image___updatedBy___internal___content',
-  ImageUpdatedByInternalContentDigest = 'image___updatedBy___internal___contentDigest',
-  ImageUpdatedByInternalDescription = 'image___updatedBy___internal___description',
-  ImageUpdatedByInternalFieldOwners = 'image___updatedBy___internal___fieldOwners',
-  ImageUpdatedByInternalIgnoreType = 'image___updatedBy___internal___ignoreType',
-  ImageUpdatedByInternalMediaType = 'image___updatedBy___internal___mediaType',
-  ImageUpdatedByInternalOwner = 'image___updatedBy___internal___owner',
-  ImageUpdatedByInternalType = 'image___updatedBy___internal___type',
-  ImageUpdatedByIsActive = 'image___updatedBy___isActive',
-  ImageUpdatedByKind = 'image___updatedBy___kind',
-  ImageUpdatedByName = 'image___updatedBy___name',
-  ImageUpdatedByParentChildren = 'image___updatedBy___parent___children',
-  ImageUpdatedByParentId = 'image___updatedBy___parent___id',
-  ImageUpdatedByPicture = 'image___updatedBy___picture',
-  ImageUpdatedByPublishedAt = 'image___updatedBy___publishedAt',
-  ImageUpdatedByRemoteId = 'image___updatedBy___remoteId',
-  ImageUpdatedByRemoteTypeName = 'image___updatedBy___remoteTypeName',
-  ImageUpdatedByStage = 'image___updatedBy___stage',
-  ImageUpdatedByUpdatedAt = 'image___updatedBy___updatedAt',
-  ImageUrl = 'image___url',
-  ImageWidth = 'image___width',
-  InternalContent = 'internal___content',
-  InternalContentDigest = 'internal___contentDigest',
-  InternalDescription = 'internal___description',
-  InternalFieldOwners = 'internal___fieldOwners',
-  InternalIgnoreType = 'internal___ignoreType',
-  InternalMediaType = 'internal___mediaType',
-  InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  Keywords = 'keywords',
-  ParentChildren = 'parent___children',
-  ParentChildrenChildren = 'parent___children___children',
-  ParentChildrenChildrenChildren = 'parent___children___children___children',
-  ParentChildrenChildrenId = 'parent___children___children___id',
-  ParentChildrenId = 'parent___children___id',
-  ParentChildrenInternalContent = 'parent___children___internal___content',
-  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
-  ParentChildrenInternalDescription = 'parent___children___internal___description',
-  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
-  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
-  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
-  ParentChildrenInternalOwner = 'parent___children___internal___owner',
-  ParentChildrenInternalType = 'parent___children___internal___type',
-  ParentChildrenParentChildren = 'parent___children___parent___children',
-  ParentChildrenParentId = 'parent___children___parent___id',
-  ParentId = 'parent___id',
-  ParentInternalContent = 'parent___internal___content',
-  ParentInternalContentDigest = 'parent___internal___contentDigest',
-  ParentInternalDescription = 'parent___internal___description',
-  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
-  ParentInternalIgnoreType = 'parent___internal___ignoreType',
-  ParentInternalMediaType = 'parent___internal___mediaType',
-  ParentInternalOwner = 'parent___internal___owner',
-  ParentInternalType = 'parent___internal___type',
-  ParentParentChildren = 'parent___parent___children',
-  ParentParentChildrenChildren = 'parent___parent___children___children',
-  ParentParentChildrenId = 'parent___parent___children___id',
-  ParentParentId = 'parent___parent___id',
-  ParentParentInternalContent = 'parent___parent___internal___content',
-  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
-  ParentParentInternalDescription = 'parent___parent___internal___description',
-  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
-  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
-  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
-  ParentParentInternalOwner = 'parent___parent___internal___owner',
-  ParentParentInternalType = 'parent___parent___internal___type',
-  ParentParentParentChildren = 'parent___parent___parent___children',
-  ParentParentParentId = 'parent___parent___parent___id',
-  PublishedAt = 'publishedAt',
-  PublishedByChildren = 'publishedBy___children',
-  PublishedByChildrenChildren = 'publishedBy___children___children',
-  PublishedByChildrenChildrenChildren = 'publishedBy___children___children___children',
-  PublishedByChildrenChildrenId = 'publishedBy___children___children___id',
-  PublishedByChildrenId = 'publishedBy___children___id',
-  PublishedByChildrenInternalContent = 'publishedBy___children___internal___content',
-  PublishedByChildrenInternalContentDigest = 'publishedBy___children___internal___contentDigest',
-  PublishedByChildrenInternalDescription = 'publishedBy___children___internal___description',
-  PublishedByChildrenInternalFieldOwners = 'publishedBy___children___internal___fieldOwners',
-  PublishedByChildrenInternalIgnoreType = 'publishedBy___children___internal___ignoreType',
-  PublishedByChildrenInternalMediaType = 'publishedBy___children___internal___mediaType',
-  PublishedByChildrenInternalOwner = 'publishedBy___children___internal___owner',
-  PublishedByChildrenInternalType = 'publishedBy___children___internal___type',
-  PublishedByChildrenParentChildren = 'publishedBy___children___parent___children',
-  PublishedByChildrenParentId = 'publishedBy___children___parent___id',
-  PublishedByCreatedAt = 'publishedBy___createdAt',
-  PublishedById = 'publishedBy___id',
-  PublishedByInternalContent = 'publishedBy___internal___content',
-  PublishedByInternalContentDigest = 'publishedBy___internal___contentDigest',
-  PublishedByInternalDescription = 'publishedBy___internal___description',
-  PublishedByInternalFieldOwners = 'publishedBy___internal___fieldOwners',
-  PublishedByInternalIgnoreType = 'publishedBy___internal___ignoreType',
-  PublishedByInternalMediaType = 'publishedBy___internal___mediaType',
-  PublishedByInternalOwner = 'publishedBy___internal___owner',
-  PublishedByInternalType = 'publishedBy___internal___type',
-  PublishedByIsActive = 'publishedBy___isActive',
-  PublishedByKind = 'publishedBy___kind',
-  PublishedByName = 'publishedBy___name',
-  PublishedByParentChildren = 'publishedBy___parent___children',
-  PublishedByParentChildrenChildren = 'publishedBy___parent___children___children',
-  PublishedByParentChildrenId = 'publishedBy___parent___children___id',
-  PublishedByParentId = 'publishedBy___parent___id',
-  PublishedByParentInternalContent = 'publishedBy___parent___internal___content',
-  PublishedByParentInternalContentDigest = 'publishedBy___parent___internal___contentDigest',
-  PublishedByParentInternalDescription = 'publishedBy___parent___internal___description',
-  PublishedByParentInternalFieldOwners = 'publishedBy___parent___internal___fieldOwners',
-  PublishedByParentInternalIgnoreType = 'publishedBy___parent___internal___ignoreType',
-  PublishedByParentInternalMediaType = 'publishedBy___parent___internal___mediaType',
-  PublishedByParentInternalOwner = 'publishedBy___parent___internal___owner',
-  PublishedByParentInternalType = 'publishedBy___parent___internal___type',
-  PublishedByParentParentChildren = 'publishedBy___parent___parent___children',
-  PublishedByParentParentId = 'publishedBy___parent___parent___id',
-  PublishedByPicture = 'publishedBy___picture',
-  PublishedByPublishedAt = 'publishedBy___publishedAt',
-  PublishedByRemoteId = 'publishedBy___remoteId',
-  PublishedByRemoteTypeName = 'publishedBy___remoteTypeName',
-  PublishedByStage = 'publishedBy___stage',
-  PublishedByUpdatedAt = 'publishedBy___updatedAt',
-  RemoteId = 'remoteId',
-  RemoteTypeName = 'remoteTypeName',
-  Stage = 'stage',
-  Title = 'title',
-  UpdatedAt = 'updatedAt',
-  UpdatedByChildren = 'updatedBy___children',
-  UpdatedByChildrenChildren = 'updatedBy___children___children',
-  UpdatedByChildrenChildrenChildren = 'updatedBy___children___children___children',
-  UpdatedByChildrenChildrenId = 'updatedBy___children___children___id',
-  UpdatedByChildrenId = 'updatedBy___children___id',
-  UpdatedByChildrenInternalContent = 'updatedBy___children___internal___content',
-  UpdatedByChildrenInternalContentDigest = 'updatedBy___children___internal___contentDigest',
-  UpdatedByChildrenInternalDescription = 'updatedBy___children___internal___description',
-  UpdatedByChildrenInternalFieldOwners = 'updatedBy___children___internal___fieldOwners',
-  UpdatedByChildrenInternalIgnoreType = 'updatedBy___children___internal___ignoreType',
-  UpdatedByChildrenInternalMediaType = 'updatedBy___children___internal___mediaType',
-  UpdatedByChildrenInternalOwner = 'updatedBy___children___internal___owner',
-  UpdatedByChildrenInternalType = 'updatedBy___children___internal___type',
-  UpdatedByChildrenParentChildren = 'updatedBy___children___parent___children',
-  UpdatedByChildrenParentId = 'updatedBy___children___parent___id',
-  UpdatedByCreatedAt = 'updatedBy___createdAt',
-  UpdatedById = 'updatedBy___id',
-  UpdatedByInternalContent = 'updatedBy___internal___content',
-  UpdatedByInternalContentDigest = 'updatedBy___internal___contentDigest',
-  UpdatedByInternalDescription = 'updatedBy___internal___description',
-  UpdatedByInternalFieldOwners = 'updatedBy___internal___fieldOwners',
-  UpdatedByInternalIgnoreType = 'updatedBy___internal___ignoreType',
-  UpdatedByInternalMediaType = 'updatedBy___internal___mediaType',
-  UpdatedByInternalOwner = 'updatedBy___internal___owner',
-  UpdatedByInternalType = 'updatedBy___internal___type',
-  UpdatedByIsActive = 'updatedBy___isActive',
-  UpdatedByKind = 'updatedBy___kind',
-  UpdatedByName = 'updatedBy___name',
-  UpdatedByParentChildren = 'updatedBy___parent___children',
-  UpdatedByParentChildrenChildren = 'updatedBy___parent___children___children',
-  UpdatedByParentChildrenId = 'updatedBy___parent___children___id',
-  UpdatedByParentId = 'updatedBy___parent___id',
-  UpdatedByParentInternalContent = 'updatedBy___parent___internal___content',
-  UpdatedByParentInternalContentDigest = 'updatedBy___parent___internal___contentDigest',
-  UpdatedByParentInternalDescription = 'updatedBy___parent___internal___description',
-  UpdatedByParentInternalFieldOwners = 'updatedBy___parent___internal___fieldOwners',
-  UpdatedByParentInternalIgnoreType = 'updatedBy___parent___internal___ignoreType',
-  UpdatedByParentInternalMediaType = 'updatedBy___parent___internal___mediaType',
-  UpdatedByParentInternalOwner = 'updatedBy___parent___internal___owner',
-  UpdatedByParentInternalType = 'updatedBy___parent___internal___type',
-  UpdatedByParentParentChildren = 'updatedBy___parent___parent___children',
-  UpdatedByParentParentId = 'updatedBy___parent___parent___id',
-  UpdatedByPicture = 'updatedBy___picture',
-  UpdatedByPublishedAt = 'updatedBy___publishedAt',
-  UpdatedByRemoteId = 'updatedBy___remoteId',
-  UpdatedByRemoteTypeName = 'updatedBy___remoteTypeName',
-  UpdatedByStage = 'updatedBy___stage',
-  UpdatedByUpdatedAt = 'updatedBy___updatedAt'
+/** Identifies documents */
+export type GraphCms_SeoManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_SeoWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_SeoWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_SeoWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  description: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  image: Maybe<GraphCms_AssetWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  keywords: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  keywords_contains_all: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  keywords_contains_none: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  keywords_contains_some: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  keywords_not: Maybe<Array<Scalars['String']>>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+export enum GraphCms_SeoOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  KeywordsAsc = 'keywords_ASC',
+  KeywordsDesc = 'keywords_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
 }
-
-export type GraphCms_SeoFilterInput = {
-  children: Maybe<NodeFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  description: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  image: Maybe<GraphCms_AssetFilterInput>;
-  internal: Maybe<InternalFilterInput>;
-  keywords: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-};
-
-export type GraphCms_SeoFilterListInput = {
-  elemMatch: Maybe<GraphCms_SeoFilterInput>;
-};
-
-export type GraphCms_SeoGroupConnection = {
-  edges: Array<GraphCms_SeoEdge>;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-  nodes: Array<GraphCms_Seo>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
 
 export type GraphCms_SeoParent = GraphCms_Page | GraphCms_Post;
 
-export type GraphCms_SeoSortInput = {
-  fields: Maybe<Array<Maybe<GraphCms_SeoFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+export type GraphCms_SeoParentConnectInput = {
+  Page: Maybe<GraphCms_PageConnectInput>;
+  Post: Maybe<GraphCms_PostConnectInput>;
 };
 
+export type GraphCms_SeoParentCreateInput = {
+  Page: Maybe<GraphCms_PageCreateInput>;
+  Post: Maybe<GraphCms_PostCreateInput>;
+};
+
+export type GraphCms_SeoParentCreateManyInlineInput = {
+  /** Connect multiple existing SeoParent documents */
+  connect: Maybe<Array<GraphCms_SeoParentWhereUniqueInput>>;
+  /** Create and connect multiple existing SeoParent documents */
+  create: Maybe<Array<GraphCms_SeoParentCreateInput>>;
+};
+
+export type GraphCms_SeoParentCreateOneInlineInput = {
+  /** Connect one existing SeoParent document */
+  connect: Maybe<GraphCms_SeoParentWhereUniqueInput>;
+  /** Create and connect one SeoParent document */
+  create: Maybe<GraphCms_SeoParentCreateInput>;
+};
+
+export type GraphCms_SeoParentUpdateInput = {
+  Page: Maybe<GraphCms_PageUpdateInput>;
+  Post: Maybe<GraphCms_PostUpdateInput>;
+};
+
+export type GraphCms_SeoParentUpdateManyInlineInput = {
+  /** Connect multiple existing SeoParent documents */
+  connect: Maybe<Array<GraphCms_SeoParentConnectInput>>;
+  /** Create and connect multiple SeoParent documents */
+  create: Maybe<Array<GraphCms_SeoParentCreateInput>>;
+  /** Delete multiple SeoParent documents */
+  delete: Maybe<Array<GraphCms_SeoParentWhereUniqueInput>>;
+  /** Disconnect multiple SeoParent documents */
+  disconnect: Maybe<Array<GraphCms_SeoParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing SeoParent documents */
+  set: Maybe<Array<GraphCms_SeoParentWhereUniqueInput>>;
+  /** Update multiple SeoParent documents */
+  update: Maybe<Array<GraphCms_SeoParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple SeoParent documents */
+  upsert: Maybe<Array<GraphCms_SeoParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type GraphCms_SeoParentUpdateManyWithNestedWhereInput = {
+  Page: Maybe<GraphCms_PageUpdateManyWithNestedWhereInput>;
+  Post: Maybe<GraphCms_PostUpdateManyWithNestedWhereInput>;
+};
+
+export type GraphCms_SeoParentUpdateOneInlineInput = {
+  /** Connect existing SeoParent document */
+  connect: Maybe<GraphCms_SeoParentWhereUniqueInput>;
+  /** Create and connect one SeoParent document */
+  create: Maybe<GraphCms_SeoParentCreateInput>;
+  /** Delete currently connected SeoParent document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected SeoParent document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single SeoParent document */
+  update: Maybe<GraphCms_SeoParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single SeoParent document */
+  upsert: Maybe<GraphCms_SeoParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_SeoParentUpdateWithNestedWhereUniqueInput = {
+  Page: Maybe<GraphCms_PageUpdateWithNestedWhereUniqueInput>;
+  Post: Maybe<GraphCms_PostUpdateWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_SeoParentUpsertWithNestedWhereUniqueInput = {
+  Page: Maybe<GraphCms_PageUpsertWithNestedWhereUniqueInput>;
+  Post: Maybe<GraphCms_PostUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_SeoParentWhereInput = {
+  Page: Maybe<GraphCms_PageWhereInput>;
+  Post: Maybe<GraphCms_PostWhereInput>;
+};
+
+export type GraphCms_SeoParentWhereUniqueInput = {
+  Page: Maybe<GraphCms_PageWhereUniqueInput>;
+  Post: Maybe<GraphCms_PostWhereUniqueInput>;
+};
+
+export type GraphCms_SeoUpdateInput = {
+  description: Maybe<Scalars['String']>;
+  image: Maybe<GraphCms_AssetUpdateOneInlineInput>;
+  keywords: Maybe<Array<Scalars['String']>>;
+  parent: Maybe<GraphCms_SeoParentUpdateOneInlineInput>;
+  title: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_SeoUpdateManyInlineInput = {
+  /** Connect multiple existing Seo documents */
+  connect: Maybe<Array<GraphCms_SeoConnectInput>>;
+  /** Create and connect multiple Seo documents */
+  create: Maybe<Array<GraphCms_SeoCreateInput>>;
+  /** Delete multiple Seo documents */
+  delete: Maybe<Array<GraphCms_SeoWhereUniqueInput>>;
+  /** Disconnect multiple Seo documents */
+  disconnect: Maybe<Array<GraphCms_SeoWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Seo documents */
+  set: Maybe<Array<GraphCms_SeoWhereUniqueInput>>;
+  /** Update multiple Seo documents */
+  update: Maybe<Array<GraphCms_SeoUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Seo documents */
+  upsert: Maybe<Array<GraphCms_SeoUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type GraphCms_SeoUpdateManyInput = {
+  description: Maybe<Scalars['String']>;
+  keywords: Maybe<Array<Scalars['String']>>;
+  title: Maybe<Scalars['String']>;
+};
+
+export type GraphCms_SeoUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: GraphCms_SeoUpdateManyInput;
+  /** Document search */
+  where: GraphCms_SeoWhereInput;
+};
+
+export type GraphCms_SeoUpdateOneInlineInput = {
+  /** Connect existing Seo document */
+  connect: Maybe<GraphCms_SeoWhereUniqueInput>;
+  /** Create and connect one Seo document */
+  create: Maybe<GraphCms_SeoCreateInput>;
+  /** Delete currently connected Seo document */
+  delete: Maybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Seo document */
+  disconnect: Maybe<Scalars['Boolean']>;
+  /** Update single Seo document */
+  update: Maybe<GraphCms_SeoUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Seo document */
+  upsert: Maybe<GraphCms_SeoUpsertWithNestedWhereUniqueInput>;
+};
+
+export type GraphCms_SeoUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: GraphCms_SeoUpdateInput;
+  /** Unique document search */
+  where: GraphCms_SeoWhereUniqueInput;
+};
+
+export type GraphCms_SeoUpsertInput = {
+  /** Create document if it didn't exist */
+  create: GraphCms_SeoCreateInput;
+  /** Update document if it exists */
+  update: GraphCms_SeoUpdateInput;
+};
+
+export type GraphCms_SeoUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: GraphCms_SeoUpsertInput;
+  /** Unique document search */
+  where: GraphCms_SeoWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type GraphCms_SeoWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_SeoWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_SeoWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_SeoWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  createdBy: Maybe<GraphCms_UserWhereInput>;
+  description: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with: Maybe<Scalars['String']>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  image: Maybe<GraphCms_AssetWhereInput>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  keywords: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  keywords_contains_all: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  keywords_contains_none: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  keywords_contains_some: Maybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  keywords_not: Maybe<Array<Scalars['String']>>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  publishedBy: Maybe<GraphCms_UserWhereInput>;
+  title: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  title_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with: Maybe<Scalars['String']>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedBy: Maybe<GraphCms_UserWhereInput>;
+};
+
+/** References Seo record uniquely */
+export type GraphCms_SeoWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+};
+
+/** Stage system enumeration */
 export enum GraphCms_Stage {
+  /** The Draft is the default stage for all your content. */
   Draft = 'DRAFT',
+  /** The Published stage is where you can publish your content to. */
   Published = 'PUBLISHED'
 }
 
-export type GraphCms_StageQueryOperatorInput = {
-  eq: Maybe<GraphCms_Stage>;
-  in: Maybe<Array<Maybe<GraphCms_Stage>>>;
-  ne: Maybe<GraphCms_Stage>;
-  nin: Maybe<Array<Maybe<GraphCms_Stage>>>;
-};
-
-export type GraphCms_User = Node & {
-  children: Array<Node>;
-  createdAt: Scalars['JSON'];
-  id: Scalars['ID'];
-  internal: Internal;
-  isActive: Scalars['Boolean'];
-  kind: GraphCms_UserKind;
-  name: Scalars['String'];
-  parent: Maybe<Node>;
-  picture: Maybe<Scalars['String']>;
-  publishedAt: Maybe<Scalars['JSON']>;
-  remoteId: Scalars['ID'];
-  remoteTypeName: Scalars['String'];
-  stage: GraphCms_Stage;
-  updatedAt: Scalars['JSON'];
-};
-
-export type GraphCms_UserConnection = {
-  distinct: Array<Scalars['String']>;
-  edges: Array<GraphCms_UserEdge>;
-  group: Array<GraphCms_UserGroupConnection>;
-  nodes: Array<GraphCms_User>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
-};
-
-
-export type GraphCms_UserConnectionDistinctArgs = {
-  field: GraphCms_UserFieldsEnum;
-};
-
-
-export type GraphCms_UserConnectionGroupArgs = {
-  field: GraphCms_UserFieldsEnum;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-};
-
-export type GraphCms_UserEdge = {
-  next: Maybe<GraphCms_User>;
-  node: GraphCms_User;
-  previous: Maybe<GraphCms_User>;
-};
-
-export enum GraphCms_UserFieldsEnum {
-  Children = 'children',
-  ChildrenChildren = 'children___children',
-  ChildrenChildrenChildren = 'children___children___children',
-  ChildrenChildrenChildrenChildren = 'children___children___children___children',
-  ChildrenChildrenChildrenId = 'children___children___children___id',
-  ChildrenChildrenId = 'children___children___id',
-  ChildrenChildrenInternalContent = 'children___children___internal___content',
-  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
-  ChildrenChildrenInternalDescription = 'children___children___internal___description',
-  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
-  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
-  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
-  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
-  ChildrenChildrenInternalType = 'children___children___internal___type',
-  ChildrenChildrenParentChildren = 'children___children___parent___children',
-  ChildrenChildrenParentId = 'children___children___parent___id',
-  ChildrenId = 'children___id',
-  ChildrenInternalContent = 'children___internal___content',
-  ChildrenInternalContentDigest = 'children___internal___contentDigest',
-  ChildrenInternalDescription = 'children___internal___description',
-  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
-  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
-  ChildrenInternalMediaType = 'children___internal___mediaType',
-  ChildrenInternalOwner = 'children___internal___owner',
-  ChildrenInternalType = 'children___internal___type',
-  ChildrenParentChildren = 'children___parent___children',
-  ChildrenParentChildrenChildren = 'children___parent___children___children',
-  ChildrenParentChildrenId = 'children___parent___children___id',
-  ChildrenParentId = 'children___parent___id',
-  ChildrenParentInternalContent = 'children___parent___internal___content',
-  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
-  ChildrenParentInternalDescription = 'children___parent___internal___description',
-  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
-  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
-  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
-  ChildrenParentInternalOwner = 'children___parent___internal___owner',
-  ChildrenParentInternalType = 'children___parent___internal___type',
-  ChildrenParentParentChildren = 'children___parent___parent___children',
-  ChildrenParentParentId = 'children___parent___parent___id',
-  CreatedAt = 'createdAt',
-  Id = 'id',
-  InternalContent = 'internal___content',
-  InternalContentDigest = 'internal___contentDigest',
-  InternalDescription = 'internal___description',
-  InternalFieldOwners = 'internal___fieldOwners',
-  InternalIgnoreType = 'internal___ignoreType',
-  InternalMediaType = 'internal___mediaType',
-  InternalOwner = 'internal___owner',
-  InternalType = 'internal___type',
-  IsActive = 'isActive',
-  Kind = 'kind',
-  Name = 'name',
-  ParentChildren = 'parent___children',
-  ParentChildrenChildren = 'parent___children___children',
-  ParentChildrenChildrenChildren = 'parent___children___children___children',
-  ParentChildrenChildrenId = 'parent___children___children___id',
-  ParentChildrenId = 'parent___children___id',
-  ParentChildrenInternalContent = 'parent___children___internal___content',
-  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
-  ParentChildrenInternalDescription = 'parent___children___internal___description',
-  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
-  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
-  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
-  ParentChildrenInternalOwner = 'parent___children___internal___owner',
-  ParentChildrenInternalType = 'parent___children___internal___type',
-  ParentChildrenParentChildren = 'parent___children___parent___children',
-  ParentChildrenParentId = 'parent___children___parent___id',
-  ParentId = 'parent___id',
-  ParentInternalContent = 'parent___internal___content',
-  ParentInternalContentDigest = 'parent___internal___contentDigest',
-  ParentInternalDescription = 'parent___internal___description',
-  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
-  ParentInternalIgnoreType = 'parent___internal___ignoreType',
-  ParentInternalMediaType = 'parent___internal___mediaType',
-  ParentInternalOwner = 'parent___internal___owner',
-  ParentInternalType = 'parent___internal___type',
-  ParentParentChildren = 'parent___parent___children',
-  ParentParentChildrenChildren = 'parent___parent___children___children',
-  ParentParentChildrenId = 'parent___parent___children___id',
-  ParentParentId = 'parent___parent___id',
-  ParentParentInternalContent = 'parent___parent___internal___content',
-  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
-  ParentParentInternalDescription = 'parent___parent___internal___description',
-  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
-  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
-  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
-  ParentParentInternalOwner = 'parent___parent___internal___owner',
-  ParentParentInternalType = 'parent___parent___internal___type',
-  ParentParentParentChildren = 'parent___parent___parent___children',
-  ParentParentParentId = 'parent___parent___parent___id',
-  Picture = 'picture',
-  PublishedAt = 'publishedAt',
-  RemoteId = 'remoteId',
-  RemoteTypeName = 'remoteTypeName',
-  Stage = 'stage',
-  UpdatedAt = 'updatedAt'
+export enum GraphCms_SystemDateTimeFieldVariation {
+  Base = 'BASE',
+  Combined = 'COMBINED',
+  Localization = 'LOCALIZATION'
 }
 
-export type GraphCms_UserFilterInput = {
-  children: Maybe<NodeFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  isActive: Maybe<BooleanQueryOperatorInput>;
-  kind: Maybe<GraphCms_UserKindQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  picture: Maybe<StringQueryOperatorInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
+export type GraphCms_UnpublishLocaleInput = {
+  /** Locales to unpublish */
+  locale: GraphCms_Locale;
+  /** Stages to unpublish selected locales from */
+  stages: Array<GraphCms_Stage>;
 };
 
-export type GraphCms_UserGroupConnection = {
+/** User system model */
+export type GraphCms_User = GraphCms_Node & {
+  /** The time the document was created */
+  createdAt: Scalars['GraphCMS_DateTime'];
+  /** Get the document in other stages */
+  documentInStages: Array<GraphCms_User>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** Flag to determine if user is active or not */
+  isActive: Scalars['Boolean'];
+  /** User Kind. Can be either MEMBER, PAT or PUBLIC */
+  kind: GraphCms_UserKind;
+  /** The username */
+  name: Scalars['String'];
+  /** Profile Picture url */
+  picture: Maybe<Scalars['String']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** System stage field */
+  stage: GraphCms_Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['GraphCMS_DateTime'];
+};
+
+
+/** User system model */
+export type GraphCms_UserDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<GraphCms_Stage>;
+};
+
+/** A connection to a list of items. */
+export type GraphCms_UserConnection = {
+  aggregate: GraphCms_Aggregate;
+  /** A list of edges. */
   edges: Array<GraphCms_UserEdge>;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-  nodes: Array<GraphCms_User>;
-  pageInfo: PageInfo;
-  totalCount: Scalars['Int'];
+  /** Information to aid in pagination. */
+  pageInfo: GraphCms_PageInfo;
 };
 
+/** An edge in a connection. */
+export type GraphCms_UserEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: GraphCms_User;
+};
+
+/** System User Kind */
 export enum GraphCms_UserKind {
   Member = 'MEMBER',
   Pat = 'PAT',
@@ -6080,23 +5375,516 @@ export enum GraphCms_UserKind {
   Webhook = 'WEBHOOK'
 }
 
-export type GraphCms_UserKindQueryOperatorInput = {
-  eq: Maybe<GraphCms_UserKind>;
-  in: Maybe<Array<Maybe<GraphCms_UserKind>>>;
-  ne: Maybe<GraphCms_UserKind>;
-  nin: Maybe<Array<Maybe<GraphCms_UserKind>>>;
+/** Identifies documents */
+export type GraphCms_UserManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_UserWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_UserWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_UserWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  isActive: Maybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  isActive_not: Maybe<Scalars['Boolean']>;
+  kind: Maybe<GraphCms_UserKind>;
+  /** All values that are contained in given list. */
+  kind_in: Maybe<Array<GraphCms_UserKind>>;
+  /** All values that are not equal to given value. */
+  kind_not: Maybe<GraphCms_UserKind>;
+  /** All values that are not contained in given list. */
+  kind_not_in: Maybe<Array<GraphCms_UserKind>>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  picture: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  picture_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  picture_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  picture_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  picture_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  picture_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  picture_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  picture_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  picture_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  picture_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
 };
 
-export type GraphCms_UserSortInput = {
-  fields: Maybe<Array<Maybe<GraphCms_UserFieldsEnum>>>;
+export enum GraphCms_UserOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  IsActiveAsc = 'isActive_ASC',
+  IsActiveDesc = 'isActive_DESC',
+  KindAsc = 'kind_ASC',
+  KindDesc = 'kind_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PictureAsc = 'picture_ASC',
+  PictureDesc = 'picture_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+/** Identifies documents */
+export type GraphCms_UserWhereInput = {
+  /** Logical AND on all given filters. */
+  AND: Maybe<Array<GraphCms_UserWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT: Maybe<Array<GraphCms_UserWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR: Maybe<Array<GraphCms_UserWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search: Maybe<Scalars['String']>;
+  createdAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  id: Maybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains: Maybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in: Maybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not: Maybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains: Maybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with: Maybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in: Maybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with: Maybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with: Maybe<Scalars['ID']>;
+  isActive: Maybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  isActive_not: Maybe<Scalars['Boolean']>;
+  kind: Maybe<GraphCms_UserKind>;
+  /** All values that are contained in given list. */
+  kind_in: Maybe<Array<GraphCms_UserKind>>;
+  /** All values that are not equal to given value. */
+  kind_not: Maybe<GraphCms_UserKind>;
+  /** All values that are not contained in given list. */
+  kind_not_in: Maybe<Array<GraphCms_UserKind>>;
+  name: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  name_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with: Maybe<Scalars['String']>;
+  picture: Maybe<Scalars['String']>;
+  /** All values containing the given string. */
+  picture_contains: Maybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  picture_ends_with: Maybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  picture_in: Maybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  picture_not: Maybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  picture_not_contains: Maybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  picture_not_ends_with: Maybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  picture_not_in: Maybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  picture_not_starts_with: Maybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  picture_starts_with: Maybe<Scalars['String']>;
+  publishedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  updatedAt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not: Maybe<Scalars['GraphCMS_DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in: Maybe<Array<Scalars['GraphCMS_DateTime']>>;
+};
+
+/** References User record uniquely */
+export type GraphCms_UserWhereUniqueInput = {
+  id: Maybe<Scalars['ID']>;
+};
+
+export type GraphCms_Version = {
+  createdAt: Scalars['GraphCMS_DateTime'];
+  id: Scalars['ID'];
+  revision: Scalars['Int'];
+  stage: GraphCms_Stage;
+};
+
+export type GraphCms_VersionWhereInput = {
+  id: Scalars['ID'];
+  revision: Scalars['Int'];
+  stage: GraphCms_Stage;
+};
+
+export enum GraphCms__FilterKind {
+  And = 'AND',
+  Not = 'NOT',
+  Or = 'OR',
+  Contains = 'contains',
+  ContainsAll = 'contains_all',
+  ContainsNone = 'contains_none',
+  ContainsSome = 'contains_some',
+  EndsWith = 'ends_with',
+  Eq = 'eq',
+  EqNot = 'eq_not',
+  Gt = 'gt',
+  Gte = 'gte',
+  In = 'in',
+  Lt = 'lt',
+  Lte = 'lte',
+  NotContains = 'not_contains',
+  NotEndsWith = 'not_ends_with',
+  NotIn = 'not_in',
+  NotStartsWith = 'not_starts_with',
+  RelationalEvery = 'relational_every',
+  RelationalNone = 'relational_none',
+  RelationalSingle = 'relational_single',
+  RelationalSome = 'relational_some',
+  Search = 'search',
+  StartsWith = 'starts_with'
+}
+
+export enum GraphCms__MutationInputFieldKind {
+  Enum = 'enum',
+  Relation = 'relation',
+  RichText = 'richText',
+  RichTextWithEmbeds = 'richTextWithEmbeds',
+  Scalar = 'scalar',
+  Union = 'union',
+  Virtual = 'virtual'
+}
+
+export enum GraphCms__MutationKind {
+  Create = 'create',
+  Delete = 'delete',
+  DeleteMany = 'deleteMany',
+  Publish = 'publish',
+  PublishMany = 'publishMany',
+  Unpublish = 'unpublish',
+  UnpublishMany = 'unpublishMany',
+  Update = 'update',
+  UpdateMany = 'updateMany',
+  Upsert = 'upsert'
+}
+
+export enum GraphCms__OrderDirection {
+  Asc = 'asc',
+  Desc = 'desc'
+}
+
+export enum GraphCms__RelationInputCardinality {
+  Many = 'many',
+  One = 'one'
+}
+
+export enum GraphCms__RelationInputKind {
+  Create = 'create',
+  Update = 'update'
+}
+
+export enum GraphCms__RelationKind {
+  Regular = 'regular',
+  Union = 'union'
+}
+
+export enum GraphCms__SystemDateTimeFieldVariation {
+  Base = 'base',
+  Combined = 'combined',
+  Localization = 'localization'
+}
+
+export type GraphQlSource = Node & {
+  children: Array<Node>;
+  fieldName: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  internal: Internal;
+  parent: Maybe<Node>;
+  typeName: Maybe<Scalars['String']>;
+};
+
+export type GraphQlSourceConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<GraphQlSourceEdge>;
+  group: Array<GraphQlSourceGroupConnection>;
+  nodes: Array<GraphQlSource>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+
+export type GraphQlSourceConnectionDistinctArgs = {
+  field: GraphQlSourceFieldsEnum;
+};
+
+
+export type GraphQlSourceConnectionGroupArgs = {
+  field: GraphQlSourceFieldsEnum;
+  limit: Maybe<Scalars['Int']>;
+  skip: Maybe<Scalars['Int']>;
+};
+
+export type GraphQlSourceEdge = {
+  next: Maybe<GraphQlSource>;
+  node: GraphQlSource;
+  previous: Maybe<GraphQlSource>;
+};
+
+export enum GraphQlSourceFieldsEnum {
+  Children = 'children',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenId = 'children___id',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  FieldName = 'fieldName',
+  Id = 'id',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentId = 'parent___id',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentParentId = 'parent___parent___parent___id',
+  TypeName = 'typeName'
+}
+
+export type GraphQlSourceFilterInput = {
+  children: Maybe<NodeFilterListInput>;
+  fieldName: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  internal: Maybe<InternalFilterInput>;
+  parent: Maybe<NodeFilterInput>;
+  typeName: Maybe<StringQueryOperatorInput>;
+};
+
+export type GraphQlSourceGroupConnection = {
+  edges: Array<GraphQlSourceEdge>;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+  nodes: Array<GraphQlSource>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type GraphQlSourceSortInput = {
+  fields: Maybe<Array<Maybe<GraphQlSourceFieldsEnum>>>;
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-export type IdQueryOperatorInput = {
-  eq: Maybe<Scalars['ID']>;
-  in: Maybe<Array<Maybe<Scalars['ID']>>>;
-  ne: Maybe<Scalars['ID']>;
-  nin: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 export enum ImageCropFocus {
@@ -6618,30 +6406,23 @@ export enum PotraceTurnPolicy {
 export type Query = {
   allDirectory: DirectoryConnection;
   allFile: FileConnection;
-  allGraphCmsAsset: GraphCms_AssetConnection;
-  allGraphCmsAuthor: GraphCms_AuthorConnection;
-  allGraphCmsPage: GraphCms_PageConnection;
-  allGraphCmsPost: GraphCms_PostConnection;
-  allGraphCmsSeo: GraphCms_SeoConnection;
-  allGraphCmsUser: GraphCms_UserConnection;
+  allGraphQlSource: GraphQlSourceConnection;
   allImageSharp: ImageSharpConnection;
   allSite: SiteConnection;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   allSitePage: SitePageConnection;
   allSitePlugin: SitePluginConnection;
+  allThemeUiConfig: ThemeUiConfigConnection;
   directory: Maybe<Directory>;
   file: Maybe<File>;
-  graphCmsAsset: Maybe<GraphCms_Asset>;
-  graphCmsAuthor: Maybe<GraphCms_Author>;
-  graphCmsPage: Maybe<GraphCms_Page>;
-  graphCmsPost: Maybe<GraphCms_Post>;
-  graphCmsSeo: Maybe<GraphCms_Seo>;
-  graphCmsUser: Maybe<GraphCms_User>;
+  gcms: GraphCms;
+  graphQlSource: Maybe<GraphQlSource>;
   imageSharp: Maybe<ImageSharp>;
   site: Maybe<Site>;
   siteBuildMetadata: Maybe<SiteBuildMetadata>;
   sitePage: Maybe<SitePage>;
   sitePlugin: Maybe<SitePlugin>;
+  themeUiConfig: Maybe<ThemeUiConfig>;
 };
 
 
@@ -6661,51 +6442,11 @@ export type QueryAllFileArgs = {
 };
 
 
-export type QueryAllGraphCmsAssetArgs = {
-  filter: Maybe<GraphCms_AssetFilterInput>;
+export type QueryAllGraphQlSourceArgs = {
+  filter: Maybe<GraphQlSourceFilterInput>;
   limit: Maybe<Scalars['Int']>;
   skip: Maybe<Scalars['Int']>;
-  sort: Maybe<GraphCms_AssetSortInput>;
-};
-
-
-export type QueryAllGraphCmsAuthorArgs = {
-  filter: Maybe<GraphCms_AuthorFilterInput>;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-  sort: Maybe<GraphCms_AuthorSortInput>;
-};
-
-
-export type QueryAllGraphCmsPageArgs = {
-  filter: Maybe<GraphCms_PageFilterInput>;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-  sort: Maybe<GraphCms_PageSortInput>;
-};
-
-
-export type QueryAllGraphCmsPostArgs = {
-  filter: Maybe<GraphCms_PostFilterInput>;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-  sort: Maybe<GraphCms_PostSortInput>;
-};
-
-
-export type QueryAllGraphCmsSeoArgs = {
-  filter: Maybe<GraphCms_SeoFilterInput>;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-  sort: Maybe<GraphCms_SeoSortInput>;
-};
-
-
-export type QueryAllGraphCmsUserArgs = {
-  filter: Maybe<GraphCms_UserFilterInput>;
-  limit: Maybe<Scalars['Int']>;
-  skip: Maybe<Scalars['Int']>;
-  sort: Maybe<GraphCms_UserSortInput>;
+  sort: Maybe<GraphQlSourceSortInput>;
 };
 
 
@@ -6746,6 +6487,14 @@ export type QueryAllSitePluginArgs = {
   limit: Maybe<Scalars['Int']>;
   skip: Maybe<Scalars['Int']>;
   sort: Maybe<SitePluginSortInput>;
+};
+
+
+export type QueryAllThemeUiConfigArgs = {
+  filter: Maybe<ThemeUiConfigFilterInput>;
+  limit: Maybe<Scalars['Int']>;
+  skip: Maybe<Scalars['Int']>;
+  sort: Maybe<ThemeUiConfigSortInput>;
 };
 
 
@@ -6834,140 +6583,13 @@ export type QueryFileArgs = {
 };
 
 
-export type QueryGraphCmsAssetArgs = {
-  authorAvatar: Maybe<GraphCms_AuthorFilterListInput>;
+export type QueryGraphQlSourceArgs = {
   children: Maybe<NodeFilterListInput>;
-  coverImagePost: Maybe<GraphCms_PostFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  fileName: Maybe<StringQueryOperatorInput>;
-  handle: Maybe<StringQueryOperatorInput>;
-  height: Maybe<FloatQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  locale: Maybe<GraphCms_LocaleQueryOperatorInput>;
-  mimeType: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  seoImage: Maybe<GraphCms_SeoFilterListInput>;
-  size: Maybe<FloatQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-  url: Maybe<StringQueryOperatorInput>;
-  width: Maybe<FloatQueryOperatorInput>;
-};
-
-
-export type QueryGraphCmsAuthorArgs = {
-  biography: Maybe<StringQueryOperatorInput>;
-  children: Maybe<NodeFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  picture: Maybe<GraphCms_AssetFilterInput>;
-  posts: Maybe<GraphCms_PostFilterListInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-};
-
-
-export type QueryGraphCmsPageArgs = {
-  children: Maybe<NodeFilterListInput>;
-  content: Maybe<GraphCms_RichTextFilterInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
+  fieldName: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   internal: Maybe<InternalFilterInput>;
   parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  seo: Maybe<GraphCms_SeoFilterInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  subtitle: Maybe<StringQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-};
-
-
-export type QueryGraphCmsPostArgs = {
-  author: Maybe<GraphCms_AuthorFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  content: Maybe<GraphCms_RichTextFilterInput>;
-  coverImage: Maybe<GraphCms_AssetFilterInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  date: Maybe<JsonQueryOperatorInput>;
-  excerpt: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  seo: Maybe<GraphCms_SeoFilterInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  tags: Maybe<StringQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-};
-
-
-export type QueryGraphCmsSeoArgs = {
-  children: Maybe<NodeFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  createdBy: Maybe<GraphCms_UserFilterInput>;
-  description: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  image: Maybe<GraphCms_AssetFilterInput>;
-  internal: Maybe<InternalFilterInput>;
-  keywords: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  publishedBy: Maybe<GraphCms_UserFilterInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  title: Maybe<StringQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
-  updatedBy: Maybe<GraphCms_UserFilterInput>;
-};
-
-
-export type QueryGraphCmsUserArgs = {
-  children: Maybe<NodeFilterListInput>;
-  createdAt: Maybe<JsonQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  internal: Maybe<InternalFilterInput>;
-  isActive: Maybe<BooleanQueryOperatorInput>;
-  kind: Maybe<GraphCms_UserKindQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  picture: Maybe<StringQueryOperatorInput>;
-  publishedAt: Maybe<JsonQueryOperatorInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  stage: Maybe<GraphCms_StageQueryOperatorInput>;
-  updatedAt: Maybe<JsonQueryOperatorInput>;
+  typeName: Maybe<StringQueryOperatorInput>;
 };
 
 
@@ -7038,6 +6660,16 @@ export type QuerySitePluginArgs = {
   resolve: Maybe<StringQueryOperatorInput>;
   ssrAPIs: Maybe<StringQueryOperatorInput>;
   version: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryThemeUiConfigArgs = {
+  children: Maybe<NodeFilterListInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  internal: Maybe<InternalFilterInput>;
+  parent: Maybe<NodeFilterInput>;
+  preset: Maybe<JsonQueryOperatorInput>;
+  prismPreset: Maybe<JsonQueryOperatorInput>;
 };
 
 export type Site = Node & {
@@ -7561,32 +7193,28 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
   PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
   PluginCreatorPluginOptionsBase64Width = 'pluginCreator___pluginOptions___base64Width',
-  PluginCreatorPluginOptionsBuildMarkdownNodes = 'pluginCreator___pluginOptions___buildMarkdownNodes',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
   PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
   PluginCreatorPluginOptionsDefaultQuality = 'pluginCreator___pluginOptions___defaultQuality',
   PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
-  PluginCreatorPluginOptionsDownloadLocalImages = 'pluginCreator___pluginOptions___downloadLocalImages',
-  PluginCreatorPluginOptionsEndpoint = 'pluginCreator___pluginOptions___endpoint',
   PluginCreatorPluginOptionsFailOnError = 'pluginCreator___pluginOptions___failOnError',
-  PluginCreatorPluginOptionsFragmentsPath = 'pluginCreator___pluginOptions___fragmentsPath',
+  PluginCreatorPluginOptionsFieldName = 'pluginCreator___pluginOptions___fieldName',
   PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
   PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
   PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
   PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
-  PluginCreatorPluginOptionsLocales = 'pluginCreator___pluginOptions___locales',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
-  PluginCreatorPluginOptionsStages = 'pluginCreator___pluginOptions___stages',
   PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
   PluginCreatorPluginOptionsStripMetadata = 'pluginCreator___pluginOptions___stripMetadata',
   PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
   PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
-  PluginCreatorPluginOptionsTypePrefix = 'pluginCreator___pluginOptions___typePrefix',
+  PluginCreatorPluginOptionsTypeName = 'pluginCreator___pluginOptions___typeName',
+  PluginCreatorPluginOptionsUrl = 'pluginCreator___pluginOptions___url',
   PluginCreatorResolve = 'pluginCreator___resolve',
   PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
   PluginCreatorVersion = 'pluginCreator___version'
@@ -7775,32 +7403,32 @@ export enum SitePluginFieldsEnum {
   PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
   PluginOptionsBackgroundColor = 'pluginOptions___background_color',
   PluginOptionsBase64Width = 'pluginOptions___base64Width',
-  PluginOptionsBuildMarkdownNodes = 'pluginOptions___buildMarkdownNodes',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
   PluginOptionsCacheBustingMode = 'pluginOptions___cache_busting_mode',
   PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
   PluginOptionsDefaultQuality = 'pluginOptions___defaultQuality',
   PluginOptionsDisplay = 'pluginOptions___display',
-  PluginOptionsDownloadLocalImages = 'pluginOptions___downloadLocalImages',
-  PluginOptionsEndpoint = 'pluginOptions___endpoint',
   PluginOptionsFailOnError = 'pluginOptions___failOnError',
-  PluginOptionsFragmentsPath = 'pluginOptions___fragmentsPath',
+  PluginOptionsFieldName = 'pluginOptions___fieldName',
   PluginOptionsIcon = 'pluginOptions___icon',
   PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsIsTsx = 'pluginOptions___isTSX',
   PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
   PluginOptionsLegacy = 'pluginOptions___legacy',
-  PluginOptionsLocales = 'pluginOptions___locales',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
+  PluginOptionsPresetDefaultFontSizes = 'pluginOptions___preset___default___fontSizes',
+  PluginOptionsPresetDefaultSpace = 'pluginOptions___preset___default___space',
+  PluginOptionsPresetFunkFontSizes = 'pluginOptions___preset___funk___fontSizes',
+  PluginOptionsPresetFunkSpace = 'pluginOptions___preset___funk___space',
   PluginOptionsShortName = 'pluginOptions___short_name',
-  PluginOptionsStages = 'pluginOptions___stages',
   PluginOptionsStartUrl = 'pluginOptions___start_url',
   PluginOptionsStripMetadata = 'pluginOptions___stripMetadata',
   PluginOptionsThemeColor = 'pluginOptions___theme_color',
   PluginOptionsThemeColorInHead = 'pluginOptions___theme_color_in_head',
-  PluginOptionsTypePrefix = 'pluginOptions___typePrefix',
+  PluginOptionsTypeName = 'pluginOptions___typeName',
+  PluginOptionsUrl = 'pluginOptions___url',
   Resolve = 'resolve',
   SsrApIs = 'ssrAPIs',
   Version = 'version'
@@ -7903,64 +7531,680 @@ export type SitePluginPluginOptions = {
   allExtensions: Maybe<Scalars['Boolean']>;
   background_color: Maybe<Scalars['String']>;
   base64Width: Maybe<Scalars['Int']>;
-  buildMarkdownNodes: Maybe<Scalars['Boolean']>;
   cacheDigest: Maybe<Scalars['String']>;
   cache_busting_mode: Maybe<Scalars['String']>;
   crossOrigin: Maybe<Scalars['String']>;
   defaultQuality: Maybe<Scalars['Int']>;
   display: Maybe<Scalars['String']>;
-  downloadLocalImages: Maybe<Scalars['Boolean']>;
-  endpoint: Maybe<Scalars['String']>;
   failOnError: Maybe<Scalars['Boolean']>;
-  fragmentsPath: Maybe<Scalars['String']>;
+  fieldName: Maybe<Scalars['String']>;
   icon: Maybe<Scalars['String']>;
   include_favicon: Maybe<Scalars['Boolean']>;
   isTSX: Maybe<Scalars['Boolean']>;
   jsxPragma: Maybe<Scalars['String']>;
   legacy: Maybe<Scalars['Boolean']>;
-  locales: Maybe<Array<Maybe<Scalars['String']>>>;
   name: Maybe<Scalars['String']>;
   path: Maybe<Scalars['String']>;
   pathCheck: Maybe<Scalars['Boolean']>;
+  preset: Maybe<SitePluginPluginOptionsPreset>;
   short_name: Maybe<Scalars['String']>;
-  stages: Maybe<Array<Maybe<Scalars['String']>>>;
   start_url: Maybe<Scalars['String']>;
   stripMetadata: Maybe<Scalars['Boolean']>;
   theme_color: Maybe<Scalars['String']>;
   theme_color_in_head: Maybe<Scalars['Boolean']>;
-  typePrefix: Maybe<Scalars['String']>;
+  typeName: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
   allExtensions: Maybe<BooleanQueryOperatorInput>;
   background_color: Maybe<StringQueryOperatorInput>;
   base64Width: Maybe<IntQueryOperatorInput>;
-  buildMarkdownNodes: Maybe<BooleanQueryOperatorInput>;
   cacheDigest: Maybe<StringQueryOperatorInput>;
   cache_busting_mode: Maybe<StringQueryOperatorInput>;
   crossOrigin: Maybe<StringQueryOperatorInput>;
   defaultQuality: Maybe<IntQueryOperatorInput>;
   display: Maybe<StringQueryOperatorInput>;
-  downloadLocalImages: Maybe<BooleanQueryOperatorInput>;
-  endpoint: Maybe<StringQueryOperatorInput>;
   failOnError: Maybe<BooleanQueryOperatorInput>;
-  fragmentsPath: Maybe<StringQueryOperatorInput>;
+  fieldName: Maybe<StringQueryOperatorInput>;
   icon: Maybe<StringQueryOperatorInput>;
   include_favicon: Maybe<BooleanQueryOperatorInput>;
   isTSX: Maybe<BooleanQueryOperatorInput>;
   jsxPragma: Maybe<StringQueryOperatorInput>;
   legacy: Maybe<BooleanQueryOperatorInput>;
-  locales: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   path: Maybe<StringQueryOperatorInput>;
   pathCheck: Maybe<BooleanQueryOperatorInput>;
+  preset: Maybe<SitePluginPluginOptionsPresetFilterInput>;
   short_name: Maybe<StringQueryOperatorInput>;
-  stages: Maybe<StringQueryOperatorInput>;
   start_url: Maybe<StringQueryOperatorInput>;
   stripMetadata: Maybe<BooleanQueryOperatorInput>;
   theme_color: Maybe<StringQueryOperatorInput>;
   theme_color_in_head: Maybe<BooleanQueryOperatorInput>;
-  typePrefix: Maybe<StringQueryOperatorInput>;
+  typeName: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPreset = {
+  default: Maybe<SitePluginPluginOptionsPresetDefault>;
+  funk: Maybe<SitePluginPluginOptionsPresetFunk>;
+};
+
+export type SitePluginPluginOptionsPresetDefault = {
+  colors: Maybe<SitePluginPluginOptionsPresetDefaultColors>;
+  fontSizes: Maybe<Array<Maybe<Scalars['Int']>>>;
+  fontWeights: Maybe<SitePluginPluginOptionsPresetDefaultFontWeights>;
+  fonts: Maybe<SitePluginPluginOptionsPresetDefaultFonts>;
+  lineHeights: Maybe<SitePluginPluginOptionsPresetDefaultLineHeights>;
+  space: Maybe<Array<Maybe<Scalars['Int']>>>;
+  styles: Maybe<SitePluginPluginOptionsPresetDefaultStyles>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultColors = {
+  background: Maybe<Scalars['String']>;
+  muted: Maybe<Scalars['String']>;
+  primary: Maybe<Scalars['String']>;
+  secondary: Maybe<Scalars['String']>;
+  text: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultColorsFilterInput = {
+  background: Maybe<StringQueryOperatorInput>;
+  muted: Maybe<StringQueryOperatorInput>;
+  primary: Maybe<StringQueryOperatorInput>;
+  secondary: Maybe<StringQueryOperatorInput>;
+  text: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultFilterInput = {
+  colors: Maybe<SitePluginPluginOptionsPresetDefaultColorsFilterInput>;
+  fontSizes: Maybe<IntQueryOperatorInput>;
+  fontWeights: Maybe<SitePluginPluginOptionsPresetDefaultFontWeightsFilterInput>;
+  fonts: Maybe<SitePluginPluginOptionsPresetDefaultFontsFilterInput>;
+  lineHeights: Maybe<SitePluginPluginOptionsPresetDefaultLineHeightsFilterInput>;
+  space: Maybe<IntQueryOperatorInput>;
+  styles: Maybe<SitePluginPluginOptionsPresetDefaultStylesFilterInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultFontWeights = {
+  body: Maybe<Scalars['Int']>;
+  bold: Maybe<Scalars['Int']>;
+  heading: Maybe<Scalars['Int']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultFontWeightsFilterInput = {
+  body: Maybe<IntQueryOperatorInput>;
+  bold: Maybe<IntQueryOperatorInput>;
+  heading: Maybe<IntQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultFonts = {
+  body: Maybe<Scalars['String']>;
+  heading: Maybe<Scalars['String']>;
+  monospace: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultFontsFilterInput = {
+  body: Maybe<StringQueryOperatorInput>;
+  heading: Maybe<StringQueryOperatorInput>;
+  monospace: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultLineHeights = {
+  body: Maybe<Scalars['Float']>;
+  heading: Maybe<Scalars['Float']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultLineHeightsFilterInput = {
+  body: Maybe<FloatQueryOperatorInput>;
+  heading: Maybe<FloatQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStyles = {
+  a: Maybe<SitePluginPluginOptionsPresetDefaultStylesA>;
+  code: Maybe<SitePluginPluginOptionsPresetDefaultStylesCode>;
+  h1: Maybe<SitePluginPluginOptionsPresetDefaultStylesH1>;
+  h2: Maybe<SitePluginPluginOptionsPresetDefaultStylesH2>;
+  h3: Maybe<SitePluginPluginOptionsPresetDefaultStylesH3>;
+  h4: Maybe<SitePluginPluginOptionsPresetDefaultStylesH4>;
+  h5: Maybe<SitePluginPluginOptionsPresetDefaultStylesH5>;
+  h6: Maybe<SitePluginPluginOptionsPresetDefaultStylesH6>;
+  img: Maybe<SitePluginPluginOptionsPresetDefaultStylesImg>;
+  p: Maybe<SitePluginPluginOptionsPresetDefaultStylesP>;
+  pre: Maybe<SitePluginPluginOptionsPresetDefaultStylesPre>;
+  root: Maybe<SitePluginPluginOptionsPresetDefaultStylesRoot>;
+  table: Maybe<SitePluginPluginOptionsPresetDefaultStylesTable>;
+  td: Maybe<SitePluginPluginOptionsPresetDefaultStylesTd>;
+  th: Maybe<SitePluginPluginOptionsPresetDefaultStylesTh>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesA = {
+  color: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesAFilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesCode = {
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesCodeFilterInput = {
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesFilterInput = {
+  a: Maybe<SitePluginPluginOptionsPresetDefaultStylesAFilterInput>;
+  code: Maybe<SitePluginPluginOptionsPresetDefaultStylesCodeFilterInput>;
+  h1: Maybe<SitePluginPluginOptionsPresetDefaultStylesH1FilterInput>;
+  h2: Maybe<SitePluginPluginOptionsPresetDefaultStylesH2FilterInput>;
+  h3: Maybe<SitePluginPluginOptionsPresetDefaultStylesH3FilterInput>;
+  h4: Maybe<SitePluginPluginOptionsPresetDefaultStylesH4FilterInput>;
+  h5: Maybe<SitePluginPluginOptionsPresetDefaultStylesH5FilterInput>;
+  h6: Maybe<SitePluginPluginOptionsPresetDefaultStylesH6FilterInput>;
+  img: Maybe<SitePluginPluginOptionsPresetDefaultStylesImgFilterInput>;
+  p: Maybe<SitePluginPluginOptionsPresetDefaultStylesPFilterInput>;
+  pre: Maybe<SitePluginPluginOptionsPresetDefaultStylesPreFilterInput>;
+  root: Maybe<SitePluginPluginOptionsPresetDefaultStylesRootFilterInput>;
+  table: Maybe<SitePluginPluginOptionsPresetDefaultStylesTableFilterInput>;
+  td: Maybe<SitePluginPluginOptionsPresetDefaultStylesTdFilterInput>;
+  th: Maybe<SitePluginPluginOptionsPresetDefaultStylesThFilterInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH1 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH1FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH2 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH2FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH3 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH3FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH4 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH4FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH5 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH5FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH6 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesH6FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesImg = {
+  maxWidth: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesImgFilterInput = {
+  maxWidth: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesP = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesPFilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesPre = {
+  code: Maybe<SitePluginPluginOptionsPresetDefaultStylesPreCode>;
+  fontFamily: Maybe<Scalars['String']>;
+  overflowX: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesPreCode = {
+  color: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesPreCodeFilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesPreFilterInput = {
+  code: Maybe<SitePluginPluginOptionsPresetDefaultStylesPreCodeFilterInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  overflowX: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesRoot = {
+  fontFamily: Maybe<Scalars['String']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesRootFilterInput = {
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesTable = {
+  borderCollapse: Maybe<Scalars['String']>;
+  borderSpacing: Maybe<Scalars['Int']>;
+  width: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesTableFilterInput = {
+  borderCollapse: Maybe<StringQueryOperatorInput>;
+  borderSpacing: Maybe<IntQueryOperatorInput>;
+  width: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesTd = {
+  borderBottomStyle: Maybe<Scalars['String']>;
+  textAlign: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesTdFilterInput = {
+  borderBottomStyle: Maybe<StringQueryOperatorInput>;
+  textAlign: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesTh = {
+  borderBottomStyle: Maybe<Scalars['String']>;
+  textAlign: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetDefaultStylesThFilterInput = {
+  borderBottomStyle: Maybe<StringQueryOperatorInput>;
+  textAlign: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFilterInput = {
+  default: Maybe<SitePluginPluginOptionsPresetDefaultFilterInput>;
+  funk: Maybe<SitePluginPluginOptionsPresetFunkFilterInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunk = {
+  colors: Maybe<SitePluginPluginOptionsPresetFunkColors>;
+  fontSizes: Maybe<Array<Maybe<Scalars['Int']>>>;
+  fontWeights: Maybe<SitePluginPluginOptionsPresetFunkFontWeights>;
+  fonts: Maybe<SitePluginPluginOptionsPresetFunkFonts>;
+  lineHeights: Maybe<SitePluginPluginOptionsPresetFunkLineHeights>;
+  space: Maybe<Array<Maybe<Scalars['Int']>>>;
+  styles: Maybe<SitePluginPluginOptionsPresetFunkStyles>;
+};
+
+export type SitePluginPluginOptionsPresetFunkColors = {
+  background: Maybe<Scalars['String']>;
+  muted: Maybe<Scalars['String']>;
+  primary: Maybe<Scalars['String']>;
+  secondary: Maybe<Scalars['String']>;
+  text: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkColorsFilterInput = {
+  background: Maybe<StringQueryOperatorInput>;
+  muted: Maybe<StringQueryOperatorInput>;
+  primary: Maybe<StringQueryOperatorInput>;
+  secondary: Maybe<StringQueryOperatorInput>;
+  text: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkFilterInput = {
+  colors: Maybe<SitePluginPluginOptionsPresetFunkColorsFilterInput>;
+  fontSizes: Maybe<IntQueryOperatorInput>;
+  fontWeights: Maybe<SitePluginPluginOptionsPresetFunkFontWeightsFilterInput>;
+  fonts: Maybe<SitePluginPluginOptionsPresetFunkFontsFilterInput>;
+  lineHeights: Maybe<SitePluginPluginOptionsPresetFunkLineHeightsFilterInput>;
+  space: Maybe<IntQueryOperatorInput>;
+  styles: Maybe<SitePluginPluginOptionsPresetFunkStylesFilterInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkFontWeights = {
+  body: Maybe<Scalars['Int']>;
+  bold: Maybe<Scalars['Int']>;
+  heading: Maybe<Scalars['Int']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkFontWeightsFilterInput = {
+  body: Maybe<IntQueryOperatorInput>;
+  bold: Maybe<IntQueryOperatorInput>;
+  heading: Maybe<IntQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkFonts = {
+  body: Maybe<Scalars['String']>;
+  heading: Maybe<Scalars['String']>;
+  monospace: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkFontsFilterInput = {
+  body: Maybe<StringQueryOperatorInput>;
+  heading: Maybe<StringQueryOperatorInput>;
+  monospace: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkLineHeights = {
+  body: Maybe<Scalars['Float']>;
+  heading: Maybe<Scalars['Float']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkLineHeightsFilterInput = {
+  body: Maybe<FloatQueryOperatorInput>;
+  heading: Maybe<FloatQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStyles = {
+  a: Maybe<SitePluginPluginOptionsPresetFunkStylesA>;
+  code: Maybe<SitePluginPluginOptionsPresetFunkStylesCode>;
+  h1: Maybe<SitePluginPluginOptionsPresetFunkStylesH1>;
+  h2: Maybe<SitePluginPluginOptionsPresetFunkStylesH2>;
+  h3: Maybe<SitePluginPluginOptionsPresetFunkStylesH3>;
+  h4: Maybe<SitePluginPluginOptionsPresetFunkStylesH4>;
+  h5: Maybe<SitePluginPluginOptionsPresetFunkStylesH5>;
+  h6: Maybe<SitePluginPluginOptionsPresetFunkStylesH6>;
+  img: Maybe<SitePluginPluginOptionsPresetFunkStylesImg>;
+  p: Maybe<SitePluginPluginOptionsPresetFunkStylesP>;
+  pre: Maybe<SitePluginPluginOptionsPresetFunkStylesPre>;
+  root: Maybe<SitePluginPluginOptionsPresetFunkStylesRoot>;
+  table: Maybe<SitePluginPluginOptionsPresetFunkStylesTable>;
+  td: Maybe<SitePluginPluginOptionsPresetFunkStylesTd>;
+  th: Maybe<SitePluginPluginOptionsPresetFunkStylesTh>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesA = {
+  color: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesAFilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesCode = {
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesCodeFilterInput = {
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesFilterInput = {
+  a: Maybe<SitePluginPluginOptionsPresetFunkStylesAFilterInput>;
+  code: Maybe<SitePluginPluginOptionsPresetFunkStylesCodeFilterInput>;
+  h1: Maybe<SitePluginPluginOptionsPresetFunkStylesH1FilterInput>;
+  h2: Maybe<SitePluginPluginOptionsPresetFunkStylesH2FilterInput>;
+  h3: Maybe<SitePluginPluginOptionsPresetFunkStylesH3FilterInput>;
+  h4: Maybe<SitePluginPluginOptionsPresetFunkStylesH4FilterInput>;
+  h5: Maybe<SitePluginPluginOptionsPresetFunkStylesH5FilterInput>;
+  h6: Maybe<SitePluginPluginOptionsPresetFunkStylesH6FilterInput>;
+  img: Maybe<SitePluginPluginOptionsPresetFunkStylesImgFilterInput>;
+  p: Maybe<SitePluginPluginOptionsPresetFunkStylesPFilterInput>;
+  pre: Maybe<SitePluginPluginOptionsPresetFunkStylesPreFilterInput>;
+  root: Maybe<SitePluginPluginOptionsPresetFunkStylesRootFilterInput>;
+  table: Maybe<SitePluginPluginOptionsPresetFunkStylesTableFilterInput>;
+  td: Maybe<SitePluginPluginOptionsPresetFunkStylesTdFilterInput>;
+  th: Maybe<SitePluginPluginOptionsPresetFunkStylesThFilterInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH1 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH1FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH2 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH2FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH3 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH3FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH4 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH4FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH5 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH5FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH6 = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontSize: Maybe<Scalars['Int']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesH6FilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontSize: Maybe<IntQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesImg = {
+  maxWidth: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesImgFilterInput = {
+  maxWidth: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesP = {
+  color: Maybe<Scalars['String']>;
+  fontFamily: Maybe<Scalars['String']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesPFilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesPre = {
+  code: Maybe<SitePluginPluginOptionsPresetFunkStylesPreCode>;
+  fontFamily: Maybe<Scalars['String']>;
+  overflowX: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesPreCode = {
+  color: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesPreCodeFilterInput = {
+  color: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesPreFilterInput = {
+  code: Maybe<SitePluginPluginOptionsPresetFunkStylesPreCodeFilterInput>;
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  overflowX: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesRoot = {
+  fontFamily: Maybe<Scalars['String']>;
+  fontWeight: Maybe<Scalars['String']>;
+  lineHeight: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesRootFilterInput = {
+  fontFamily: Maybe<StringQueryOperatorInput>;
+  fontWeight: Maybe<StringQueryOperatorInput>;
+  lineHeight: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesTable = {
+  borderCollapse: Maybe<Scalars['String']>;
+  borderSpacing: Maybe<Scalars['Int']>;
+  width: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesTableFilterInput = {
+  borderCollapse: Maybe<StringQueryOperatorInput>;
+  borderSpacing: Maybe<IntQueryOperatorInput>;
+  width: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesTd = {
+  borderBottomStyle: Maybe<Scalars['String']>;
+  textAlign: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesTdFilterInput = {
+  borderBottomStyle: Maybe<StringQueryOperatorInput>;
+  textAlign: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesTh = {
+  borderBottomStyle: Maybe<Scalars['String']>;
+  textAlign: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsPresetFunkStylesThFilterInput = {
+  borderBottomStyle: Maybe<StringQueryOperatorInput>;
+  textAlign: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -7997,6 +8241,156 @@ export type StringQueryOperatorInput = {
   ne: Maybe<Scalars['String']>;
   nin: Maybe<Array<Maybe<Scalars['String']>>>;
   regex: Maybe<Scalars['String']>;
+};
+
+export type ThemeUiConfig = Node & {
+  children: Array<Node>;
+  id: Scalars['ID'];
+  internal: Internal;
+  parent: Maybe<Node>;
+  preset: Maybe<Scalars['JSON']>;
+  prismPreset: Maybe<Scalars['JSON']>;
+};
+
+export type ThemeUiConfigConnection = {
+  distinct: Array<Scalars['String']>;
+  edges: Array<ThemeUiConfigEdge>;
+  group: Array<ThemeUiConfigGroupConnection>;
+  nodes: Array<ThemeUiConfig>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+
+export type ThemeUiConfigConnectionDistinctArgs = {
+  field: ThemeUiConfigFieldsEnum;
+};
+
+
+export type ThemeUiConfigConnectionGroupArgs = {
+  field: ThemeUiConfigFieldsEnum;
+  limit: Maybe<Scalars['Int']>;
+  skip: Maybe<Scalars['Int']>;
+};
+
+export type ThemeUiConfigEdge = {
+  next: Maybe<ThemeUiConfig>;
+  node: ThemeUiConfig;
+  previous: Maybe<ThemeUiConfig>;
+};
+
+export enum ThemeUiConfigFieldsEnum {
+  Children = 'children',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenId = 'children___id',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  Id = 'id',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentId = 'parent___id',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentParentId = 'parent___parent___parent___id',
+  Preset = 'preset',
+  PrismPreset = 'prismPreset'
+}
+
+export type ThemeUiConfigFilterInput = {
+  children: Maybe<NodeFilterListInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  internal: Maybe<InternalFilterInput>;
+  parent: Maybe<NodeFilterInput>;
+  preset: Maybe<JsonQueryOperatorInput>;
+  prismPreset: Maybe<JsonQueryOperatorInput>;
+};
+
+export type ThemeUiConfigGroupConnection = {
+  edges: Array<ThemeUiConfigEdge>;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+  nodes: Array<ThemeUiConfig>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type ThemeUiConfigSortInput = {
+  fields: Maybe<Array<Maybe<ThemeUiConfigFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type TransformOptions = {

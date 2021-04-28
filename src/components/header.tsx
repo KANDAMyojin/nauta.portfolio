@@ -7,20 +7,10 @@ type headerProps = {
 }
 
 const Header: FC<headerProps> = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
+  <nav className="navbar has-background-info-dark" role="navigation" aria-label="main navigation">
+
+    <div className="navbar-brand">
+      <h1 className="title">
         <Link
           to="/"
           style={{
@@ -32,7 +22,7 @@ const Header: FC<headerProps> = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-  </header>
+  </nav>
 )
 
 

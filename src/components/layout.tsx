@@ -9,7 +9,7 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+// import "./layout.css"
 import { FC, ReactNode } from "react"
 
 type layoutProps = {
@@ -18,7 +18,7 @@ type layoutProps = {
 
 const Layout: FC<layoutProps> = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query SiteTitleQuery2 {
       site {
         siteMetadata {
           title

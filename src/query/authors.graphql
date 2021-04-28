@@ -1,7 +1,0 @@
-query Authors {
-    authors {
-        title
-        name
-        biography
-    }
-}

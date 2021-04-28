@@ -1,31 +1,95 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 const { StaticImage } = require('gatsby-plugin-image')
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { FC } from "react"
+import Header from "../components/header"
+import { GraphCms_Product } from "../generated/graphql"
+import Product from "../components/product"
 
-const IndexPage: FC<{}> = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+const IndexPage: FC<{}> = () => {
+  const data = useStaticQuery(graphql`
+      query IndexPageQuery {
+          site {
+              siteMetadata {
+                  title
+              }
+          }
+
+          file(name: {eq: "yacht-animate"}) {
+              publicURL
+          }
+
+          gcms {
+              products {
+                  name
+                  description
+                  url
+                  image {
+                      url
+                  }
+              }
+          }
+      }
+  `)
+
+  const title = data.site.siteMetadata?.title
+  const yachtImageUrl = data.file.publicURL
+  const { products }: {products: GraphCms_Product[]} = data.gcms
+
+  return (
+    <>
+      <section className="hero is-info">
+        <div className="hero-head">
+          <Header siteTitle={title || `Title`} />
+        </div>
+
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <div className="columns is-vcentered">
+              <div className="column is-6">
+                <p className="title is-1">
+                  nauta
+                </p>
+
+                <p>
+                  nauta sails towards Blue Ocean
+                </p>
+              </div>
+              <div className="column">
+                <img src={yachtImageUrl} alt="Yacht" width="400" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <div className="columns has-text-centered">
+            <div className="column is-offset-1 is-10">
+              <h1 className="title is-1 shippori pt-6">
+                Products
+              </h1>
+
+              <div className="tile is-ancestor">
+                <div className="tile is-parent">
+                  {products.map((product) => (
+                    <Product product={product} />
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
 
 export default IndexPage

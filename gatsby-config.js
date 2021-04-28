@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `nauta`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `nauta`,
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
@@ -30,11 +30,19 @@ module.exports = {
     },
     `gatsby-plugin-gatsby-cloud`,
     {
-      resolve: 'gatsby-source-graphcms',
+      resolve: "gatsby-source-graphql",
       options: {
-        // Your GraphCMS API endpoint. Available from your project settings.
-        endpoint: `https://api-ap-northeast-1.graphcms.com/v2/cknzcip5teii201xx6rp7hlp6/master`
+        typeName: "GraphCMS",
+        fieldName: "gcms",
+        url: "https://api-ap-northeast-1.graphcms.com/v2/cknzcip5teii201xx6rp7hlp6/master",
       },
     },
+    {
+      resolve: `gatsby-plugin-theme-ui`,
+      options: {
+        preset: "@theme-ui/preset-funk"
+      }
+    },
+    `gatsby-plugin-sass`
   ],
 }
