@@ -14,7 +14,7 @@ const Product: FC<{product: GraphCms_Product}> = ({ product }) => {
   const LinkButton: FC<{url: GraphCms_Product['url']}> = ({ url }) =>{
     if (!url) return null;
     else return(
-      <a className="button is-primary" href={url}>Link</a>
+      <a className="button is-primary" href={url} target="_blank">Link</a>
     )
   }
 
