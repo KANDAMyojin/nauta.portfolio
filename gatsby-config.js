@@ -1,3 +1,6 @@
+require('dotenv').config()
+const env = process.env
+
 module.exports = {
   siteMetadata: {
     title: `nauta`,
@@ -28,21 +31,27 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-gatsby-cloud`,
-    {
-      resolve: "gatsby-source-graphql",
-      options: {
-        typeName: "GraphCMS",
-        fieldName: "gcms",
-        url: "https://api-ap-northeast-1.graphcms.com/v2/cknzcip5teii201xx6rp7hlp6/master",
-      },
-    },
+    // `gatsby-plugin-gatsby-cloud`,
+    // {
+    //   resolve: "gatsby-source-graphql",
+    //   options: {
+    //     typeName: "GraphCMS",
+    //     fieldName: "gcms",
+    //     url: env.GRAPHCMS_ENDPOINT,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-theme-ui`,
       options: {
         preset: "@theme-ui/preset-funk"
       }
     },
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-source-graphcms',
+      options: {
+        endpoint: env.GRAPHCMS_ENDPOINT,
+      },
+    },
   ],
 }

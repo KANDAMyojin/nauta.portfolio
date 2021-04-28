@@ -7,8 +7,9 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { FC } from "react"
 import Header from "../components/header"
-import { GraphCms_Product } from "../generated/graphql"
+import { GraphCms_Member, GraphCms_Product } from "../generated/graphql"
 import Product from "../components/product"
+import Member from "../components/member"
 
 const IndexPage: FC<{}> = () => {
   const data = useStaticQuery(graphql`
@@ -22,9 +23,9 @@ const IndexPage: FC<{}> = () => {
           file(name: {eq: "yacht-animate"}) {
               publicURL
           }
-
-          gcms {
-              products {
+          
+          allGraphCmsProduct {
+              nodes {
                   name
                   description
                   url
@@ -33,12 +34,19 @@ const IndexPage: FC<{}> = () => {
                   }
               }
           }
+          
+          allGraphCmsMember {
+              nodes {
+                  name
+                  technicalFields
+              }
+          }
       }
   `)
-
   const title = data.site.siteMetadata?.title
   const yachtImageUrl = data.file.publicURL
-  const { products }: {products: GraphCms_Product[]} = data.gcms
+  const products: GraphCms_Product[] = data.allGraphCmsProduct.nodes
+  const members: GraphCms_Member[] = data.allGraphCmsMember.nodes
 
   return (
     <>
@@ -82,6 +90,20 @@ const IndexPage: FC<{}> = () => {
                     <Product product={product} />
                   ))}
                 </div>
+              </div>
+
+              <h1 className="title is-1 shippori pt-6">
+                Members
+              </h1>
+
+              <div className="columns">
+
+                  {members.map((member) => (
+                    <div className="column is-4">
+                      <Member member={member} />
+                    </div>
+                  ))}
+
               </div>
 
             </div>
