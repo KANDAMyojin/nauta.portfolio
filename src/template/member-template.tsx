@@ -18,6 +18,9 @@ export const query = graphql`
             technicalFields
             githubAccount
             birthday
+            icon {
+                url
+            }
         }
     }
         
@@ -28,7 +31,19 @@ const MemberTemplate: FC<memberTemplateProps> = ({data}) => {
 
     return(
       <Layout>
-        <p className="title">{graphCmsMember.name}</p>
+        <div className="tile is-ancestor">
+          <div className="tile is-4">
+            <figure className="image is-128x128">
+              <img src={!!graphCmsMember.icon ? graphCmsMember.icon.url : `https://bulma.io/images/placeholders/128x128.png`}
+                   alt="Placeholder image" />
+            </figure>
+          </div>
+          <div className="tile">
+            <p className="title">
+              {graphCmsMember.name}
+            </p>
+          </div>
+        </div>
       </Layout>
     )
 

@@ -87,24 +87,27 @@ const IndexPage: FC<{}> = () => {
       <section>
         <div className="container">
           <div className="columns has-text-centered is-marginless">
-            <div className="column is-10">
-              <h1 className="title is-1 shippori pt-6">
-                Products
-              </h1>
+            <div className="column is-10 is-offset-1">
+              <section className={`section`}>
+                <h1 className="title is-1 shippori stripe-blue">
+                  Products
+                </h1>
 
-              <div className="tile is-ancestor">
-                <div className="tile is-parent">
-                  {products.map((product) => (
-                    <Product product={product} />
-                  ))}
+                <div className="tile is-ancestor">
+                  <div className="tile is-parent">
+                    {products.map((product) => (
+                      <Product product={product} />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </section>
 
-              <h1 className="title is-1 shippori pt-6">
-                Members
-              </h1>
+              <section className="section">
+                <h1 className="title is-1 shippori pt-6 stripe-orange">
+                  Members
+                </h1>
 
-              <div className="columns">
+                <div className="columns">
 
                   {members.map((member) => (
 
@@ -113,7 +116,9 @@ const IndexPage: FC<{}> = () => {
                     </div>
                   ))}
 
-              </div>
+                </div>
+              </section>
+
 
             </div>
           </div>

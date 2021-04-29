@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 // import "./layout.css"
 import { FC, ReactNode } from "react"
-import Footer from "./Footer"
+import Footer from "./footer"
 
 type layoutProps = {
   children: ReactNode
@@ -31,6 +31,7 @@ const Layout: FC<layoutProps> = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <div className="block" />
       <div
         style={{
           margin: `0 auto`,
