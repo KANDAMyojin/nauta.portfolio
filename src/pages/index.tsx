@@ -1,10 +1,7 @@
 import * as React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { graphql,  useStaticQuery } from "gatsby"
 
-const { StaticImage } = require('gatsby-plugin-image')
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
 import { FC } from "react"
 import Header from "../components/header"
 import { GraphCms_Member, GraphCms_Product } from "../generated/graphql"
