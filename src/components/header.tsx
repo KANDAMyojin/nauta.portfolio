@@ -9,8 +9,8 @@ type headerProps = {
 const Header: FC<headerProps> = ({ siteTitle }) => (
   <nav className="navbar has-background-info-dark" role="navigation" aria-label="main navigation">
 
-    <div className="navbar-brand">
-      <h1 className="title">
+    <div className="navbar-brand is-vertical-center">
+      <h1 className="title pl-4">
         <Link
           to="/"
           style={{

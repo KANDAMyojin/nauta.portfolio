@@ -15,6 +15,7 @@ const IndexPage: FC<{}> = () => {
   const data = useStaticQuery(graphql`
       query IndexPageQuery {
           site {
+              
               siteMetadata {
                   title
               }

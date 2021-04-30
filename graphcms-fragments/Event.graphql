@@ -1,4 +1,4 @@
-fragment Member on Member {
+fragment Event on Event {
   stage
   remoteId: id
   createdAt
@@ -25,31 +25,11 @@ fragment Member on Member {
       stage
     }
   }
-  name
-  technicalFields
-  githubAccount
-  twitterAccount
-  birthday
-  description
-  icon {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-      stage
-    }
-  }
-  cover {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-      stage
-    }
-  }
-  timeline
-  events {
-    ... on Event {
+  timelineType
+  date
+  eventName
+  member {
+    ... on Member {
       remoteTypeName: __typename
       remoteId: id
       stage

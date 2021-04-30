@@ -386,6 +386,50 @@ type GraphCMS_AssetGroupConnection {
     totalCount: Int!
 }
 
+type GraphCMS_Event implements Node {
+    children: [Node!]!
+    createdAt: JSON!
+    createdBy: GraphCMS_User
+    date: JSON!
+    eventName: String!
+    id: ID!
+    internal: Internal!
+    member: GraphCMS_Member
+    parent: Node
+    publishedAt: JSON
+    publishedBy: GraphCMS_User
+    remoteId: ID!
+    remoteTypeName: String!
+    stage: GraphCMS_Stage!
+    timelineType: GraphCMS_TimelineType!
+    updatedAt: JSON!
+    updatedBy: GraphCMS_User
+}
+
+type GraphCMS_EventConnection {
+    distinct(field: GraphCMS_EventFieldsEnum!): [String!]!
+    edges: [GraphCMS_EventEdge!]!
+    group(field: GraphCMS_EventFieldsEnum!, limit: Int, skip: Int): [GraphCMS_EventGroupConnection!]!
+    nodes: [GraphCMS_Event!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type GraphCMS_EventEdge {
+    next: GraphCMS_Event
+    node: GraphCMS_Event!
+    previous: GraphCMS_Event
+}
+
+type GraphCMS_EventGroupConnection {
+    edges: [GraphCMS_EventEdge!]!
+    field: String!
+    fieldValue: String
+    nodes: [GraphCMS_Event!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
 type GraphCMS_Member implements Node {
     birthday: JSON
     children: [Node!]!
@@ -877,6 +921,7 @@ type Query {
     allDirectory(filter: DirectoryFilterInput, limit: Int, skip: Int, sort: DirectorySortInput): DirectoryConnection!
     allFile(filter: FileFilterInput, limit: Int, skip: Int, sort: FileSortInput): FileConnection!
     allGraphCmsAsset(filter: GraphCMS_AssetFilterInput, limit: Int, skip: Int, sort: GraphCMS_AssetSortInput): GraphCMS_AssetConnection!
+    allGraphCmsEvent(filter: GraphCMS_EventFilterInput, limit: Int, skip: Int, sort: GraphCMS_EventSortInput): GraphCMS_EventConnection!
     allGraphCmsMember(filter: GraphCMS_MemberFilterInput, limit: Int, skip: Int, sort: GraphCMS_MemberSortInput): GraphCMS_MemberConnection!
     allGraphCmsPage(filter: GraphCMS_PageFilterInput, limit: Int, skip: Int, sort: GraphCMS_PageSortInput): GraphCMS_PageConnection!
     allGraphCmsPost(filter: GraphCMS_PostFilterInput, limit: Int, skip: Int, sort: GraphCMS_PostSortInput): GraphCMS_PostConnection!
@@ -888,10 +933,10 @@ type Query {
     allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, limit: Int, skip: Int, sort: SiteBuildMetadataSortInput): SiteBuildMetadataConnection!
     allSitePage(filter: SitePageFilterInput, limit: Int, skip: Int, sort: SitePageSortInput): SitePageConnection!
     allSitePlugin(filter: SitePluginFilterInput, limit: Int, skip: Int, sort: SitePluginSortInput): SitePluginConnection!
-    allThemeUiConfig(filter: ThemeUiConfigFilterInput, limit: Int, skip: Int, sort: ThemeUiConfigSortInput): ThemeUiConfigConnection!
     directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
     file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, children: NodeFilterListInput, childrenImageSharp: ImageSharpFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
     graphCmsAsset(children: NodeFilterListInput, coverImagePost: GraphCMS_PostFilterListInput, coverMember: GraphCMS_MemberFilterListInput, createdAt: JSONQueryOperatorInput, createdBy: GraphCMS_UserFilterInput, fileName: StringQueryOperatorInput, handle: StringQueryOperatorInput, height: FloatQueryOperatorInput, iconMember: GraphCMS_MemberFilterListInput, id: StringQueryOperatorInput, imageProduct: GraphCMS_ProductFilterListInput, internal: InternalFilterInput, locale: GraphCMS_LocaleQueryOperatorInput, mimeType: StringQueryOperatorInput, parent: NodeFilterInput, publishedAt: JSONQueryOperatorInput, publishedBy: GraphCMS_UserFilterInput, remoteId: IDQueryOperatorInput, remoteTypeName: StringQueryOperatorInput, seoImage: GraphCMS_SeoFilterListInput, size: FloatQueryOperatorInput, stage: GraphCMS_StageQueryOperatorInput, updatedAt: JSONQueryOperatorInput, updatedBy: GraphCMS_UserFilterInput, url: StringQueryOperatorInput, width: FloatQueryOperatorInput): GraphCMS_Asset
+    graphCmsEvent(children: NodeFilterListInput, createdAt: JSONQueryOperatorInput, createdBy: GraphCMS_UserFilterInput, date: JSONQueryOperatorInput, eventName: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, member: GraphCMS_MemberFilterInput, parent: NodeFilterInput, publishedAt: JSONQueryOperatorInput, publishedBy: GraphCMS_UserFilterInput, remoteId: IDQueryOperatorInput, remoteTypeName: StringQueryOperatorInput, stage: GraphCMS_StageQueryOperatorInput, timelineType: GraphCMS_TimelineTypeQueryOperatorInput, updatedAt: JSONQueryOperatorInput, updatedBy: GraphCMS_UserFilterInput): GraphCMS_Event
     graphCmsMember(birthday: JSONQueryOperatorInput, children: NodeFilterListInput, cover: GraphCMS_AssetFilterInput, createdAt: JSONQueryOperatorInput, createdBy: GraphCMS_UserFilterInput, description: StringQueryOperatorInput, githubAccount: StringQueryOperatorInput, icon: GraphCMS_AssetFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, parent: NodeFilterInput, publishedAt: JSONQueryOperatorInput, publishedBy: GraphCMS_UserFilterInput, remoteId: IDQueryOperatorInput, remoteTypeName: StringQueryOperatorInput, stage: GraphCMS_StageQueryOperatorInput, technicalFields: StringQueryOperatorInput, twitterAccount: StringQueryOperatorInput, updatedAt: JSONQueryOperatorInput, updatedBy: GraphCMS_UserFilterInput): GraphCMS_Member
     graphCmsPage(children: NodeFilterListInput, content: GraphCMS_RichTextFilterInput, createdAt: JSONQueryOperatorInput, createdBy: GraphCMS_UserFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, publishedAt: JSONQueryOperatorInput, publishedBy: GraphCMS_UserFilterInput, remoteId: IDQueryOperatorInput, remoteTypeName: StringQueryOperatorInput, seo: GraphCMS_SeoFilterInput, slug: StringQueryOperatorInput, stage: GraphCMS_StageQueryOperatorInput, subtitle: StringQueryOperatorInput, title: StringQueryOperatorInput, updatedAt: JSONQueryOperatorInput, updatedBy: GraphCMS_UserFilterInput): GraphCMS_Page
     graphCmsPost(children: NodeFilterListInput, content: GraphCMS_RichTextFilterInput, coverImage: GraphCMS_AssetFilterInput, createdAt: JSONQueryOperatorInput, createdBy: GraphCMS_UserFilterInput, date: JSONQueryOperatorInput, excerpt: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, publishedAt: JSONQueryOperatorInput, publishedBy: GraphCMS_UserFilterInput, remoteId: IDQueryOperatorInput, remoteTypeName: StringQueryOperatorInput, seo: GraphCMS_SeoFilterInput, slug: StringQueryOperatorInput, stage: GraphCMS_StageQueryOperatorInput, tags: StringQueryOperatorInput, title: StringQueryOperatorInput, updatedAt: JSONQueryOperatorInput, updatedBy: GraphCMS_UserFilterInput): GraphCMS_Post
@@ -903,7 +948,6 @@ type Query {
     siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
     sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
     sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
-    themeUiConfig(children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, preset: JSONQueryOperatorInput, prismPreset: JSONQueryOperatorInput): ThemeUiConfig
 }
 
 type Site implements Node {
@@ -1129,7 +1173,6 @@ type SitePluginPluginOptions {
     name: String
     path: String
     pathCheck: Boolean
-    preset: SitePluginPluginOptionsPreset
     short_name: String
     stages: [String]
     start_url: String
@@ -1139,354 +1182,10 @@ type SitePluginPluginOptions {
     typePrefix: String
 }
 
-type SitePluginPluginOptionsPreset {
-    default: SitePluginPluginOptionsPresetDefault
-    funk: SitePluginPluginOptionsPresetFunk
-}
-
-type SitePluginPluginOptionsPresetDefault {
-    colors: SitePluginPluginOptionsPresetDefaultColors
-    fontSizes: [Int]
-    fontWeights: SitePluginPluginOptionsPresetDefaultFontWeights
-    fonts: SitePluginPluginOptionsPresetDefaultFonts
-    lineHeights: SitePluginPluginOptionsPresetDefaultLineHeights
-    space: [Int]
-    styles: SitePluginPluginOptionsPresetDefaultStyles
-}
-
-type SitePluginPluginOptionsPresetDefaultColors {
-    background: String
-    muted: String
-    primary: String
-    secondary: String
-    text: String
-}
-
-type SitePluginPluginOptionsPresetDefaultFontWeights {
-    body: Int
-    bold: Int
-    heading: Int
-}
-
-type SitePluginPluginOptionsPresetDefaultFonts {
-    body: String
-    heading: String
-    monospace: String
-}
-
-type SitePluginPluginOptionsPresetDefaultLineHeights {
-    body: Float
-    heading: Float
-}
-
-type SitePluginPluginOptionsPresetDefaultStyles {
-    a: SitePluginPluginOptionsPresetDefaultStylesA
-    code: SitePluginPluginOptionsPresetDefaultStylesCode
-    h1: SitePluginPluginOptionsPresetDefaultStylesH1
-    h2: SitePluginPluginOptionsPresetDefaultStylesH2
-    h3: SitePluginPluginOptionsPresetDefaultStylesH3
-    h4: SitePluginPluginOptionsPresetDefaultStylesH4
-    h5: SitePluginPluginOptionsPresetDefaultStylesH5
-    h6: SitePluginPluginOptionsPresetDefaultStylesH6
-    img: SitePluginPluginOptionsPresetDefaultStylesImg
-    p: SitePluginPluginOptionsPresetDefaultStylesP
-    pre: SitePluginPluginOptionsPresetDefaultStylesPre
-    root: SitePluginPluginOptionsPresetDefaultStylesRoot
-    table: SitePluginPluginOptionsPresetDefaultStylesTable
-    td: SitePluginPluginOptionsPresetDefaultStylesTd
-    th: SitePluginPluginOptionsPresetDefaultStylesTh
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesA {
-    color: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesCode {
-    fontFamily: String
-    fontSize: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesH1 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesH2 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesH3 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesH4 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesH5 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesH6 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesImg {
-    maxWidth: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesP {
-    color: String
-    fontFamily: String
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesPre {
-    code: SitePluginPluginOptionsPresetDefaultStylesPreCode
-    fontFamily: String
-    overflowX: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesPreCode {
-    color: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesRoot {
-    fontFamily: String
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesTable {
-    borderCollapse: String
-    borderSpacing: Int
-    width: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesTd {
-    borderBottomStyle: String
-    textAlign: String
-}
-
-type SitePluginPluginOptionsPresetDefaultStylesTh {
-    borderBottomStyle: String
-    textAlign: String
-}
-
-type SitePluginPluginOptionsPresetFunk {
-    colors: SitePluginPluginOptionsPresetFunkColors
-    fontSizes: [Int]
-    fontWeights: SitePluginPluginOptionsPresetFunkFontWeights
-    fonts: SitePluginPluginOptionsPresetFunkFonts
-    lineHeights: SitePluginPluginOptionsPresetFunkLineHeights
-    space: [Int]
-    styles: SitePluginPluginOptionsPresetFunkStyles
-}
-
-type SitePluginPluginOptionsPresetFunkColors {
-    background: String
-    muted: String
-    primary: String
-    secondary: String
-    text: String
-}
-
-type SitePluginPluginOptionsPresetFunkFontWeights {
-    body: Int
-    bold: Int
-    heading: Int
-}
-
-type SitePluginPluginOptionsPresetFunkFonts {
-    body: String
-    heading: String
-    monospace: String
-}
-
-type SitePluginPluginOptionsPresetFunkLineHeights {
-    body: Float
-    heading: Float
-}
-
-type SitePluginPluginOptionsPresetFunkStyles {
-    a: SitePluginPluginOptionsPresetFunkStylesA
-    code: SitePluginPluginOptionsPresetFunkStylesCode
-    h1: SitePluginPluginOptionsPresetFunkStylesH1
-    h2: SitePluginPluginOptionsPresetFunkStylesH2
-    h3: SitePluginPluginOptionsPresetFunkStylesH3
-    h4: SitePluginPluginOptionsPresetFunkStylesH4
-    h5: SitePluginPluginOptionsPresetFunkStylesH5
-    h6: SitePluginPluginOptionsPresetFunkStylesH6
-    img: SitePluginPluginOptionsPresetFunkStylesImg
-    p: SitePluginPluginOptionsPresetFunkStylesP
-    pre: SitePluginPluginOptionsPresetFunkStylesPre
-    root: SitePluginPluginOptionsPresetFunkStylesRoot
-    table: SitePluginPluginOptionsPresetFunkStylesTable
-    td: SitePluginPluginOptionsPresetFunkStylesTd
-    th: SitePluginPluginOptionsPresetFunkStylesTh
-}
-
-type SitePluginPluginOptionsPresetFunkStylesA {
-    color: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesCode {
-    fontFamily: String
-    fontSize: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesH1 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesH2 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesH3 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesH4 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesH5 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesH6 {
-    color: String
-    fontFamily: String
-    fontSize: Int
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesImg {
-    maxWidth: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesP {
-    color: String
-    fontFamily: String
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesPre {
-    code: SitePluginPluginOptionsPresetFunkStylesPreCode
-    fontFamily: String
-    overflowX: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesPreCode {
-    color: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesRoot {
-    fontFamily: String
-    fontWeight: String
-    lineHeight: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesTable {
-    borderCollapse: String
-    borderSpacing: Int
-    width: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesTd {
-    borderBottomStyle: String
-    textAlign: String
-}
-
-type SitePluginPluginOptionsPresetFunkStylesTh {
-    borderBottomStyle: String
-    textAlign: String
-}
-
 type SiteSiteMetadata {
     author: String
     description: String
     title: String
-}
-
-type ThemeUiConfig implements Node {
-    children: [Node!]!
-    id: ID!
-    internal: Internal!
-    parent: Node
-    preset: JSON
-    prismPreset: JSON
-}
-
-type ThemeUiConfigConnection {
-    distinct(field: ThemeUiConfigFieldsEnum!): [String!]!
-    edges: [ThemeUiConfigEdge!]!
-    group(field: ThemeUiConfigFieldsEnum!, limit: Int, skip: Int): [ThemeUiConfigGroupConnection!]!
-    nodes: [ThemeUiConfig!]!
-    pageInfo: PageInfo!
-    totalCount: Int!
-}
-
-type ThemeUiConfigEdge {
-    next: ThemeUiConfig
-    node: ThemeUiConfig!
-    previous: ThemeUiConfig
-}
-
-type ThemeUiConfigGroupConnection {
-    edges: [ThemeUiConfigEdge!]!
-    field: String!
-    fieldValue: String
-    nodes: [ThemeUiConfig!]!
-    pageInfo: PageInfo!
-    totalCount: Int!
 }
 
 enum DirectoryFieldsEnum {
@@ -3750,6 +3449,634 @@ enum GraphCMS_AssetFieldsEnum {
     updatedBy___updatedAt
     url
     width
+}
+
+enum GraphCMS_EventFieldsEnum {
+    children
+    children___children
+    children___children___children
+    children___children___children___children
+    children___children___children___id
+    children___children___id
+    children___children___internal___content
+    children___children___internal___contentDigest
+    children___children___internal___description
+    children___children___internal___fieldOwners
+    children___children___internal___ignoreType
+    children___children___internal___mediaType
+    children___children___internal___owner
+    children___children___internal___type
+    children___children___parent___children
+    children___children___parent___id
+    children___id
+    children___internal___content
+    children___internal___contentDigest
+    children___internal___description
+    children___internal___fieldOwners
+    children___internal___ignoreType
+    children___internal___mediaType
+    children___internal___owner
+    children___internal___type
+    children___parent___children
+    children___parent___children___children
+    children___parent___children___id
+    children___parent___id
+    children___parent___internal___content
+    children___parent___internal___contentDigest
+    children___parent___internal___description
+    children___parent___internal___fieldOwners
+    children___parent___internal___ignoreType
+    children___parent___internal___mediaType
+    children___parent___internal___owner
+    children___parent___internal___type
+    children___parent___parent___children
+    children___parent___parent___id
+    createdAt
+    createdBy___children
+    createdBy___children___children
+    createdBy___children___children___children
+    createdBy___children___children___id
+    createdBy___children___id
+    createdBy___children___internal___content
+    createdBy___children___internal___contentDigest
+    createdBy___children___internal___description
+    createdBy___children___internal___fieldOwners
+    createdBy___children___internal___ignoreType
+    createdBy___children___internal___mediaType
+    createdBy___children___internal___owner
+    createdBy___children___internal___type
+    createdBy___children___parent___children
+    createdBy___children___parent___id
+    createdBy___createdAt
+    createdBy___id
+    createdBy___internal___content
+    createdBy___internal___contentDigest
+    createdBy___internal___description
+    createdBy___internal___fieldOwners
+    createdBy___internal___ignoreType
+    createdBy___internal___mediaType
+    createdBy___internal___owner
+    createdBy___internal___type
+    createdBy___isActive
+    createdBy___kind
+    createdBy___name
+    createdBy___parent___children
+    createdBy___parent___children___children
+    createdBy___parent___children___id
+    createdBy___parent___id
+    createdBy___parent___internal___content
+    createdBy___parent___internal___contentDigest
+    createdBy___parent___internal___description
+    createdBy___parent___internal___fieldOwners
+    createdBy___parent___internal___ignoreType
+    createdBy___parent___internal___mediaType
+    createdBy___parent___internal___owner
+    createdBy___parent___internal___type
+    createdBy___parent___parent___children
+    createdBy___parent___parent___id
+    createdBy___picture
+    createdBy___publishedAt
+    createdBy___remoteId
+    createdBy___remoteTypeName
+    createdBy___stage
+    createdBy___updatedAt
+    date
+    eventName
+    id
+    internal___content
+    internal___contentDigest
+    internal___description
+    internal___fieldOwners
+    internal___ignoreType
+    internal___mediaType
+    internal___owner
+    internal___type
+    member___birthday
+    member___children
+    member___children___children
+    member___children___children___children
+    member___children___children___id
+    member___children___id
+    member___children___internal___content
+    member___children___internal___contentDigest
+    member___children___internal___description
+    member___children___internal___fieldOwners
+    member___children___internal___ignoreType
+    member___children___internal___mediaType
+    member___children___internal___owner
+    member___children___internal___type
+    member___children___parent___children
+    member___children___parent___id
+    member___cover___children
+    member___cover___children___children
+    member___cover___children___id
+    member___cover___coverImagePost
+    member___cover___coverImagePost___children
+    member___cover___coverImagePost___createdAt
+    member___cover___coverImagePost___date
+    member___cover___coverImagePost___excerpt
+    member___cover___coverImagePost___id
+    member___cover___coverImagePost___publishedAt
+    member___cover___coverImagePost___remoteId
+    member___cover___coverImagePost___remoteTypeName
+    member___cover___coverImagePost___slug
+    member___cover___coverImagePost___stage
+    member___cover___coverImagePost___tags
+    member___cover___coverImagePost___title
+    member___cover___coverImagePost___updatedAt
+    member___cover___coverMember
+    member___cover___coverMember___birthday
+    member___cover___coverMember___children
+    member___cover___coverMember___createdAt
+    member___cover___coverMember___description
+    member___cover___coverMember___githubAccount
+    member___cover___coverMember___id
+    member___cover___coverMember___name
+    member___cover___coverMember___publishedAt
+    member___cover___coverMember___remoteId
+    member___cover___coverMember___remoteTypeName
+    member___cover___coverMember___stage
+    member___cover___coverMember___technicalFields
+    member___cover___coverMember___twitterAccount
+    member___cover___coverMember___updatedAt
+    member___cover___createdAt
+    member___cover___createdBy___children
+    member___cover___createdBy___createdAt
+    member___cover___createdBy___id
+    member___cover___createdBy___isActive
+    member___cover___createdBy___kind
+    member___cover___createdBy___name
+    member___cover___createdBy___picture
+    member___cover___createdBy___publishedAt
+    member___cover___createdBy___remoteId
+    member___cover___createdBy___remoteTypeName
+    member___cover___createdBy___stage
+    member___cover___createdBy___updatedAt
+    member___cover___fileName
+    member___cover___handle
+    member___cover___height
+    member___cover___iconMember
+    member___cover___iconMember___birthday
+    member___cover___iconMember___children
+    member___cover___iconMember___createdAt
+    member___cover___iconMember___description
+    member___cover___iconMember___githubAccount
+    member___cover___iconMember___id
+    member___cover___iconMember___name
+    member___cover___iconMember___publishedAt
+    member___cover___iconMember___remoteId
+    member___cover___iconMember___remoteTypeName
+    member___cover___iconMember___stage
+    member___cover___iconMember___technicalFields
+    member___cover___iconMember___twitterAccount
+    member___cover___iconMember___updatedAt
+    member___cover___id
+    member___cover___imageProduct
+    member___cover___imageProduct___children
+    member___cover___imageProduct___createdAt
+    member___cover___imageProduct___description
+    member___cover___imageProduct___id
+    member___cover___imageProduct___name
+    member___cover___imageProduct___publishedAt
+    member___cover___imageProduct___remoteId
+    member___cover___imageProduct___remoteTypeName
+    member___cover___imageProduct___stage
+    member___cover___imageProduct___updatedAt
+    member___cover___imageProduct___url
+    member___cover___internal___content
+    member___cover___internal___contentDigest
+    member___cover___internal___description
+    member___cover___internal___fieldOwners
+    member___cover___internal___ignoreType
+    member___cover___internal___mediaType
+    member___cover___internal___owner
+    member___cover___internal___type
+    member___cover___locale
+    member___cover___mimeType
+    member___cover___parent___children
+    member___cover___parent___id
+    member___cover___publishedAt
+    member___cover___publishedBy___children
+    member___cover___publishedBy___createdAt
+    member___cover___publishedBy___id
+    member___cover___publishedBy___isActive
+    member___cover___publishedBy___kind
+    member___cover___publishedBy___name
+    member___cover___publishedBy___picture
+    member___cover___publishedBy___publishedAt
+    member___cover___publishedBy___remoteId
+    member___cover___publishedBy___remoteTypeName
+    member___cover___publishedBy___stage
+    member___cover___publishedBy___updatedAt
+    member___cover___remoteId
+    member___cover___remoteTypeName
+    member___cover___seoImage
+    member___cover___seoImage___children
+    member___cover___seoImage___createdAt
+    member___cover___seoImage___description
+    member___cover___seoImage___id
+    member___cover___seoImage___keywords
+    member___cover___seoImage___publishedAt
+    member___cover___seoImage___remoteId
+    member___cover___seoImage___remoteTypeName
+    member___cover___seoImage___stage
+    member___cover___seoImage___title
+    member___cover___seoImage___updatedAt
+    member___cover___size
+    member___cover___stage
+    member___cover___updatedAt
+    member___cover___updatedBy___children
+    member___cover___updatedBy___createdAt
+    member___cover___updatedBy___id
+    member___cover___updatedBy___isActive
+    member___cover___updatedBy___kind
+    member___cover___updatedBy___name
+    member___cover___updatedBy___picture
+    member___cover___updatedBy___publishedAt
+    member___cover___updatedBy___remoteId
+    member___cover___updatedBy___remoteTypeName
+    member___cover___updatedBy___stage
+    member___cover___updatedBy___updatedAt
+    member___cover___url
+    member___cover___width
+    member___createdAt
+    member___createdBy___children
+    member___createdBy___children___children
+    member___createdBy___children___id
+    member___createdBy___createdAt
+    member___createdBy___id
+    member___createdBy___internal___content
+    member___createdBy___internal___contentDigest
+    member___createdBy___internal___description
+    member___createdBy___internal___fieldOwners
+    member___createdBy___internal___ignoreType
+    member___createdBy___internal___mediaType
+    member___createdBy___internal___owner
+    member___createdBy___internal___type
+    member___createdBy___isActive
+    member___createdBy___kind
+    member___createdBy___name
+    member___createdBy___parent___children
+    member___createdBy___parent___id
+    member___createdBy___picture
+    member___createdBy___publishedAt
+    member___createdBy___remoteId
+    member___createdBy___remoteTypeName
+    member___createdBy___stage
+    member___createdBy___updatedAt
+    member___description
+    member___githubAccount
+    member___icon___children
+    member___icon___children___children
+    member___icon___children___id
+    member___icon___coverImagePost
+    member___icon___coverImagePost___children
+    member___icon___coverImagePost___createdAt
+    member___icon___coverImagePost___date
+    member___icon___coverImagePost___excerpt
+    member___icon___coverImagePost___id
+    member___icon___coverImagePost___publishedAt
+    member___icon___coverImagePost___remoteId
+    member___icon___coverImagePost___remoteTypeName
+    member___icon___coverImagePost___slug
+    member___icon___coverImagePost___stage
+    member___icon___coverImagePost___tags
+    member___icon___coverImagePost___title
+    member___icon___coverImagePost___updatedAt
+    member___icon___coverMember
+    member___icon___coverMember___birthday
+    member___icon___coverMember___children
+    member___icon___coverMember___createdAt
+    member___icon___coverMember___description
+    member___icon___coverMember___githubAccount
+    member___icon___coverMember___id
+    member___icon___coverMember___name
+    member___icon___coverMember___publishedAt
+    member___icon___coverMember___remoteId
+    member___icon___coverMember___remoteTypeName
+    member___icon___coverMember___stage
+    member___icon___coverMember___technicalFields
+    member___icon___coverMember___twitterAccount
+    member___icon___coverMember___updatedAt
+    member___icon___createdAt
+    member___icon___createdBy___children
+    member___icon___createdBy___createdAt
+    member___icon___createdBy___id
+    member___icon___createdBy___isActive
+    member___icon___createdBy___kind
+    member___icon___createdBy___name
+    member___icon___createdBy___picture
+    member___icon___createdBy___publishedAt
+    member___icon___createdBy___remoteId
+    member___icon___createdBy___remoteTypeName
+    member___icon___createdBy___stage
+    member___icon___createdBy___updatedAt
+    member___icon___fileName
+    member___icon___handle
+    member___icon___height
+    member___icon___iconMember
+    member___icon___iconMember___birthday
+    member___icon___iconMember___children
+    member___icon___iconMember___createdAt
+    member___icon___iconMember___description
+    member___icon___iconMember___githubAccount
+    member___icon___iconMember___id
+    member___icon___iconMember___name
+    member___icon___iconMember___publishedAt
+    member___icon___iconMember___remoteId
+    member___icon___iconMember___remoteTypeName
+    member___icon___iconMember___stage
+    member___icon___iconMember___technicalFields
+    member___icon___iconMember___twitterAccount
+    member___icon___iconMember___updatedAt
+    member___icon___id
+    member___icon___imageProduct
+    member___icon___imageProduct___children
+    member___icon___imageProduct___createdAt
+    member___icon___imageProduct___description
+    member___icon___imageProduct___id
+    member___icon___imageProduct___name
+    member___icon___imageProduct___publishedAt
+    member___icon___imageProduct___remoteId
+    member___icon___imageProduct___remoteTypeName
+    member___icon___imageProduct___stage
+    member___icon___imageProduct___updatedAt
+    member___icon___imageProduct___url
+    member___icon___internal___content
+    member___icon___internal___contentDigest
+    member___icon___internal___description
+    member___icon___internal___fieldOwners
+    member___icon___internal___ignoreType
+    member___icon___internal___mediaType
+    member___icon___internal___owner
+    member___icon___internal___type
+    member___icon___locale
+    member___icon___mimeType
+    member___icon___parent___children
+    member___icon___parent___id
+    member___icon___publishedAt
+    member___icon___publishedBy___children
+    member___icon___publishedBy___createdAt
+    member___icon___publishedBy___id
+    member___icon___publishedBy___isActive
+    member___icon___publishedBy___kind
+    member___icon___publishedBy___name
+    member___icon___publishedBy___picture
+    member___icon___publishedBy___publishedAt
+    member___icon___publishedBy___remoteId
+    member___icon___publishedBy___remoteTypeName
+    member___icon___publishedBy___stage
+    member___icon___publishedBy___updatedAt
+    member___icon___remoteId
+    member___icon___remoteTypeName
+    member___icon___seoImage
+    member___icon___seoImage___children
+    member___icon___seoImage___createdAt
+    member___icon___seoImage___description
+    member___icon___seoImage___id
+    member___icon___seoImage___keywords
+    member___icon___seoImage___publishedAt
+    member___icon___seoImage___remoteId
+    member___icon___seoImage___remoteTypeName
+    member___icon___seoImage___stage
+    member___icon___seoImage___title
+    member___icon___seoImage___updatedAt
+    member___icon___size
+    member___icon___stage
+    member___icon___updatedAt
+    member___icon___updatedBy___children
+    member___icon___updatedBy___createdAt
+    member___icon___updatedBy___id
+    member___icon___updatedBy___isActive
+    member___icon___updatedBy___kind
+    member___icon___updatedBy___name
+    member___icon___updatedBy___picture
+    member___icon___updatedBy___publishedAt
+    member___icon___updatedBy___remoteId
+    member___icon___updatedBy___remoteTypeName
+    member___icon___updatedBy___stage
+    member___icon___updatedBy___updatedAt
+    member___icon___url
+    member___icon___width
+    member___id
+    member___internal___content
+    member___internal___contentDigest
+    member___internal___description
+    member___internal___fieldOwners
+    member___internal___ignoreType
+    member___internal___mediaType
+    member___internal___owner
+    member___internal___type
+    member___name
+    member___parent___children
+    member___parent___children___children
+    member___parent___children___id
+    member___parent___id
+    member___parent___internal___content
+    member___parent___internal___contentDigest
+    member___parent___internal___description
+    member___parent___internal___fieldOwners
+    member___parent___internal___ignoreType
+    member___parent___internal___mediaType
+    member___parent___internal___owner
+    member___parent___internal___type
+    member___parent___parent___children
+    member___parent___parent___id
+    member___publishedAt
+    member___publishedBy___children
+    member___publishedBy___children___children
+    member___publishedBy___children___id
+    member___publishedBy___createdAt
+    member___publishedBy___id
+    member___publishedBy___internal___content
+    member___publishedBy___internal___contentDigest
+    member___publishedBy___internal___description
+    member___publishedBy___internal___fieldOwners
+    member___publishedBy___internal___ignoreType
+    member___publishedBy___internal___mediaType
+    member___publishedBy___internal___owner
+    member___publishedBy___internal___type
+    member___publishedBy___isActive
+    member___publishedBy___kind
+    member___publishedBy___name
+    member___publishedBy___parent___children
+    member___publishedBy___parent___id
+    member___publishedBy___picture
+    member___publishedBy___publishedAt
+    member___publishedBy___remoteId
+    member___publishedBy___remoteTypeName
+    member___publishedBy___stage
+    member___publishedBy___updatedAt
+    member___remoteId
+    member___remoteTypeName
+    member___stage
+    member___technicalFields
+    member___twitterAccount
+    member___updatedAt
+    member___updatedBy___children
+    member___updatedBy___children___children
+    member___updatedBy___children___id
+    member___updatedBy___createdAt
+    member___updatedBy___id
+    member___updatedBy___internal___content
+    member___updatedBy___internal___contentDigest
+    member___updatedBy___internal___description
+    member___updatedBy___internal___fieldOwners
+    member___updatedBy___internal___ignoreType
+    member___updatedBy___internal___mediaType
+    member___updatedBy___internal___owner
+    member___updatedBy___internal___type
+    member___updatedBy___isActive
+    member___updatedBy___kind
+    member___updatedBy___name
+    member___updatedBy___parent___children
+    member___updatedBy___parent___id
+    member___updatedBy___picture
+    member___updatedBy___publishedAt
+    member___updatedBy___remoteId
+    member___updatedBy___remoteTypeName
+    member___updatedBy___stage
+    member___updatedBy___updatedAt
+    parent___children
+    parent___children___children
+    parent___children___children___children
+    parent___children___children___id
+    parent___children___id
+    parent___children___internal___content
+    parent___children___internal___contentDigest
+    parent___children___internal___description
+    parent___children___internal___fieldOwners
+    parent___children___internal___ignoreType
+    parent___children___internal___mediaType
+    parent___children___internal___owner
+    parent___children___internal___type
+    parent___children___parent___children
+    parent___children___parent___id
+    parent___id
+    parent___internal___content
+    parent___internal___contentDigest
+    parent___internal___description
+    parent___internal___fieldOwners
+    parent___internal___ignoreType
+    parent___internal___mediaType
+    parent___internal___owner
+    parent___internal___type
+    parent___parent___children
+    parent___parent___children___children
+    parent___parent___children___id
+    parent___parent___id
+    parent___parent___internal___content
+    parent___parent___internal___contentDigest
+    parent___parent___internal___description
+    parent___parent___internal___fieldOwners
+    parent___parent___internal___ignoreType
+    parent___parent___internal___mediaType
+    parent___parent___internal___owner
+    parent___parent___internal___type
+    parent___parent___parent___children
+    parent___parent___parent___id
+    publishedAt
+    publishedBy___children
+    publishedBy___children___children
+    publishedBy___children___children___children
+    publishedBy___children___children___id
+    publishedBy___children___id
+    publishedBy___children___internal___content
+    publishedBy___children___internal___contentDigest
+    publishedBy___children___internal___description
+    publishedBy___children___internal___fieldOwners
+    publishedBy___children___internal___ignoreType
+    publishedBy___children___internal___mediaType
+    publishedBy___children___internal___owner
+    publishedBy___children___internal___type
+    publishedBy___children___parent___children
+    publishedBy___children___parent___id
+    publishedBy___createdAt
+    publishedBy___id
+    publishedBy___internal___content
+    publishedBy___internal___contentDigest
+    publishedBy___internal___description
+    publishedBy___internal___fieldOwners
+    publishedBy___internal___ignoreType
+    publishedBy___internal___mediaType
+    publishedBy___internal___owner
+    publishedBy___internal___type
+    publishedBy___isActive
+    publishedBy___kind
+    publishedBy___name
+    publishedBy___parent___children
+    publishedBy___parent___children___children
+    publishedBy___parent___children___id
+    publishedBy___parent___id
+    publishedBy___parent___internal___content
+    publishedBy___parent___internal___contentDigest
+    publishedBy___parent___internal___description
+    publishedBy___parent___internal___fieldOwners
+    publishedBy___parent___internal___ignoreType
+    publishedBy___parent___internal___mediaType
+    publishedBy___parent___internal___owner
+    publishedBy___parent___internal___type
+    publishedBy___parent___parent___children
+    publishedBy___parent___parent___id
+    publishedBy___picture
+    publishedBy___publishedAt
+    publishedBy___remoteId
+    publishedBy___remoteTypeName
+    publishedBy___stage
+    publishedBy___updatedAt
+    remoteId
+    remoteTypeName
+    stage
+    timelineType
+    updatedAt
+    updatedBy___children
+    updatedBy___children___children
+    updatedBy___children___children___children
+    updatedBy___children___children___id
+    updatedBy___children___id
+    updatedBy___children___internal___content
+    updatedBy___children___internal___contentDigest
+    updatedBy___children___internal___description
+    updatedBy___children___internal___fieldOwners
+    updatedBy___children___internal___ignoreType
+    updatedBy___children___internal___mediaType
+    updatedBy___children___internal___owner
+    updatedBy___children___internal___type
+    updatedBy___children___parent___children
+    updatedBy___children___parent___id
+    updatedBy___createdAt
+    updatedBy___id
+    updatedBy___internal___content
+    updatedBy___internal___contentDigest
+    updatedBy___internal___description
+    updatedBy___internal___fieldOwners
+    updatedBy___internal___ignoreType
+    updatedBy___internal___mediaType
+    updatedBy___internal___owner
+    updatedBy___internal___type
+    updatedBy___isActive
+    updatedBy___kind
+    updatedBy___name
+    updatedBy___parent___children
+    updatedBy___parent___children___children
+    updatedBy___parent___children___id
+    updatedBy___parent___id
+    updatedBy___parent___internal___content
+    updatedBy___parent___internal___contentDigest
+    updatedBy___parent___internal___description
+    updatedBy___parent___internal___fieldOwners
+    updatedBy___parent___internal___ignoreType
+    updatedBy___parent___internal___mediaType
+    updatedBy___parent___internal___owner
+    updatedBy___parent___internal___type
+    updatedBy___parent___parent___children
+    updatedBy___parent___parent___id
+    updatedBy___picture
+    updatedBy___publishedAt
+    updatedBy___remoteId
+    updatedBy___remoteTypeName
+    updatedBy___stage
+    updatedBy___updatedAt
 }
 
 enum GraphCMS_Locale {
@@ -8463,6 +8790,11 @@ enum GraphCMS_Stage {
     PUBLISHED
 }
 
+enum GraphCMS_TimelineType {
+    header
+    item
+}
+
 enum GraphCMS_UserFieldsEnum {
     children
     children___children
@@ -9247,10 +9579,6 @@ enum SitePluginFieldsEnum {
     pluginOptions___name
     pluginOptions___path
     pluginOptions___pathCheck
-    pluginOptions___preset___default___fontSizes
-    pluginOptions___preset___default___space
-    pluginOptions___preset___funk___fontSizes
-    pluginOptions___preset___funk___space
     pluginOptions___short_name
     pluginOptions___stages
     pluginOptions___start_url
@@ -9266,97 +9594,6 @@ enum SitePluginFieldsEnum {
 enum SortOrderEnum {
     ASC
     DESC
-}
-
-enum ThemeUiConfigFieldsEnum {
-    children
-    children___children
-    children___children___children
-    children___children___children___children
-    children___children___children___id
-    children___children___id
-    children___children___internal___content
-    children___children___internal___contentDigest
-    children___children___internal___description
-    children___children___internal___fieldOwners
-    children___children___internal___ignoreType
-    children___children___internal___mediaType
-    children___children___internal___owner
-    children___children___internal___type
-    children___children___parent___children
-    children___children___parent___id
-    children___id
-    children___internal___content
-    children___internal___contentDigest
-    children___internal___description
-    children___internal___fieldOwners
-    children___internal___ignoreType
-    children___internal___mediaType
-    children___internal___owner
-    children___internal___type
-    children___parent___children
-    children___parent___children___children
-    children___parent___children___id
-    children___parent___id
-    children___parent___internal___content
-    children___parent___internal___contentDigest
-    children___parent___internal___description
-    children___parent___internal___fieldOwners
-    children___parent___internal___ignoreType
-    children___parent___internal___mediaType
-    children___parent___internal___owner
-    children___parent___internal___type
-    children___parent___parent___children
-    children___parent___parent___id
-    id
-    internal___content
-    internal___contentDigest
-    internal___description
-    internal___fieldOwners
-    internal___ignoreType
-    internal___mediaType
-    internal___owner
-    internal___type
-    parent___children
-    parent___children___children
-    parent___children___children___children
-    parent___children___children___id
-    parent___children___id
-    parent___children___internal___content
-    parent___children___internal___contentDigest
-    parent___children___internal___description
-    parent___children___internal___fieldOwners
-    parent___children___internal___ignoreType
-    parent___children___internal___mediaType
-    parent___children___internal___owner
-    parent___children___internal___type
-    parent___children___parent___children
-    parent___children___parent___id
-    parent___id
-    parent___internal___content
-    parent___internal___contentDigest
-    parent___internal___description
-    parent___internal___fieldOwners
-    parent___internal___ignoreType
-    parent___internal___mediaType
-    parent___internal___owner
-    parent___internal___type
-    parent___parent___children
-    parent___parent___children___children
-    parent___parent___children___id
-    parent___parent___id
-    parent___parent___internal___content
-    parent___parent___internal___contentDigest
-    parent___parent___internal___description
-    parent___parent___internal___fieldOwners
-    parent___parent___internal___ignoreType
-    parent___parent___internal___mediaType
-    parent___parent___internal___owner
-    parent___parent___internal___type
-    parent___parent___parent___children
-    parent___parent___parent___id
-    preset
-    prismPreset
 }
 
 input AVIFOptions {
@@ -9534,6 +9771,31 @@ input GraphCMS_AssetSortInput {
     order: [SortOrderEnum] = [ASC]
 }
 
+input GraphCMS_EventFilterInput {
+    children: NodeFilterListInput
+    createdAt: JSONQueryOperatorInput
+    createdBy: GraphCMS_UserFilterInput
+    date: JSONQueryOperatorInput
+    eventName: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    member: GraphCMS_MemberFilterInput
+    parent: NodeFilterInput
+    publishedAt: JSONQueryOperatorInput
+    publishedBy: GraphCMS_UserFilterInput
+    remoteId: IDQueryOperatorInput
+    remoteTypeName: StringQueryOperatorInput
+    stage: GraphCMS_StageQueryOperatorInput
+    timelineType: GraphCMS_TimelineTypeQueryOperatorInput
+    updatedAt: JSONQueryOperatorInput
+    updatedBy: GraphCMS_UserFilterInput
+}
+
+input GraphCMS_EventSortInput {
+    fields: [GraphCMS_EventFieldsEnum]
+    order: [SortOrderEnum] = [ASC]
+}
+
 input GraphCMS_LocaleQueryOperatorInput {
     eq: GraphCMS_Locale
     in: [GraphCMS_Locale]
@@ -9704,6 +9966,13 @@ input GraphCMS_StageQueryOperatorInput {
     in: [GraphCMS_Stage]
     ne: GraphCMS_Stage
     nin: [GraphCMS_Stage]
+}
+
+input GraphCMS_TimelineTypeQueryOperatorInput {
+    eq: GraphCMS_TimelineType
+    in: [GraphCMS_TimelineType]
+    ne: GraphCMS_TimelineType
+    nin: [GraphCMS_TimelineType]
 }
 
 input GraphCMS_UserFilterInput {
@@ -10001,7 +10270,6 @@ input SitePluginPluginOptionsFilterInput {
     name: StringQueryOperatorInput
     path: StringQueryOperatorInput
     pathCheck: BooleanQueryOperatorInput
-    preset: SitePluginPluginOptionsPresetFilterInput
     short_name: StringQueryOperatorInput
     stages: StringQueryOperatorInput
     start_url: StringQueryOperatorInput
@@ -10009,317 +10277,6 @@ input SitePluginPluginOptionsFilterInput {
     theme_color: StringQueryOperatorInput
     theme_color_in_head: BooleanQueryOperatorInput
     typePrefix: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultColorsFilterInput {
-    background: StringQueryOperatorInput
-    muted: StringQueryOperatorInput
-    primary: StringQueryOperatorInput
-    secondary: StringQueryOperatorInput
-    text: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultFilterInput {
-    colors: SitePluginPluginOptionsPresetDefaultColorsFilterInput
-    fontSizes: IntQueryOperatorInput
-    fontWeights: SitePluginPluginOptionsPresetDefaultFontWeightsFilterInput
-    fonts: SitePluginPluginOptionsPresetDefaultFontsFilterInput
-    lineHeights: SitePluginPluginOptionsPresetDefaultLineHeightsFilterInput
-    space: IntQueryOperatorInput
-    styles: SitePluginPluginOptionsPresetDefaultStylesFilterInput
-}
-
-input SitePluginPluginOptionsPresetDefaultFontWeightsFilterInput {
-    body: IntQueryOperatorInput
-    bold: IntQueryOperatorInput
-    heading: IntQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultFontsFilterInput {
-    body: StringQueryOperatorInput
-    heading: StringQueryOperatorInput
-    monospace: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultLineHeightsFilterInput {
-    body: FloatQueryOperatorInput
-    heading: FloatQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesAFilterInput {
-    color: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesCodeFilterInput {
-    fontFamily: StringQueryOperatorInput
-    fontSize: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesFilterInput {
-    a: SitePluginPluginOptionsPresetDefaultStylesAFilterInput
-    code: SitePluginPluginOptionsPresetDefaultStylesCodeFilterInput
-    h1: SitePluginPluginOptionsPresetDefaultStylesH1FilterInput
-    h2: SitePluginPluginOptionsPresetDefaultStylesH2FilterInput
-    h3: SitePluginPluginOptionsPresetDefaultStylesH3FilterInput
-    h4: SitePluginPluginOptionsPresetDefaultStylesH4FilterInput
-    h5: SitePluginPluginOptionsPresetDefaultStylesH5FilterInput
-    h6: SitePluginPluginOptionsPresetDefaultStylesH6FilterInput
-    img: SitePluginPluginOptionsPresetDefaultStylesImgFilterInput
-    p: SitePluginPluginOptionsPresetDefaultStylesPFilterInput
-    pre: SitePluginPluginOptionsPresetDefaultStylesPreFilterInput
-    root: SitePluginPluginOptionsPresetDefaultStylesRootFilterInput
-    table: SitePluginPluginOptionsPresetDefaultStylesTableFilterInput
-    td: SitePluginPluginOptionsPresetDefaultStylesTdFilterInput
-    th: SitePluginPluginOptionsPresetDefaultStylesThFilterInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesH1FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesH2FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesH3FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesH4FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesH5FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesH6FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesImgFilterInput {
-    maxWidth: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesPFilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesPreCodeFilterInput {
-    color: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesPreFilterInput {
-    code: SitePluginPluginOptionsPresetDefaultStylesPreCodeFilterInput
-    fontFamily: StringQueryOperatorInput
-    overflowX: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesRootFilterInput {
-    fontFamily: StringQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesTableFilterInput {
-    borderCollapse: StringQueryOperatorInput
-    borderSpacing: IntQueryOperatorInput
-    width: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesTdFilterInput {
-    borderBottomStyle: StringQueryOperatorInput
-    textAlign: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetDefaultStylesThFilterInput {
-    borderBottomStyle: StringQueryOperatorInput
-    textAlign: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFilterInput {
-    default: SitePluginPluginOptionsPresetDefaultFilterInput
-    funk: SitePluginPluginOptionsPresetFunkFilterInput
-}
-
-input SitePluginPluginOptionsPresetFunkColorsFilterInput {
-    background: StringQueryOperatorInput
-    muted: StringQueryOperatorInput
-    primary: StringQueryOperatorInput
-    secondary: StringQueryOperatorInput
-    text: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkFilterInput {
-    colors: SitePluginPluginOptionsPresetFunkColorsFilterInput
-    fontSizes: IntQueryOperatorInput
-    fontWeights: SitePluginPluginOptionsPresetFunkFontWeightsFilterInput
-    fonts: SitePluginPluginOptionsPresetFunkFontsFilterInput
-    lineHeights: SitePluginPluginOptionsPresetFunkLineHeightsFilterInput
-    space: IntQueryOperatorInput
-    styles: SitePluginPluginOptionsPresetFunkStylesFilterInput
-}
-
-input SitePluginPluginOptionsPresetFunkFontWeightsFilterInput {
-    body: IntQueryOperatorInput
-    bold: IntQueryOperatorInput
-    heading: IntQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkFontsFilterInput {
-    body: StringQueryOperatorInput
-    heading: StringQueryOperatorInput
-    monospace: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkLineHeightsFilterInput {
-    body: FloatQueryOperatorInput
-    heading: FloatQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesAFilterInput {
-    color: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesCodeFilterInput {
-    fontFamily: StringQueryOperatorInput
-    fontSize: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesFilterInput {
-    a: SitePluginPluginOptionsPresetFunkStylesAFilterInput
-    code: SitePluginPluginOptionsPresetFunkStylesCodeFilterInput
-    h1: SitePluginPluginOptionsPresetFunkStylesH1FilterInput
-    h2: SitePluginPluginOptionsPresetFunkStylesH2FilterInput
-    h3: SitePluginPluginOptionsPresetFunkStylesH3FilterInput
-    h4: SitePluginPluginOptionsPresetFunkStylesH4FilterInput
-    h5: SitePluginPluginOptionsPresetFunkStylesH5FilterInput
-    h6: SitePluginPluginOptionsPresetFunkStylesH6FilterInput
-    img: SitePluginPluginOptionsPresetFunkStylesImgFilterInput
-    p: SitePluginPluginOptionsPresetFunkStylesPFilterInput
-    pre: SitePluginPluginOptionsPresetFunkStylesPreFilterInput
-    root: SitePluginPluginOptionsPresetFunkStylesRootFilterInput
-    table: SitePluginPluginOptionsPresetFunkStylesTableFilterInput
-    td: SitePluginPluginOptionsPresetFunkStylesTdFilterInput
-    th: SitePluginPluginOptionsPresetFunkStylesThFilterInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesH1FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesH2FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesH3FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesH4FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesH5FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesH6FilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontSize: IntQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesImgFilterInput {
-    maxWidth: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesPFilterInput {
-    color: StringQueryOperatorInput
-    fontFamily: StringQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesPreCodeFilterInput {
-    color: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesPreFilterInput {
-    code: SitePluginPluginOptionsPresetFunkStylesPreCodeFilterInput
-    fontFamily: StringQueryOperatorInput
-    overflowX: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesRootFilterInput {
-    fontFamily: StringQueryOperatorInput
-    fontWeight: StringQueryOperatorInput
-    lineHeight: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesTableFilterInput {
-    borderCollapse: StringQueryOperatorInput
-    borderSpacing: IntQueryOperatorInput
-    width: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesTdFilterInput {
-    borderBottomStyle: StringQueryOperatorInput
-    textAlign: StringQueryOperatorInput
-}
-
-input SitePluginPluginOptionsPresetFunkStylesThFilterInput {
-    borderBottomStyle: StringQueryOperatorInput
-    textAlign: StringQueryOperatorInput
 }
 
 input SitePluginSortInput {
@@ -10345,20 +10302,6 @@ input StringQueryOperatorInput {
     ne: String
     nin: [String]
     regex: String
-}
-
-input ThemeUiConfigFilterInput {
-    children: NodeFilterListInput
-    id: StringQueryOperatorInput
-    internal: InternalFilterInput
-    parent: NodeFilterInput
-    preset: JSONQueryOperatorInput
-    prismPreset: JSONQueryOperatorInput
-}
-
-input ThemeUiConfigSortInput {
-    fields: [ThemeUiConfigFieldsEnum]
-    order: [SortOrderEnum] = [ASC]
 }
 
 input TransformOptions {

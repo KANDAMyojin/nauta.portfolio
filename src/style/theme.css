@@ -1,15 +1,15 @@
 /*
-Error: File to import not found or unreadable: ~bulma/bulma.sass.
+Error: File to import not found or unreadable: ~bulma.
         on line 3 of theme.scss
 
 1: @charset "utf-8";
 2: 
-3: @import "~bulma/bulma.sass";
-4: @import "~@fontsource/shippori-mincho/index.css";
+3: @import "~bulma";
+4: @import '~bulma-extensions/bulma-timeline/dist/css/bulma-timeline';
 5: 
-6: .shippori {
-7:   font-family: "Shippori Mincho";
-8: }
+6: @import "~@fontsource/shippori-mincho/index.css";
+7: 
+8: .shippori {
 
 Backtrace:
 theme.scss:3
@@ -50,4 +50,4 @@ theme.scss:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 3 of theme.scss\A \A 1: @charset \"utf-8\";\A 2: \A 3: @import \"~bulma/bulma.sass\";\A 4: @import \"~@fontsource/shippori-mincho/index.css\";\A 5: \A 6: .shippori {\A 7:   font-family: \"Shippori Mincho\";\A 8: }"; }
+  content: "Error: File to import not found or unreadable: ~bulma.\A         on line 3 of theme.scss\A \A 1: @charset \"utf-8\";\A 2: \A 3: @import \"~bulma\";\A 4: @import '~bulma-extensions/bulma-timeline/dist/css/bulma-timeline';\A 5: \A 6: @import \"~@fontsource/shippori-mincho/index.css\";\A 7: \A 8: .shippori {"; }
