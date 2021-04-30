@@ -3,7 +3,7 @@ import { FC } from "react"
 import { GraphCms_Member } from "../generated/graphql"
 import { graphql, useStaticQuery } from "gatsby"
 
-const Member: FC<{ member: GraphCms_Member }> = ({ member }) => {
+const MemberRoll: FC<{ member: GraphCms_Member }> = ({ member }) => {
 
   const data = useStaticQuery(graphql`
       query {
@@ -114,4 +114,4 @@ const Member: FC<{ member: GraphCms_Member }> = ({ member }) => {
   )
 }
 
-export default Member
+export default MemberRoll

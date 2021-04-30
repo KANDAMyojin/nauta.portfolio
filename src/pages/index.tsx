@@ -8,8 +8,8 @@ import Seo from "../components/seo"
 import { FC } from "react"
 import Header from "../components/header"
 import { GraphCms_Member, GraphCms_Product } from "../generated/graphql"
-import Product from "../components/product"
-import Member from "../components/member"
+import ProductRoll from "../components/productRoll"
+import MemberRoll from "../components/memberRoll"
 
 const IndexPage: FC<{}> = () => {
   const data = useStaticQuery(graphql`
@@ -96,7 +96,7 @@ const IndexPage: FC<{}> = () => {
                 <div className="tile is-ancestor">
                   <div className="tile is-parent">
                     {products.map((product) => (
-                      <Product product={product} />
+                      <ProductRoll product={product} />
                     ))}
                   </div>
                 </div>
@@ -107,12 +107,12 @@ const IndexPage: FC<{}> = () => {
                   Members
                 </h1>
 
-                <div className="columns">
+                <div className="columns is-multiline">
 
                   {members.map((member) => (
 
                     <div className="column is-4">
-                      <Member member={member} />
+                      <MemberRoll member={member} />
                     </div>
                   ))}
 

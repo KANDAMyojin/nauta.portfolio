@@ -2,7 +2,7 @@ import * as React  from "react"
 import { FC } from "react"
 import { GraphCms_Asset, GraphCms_Product, Maybe } from "../generated/graphql"
 
-const Product: FC<{product: GraphCms_Product}> = ({ product }) => {
+const ProductRoll: FC<{product: GraphCms_Product}> = ({ product }) => {
 
   const ProductImage: FC<{image: GraphCms_Product['image']}> = ({image}) => {
     if (!image) return null
@@ -28,4 +28,4 @@ const Product: FC<{product: GraphCms_Product}> = ({ product }) => {
   )
 }
 
-export default Product
+export default ProductRoll
